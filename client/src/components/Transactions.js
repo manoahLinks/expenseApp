@@ -9,8 +9,8 @@ const Transactions = () => {
 
     const [deposits, setDeposits] = useState(true)
     const [expenses, setExpenses] = useState(true) 
-    const {result, isPending, error} = useFetch(`http://localhost:6500/api/deposit`)
-    const {result:expense} = useFetch(`http://localhost:6500/api/expense`)
+    const {result, isPending, error} = useFetch(`https://expesetracker.herokuapp.com/api/deposit`)
+    const {result:expense} = useFetch(`https://expesetracker.herokuapp.com//api/expense`)
 
     const handleDeposits = () =>{
         setExpenses(false)

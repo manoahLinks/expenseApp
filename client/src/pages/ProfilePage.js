@@ -28,8 +28,8 @@ const ProfilePage = () => {
         setWithdraw(true)
     }
 
-    let {result , isPending} = useFetch(`http://localhost:6500/api/expense`)
-    let {result: cards} = useFetch(`http://localhost:6500/api/account`)
+    let {result , isPending} = useFetch(`https://expesetracker.herokuapp.com/api/expense`)
+    let {result: cards} = useFetch(`https://expesetracker.herokuapp.com/api/account`)
 
     return ( 
         <div className="grid grid-cols-1 bg-purple-50">
