@@ -1,3 +1,5 @@
+import React from "react";
+
 const NavBar = () => {
     return ( 
         <div className='flex justify-between md:p-2 p-1'>

@@ -1,5 +1,5 @@
 import { formatDistanceToNow } from "date-fns";
-
+import React from "react";
 const ExpenseDetails = ({result, cancelClick}) => {
 
     return ( 

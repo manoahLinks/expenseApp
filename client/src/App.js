@@ -6,7 +6,6 @@ import HomePage from './pages/HomePage';
 import ProfilePage from './pages/ProfilePage';
 import Transactions from './components/Transactions';
 import ExpenseForm from './components/ExpenseForm';
-import Analytics from './pages/Analytics';
 import Checkout from './components/Checkout';
 
 
@@ -24,7 +23,6 @@ class App extends Component {
               <Route path={`/transactions`} element={<Transactions></Transactions>}></Route>
               <Route path={`/new`} element={<ExpenseForm></ExpenseForm>}></Route>
               <Route path={`/cards`} element={<Checkout></Checkout>}></Route>
-              <Route path={``} element={<Analytics></Analytics>}></Route>
             </Routes>
             <TaskBar />
           </div>

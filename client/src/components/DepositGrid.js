@@ -1,4 +1,5 @@
 import { formatDistanceToNow } from 'date-fns'
+import React from 'react';
 
 const DepositGrid = ({deposits}) => {
 

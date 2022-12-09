@@ -19,6 +19,15 @@ app.use((req,res,next) =>{
 })
 
 
+app.use(bodyParser.urlencoded({extended : false}))
+app.use(bodyParser.json())
+
+// defining my routes
+app.use('/api/expense', appRoutes)
+app.use('/api/account', accountRoute)
+app.use('/api/deposit', depositRoute)
+
+
 app.get(/^\/(?!api).*/, function(_, res) {
     res.sendFile(
         path.join(__dirname, "client", "build", "index.html"),
@@ -29,16 +38,6 @@ app.get(/^\/(?!api).*/, function(_, res) {
         }
     )
 })
-
-
-app.use(bodyParser.urlencoded({extended : true}))
-app.use(bodyParser.json())
-
-// defining my routes
-app.use('/api/expense', appRoutes)
-app.use('/api/account', accountRoute)
-app.use('/api/deposit', depositRoute)
-
 
 // setting up server
 app.listen(process.env.PORT, () => {

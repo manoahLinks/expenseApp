@@ -1,4 +1,4 @@
-
+import React from "react";
 const LoadingPage = () => {
     return ( 
         <div className="fixed inset-0 justify-center items-center bg-opacity-60 bg-gray-50 flex flex-col">
