@@ -5,7 +5,7 @@ import LoadingPage from "./Loading";
 
 const Modal = ({setModalOn, expense}) => {
 
-    const {result, isPending} = useFetch(`http://localhost:6500/api/expense/${expense}`)
+    const {result, isPending} = useFetch(`https://expesetracker.herokuapp.com/api/expense/${expense}`)
 
     const handleCancelClick = () =>{
         setModalOn(false)
