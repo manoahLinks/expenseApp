@@ -1,6 +1,25 @@
 import { formatDistanceToNow } from "date-fns";
-import React from "react";
+import React, { useState } from "react";
 const ExpenseDetails = ({result, cancelClick}) => {
+
+    const handleDisburse = async (id) =>{
+
+        let response = await fetch(`https://expesetracker.herokuapp.com/api/expense/${id}`, {
+            method: 'PATCH',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+
+        let json = await response.json()
+
+        if(!response.ok){
+            console.log('unable to disburse')
+        }
+        if(response.ok){
+            console.log('disbursed successfully')
+        }
+    }
 
     return ( 
         <div className="grid grid-cols-1 p-5">
@@ -12,13 +31,14 @@ const ExpenseDetails = ({result, cancelClick}) => {
                 <h4 className="font-semibold">Amount:</h4>
                 <h4 >N {result.amount}</h4>
                 <h4 className="font-semibold">Status</h4>
-                {!result.isDisbursed && <h4 className="">pending</h4> }
+                {!result.isDisbursed && <h4 className="">pending</h4>}
+                {result.isDisbursed && <h4 className="text-purple-500">Disbursed</h4>}
                 <h4 className="font-semibold">Time created:</h4>
                 <h4 className="font-semibold text-blue-600">{formatDistanceToNow(new Date(result.createdAt), {addSuffix:true}) }</h4>
             </div>
             <div className="grid grid-cols-2 gap-x-2 justify-evenly mt-5">
                 <button onClick={cancelClick} className="p-2 border border-silver-100 text-zinc-500 rounded-full">Cancel</button>
-                <button className="p-2 border border-purple-900 text-purple-900 rounded-full">Disburse</button>
+                <button onClick={()=>{handleDisburse(result._id)}} className={`${result.isDisbursed && 'hidden'} p-2 border border-purple-900 text-purple-900 rounded-full`}>Disburse</button>
             </div>
         </div>    
     

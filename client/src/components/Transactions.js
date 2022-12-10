@@ -3,6 +3,7 @@ import DepositGrid from "./DepositGrid";
 import useFetch from "../useFetch";
 import TableGrid from "./TableGrid";
 import LoadingPage from "./Loading";
+import AlertBox from "./AlertBox";
 
 
 const Transactions = () => {  
@@ -56,6 +57,7 @@ const Transactions = () => {
                 {deposits && result && <DepositGrid deposits={result}></DepositGrid>}
                 {expenses && expense && <TableGrid expenses={expense}></TableGrid>}
                 {isPending && <LoadingPage></LoadingPage>}
+                {error && <AlertBox message={`failed to find resource check your internet connection`}></AlertBox>}
             </div>
             
 

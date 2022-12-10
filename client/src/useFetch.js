@@ -7,8 +7,7 @@ const useFetch = (url) => {
     const [error, setError] = useState(null)
 
     useEffect(()=>{
-        setTimeout(()=>{
-            fetch(url)
+        fetch(url)
                 .then((res)=>{
                     if(!res.ok){
                         throw Error('could not fetch data for the resource')
@@ -24,7 +23,6 @@ const useFetch = (url) => {
                     setIsPending(false)
                     setError(err.message)
                 })    
-        }, 1000)
         
     }, [url])
     

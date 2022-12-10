@@ -9,7 +9,7 @@ router.route('/')
 
 router.route('/:id')
       .get(controllers.getSingleExpense)
-      .put(controllers.updateExpense)
+      .patch(controllers.disburseExpense)
       .delete(controllers.deleteExpense)
 
 

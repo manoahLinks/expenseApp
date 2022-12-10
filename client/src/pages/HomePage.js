@@ -1,12 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import AlertBox from "../components/AlertBox";
 import LoadingPage from "../components/Loading";
 import ScoreCard from "../components/ScoreCard";
 import useFetch from "../useFetch";
 
 const HomePage = () => {
 
-    let {result, isPending} = useFetch(`https://expesetracker.herokuapp.com/api/expense`)
+    let {result, isPending, error} = useFetch(`https://expesetracker.herokuapp.com/api/expense`)
 
     return ( 
         <div className="grid grid-cols-1">
@@ -123,6 +124,7 @@ const HomePage = () => {
               this is the right sidebar
             </div>
             {isPending && <LoadingPage></LoadingPage>}
+            {error && <AlertBox message={`failed to find resource check your internet connection`}></AlertBox>}
         </div>
      );
 }

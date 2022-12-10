@@ -2,17 +2,18 @@ import React from "react";
 import ExpenseDetails from "./ExpenseDetails";
 import useFetch from "../useFetch";
 import LoadingPage from "./Loading";
+import AlertBox from "./AlertBox";
 
 const Modal = ({setModalOn, expense}) => {
 
-    const {result, isPending} = useFetch(`https://expesetracker.herokuapp.com/api/expense/${expense}`)
+    const {result, isPending, error} = useFetch(`https://expesetracker.herokuapp.com/api/expense/${expense}`)
 
     const handleCancelClick = () =>{
         setModalOn(false)
     }
 
     return ( 
-         <div className={` flex flex-col inset-0 bg-opacity-50 items-center justify-center h-screen bg-purple-50 fixed`}>
+         <div className={`${isPending && 'hidden'} flex flex-col inset-0 bg-opacity-50 items-center justify-center h-screen bg-purple-50 fixed`}>
             <div className="flex flex-col w-11/12 rounded-md p-2 border bg-white">
                 <div className="flex justify-between border-b px-2 py-3">
                     <h4 className="text-sm text-purple-900 self-center font-semibold">Expense summary :</h4>
@@ -25,6 +26,7 @@ const Modal = ({setModalOn, expense}) => {
                 {result && <ExpenseDetails result={result} cancelClick={handleCancelClick} />}
             </div>
             {isPending && <LoadingPage></LoadingPage>}
+            {error && <AlertBox message={`failed to find resource check your internet connection`}></AlertBox>}
         </div>
      );
 }

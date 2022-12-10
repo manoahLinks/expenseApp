@@ -58,9 +58,9 @@ exports.getSingleExpense = async (req, res) =>{
 }
 
 // update an expense record
-exports.updateExpense = async (req , res) => {
+exports.disburseExpense = async (req , res) => {
 
-    const updatedExpense = await Expense.findOneAndUpdate(req.params.id, req.body)
+    const updatedExpense = await Expense.findOneAndUpdate(req.params.id, {isDisbursed: true})
                 .then ((updatedExpense) => {
                     res.status(200).json(updatedExpense)
                 })

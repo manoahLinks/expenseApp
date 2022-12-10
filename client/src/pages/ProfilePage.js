@@ -1,4 +1,5 @@
 import React, {useState} from "react";
+import AlertBox from "../components/AlertBox";
 import DepositForm from "../components/DepositForm";
 import ExpenseCard from "../components/ExpenseCard";
 import ExpenseForm from "../components/ExpenseForm";
@@ -28,7 +29,7 @@ const ProfilePage = () => {
         setWithdraw(true)
     }
 
-    let {result , isPending} = useFetch(`https://expesetracker.herokuapp.com/api/expense`)
+    let {result , isPending, error} = useFetch(`https://expesetracker.herokuapp.com/api/expense`)
     let {result: cards} = useFetch(`https://expesetracker.herokuapp.com/api/account`)
 
     return ( 
@@ -47,6 +48,7 @@ const ProfilePage = () => {
                 {result && <TableGrid expenses={result} ></TableGrid>}
             </div>
             {isPending && <LoadingPage></LoadingPage>}
+            {error && <AlertBox message={`failed to find resource check your internet connection`}></AlertBox>}
             <button className="p-2 bg-white shadow-md mt-4 m-2 text-sm text-purple-900 rounded-lg">Log Out</button>
         </div>
      );
