@@ -1,3 +1,8 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.inset{
+    border: 1px inset rgb(250, 219, 250);
+    box-shadow: inset;
+}

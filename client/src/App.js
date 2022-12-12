@@ -7,6 +7,7 @@ import ProfilePage from './pages/ProfilePage';
 import Transactions from './components/Transactions';
 import ExpenseForm from './components/ExpenseForm';
 import Checkout from './components/Checkout';
+import LoginPage from './pages/LoginPage';
 
 
 
@@ -18,7 +19,8 @@ class App extends Component {
           <NavBar />
           <div className='flex flex-col md:flex-row w-full overflow-scroll'>
             <Routes>
-              <Route exact path={`/`} element={<HomePage></HomePage>}></Route>
+              <Route path={`/`} element={<LoginPage></LoginPage>}></Route>
+              <Route exact path={`/home`} element={<HomePage></HomePage>}></Route>
               <Route path={`/profile`} element={<ProfilePage></ProfilePage>}></Route>
               <Route path={`/transactions`} element={<Transactions></Transactions>}></Route>
               <Route path={`/new`} element={<ExpenseForm></ExpenseForm>}></Route>

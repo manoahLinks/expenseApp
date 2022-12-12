@@ -59,8 +59,8 @@ exports.getSingleExpense = async (req, res) =>{
 
 // update an expense record
 exports.disburseExpense = async (req , res) => {
-
-    const updatedExpense = await Expense.findOneAndUpdate(req.params.id, {isDisbursed: true})
+    let {id} = req.params
+    const updatedExpense = await Expense.findByIdAndUpdate(id, {isDisbursed: true})
                 .then ((updatedExpense) => {
                     res.status(200).json(updatedExpense)
                 })
@@ -73,7 +73,8 @@ exports.disburseExpense = async (req , res) => {
 // delete an expense record
 exports.deleteExpense = async (req , res) =>{
 
-    const deletedExpense = await Expense.findOneAndDelete(req.params.id)
+    const {id} = req.params
+    const deletedExpense = await Expense.findByIdAndDelete(id)
                 .then((deletedExpense) =>{
                     res.status(200).json(deletedExpense)
                 })

@@ -5,6 +5,7 @@ const express = require('express'),
       appRoutes = require('./routes/expense'),
       accountRoute = require('./routes/account'),
       depositRoute = require('./routes/deposit'),
+      userRoute = require('./routes/user'),
       cors      = require('cors'),
       app       = express(),
       path          = require('path')
@@ -26,7 +27,7 @@ app.use(bodyParser.json())
 app.use('/api/expense', appRoutes)
 app.use('/api/account', accountRoute)
 app.use('/api/deposit', depositRoute)
-
+app.use('/api/user', userRoute)
 
 app.get(/^\/(?!api).*/, function(_, res) {
     res.sendFile(
