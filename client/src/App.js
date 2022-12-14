@@ -16,17 +16,17 @@ class App extends Component {
     return (
       <Router>
         <div className="flex flex-col w-full relative h-screen text-gray-700 text-xs md:text-sm">
-          <NavBar />
+          <NavBar/>
           <div className='flex flex-col md:flex-row w-full overflow-scroll'>
             <Routes>
-              <Route path={`/`} element={<LoginPage></LoginPage>}></Route>
-              <Route exact path={`/home`} element={<HomePage></HomePage>}></Route>
+              <Route exact path={`/`} element={<LoginPage></LoginPage>}></Route>
+              <Route path={`/home`} element={<HomePage></HomePage>}></Route>
               <Route path={`/profile`} element={<ProfilePage></ProfilePage>}></Route>
               <Route path={`/transactions`} element={<Transactions></Transactions>}></Route>
               <Route path={`/new`} element={<ExpenseForm></ExpenseForm>}></Route>
               <Route path={`/cards`} element={<Checkout></Checkout>}></Route>
             </Routes>
-            <TaskBar />
+            <TaskBar/>
           </div>
         </div>
       </Router>

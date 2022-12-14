@@ -6,3 +6,7 @@
     border: 1px inset rgb(250, 219, 250);
     box-shadow: inset;
 }
+
+#image{
+    background-image: url('./assets/search-hacker.png');
+}

@@ -1,3 +1,4 @@
+require('dotenv').config()
 const User = require('../models/user'),
       jwt = require('jsonwebtoken'),
       bcrypt = require('bcryptjs')
@@ -15,7 +16,7 @@ exports.getAllUsers = async (req, res) => {
 
 exports.registerUser = async (req, res) => {
 
-    let {email, department} = req.body
+    let {email, password} = req.body
 
     try {
 
@@ -25,17 +26,17 @@ exports.registerUser = async (req, res) => {
             res.status(400).json({message: 'user already exist in database'})
         }
         if(!registeredUser){
-            let newUser = new User({email: email, department: department})
+            let newUser = new User({email: email, password})
 
             // generating a salt password
             const salt = await bcrypt.genSalt(10)
 
             // setting the user password to a hashed password
-            user.password = await bcrypt.hash(body.password, salt)
+            newUser.password = await bcrypt.hash(password, salt)
             
-            user.ipAddress = req.socket.remoteAddress
+            newUser.ipAddress = req.socket.remoteAddress
             // saving user detials to database
-            user.save().then((newUser)=>{
+            newUser.save().then((newUser)=>{
                 // generating a token to handle authorization
                 let token = jwt.sign({newUserId: newUser.id}, process.env.SECRET_KEY)
                 res.status(201).json({newUser, token})
@@ -47,6 +48,27 @@ exports.registerUser = async (req, res) => {
     } catch (error) {
         res.status(400).json(error)
     }
+}
+
+
+// login logic for User
+exports.loginUser = async (req, res)=>{
+
+    const {email, password} = req.body    
+    // checking for admin email in database
+    let user = await User.findOne({email: email})
+        if(user){
+            // comparing the inputted password and hashed password using bcrypt
+            const validPassword = await bcrypt.compare(password, user.password)
+            if(validPassword){
+                res.status(200).json({message: 'you have successfully logged in'})
+                console.log('login successfull')
+            }else{
+                res.status(400).json({message: 'password is invalid'})
+            }
+        }else{
+            res.status(400).json({message: 'User acct does not exist'})
+        }
 }
 
 

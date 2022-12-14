@@ -5,6 +5,9 @@ const express = require('express'),
 
 router.route('/')
     .get(controller.getAllUsers)
-    .post()
+    .post(controller.loginUser)
+
+router.route('/register')
+    .post(controller.registerUser)    
 
 module.exports = router
