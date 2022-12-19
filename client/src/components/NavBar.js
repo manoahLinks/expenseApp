@@ -1,6 +1,10 @@
 import React from "react";
+import useFetch from "../useFetch";
 
-const NavBar = () => {
+const NavBar = (id) => {
+
+    const {result, ispending, error} = useFetch(`https://expesetracker.herokuapp.com/api/user/${id}`)
+
     return ( 
         <div className='flex justify-between md:p-2 p-1'>
             <div className='flex'>

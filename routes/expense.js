@@ -12,5 +12,7 @@ router.route('/:id')
       .patch(controllers.disburseExpense)
       .delete(controllers.deleteExpense)
 
+router.route('/:id/approve')
+      .patch(controllers.approveExpense)      
 
 module.exports = router;

@@ -14,6 +14,18 @@ exports.getAllUsers = async (req, res) => {
     }
 }
 
+exports.getSingleUser = async (req, res) => {
+    let {id} = req.params.id
+    try {
+        
+        const response = await User.findById(id)
+        res.status(200).json(response)
+
+    } catch (error) {
+        res.status(400).json(error)
+    }
+}
+
 exports.registerUser = async (req, res) => {
 
     let {email, password} = req.body
@@ -62,7 +74,8 @@ exports.loginUser = async (req, res)=>{
             const validPassword = await bcrypt.compare(password, user.password)
             if(validPassword){
                 res.status(200).json({message: 'you have successfully logged in'})
-                console.log('login successfull')
+                req.session.isAuth = true
+                console.log('login successfull', req.session)
             }else{
                 res.status(400).json({message: 'password is invalid'})
             }

@@ -6,7 +6,7 @@ import AlertBox from "./AlertBox";
 
 const Modal = ({setModalOn, expense}) => {
 
-    const {result, isPending, error} = useFetch(`http://localhost:5500/api/expense/${expense}`)
+    const {result, isPending, error} = useFetch(`https://expesetracker.herokuapp.com/api/expense/${expense}`)
 
     const handleCancelClick = () =>{
         setModalOn(false)

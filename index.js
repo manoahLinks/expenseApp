@@ -1,6 +1,10 @@
+const { isAuth } = require('./middleware/auth');
+
 require('dotenv').config()
 const express = require('express'),
       bodyParser = require('body-parser'),
+      session = require('express-session'),
+      mongoDBSession = require('connect-mongodb-session')(session),
       dbConnect = require('./models'),
       appRoutes = require('./routes/expense'),
       accountRoute = require('./routes/account'),
@@ -9,6 +13,21 @@ const express = require('express'),
       cors      = require('cors'),
       app       = express(),
       path          = require('path')
+
+
+const store = new mongoDBSession({
+    uri: process.env.URI,
+    collection: 'mySession'
+}) 
+
+app.use(session({
+    secret: process.env.SECRET_KEY,
+    resave: false,
+    saveUninitialized: false,
+    store: store
+}))
+
+
 
 
 app.use(express.static(path.join(__dirname, "client", "build")));

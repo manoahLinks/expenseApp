@@ -8,6 +8,9 @@ router.route('/')
     .post(controller.loginUser)
 
 router.route('/register')
-    .post(controller.registerUser)    
+    .post(controller.registerUser)
+    
+router.route('/:id')
+    .get(controller.getSingleUser)    
 
 module.exports = router

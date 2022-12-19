@@ -36,6 +36,7 @@ exports.addNewExpense = async (req, res) => {
 //display all expense records
 exports.getAllExpenses = async (req, res) =>{
 
+    
     const allExpenses = await Expense.find({}).sort({createdAt: -1})
                     .then((allExpenses) => {
                         res.status(200).json(allExpenses)
@@ -61,6 +62,18 @@ exports.getSingleExpense = async (req, res) =>{
 exports.disburseExpense = async (req , res) => {
     let {id} = req.params
     const updatedExpense = await Expense.findByIdAndUpdate(id, {isDisbursed: true})
+                .then ((updatedExpense) => {
+                    res.status(200).json(updatedExpense)
+                })
+                .catch((err) => {
+                    res.json({message : "Error updating expense record", error:err})
+                })
+}
+
+// update an expense record
+exports.approveExpense = async (req , res) => {
+    let {id} = req.params
+    const updatedExpense = await Expense.findByIdAndUpdate(id, {isApproved: true})
                 .then ((updatedExpense) => {
                     res.status(200).json(updatedExpense)
                 })

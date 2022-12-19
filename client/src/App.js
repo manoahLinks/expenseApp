@@ -9,8 +9,6 @@ import ExpenseForm from './components/ExpenseForm';
 import Checkout from './components/Checkout';
 import LoginPage from './pages/LoginPage';
 
-
-
 class App extends Component {
   render() {
     return (
@@ -26,7 +24,7 @@ class App extends Component {
               <Route path={`/new`} element={<ExpenseForm></ExpenseForm>}></Route>
               <Route path={`/cards`} element={<Checkout></Checkout>}></Route>
             </Routes>
-            <TaskBar/>
+            <TaskBar />
           </div>
         </div>
       </Router>

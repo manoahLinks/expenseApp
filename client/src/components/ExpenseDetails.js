@@ -2,9 +2,28 @@ import { formatDistanceToNow } from "date-fns";
 import React, { useState } from "react";
 const ExpenseDetails = ({result, cancelClick}) => {
 
+    const handleApproval = async (id) =>{
+
+        let response = await fetch(`https://expesetracker.herokuapp.com/api/expense/${id}/approve`, {
+            method: 'PATCH',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+
+        let json = await response.json()
+
+        if(!response.ok){
+            console.log('unable to approve')
+        }
+        if(response.ok){
+            console.log('expense Approved', id)
+        }
+    }
+
     const handleDisburse = async (id) =>{
 
-        let response = await fetch(`http://localhost:5500/api/expense/${id}`, {
+        let response = await fetch(`https://expesetracker.herokuapp.com/api/expense/${id}`, {
             method: 'PATCH',
             headers: {
                 'Content-Type': 'application/json'
@@ -47,9 +66,11 @@ const ExpenseDetails = ({result, cancelClick}) => {
                 <h4 className="font-semibold">Time created:</h4>
                 <h4 className="font-semibold text-blue-600">{formatDistanceToNow(new Date(result.createdAt), {addSuffix:true}) }</h4>
             </div>
-            <div className="grid grid-cols-2 gap-x-2 justify-evenly mt-5">
-                <button onClick={cancelClick} className="p-1 w-9/12 border border-silver-100 text-zinc-500 rounded-full">Cancel</button>
-                <button onClick={()=>{handleDisburse(result._id)}} className={`${result.isDisbursed && 'hidden'} p-1 w-9/12 border border-purple-900 text-purple-900 rounded-full`}>Disburse</button>
+            <div className="grid grid-cols-2 gap-x-1 gap-y-2 justify-evenly mt-5">
+                <button onClick={cancelClick} className="p-1 w-9/12 border border-gray-100 text-zinc-500 rounded-full">Cancel</button>
+                <button onClick={()=>{handleDisburse(result._id)}} className={`${!result.isApproved && 'hidden' || result.isDisbursed && 'hidden'} p-1 w-9/12 border border-purple-900 text-purple-900 rounded-full`}>Disburse</button>
+                <button onClick={()=>{handleApproval(result._id)}} className={`${result.isApproved && 'hidden'} p-1 w-9/12 border border-green-400 text-green-500 rounded-full`}>Approve</button>
+                <button className={` p-1 w-9/12 border border-red-400 text-red-500 rounded-full`}>Delete</button>
             </div>
         </div>    
     
