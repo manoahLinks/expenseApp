@@ -16,7 +16,7 @@ const express = require('express'),
 
 
 const store = new mongoDBSession({
-    uri: process.env.MONGO_URI,
+    uri: process.env.MONGODB_URI,
     collection: 'mySession'
 }) 
 
