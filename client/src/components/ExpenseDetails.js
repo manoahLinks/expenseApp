@@ -40,6 +40,25 @@ const ExpenseDetails = ({result, cancelClick}) => {
         }
     }
 
+    const handleDelete = async (id) => {
+
+        const response = await fetch(`https://expesetracker.herokuapp.com/api/expense/${id}`, {
+            method: 'DELETE',
+            headers:{
+                'Content-Type': 'application/json'
+            }
+        })
+
+        let json = await response.json()
+
+        if(!response.ok){
+            console.log('unable to send delete request')
+        }
+        if(response.ok){
+            console.log(`deleted successfully`)
+        }
+    }
+
     return ( 
         <div className="grid grid-cols-1 p-5">
             <div className="text-gray-500 grid grid-cols-2 gap-y-2">
@@ -70,7 +89,7 @@ const ExpenseDetails = ({result, cancelClick}) => {
                 <button onClick={cancelClick} className="p-1 w-9/12 border border-gray-100 text-zinc-500 rounded-full">Cancel</button>
                 <button onClick={()=>{handleDisburse(result._id)}} className={`${!result.isApproved && 'hidden' || result.isDisbursed && 'hidden'} p-1 w-9/12 border border-purple-900 text-purple-900 rounded-full`}>Disburse</button>
                 <button onClick={()=>{handleApproval(result._id)}} className={`${result.isApproved && 'hidden'} p-1 w-9/12 border border-green-400 text-green-500 rounded-full`}>Approve</button>
-                <button className={` p-1 w-9/12 border border-red-400 text-red-500 rounded-full`}>Delete</button>
+                <button onClick={()=>{handleDelete(result._id)}} className={` p-1 w-9/12 border border-red-400 text-red-500 rounded-full hover:bg-red-400 hover:text-white`}>Delete</button>
             </div>
         </div>    
     
