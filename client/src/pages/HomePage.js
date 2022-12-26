@@ -7,7 +7,9 @@ import useFetch from "../useFetch";
 
 const HomePage = () => {
 
-    let {result, isPending, error} = useFetch(`https://expesetracker.herokuapp.com/api/expense`)
+    let {result, isPending, error} = useFetch(`http://localhost:5500/api/expense`)
+
+    let {result: deposits} = useFetch(`http://localhost:5500/api/deposit`)
 
     return ( 
         <div className="grid grid-cols-1">
@@ -23,7 +25,7 @@ const HomePage = () => {
                 </div>
                 <button className='bg-purple-800 text-white px-4 py-1 rounded-full'>fund</button>
               </div>
-              {result && <ScoreCard expenses={result} />}
+              {result && deposits && <ScoreCard expenses={result} deposits={deposits} />}
               <div className='bg-white rounded flex flex-col m-2 p-2'>
                 <h4 className='font-semibold'>Expense category</h4>
                 <div className='grid grid-cols-4 gap-y-4'>

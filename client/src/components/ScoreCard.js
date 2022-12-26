@@ -2,7 +2,7 @@ import React from "react"
 import {useState} from "react"
 import Modal from "./Modal"
 
-const ScoreCard = ({expenses}) => {
+const ScoreCard =  async ({expenses, deposits}) => {
 
     const [modal, setModalOn] = useState(false)
 
@@ -10,7 +10,7 @@ const ScoreCard = ({expenses}) => {
       setModalOn(true)
     }
 
-    let totalExpenditure = expenses.reduce((accumulator, nextValue)=>{
+    let totalExpenditure = await expenses.reduce((accumulator, nextValue)=>{
         return accumulator + nextValue.amount
     }, 0) 
 
@@ -34,7 +34,7 @@ const ScoreCard = ({expenses}) => {
                     <path d="M12 20.25c2.685 0 5.19-.586 7.078-1.609a8.282 8.282 0 001.897-1.384c.016.121.025.244.025.368 0 2.692-4.03 4.875-9 4.875s-9-2.183-9-4.875c0-.124.009-.247.025-.368a8.284 8.284 0 001.897 1.384C6.809 19.664 9.315 20.25 12 20.25z" />
                 </svg>
                 <h4 className="my-1">Re-imbursements</h4>
-                <h4 className="font-semibold">N124,000</h4>
+                <h4 className="font-semibold">N</h4>
             </div>
 
             <div className="flex flex-col items-center shadow-lg rounded-lg bg-white p-2">

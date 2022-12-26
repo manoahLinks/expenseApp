@@ -1,8 +1,8 @@
 import React, {useState} from "react";
 import LoadingPage from "../components/Loading";
-import image from "../assets/search-hacker.png"
 import { Navigate } from "react-router-dom";
 import AlertBox from "../components/AlertBox";
+import { Link } from "react-router-dom";
 
 const LoginPage = () => {
 
@@ -18,7 +18,7 @@ const LoginPage = () => {
 
         let user = {email, password}
 
-        const response = await fetch(`https://expesetracker.herokuapp.com/api/user`, {
+        const response = await fetch(`http://localhost:5500/api/user`, {
 
             method: 'POST',
             headers: {
@@ -79,7 +79,7 @@ const LoginPage = () => {
                 </div>
                 <h4 className="text-right">forgot password ?</h4>
                 <button className="text-sm p-2 bg-gradient-to-b from-purple-900 to-purple-500 text-purple-200 font-semibold self-center border-2 border-purple-100 shadow rounded-lg mt-2">Login</button>
-                <h4>i don't an account? signup</h4>
+                <Link to={`/`}>i don't have an account? signup</Link>
             </form>
             {isPending && <LoadingPage></LoadingPage>}
             {error && <AlertBox message={message}></AlertBox>}

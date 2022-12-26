@@ -29,13 +29,14 @@ const ProfilePage = () => {
         setWithdraw(true)
     }
 
-    let {result , isPending, error} = useFetch(`https://expesetracker.herokuapp.com/api/expense`)
-    let {result: cards} = useFetch(`https://expesetracker.herokuapp.com/api/account`)
+    let {result , isPending, error} = useFetch(`http://localhost:5500/api/expense`)
+    let {result: cards} = useFetch(`http://localhost:5500/api/account`)
+    let {result: deposits} = useFetch(`http://localhost:5500/api/deposit`)
 
     return ( 
         <div className="grid grid-cols-1 bg-purple-50">
             {cards && <ExpenseCard cards={cards} click={handleDeposits} click2={handleWithdraw} />}
-            {profile && result && <ScoreCard expenses={result} />}
+            {profile && result && deposits && <ScoreCard expenses={result} deposits={deposits} />}
             {deposit && <DepositForm id={accountId}></DepositForm>}
             {withdraw && <ExpenseForm></ExpenseForm>}
             <div className={`grid grid-cols-1 m-2 p-2 rounded-lg bg-white shadow-md ${deposit && 'hidden' || withdraw && 'hidden'}`}>

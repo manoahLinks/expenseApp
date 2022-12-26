@@ -17,7 +17,7 @@ const DepositForm = ({id}) => {
         let newDeposit = {amount, pin} 
         
 
-        let response = await fetch(`https://expesetracker.herokuapp.com/api/account/${id}`, {
+        let response = await fetch(`http://localhost:5500/api/account/${id}`, {
 
             method: 'PATCH',
             headers:{

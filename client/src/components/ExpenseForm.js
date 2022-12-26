@@ -15,7 +15,7 @@ const ExpenseForm = () => {
         setIsPending(true)
         const newExpense = {accountName,type, description, amount}
         
-        const response = await fetch(`https://expesetracker.herokuapp.com/api/expense`, {
+        const response = await fetch(`http://localhost:5500/api/expense`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
