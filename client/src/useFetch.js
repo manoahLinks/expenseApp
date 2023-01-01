@@ -1,15 +1,17 @@
-import { useState, useEffect } from "react"
+import React, { useState, useEffect } from "react"
 
 const useFetch = (url) => {
 
-    const [result, setResult] = useState('')
-    const [isPending, setIsPending] = useState(true)
+    const [result, setResult] = useState(null)
+    const [isPending, setIsPending] = useState(false)
     const [error, setError] = useState(null)
 
     useEffect(()=>{
 
+        
+
        fetch(url)
-        .then((res)=>{
+       .then((res)=>{
             if(!res.ok){
                 throw Error('error loading resource')
             }
@@ -18,7 +20,7 @@ const useFetch = (url) => {
         .then((data)=>{
             setResult(data)
             setIsPending(false)
-            setError(null)
+            setError(false)
         })
         .catch((err)=>{
             setIsPending(false)
