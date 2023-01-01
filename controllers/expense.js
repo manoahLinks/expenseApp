@@ -35,6 +35,7 @@ exports.addNewExpense = async (req, res) => {
 
 //display all expense records
 exports.getAllExpenses = async (req, res) =>{
+    req.session.isAuth = true
     const allExpenses = await Expense.find({}).sort({createdAt: -1})
                     .then((allExpenses) => {
                         res.status(200).json(allExpenses)

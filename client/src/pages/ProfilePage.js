@@ -7,6 +7,7 @@ import LoadingPage from "../components/Loading";
 import ScoreCard from "../components/ScoreCard";
 import TableGrid from "../components/TableGrid";
 import useFetch from "../useFetch";
+import { useDataContext } from "../hooks/useDataContext";
 
 const ProfilePage = () => {
 

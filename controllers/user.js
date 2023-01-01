@@ -73,8 +73,8 @@ exports.loginUser = async (req, res)=>{
             // comparing the inputted password and hashed password using bcrypt
             const validPassword = await bcrypt.compare(password, user.password)
             if(validPassword){
-                res.status(200).json({message: 'you have successfully logged in'})
                 req.session.isAuth = true
+                res.status(200).json({message: 'you have successfully logged in', session: req.session})
                 console.log('login successfull', req.session)
             }else{
                 res.status(400).json({message: 'password is invalid'})
