@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react"
+import { useState, useEffect } from 'react'
 
 const useFetch = (url) => {
 
@@ -7,26 +7,22 @@ const useFetch = (url) => {
     const [error, setError] = useState(null)
 
     useEffect(()=>{
-
-        
-
        fetch(url)
-       .then((res)=>{
-            if(!res.ok){
-                throw Error('error loading resource')
-            }
-            return res.json()
-        })
-        .then((data)=>{
-            setResult(data)
-            setIsPending(false)
-            setError(false)
-        })
-        .catch((err)=>{
-            setIsPending(false)
-            console.log('error is here')
-            setError(err.message)
-        })
+            .then((res)=>{
+                if(!res.ok){
+                    throw Error('error loading resource')
+                }
+                return res.json()
+            })
+            .then((data)=>{
+                setResult(data)
+                setIsPending(false)
+                setError(null)
+            })
+            .catch((err)=>{
+                setIsPending(false)
+                setError(err.message)
+            })
         
     }, [url])
 

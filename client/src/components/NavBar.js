@@ -6,7 +6,7 @@ const NavBar = () => {
     return ( 
         <div className='flex justify-between md:p-2 p-1'>
             <div className='flex'>
-              <img src={require(`../assets/IMG_20220218_180539.jpg`)} alt="pic1" className='w-12 h-12 mx-2 rounded-full object-cover' />
+              <img src={require(`../assets/icons8-user-male-100.png`)} alt="pic1" className='w-12 h-12 mx-2 rounded-full object-cover' />
               <div className='flex flex-col justify-center'>
                 <h4 className="font-semibold">Manoah</h4>
                 <h6 className="font-light">@Manoah48ik</h6>

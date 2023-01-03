@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import AlertBox from "../components/AlertBox";
 import LoadingPage from "../components/Loading";
@@ -8,7 +8,6 @@ import useFetch from "../useFetch";
 const HomePage = () => {
 
     let {result, isPending, error} = useFetch(`http://localhost:5500/api/expense`)
-
     let {result: deposits} = useFetch(`http://localhost:5500/api/deposit`)
 
     return ( 
@@ -25,7 +24,7 @@ const HomePage = () => {
                 </div>
                 <button className='bg-purple-800 text-white px-4 py-1 rounded-full'>fund</button>
               </div>
-              {result && deposits && <ScoreCard expenses={result} deposits={deposits} />}
+              {/* {result && deposits && <ScoreCard expenses={result} deposits={deposits} />} */}
               <div className='bg-white rounded flex flex-col m-2 p-2'>
                 <h4 className='font-semibold'>Expense category</h4>
                 <div className='grid grid-cols-4 gap-y-4'>

@@ -16,7 +16,7 @@ const DepositGrid = ({deposits}) => {
                         </div>
                     
                         <div className="flex flex-col mx-2">
-                            <h4 className="font-semibold">{deposit.depositor}</h4>
+                            <h4 className="font-semibold">{deposit.depositor || 'Manoah'}</h4>
                             <h4 className="text-blue-700">{formatDistanceToNow(new Date(deposit.createdAt), {addSuffix: true})}</h4>
                         </div>
                     </div>

@@ -18,6 +18,11 @@ const Transactions = () => {
         setDeposits(true)
     }
 
+    const handleAll = () => {
+        setExpenses(true)
+        setDeposits(true)
+    }
+
     const handleExpenses = () =>{
         setExpenses(true)
         setDeposits(false)
@@ -36,7 +41,7 @@ const Transactions = () => {
             </div>
 
             <div className="flex justify-evenly p-2">
-                <h4 className="px-2 p-0.5 bg-purple-200 rounded-lg">All</h4>
+                <h4 className="px-2 p-0.5 bg-purple-200 rounded-lg" onClick={handleAll}>All</h4>
                 <h4 className="px-2 p-0.5 bg-purple-200 rounded-lg" onClick={handleDeposits}>Re-imbursements</h4>
                 <h4 className="px-2 p-0.5 bg-purple-200 rounded-lg" onClick={handleExpenses}>Expenses</h4>
             </div>

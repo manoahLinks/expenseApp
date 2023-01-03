@@ -1,8 +1,19 @@
 import { formatDistanceToNow } from "date-fns";
+import { set } from "date-fns/esm";
 import React, { useState } from "react";
+import LoadingPage from "./Loading";
+import AlertBox from "./AlertBox";
+
 const ExpenseDetails = ({result, cancelClick}) => {
 
+    const [isPending, setIsPending] = useState(false)
+    const [success, setSuccess] = useState(false)
+    const [error, setError] = useState(false)
+    const [message, setMessage] = useState(null)
+
     const handleApproval = async (id) =>{
+
+        setIsPending(true)
 
         let response = await fetch(`http://localhost:5500/api/expense/${id}/approve`, {
             method: 'PATCH',
@@ -14,14 +25,22 @@ const ExpenseDetails = ({result, cancelClick}) => {
         let json = await response.json()
 
         if(!response.ok){
+            setError(true)
+            setMessage('operations was not successful')
             console.log('unable to approve')
         }
         if(response.ok){
+            setIsPending(false)
+            setSuccess(true)
+            setMessage('Expense successfully approved !')
+            cancelClick()
             console.log('expense Approved', id)
         }
     }
 
     const handleDisburse = async (id) =>{
+
+        setIsPending(true)
 
         let response = await fetch(`http://localhost:5500/api/expense/${id}`, {
             method: 'PATCH',
@@ -33,14 +52,22 @@ const ExpenseDetails = ({result, cancelClick}) => {
         let json = await response.json()
 
         if(!response.ok){
+            setError(true)
+            setMessage('operations was not successful')
             console.log('unable to disburse')
         }
         if(response.ok){
+            setIsPending(false)
+            cancelClick()
+            setSuccess(true)
+            setMessage('Expense successfully Disbursed !')
             console.log('disbursed successfully', id)
         }
     }
 
     const handleDelete = async (id) => {
+
+        setIsPending(true)
 
         const response = await fetch(`http://localhost:5500/api/expense/${id}`, {
             method: 'DELETE',
@@ -52,9 +79,15 @@ const ExpenseDetails = ({result, cancelClick}) => {
         let json = await response.json()
 
         if(!response.ok){
+            setError(true)
+            setMessage('operations was not successful')
             console.log('unable to send delete request')
         }
         if(response.ok){
+            setIsPending(false)
+            cancelClick()
+            setSuccess(true)
+            setMessage('Expense successfully deleted !')
             console.log(`deleted successfully`)
         }
     }
@@ -86,11 +119,14 @@ const ExpenseDetails = ({result, cancelClick}) => {
                 <h4 className="font-semibold text-blue-600">{formatDistanceToNow(new Date(result.createdAt), {addSuffix:true}) }</h4>
             </div>
             <div className="grid grid-cols-2 gap-x-1 gap-y-2 justify-evenly mt-5">
-                <button onClick={cancelClick} className="p-1 w-9/12 border border-gray-100 text-zinc-500 rounded-full">Cancel</button>
+                <button onClick={cancelClick} className="p-1 w-9/12 border bg-gray-100 text-zinc-500 rounded-full">Cancel</button>
                 <button onClick={()=>{handleDisburse(result._id)}} className={`${!result.isApproved && 'hidden' || result.isDisbursed && 'hidden'} p-1 w-9/12 border border-purple-900 text-purple-900 rounded-full`}>Disburse</button>
                 <button onClick={()=>{handleApproval(result._id)}} className={`${result.isApproved && 'hidden'} p-1 w-9/12 border border-green-400 text-green-500 rounded-full`}>Approve</button>
                 <button onClick={()=>{handleDelete(result._id)}} className={` p-1 w-9/12 border border-red-400 text-red-500 rounded-full hover:bg-red-400 hover:text-white`}>Delete</button>
             </div>
+            {isPending && <LoadingPage />}
+            {success && <AlertBox message={message} />}
+            {error && <AlertBox message={message} /> }
         </div>    
     
      );

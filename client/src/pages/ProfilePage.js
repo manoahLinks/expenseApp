@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, { useState } from 'react';
 import AlertBox from "../components/AlertBox";
 import DepositForm from "../components/DepositForm";
 import ExpenseCard from "../components/ExpenseCard";
@@ -29,14 +29,14 @@ const ProfilePage = () => {
         setWithdraw(true)
     }
 
-    let {result , isPending, error} = useFetch(`http://localhost:5500/api/expense`)
+    let {result, isPending, error} = useFetch(`http://localhost:5500/api/expense`)
     let {result: cards} = useFetch(`http://localhost:5500/api/account`)
     let {result: deposits} = useFetch(`http://localhost:5500/api/deposit`)
 
     return ( 
         <div className="grid grid-cols-1 bg-purple-50">
             {cards && <ExpenseCard cards={cards} click={handleDeposits} click2={handleWithdraw} />}
-            {profile && result && deposits && <ScoreCard expenses={result} deposits={deposits} />}
+            {/* {profile && result && deposits && <ScoreCard expenses={result} deposits={deposits} />} */}
             {deposit && <DepositForm id={accountId}></DepositForm>}
             {withdraw && <ExpenseForm></ExpenseForm>}
             <div className={`grid grid-cols-1 m-2 p-2 rounded-lg bg-white shadow-md ${deposit && 'hidden' || withdraw && 'hidden'}`}>
@@ -50,7 +50,7 @@ const ProfilePage = () => {
             </div>
             {isPending && <LoadingPage></LoadingPage>}
             {error && <AlertBox message={`failed to find resource check your internet connection`}></AlertBox>}
-            <button className="p-2 bg-white shadow-md mt-4 m-2 text-sm text-purple-900 rounded-lg">Log Out</button>
+            <button className="p-2 text-white mt-5 m-2 text-sm font-semibold bg-purple-900 rounded-full">Log Out</button>
         </div>
      );
 }

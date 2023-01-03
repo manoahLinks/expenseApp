@@ -1,5 +1,4 @@
-import React from "react"
-import {useState} from "react"
+import React, { useState } from "react"
 import Modal from "./Modal"
 
 const ScoreCard =  async ({expenses, deposits}) => {

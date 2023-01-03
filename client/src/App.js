@@ -8,16 +8,18 @@ import Transactions from './components/Transactions';
 import ExpenseForm from './components/ExpenseForm';
 import Checkout from './components/Checkout';
 import LoginPage from './pages/LoginPage';
+import WelcomePage from './pages/WelcomePage';
 
 class App extends Component {
   render() {
     return (
       <Router>
-        <div className="flex flex-col w-full relative h-screen text-gray-700 text-xs md:text-sm">
+        <div className="flex flex-col w-full relative h-screen text-gray-500 text-xs md:text-sm">
           <NavBar/>
           <div className='flex flex-col md:flex-row w-full overflow-scroll'>
             <Routes>
-              <Route exact path={`/`} element={<LoginPage></LoginPage>}></Route>
+              <Route exact path={`/`} element={<WelcomePage></WelcomePage>}></Route>
+              <Route path={`/login`} element={<LoginPage></LoginPage>}></Route>
               <Route path={`/home`} element={<HomePage></HomePage>}></Route>
               <Route path={`/profile`} element={<ProfilePage></ProfilePage>}></Route>
               <Route path={`/transactions`} element={<Transactions></Transactions>}></Route>
