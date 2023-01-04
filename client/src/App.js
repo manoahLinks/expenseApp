@@ -9,6 +9,7 @@ import ExpenseForm from './components/ExpenseForm';
 import Checkout from './components/Checkout';
 import LoginPage from './pages/LoginPage';
 import WelcomePage from './pages/WelcomePage';
+import AttendancePage from './pages/AttendacePage';
 
 class App extends Component {
   render() {
@@ -25,6 +26,7 @@ class App extends Component {
               <Route path={`/transactions`} element={<Transactions></Transactions>}></Route>
               <Route path={`/new`} element={<ExpenseForm></ExpenseForm>}></Route>
               <Route path={`/cards`} element={<Checkout></Checkout>}></Route>
+              <Route path={`/attendance`} element={<AttendancePage></AttendancePage>}></Route>
             </Routes>
             <TaskBar />
           </div>
