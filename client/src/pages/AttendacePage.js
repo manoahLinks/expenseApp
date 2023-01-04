@@ -45,7 +45,8 @@ const AttendancePage = () => {
                 <button onClick={handleAbsent} className="text-sm font-semibold bg-red-200 p-2 rounded-md">Absent</button>
                 <button className="text-sm font-semibold bg-amber-200 p-2 rounded-md">sick</button>
             </div>
-            {error && <AlertBox message={message}></AlertBox> || success && <AlertBox message={message}></AlertBox> }
+            {error && <AlertBox message={message}></AlertBox>}
+            {success && <AlertBox message={message}></AlertBox> }
         </div>
      );
 }
