@@ -7,8 +7,8 @@ import useFetch from "../useFetch";
 
 const HomePage = () => {
 
-    let {result, isPending, error} = useFetch(`http://localhost:5500/api/expense`)
-    let {result: deposits} = useFetch(`http://localhost:5500/api/deposit`)
+    let {result, isPending, error} = useFetch(`https://expesetracker.herokuapp.com/api/expense`)
+    let {result: deposits} = useFetch(`https://expesetracker.herokuapp.com/api/deposit`)
 
     return ( 
         <div className="grid grid-cols-1">

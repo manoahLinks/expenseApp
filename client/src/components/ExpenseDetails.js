@@ -15,7 +15,7 @@ const ExpenseDetails = ({result, cancelClick}) => {
 
         setIsPending(true)
 
-        let response = await fetch(`http://localhost:5500/api/expense/${id}/approve`, {
+        let response = await fetch(`https://expesetracker.herokuapp.com/api/expense/${id}/approve`, {
             method: 'PATCH',
             headers: {
                 'Content-Type': 'application/json'
@@ -42,7 +42,7 @@ const ExpenseDetails = ({result, cancelClick}) => {
 
         setIsPending(true)
 
-        let response = await fetch(`http://localhost:5500/api/expense/${id}`, {
+        let response = await fetch(`https://expesetracker.herokuapp.com/api/expense/${id}`, {
             method: 'PATCH',
             headers: {
                 'Content-Type': 'application/json'
@@ -69,7 +69,7 @@ const ExpenseDetails = ({result, cancelClick}) => {
 
         setIsPending(true)
 
-        const response = await fetch(`http://localhost:5500/api/expense/${id}`, {
+        const response = await fetch(`https://expesetracker.herokuapp.com/api/expense/${id}`, {
             method: 'DELETE',
             headers:{
                 'Content-Type': 'application/json'
