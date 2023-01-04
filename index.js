@@ -61,5 +61,5 @@ app.get(/^\/(?!api).*/, function(_, res) {
 
 // setting up server
 app.listen(process.env.PORT, () => {
-    console.log("expense app loading on port: " + process.env.PORT)
+    console.log("my expense app loading on port: " + process.env.PORT)
 })
