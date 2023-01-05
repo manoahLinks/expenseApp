@@ -19,14 +19,14 @@ class App extends Component {
           <NavBar/>
           <div className='flex flex-col md:flex-row w-full overflow-scroll'>
             <Routes>
-              <Route exact path={`/`} element={<WelcomePage></WelcomePage>}></Route>
-              <Route path={`/login`} element={<LoginPage></LoginPage>}></Route>
-              <Route path={`/home`} element={<HomePage></HomePage>}></Route>
-              <Route path={`/profile`} element={<ProfilePage></ProfilePage>}></Route>
-              <Route path={`/transactions`} element={<Transactions></Transactions>}></Route>
-              <Route path={`/new`} element={<ExpenseForm></ExpenseForm>}></Route>
-              <Route path={`/cards`} element={<Checkout></Checkout>}></Route>
-              <Route path={`/attendance`} element={<AttendancePage></AttendancePage>}></Route>
+              <Route exact path={`/`}       element={<WelcomePage />} />
+              <Route path={`/login`}        element={<LoginPage />} />
+              <Route path={`/home`}         element={<HomePage />} />
+              <Route path={`/profile`}      element={<ProfilePage />} />
+              <Route path={`/transactions`} element={<Transactions />} />
+              <Route path={`/new`}          element={<ExpenseForm />} />
+              <Route path={`/cards`}        element={<Checkout />} />
+              <Route path={`/attendance`}   element={<AttendancePage />} />
             </Routes>
             <TaskBar />
           </div>

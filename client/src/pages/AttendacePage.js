@@ -19,6 +19,7 @@ const AttendancePage = () => {
                   setMessage('Welcome once again, your attendance stats has been successfully recorded')
               }
               else{
+                setSuccess(false)
                 setError(true)
                 setMessage('Your location doesnt match what you cliam')
               }
