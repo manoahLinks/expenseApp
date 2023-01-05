@@ -1,7 +1,10 @@
 import React from "react";
 import { useLogout } from "../hooks/useLogout";
+import { useAuthContext } from "../hooks/useAuthContext";
 
 const NavBar = () => {
+
+  const {user} = useAuthContext()
 
   const {logOut} = useLogout()
 
@@ -15,7 +18,7 @@ const NavBar = () => {
               <img src={require(`../assets/icons8-user-male-100.png`)} alt="pic1" className='w-12 h-12 mx-2 rounded-full object-cover' />
               <div className='flex flex-col justify-center'>
                 <h4 className="font-semibold">Manoah</h4>
-                <h6 className="font-light">@Manoah48ik</h6>
+              {user && <h6 className="font-light">{user.email}</h6>}
               </div>
             </div>
             <div className='flex items-center'>
@@ -29,9 +32,14 @@ const NavBar = () => {
                   <path stroke-linecap="round" stroke-linejoin="round" d="M14.857 17.082a23.848 23.848 0 005.454-1.31A8.967 8.967 0 0118 9.75v-.7V9A6 6 0 006 9v.75a8.967 8.967 0 01-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 01-5.714 0m5.714 0a3 3 0 11-5.714 0" />
                 </svg>
               </a>
-              <div onClick={handleLogout} className="p-2 border border-green-500 rounded-md">
+
+              {!user && <div className="p-2 font-semibold border border-green-500 rounded-lg shadow">
+                <h4>Login</h4>
+              </div>}
+
+              {user && <div onClick={handleLogout} className="p-2 font-semibold border border-green-500 rounded-lg shadow">
                 <h4>Logout</h4>
-              </div>
+              </div>}
             </div>
         </div>
      );
