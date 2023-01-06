@@ -1,4 +1,5 @@
 import { formatDistanceToNow } from "date-fns";
+import { useAuthContext } from "../hooks/useAuthContext";
 import React, { useState } from "react";
 import LoadingPage from "./Loading";
 import AlertBox from "./AlertBox";
@@ -9,15 +10,21 @@ const ExpenseDetails = ({result, cancelClick}) => {
     const [success, setSuccess] = useState(false)
     const [error, setError] = useState(false)
     const [message, setMessage] = useState(null)
+    const { user } = useAuthContext()
 
     const handleApproval = async (id) =>{
 
         setIsPending(true)
 
+        if(!user){
+            return
+        }
+
         let response = await fetch(`https://expesetracker.herokuapp.com/api/expense/${id}/approve`, {
             method: 'PATCH',
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${user.token}`
             }
         })
 
@@ -41,10 +48,16 @@ const ExpenseDetails = ({result, cancelClick}) => {
 
         setIsPending(true)
 
+        if(!user){
+            return
+        }
+
+
         let response = await fetch(`https://expesetracker.herokuapp.com/api/expense/${id}`, {
             method: 'PATCH',
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${user.token}`
             }
         })
 
@@ -68,10 +81,15 @@ const ExpenseDetails = ({result, cancelClick}) => {
 
         setIsPending(true)
 
+        if(!user){
+            return
+        }
+
         const response = await fetch(`https://expesetracker.herokuapp.com/api/expense/${id}`, {
             method: 'DELETE',
             headers:{
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${user.token}`
             }
         })
 
