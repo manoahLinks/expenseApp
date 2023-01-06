@@ -36,6 +36,7 @@ const ProfilePage = () => {
     return ( 
         <div className="grid grid-cols-1 bg-purple-50">
             {cards && <ExpenseCard cards={cards} click={handleDeposits} click2={handleWithdraw} />}
+            {/* {profile && result && deposits && <ScoreCard expenses={result} deposits={deposits} />} */}
             {deposit && <DepositForm id={accountId}></DepositForm>}
             {withdraw && <ExpenseForm></ExpenseForm>}
             <div className={`grid grid-cols-1 m-2 p-2 rounded-lg bg-white shadow-md ${deposit && 'hidden' || withdraw && 'hidden'}`}>

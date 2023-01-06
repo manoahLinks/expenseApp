@@ -1,5 +1,4 @@
 import { formatDistanceToNow } from "date-fns";
-import { useAuthContext } from "../hooks/useAuthContext";
 import React, { useState } from "react";
 import LoadingPage from "./Loading";
 import AlertBox from "./AlertBox";
@@ -10,21 +9,15 @@ const ExpenseDetails = ({result, cancelClick}) => {
     const [success, setSuccess] = useState(false)
     const [error, setError] = useState(false)
     const [message, setMessage] = useState(null)
-    const { user } = useAuthContext()
 
     const handleApproval = async (id) =>{
 
         setIsPending(true)
 
-        if(!user){
-            return
-        }
-
         let response = await fetch(`https://expesetracker.herokuapp.com/api/expense/${id}/approve`, {
             method: 'PATCH',
             headers: {
-                'Content-Type': 'application/json',
-                'Authorization': `Bearer ${user.token}`
+                'Content-Type': 'application/json'
             }
         })
 
@@ -48,16 +41,10 @@ const ExpenseDetails = ({result, cancelClick}) => {
 
         setIsPending(true)
 
-        if(!user){
-            return
-        }
-
-
         let response = await fetch(`https://expesetracker.herokuapp.com/api/expense/${id}`, {
             method: 'PATCH',
             headers: {
-                'Content-Type': 'application/json',
-                'Authorization': `Bearer ${user.token}`
+                'Content-Type': 'application/json'
             }
         })
 
@@ -81,15 +68,10 @@ const ExpenseDetails = ({result, cancelClick}) => {
 
         setIsPending(true)
 
-        if(!user){
-            return
-        }
-
         const response = await fetch(`https://expesetracker.herokuapp.com/api/expense/${id}`, {
             method: 'DELETE',
             headers:{
-                'Content-Type': 'application/json',
-                'Authorization': `Bearer ${user.token}`
+                'Content-Type': 'application/json'
             }
         })
 
@@ -139,7 +121,7 @@ const ExpenseDetails = ({result, cancelClick}) => {
                 <button onClick={cancelClick} className="p-1 w-9/12 border bg-gray-100 text-zinc-500 rounded-full">Cancel</button>
                 <button onClick={()=>{handleDisburse(result._id)}} className={`${!result.isApproved && 'hidden' || result.isDisbursed && 'hidden'} p-1 w-9/12 border border-purple-900 text-purple-900 rounded-full`}>Disburse</button>
                 <button onClick={()=>{handleApproval(result._id)}} className={`${result.isApproved && 'hidden'} p-1 w-9/12 border border-green-400 text-green-500 rounded-full`}>Approve</button>
-                <button onClick={()=>{handleDelete(result._id)}} className={` p-1 w-9/12 border border-red-400 text-red-500 rounded-full hover:bg-red-400 hover:text-white`}>Delete</button>
+                <button onClick={()=>{handleDelete(result._id)}} className={`${result.isApproved && 'hidden'} p-1 w-9/12 border border-red-400 text-red-500 rounded-full hover:bg-red-400 hover:text-white`}>Delete</button>
             </div>
             {isPending && <LoadingPage />}
             {success && <AlertBox message={message} />}

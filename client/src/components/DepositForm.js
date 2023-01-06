@@ -36,7 +36,7 @@ const DepositForm = ({id}) => {
 
             method: 'PATCH',
             headers:{
-                'Authorization': `Bearer ${user.token}`
+                'Content-Type': `application/json`
             },
             
             body: JSON.stringify(newDeposit)
