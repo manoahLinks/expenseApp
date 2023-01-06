@@ -1,5 +1,7 @@
 import React, {useState} from "react";
 import LoadingPage from "./Loading";
+import { useAuthContext } from "../hooks/useAuthContext";
+import AlertBox from "./AlertBox";
 
 const DepositForm = ({id}) => {
 
@@ -8,6 +10,7 @@ const DepositForm = ({id}) => {
     const [pin, setPin] = useState('')
     const [error, setError] = useState(null)
     const [isPending, setIsPending] = useState(false)
+    const { user } = useAuthContext()
 
     const handleNext = () =>{
         setNext(true)
@@ -21,6 +24,11 @@ const DepositForm = ({id}) => {
     const handleSubmit = async () =>{
 
         let newDeposit = {amount, pin} 
+
+        if(!user){
+            setError('you must be logged in')
+            return
+        }
         
         setIsPending(true)
 
@@ -28,7 +36,7 @@ const DepositForm = ({id}) => {
 
             method: 'PATCH',
             headers:{
-                'Content-Type': 'application/json'
+                'Authorization': `Bearer ${user.token}`
             },
             
             body: JSON.stringify(newDeposit)

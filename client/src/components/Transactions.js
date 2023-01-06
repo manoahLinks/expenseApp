@@ -41,9 +41,9 @@ const Transactions = () => {
             </div>
 
             <div className="flex justify-evenly p-2">
-                <h4 className="px-2 p-0.5 bg-purple-200 rounded-lg" onClick={handleAll}>All</h4>
-                <h4 className="px-2 p-0.5 bg-purple-200 rounded-lg" onClick={handleDeposits}>Re-imbursements</h4>
-                <h4 className="px-2 p-0.5 bg-purple-200 rounded-lg" onClick={handleExpenses}>Expenses</h4>
+                <h4 className="px-2 p-1 text-purple-500 bg-purple-200 rounded-lg" onClick={handleAll}>All</h4>
+                <h4 className="px-2 p-1 text-purple-500 bg-purple-200 rounded-lg" onClick={handleDeposits}>Re-imbursements</h4>
+                <h4 className="px-2 p-1 text-purple-500 bg-purple-200 rounded-lg" onClick={handleExpenses}>Expenses</h4>
             </div>
 
             <div className="flex justify-between p-2">

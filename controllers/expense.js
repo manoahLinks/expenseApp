@@ -22,6 +22,9 @@ exports.addNewExpense = async (req, res) => {
             const UpdatedAccount = await Account.findOneAndUpdate({name: account.name}, {
                 balance: newBalance
             })
+
+            const user_id = req.user._id
+
             const newExpense = await Expense.create({type, description, amount})
             res.status(200).json(newExpense)
         }

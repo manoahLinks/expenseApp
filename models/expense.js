@@ -8,7 +8,8 @@ const expenseSchema = new mongoose.Schema({
     description:    {type:String,    required:true},
     amount :        {type: Number,   required: true},
     isDisbursed:    {type : Boolean, default:false},
-    isApproved:     {type: Boolean, default:false}
+    isApproved:     {type: Boolean, default:false},
+    user_id:        {type: String, required: true}
 
 },{timestamps:true})
 

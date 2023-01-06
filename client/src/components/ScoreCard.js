@@ -1,17 +1,6 @@
 import React, { useState } from "react"
-import Modal from "./Modal"
 
-const ScoreCard =  async ({expenses, deposits}) => {
-
-    const [modal, setModalOn] = useState(false)
-
-    const handleClick = () =>{
-      setModalOn(true)
-    }
-
-    let totalExpenditure = await expenses.reduce((accumulator, nextValue)=>{
-        return accumulator + nextValue.amount
-    }, 0) 
+const ScoreCard =  async () => {
 
     return ( 
         <div className="flex justify-evenly m-2" >
@@ -43,9 +32,8 @@ const ScoreCard =  async ({expenses, deposits}) => {
                     <path d="M2.25 18a.75.75 0 000 1.5c5.4 0 10.63.722 15.6 2.075 1.19.324 2.4-.558 2.4-1.82V18.75a.75.75 0 00-.75-.75H2.25z" />
                 </svg>
                 <h4 className="my-1">Expenditure</h4>
-                <h4 className="font-semibold">N {(totalExpenditure)}</h4>
+                <h4 className="font-semibold">N </h4>
             </div>
-            {modal && <Modal setModalOn={setModalOn}></Modal>}
         </div>
      );
 }

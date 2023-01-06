@@ -1,13 +1,19 @@
 import { useState, useEffect } from 'react'
+import { useAuthContext } from './hooks/useAuthContext'
 
 const useFetch = (url) => {
 
     const [result, setResult] = useState(null)
     const [isPending, setIsPending] = useState(false)
     const [error, setError] = useState(null)
+    const {user} = useAuthContext()
 
     useEffect(()=>{
-       fetch(url)
+       fetch(url, {
+        headers:{
+            'Authorization': `Bearer ${user.token}`
+        }
+       })
             .then((res)=>{
                 if(!res.ok){
                     throw Error('error loading resource')
@@ -15,7 +21,9 @@ const useFetch = (url) => {
                 return res.json()
             })
             .then((data)=>{
-                setResult(data)
+                if(user){
+                    setResult(data)
+                }
                 setIsPending(false)
                 setError(null)
             })
@@ -24,7 +32,7 @@ const useFetch = (url) => {
                 setError(err.message)
             })
         
-    }, [url])
+    }, [url, user])
 
     return {result, isPending, error}
 

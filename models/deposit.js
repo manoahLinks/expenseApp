@@ -3,7 +3,7 @@ const mongoose = require('mongoose')
 const depositSchema = new mongoose.Schema({
 
     amount: {type: String, required: true},
-    depositor:{type: String}
+    user_id:{type: String, required: true}
 
 
 }, {timestamps: true})

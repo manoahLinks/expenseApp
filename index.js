@@ -43,9 +43,9 @@ app.use(bodyParser.urlencoded({extended : false}))
 app.use(bodyParser.json())
 
 // defining my routes
-app.use('/api/expense', appRoutes)
-app.use('/api/account', accountRoute)
-app.use('/api/deposit', depositRoute)
+app.use('/api/expense', isAuth, appRoutes)
+app.use('/api/account', isAuth, accountRoute)
+app.use('/api/deposit', isAuth, depositRoute)
 app.use('/api/user', userRoute)
 
 app.get(/^\/(?!api).*/, function(_, res) {

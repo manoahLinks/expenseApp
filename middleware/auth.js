@@ -1,23 +1,26 @@
 require('dotenv').config()
 const jwt = require('jsonwebtoken')
-
-exports.loginRequired = async (req, res, next)=>{
-    let token = req.headers.authorization.split(" ")[1]
-
-    let decoded = await jwt.verify(token, process.env.SECRET_KEY, (err, decoded)=>{
-        if(decoded){
-            next()
-        }else{
-            res.json({message: 'your token doesnt match the secret Key', alert: 'please make sure you are logged in'})
-        }
-    })
-}
+const User = require('../models/user')
 
 exports.isAuth = async (req, res, next) => {
-    if(req.session.isAuth){
+   
+    const { authorization } = req.headers
+
+    if(!authorization){
+        res.status(401).json({message: 'Authorization token required'})
+    }
+
+    const token = authorization.split(' ')[1]
+
+    try {
+        const {_id} = jwt.verify(token, process.env.SECRET_KEY)
+        
+        req.user = await User.findOne({ _id }).select('_id')  
         next()
-    }else{
-        res.status(400).json({message: 'unauthorized'})
+
+    } catch (error) {
+        console.log(error)
+        res.status(401).json({error: 'Request is not authorized'})
     }
 }
 

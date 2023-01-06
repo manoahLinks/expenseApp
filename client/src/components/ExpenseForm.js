@@ -1,5 +1,8 @@
 import React, {useState, useEffect} from "react"
 import LoadingPage from "./Loading"
+import { useAuthContext } from "../hooks/useAuthContext";
+import AlertBox from "./AlertBox";
+
 
 const ExpenseForm = () => {
 
@@ -8,17 +11,23 @@ const ExpenseForm = () => {
           [amount, setAmount] = useState(''),
           [accountName, setAccountName] = useState(''),
           [isPending, setIsPending] = useState(false)
+          const { user } = useAuthContext()
 
     const handleSubmit = async (e)=>{
         e.preventDefault()
 
         setIsPending(true)
         const newExpense = {accountName,type, description, amount}
+
+        if(!user){
+            setError('you must be logged in')
+        }
         
-        const response = await fetch(`https://expesetracker.herokuapp.com/api/expense`, {
+        const response = await fetch(`http://localhost:5500/api/expense`, {
             method: 'POST',
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${user.token}`
             },
         
             body: JSON.stringify(newExpense)
@@ -27,6 +36,7 @@ const ExpenseForm = () => {
         const json = await response.json()
 
         if(!response.ok){
+            setError(json.error)
             console.log('Expense not created')
         }
 
@@ -79,6 +89,7 @@ const ExpenseForm = () => {
                     <button className="p-2 mt-5 bg-purple-800 text-white font-semibold rounded-lg" >Next</button>
                 </form>
                 {isPending && <LoadingPage></LoadingPage>}
+                {error && <AlertBox message={error}></AlertBox>}
             </div>
         </div>
         
