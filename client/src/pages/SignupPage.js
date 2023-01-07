@@ -19,8 +19,8 @@ const SignupPage = () => {
     return ( 
         <div className="grid grid-cols-1 h-screen justify-center items-center bg-white">  
             <div className="flex flex-col p-5 m-2 gap-y-4 rounded-md bg-gray-100">
-                <div className="self-center p-5 bg-white rounded-full -mt-12 shadow-lg">
-                    {<img className="w-24" src={require(`../assets/jjb LOGO2.png`)} alt="" />}
+                <div className="self-center p-3 bg-white rounded-full -mt-12 shadow-lg">
+                    {<img src={require(`../assets/icons8-company-96.png`)} alt="" />}
                 </div>
                 <h4 className="text-purple-800 font-semibold text-xl">SIGN UP</h4>
                 {error && <div className="flex p-2 border border-red-500 items-center gap-x-2 bg-red-100 text-red-500 rounded-md">
