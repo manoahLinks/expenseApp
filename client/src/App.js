@@ -12,6 +12,12 @@ import AttendancePage from './pages/AttendacePage';
 import SignupPage from './pages/SignupPage';
 import { useAuthContext } from './hooks/useAuthContext';
 import AnalyticsPage from './pages/AnalyticsPage';
+import MyProfile from './pages/subpages/MyProfile';
+import SalesPage from './pages/subpages/SalesPage';
+import RawMaterials from './pages/subpages/RawMaterials';
+import Marketing from './pages/subpages/Marketing';
+import Finance from './pages/subpages/Finance';
+import RawMaterialAnalytics from './pages/AnalysisPages/RawMaterialAnalytics';
 
 
 function App() {
@@ -33,7 +39,14 @@ function App() {
             <Route path={`/cards`}        element={user ? <Checkout /> : <Navigate to={`/`}/>} />
             <Route path={`/signup`}       element={!user ? <SignupPage /> : <Navigate to={`/`}/>} />
             <Route path={`/attendance`}   element={user ? <AttendancePage /> : <Navigate to={`/`}/>} />
-            <Route path={`/analytics`}   element={user ? <AnalyticsPage /> : <Navigate to={`/`}/>} />
+            <Route path={`/analytics`}    element={user ? <AnalyticsPage /> : <Navigate to={`/`}/>} />
+            <Route path={`/myprofile`}    element={user ? <MyProfile /> : <Navigate to={`/`}/>} />
+            <Route path={`/sales`}        element={user ? <SalesPage/> : <Navigate to={`/`}/>} />
+            <Route path={`/rawmaterials`}        element={user ? <RawMaterials/> : <Navigate to={`/`}/>} />
+            <Route path={`/marketing`}        element={user ? <Marketing/> : <Navigate to={`/`}/>} />
+            <Route path={`/finance`}        element={user ? <Finance/> : <Navigate to={`/`}/>} />
+            <Route path={`/products`}        element={user ? <Marketing/> : <Navigate to={`/`}/>} />
+            <Route path={`/rmanalytics`}        element={user ? <RawMaterialAnalytics/> : <Navigate to={`/`}/>} />
           </Routes>
           {user && <TaskBar />}
         </div>
