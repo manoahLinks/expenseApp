@@ -21,6 +21,8 @@ import RawMaterialAnalytics from './pages/AnalysisPages/RawMaterialAnalytics';
 import Products from './pages/subpages/Products';
 import RawmaterialForm from './pages/rawmaterialpages/RawmaterialForm';
 import ProductsForm from './pages/productPages/ProductsForm';
+import RawmaterialList from './pages/rawmaterialpages/RawmaterialList';
+import ProductList from './pages/productPages/ProductList';
 
 
 function App() {
@@ -41,7 +43,7 @@ function App() {
             <Route path={`/new`}          element={user ? <ExpenseForm /> : <Navigate to={`/`}/>} />
             <Route path={`/cards`}        element={user ? <Checkout /> : <Navigate to={`/`}/>} />
             <Route path={`/signup`}       element={!user ? <SignupPage /> : <Navigate to={`/`}/>} />
-            <Route path={`/attendance`}   element={user ? <AttendancePage /> : <Navigate to={`/`}/>} />
+            <Route path={`/myprofile/attendance`}   element={user ? <AttendancePage /> : <Navigate to={`/`}/>} />
             <Route path={`/analytics`}    element={user ? <AnalyticsPage /> : <Navigate to={`/`}/>} />
             <Route path={`/myprofile`}    element={user ? <MyProfile /> : <Navigate to={`/`}/>} />
             <Route path={`/sales`}        element={user ? <SalesPage/> : <Navigate to={`/`}/>} />
@@ -51,7 +53,9 @@ function App() {
             <Route path={`/rmanalytics`}        element={user ? <RawMaterialAnalytics/> : <Navigate to={`/`}/>} />
             <Route path={`/products`}        element={user ? <Products/> : <Navigate to={`/`}/>} />
             <Route path={`/rawmaterials/new`}        element={user ? <RawmaterialForm/> : <Navigate to={`/`}/>} />
+            <Route path={`/rawmaterials/list`}        element={user ? <RawmaterialList/> : <Navigate to={`/`}/>} />
             <Route path={`/products/new`}        element={user ? <ProductsForm/> : <Navigate to={`/`}/>} />
+            <Route path={`/products/list`}        element={user ? <ProductList/> : <Navigate to={`/`}/>} />
           </Routes>
           {user && <TaskBar />}
         </div>

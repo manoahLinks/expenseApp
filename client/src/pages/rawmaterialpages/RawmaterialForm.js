@@ -22,7 +22,7 @@ const RawmaterialForm = () => {
                     <input 
                         type="text"
                         id="materialName"
-                        className="border-none text-sm font-light"
+                        className="border-none rounded-md text-sm font-light"
                         placeholder="enter material name"
                         onChange={(e)=>{setMaterialName(e.target.value)}}
                         value={materialName} 
@@ -34,7 +34,7 @@ const RawmaterialForm = () => {
                     <input 
                         type="number"
                         id="netweight"
-                        className="border-none text-sm font-light"
+                        className="border-none rounded-md text-sm font-light"
                         placeholder="net weight"
                         onChange={(e)=>{setNetWeight(e.target.value), setPricePerGram(netPrice/netWeight)}}
                         value={netWeight} 
@@ -46,7 +46,7 @@ const RawmaterialForm = () => {
                     <input 
                         type="number"
                         id="price"
-                        className="border-none text-sm font-light"
+                        className="border-none text-sm rounded-md font-light"
                         placeholder="net price"
                         onChange={(e)=>{setNetprice(e.target.value), setPricePerGram(netPrice/netWeight)}}
                         value={netPrice} 
@@ -57,7 +57,7 @@ const RawmaterialForm = () => {
                     <label htmlFor="pricepergram">Price per gram :</label>
                     <input 
                         type="number"
-                        className="border-none text-sm font-light text-green-500"
+                        className="border-none text-sm rounded-md font-light text-green-500"
                         placeholder="price per gram"
                         onChange={(e)=>{setPricePerGram(netPrice/netWeight)}}
                         value={pricePerGram} 
@@ -69,10 +69,10 @@ const RawmaterialForm = () => {
                     <input 
                         type="number"
                         id="reorder"
-                        className="border-none text-sm font-light"
+                        className="border-none rounded-md text-sm font-light"
                         placeholder="enter re-order level"
                         onChange={(e)=>{setReOrderLevel(e.target.value)}}
-                        value={netPrice} 
+                        value={reOrderLevel} 
                     />
                 </div>
                 

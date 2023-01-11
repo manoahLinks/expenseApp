@@ -20,7 +20,7 @@ const Marketing = () => {
                     <h4 className="font-semibold text-sm text-gray-400 text-center">My customers</h4>
                </div>
                <div className="flex gap-x-4 shadow-md items-center rounded-lg p-2 bg-gray-50">
-                    {<img className="-mt-5" src={require(`../../assets/icons8-reminders-48.png`)} alt="" />}
+                    {<img className="-mt-5" src={require(`../../assets/icons8-quizizz.gif`)} alt="" />}
                     <h4 className="font-semibold text-sm text-gray-400 text-center">Questionnaires</h4>
                </div>
             </div>
