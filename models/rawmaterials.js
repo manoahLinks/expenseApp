@@ -2,14 +2,14 @@ let mongoose = require(`mongoose`)
 
 const rawmaterialSchema = new mongoose.Schema({
 
-    name:             {type: String, required: true},
-    supplier:         {type: String},  
-    net_weight:       {type: Number, required: true},
-    net_price:        {type: Number, required: true},
-    qty_available:    {type: Number},
-    tot_qty_purchased:{type: Number},
-    re_order_level:   {type: Number, required: true},
-    price_per_gram:   {type: Number, required: true}
+    name:               {type: String, required: true},
+    supplier:           {type: String},  
+    netWeight:          {type: Number, required: true},
+    netPrice:           {type: Number, required: true},
+    qtyAvailable:       {type: Number},
+    totQtyPurchased:    {type: Number},
+    reOrderLevel:       {type: Number, required: true},
+    pricePerGram:       {type: Number}
 
 })
 
