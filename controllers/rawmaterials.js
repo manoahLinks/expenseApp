@@ -36,4 +36,18 @@ exports.createRawMaterial = async (req, res) => {
     }
 }
 
+exports.deleteRawMaterial = async (req, res) => {
+
+    const {id} = req.params
+
+    try {
+        
+        const response = await Rawmaterial.findByIdAndDelete(id)
+        return res.status(200).json(response)
+
+    } catch (error) {
+        res.status(400).json(error.message)
+    }
+}
+
 module.exports = exports

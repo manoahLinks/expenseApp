@@ -10,6 +10,7 @@ const express = require('express'),
       accountRoute = require('./routes/account'),
       depositRoute = require('./routes/deposit'),
       rawmaterialRoute = require('./routes/rawmaterials'),
+      customerRoute = require('./routes/customers'),
       userRoute = require('./routes/user'),
       cors      = require('cors'),
       app       = express(),
@@ -48,6 +49,7 @@ app.use(bodyParser.json())
 // app.use('/api/account', isAuth, accountRoute)
 // app.use('/api/deposit', isAuth, depositRoute)
 app.use('/api/rawmaterial', isAuth, rawmaterialRoute)
+app.use('/api/customer', isAuth,  customerRoute)
 app.use('/api/user', userRoute)
 
 app.get(/^\/(?!api).*/, function(_, res) {
