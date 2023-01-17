@@ -23,6 +23,8 @@ import RawmaterialForm from './pages/rawmaterialpages/RawmaterialForm';
 import ProductsForm from './pages/productPages/ProductsForm';
 import RawmaterialList from './pages/rawmaterialpages/RawmaterialList';
 import ProductList from './pages/productPages/ProductList';
+import CustomerForm from './pages/marketing/CustomerForm';
+import CustomerList from './pages/marketing/CustomerList';
 
 
 function App() {
@@ -51,6 +53,8 @@ function App() {
               <Route path={`/sales`}        element={user ? <SalesPage/> : <Navigate to={`/`}/>} />
               <Route path={`/rawmaterials`}        element={user ? <RawMaterials/> : <Navigate to={`/`}/>} />
               <Route path={`/marketing`}        element={user ? <Marketing/> : <Navigate to={`/`}/>} />
+              <Route path={`/marketing/registercustomer`}        element={user ? <CustomerForm/> : <Navigate to={`/`}/>} />
+              <Route path={`/marketing/mycustomers`}        element={user ? <CustomerList/> : <Navigate to={`/`}/>} />
               <Route path={`/finance`}        element={user ? <Finance/> : <Navigate to={`/`}/>} />
               <Route path={`/rmanalytics`}        element={user ? <RawMaterialAnalytics/> : <Navigate to={`/`}/>} />
               <Route path={`/products`}        element={user ? <Products/> : <Navigate to={`/`}/>} />

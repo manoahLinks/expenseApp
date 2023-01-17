@@ -15,11 +15,11 @@ exports.getAllCustomers = async (req, res) => {
 // create a new customer
 exports.createCustomer = async (req, res) => {
 
-    const {name, sex, phone, email, location} = req.body
+    const {name, phone, email, address} = req.body
 
     try {
         
-        const response = await Customer.create({name, sex, phone, email, location})
+        const response = await Customer.create({name, phone, email, address})
         res.status(201).json(response)
 
     } catch (error) {
