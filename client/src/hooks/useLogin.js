@@ -11,7 +11,7 @@ export const useLogin = () => {
         setIsLoading(true)
         setError(null)
 
-        const response = await fetch(`http://localhost:5500/api/user/`, {
+        const response = await fetch(`https://expesetracker.herokuapp.com/api/user/`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
