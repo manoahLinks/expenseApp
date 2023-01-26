@@ -35,9 +35,9 @@ function App() {
     <Router>
       <div className="flex flex-col relative h-screen text-gray-500 text-xs md:text-sm">
         <NavBar/>
-        <div className='grid grid-cols-1 md:grid-cols-3'>
-          <div></div>
-          <div className='flex flex-col justify-center overflow-scroll'>
+        <div className='flex flex-col md:flex-row'>
+          <div className='md:w-3/12 border-r'></div>
+          <div className='flex flex-col md:w-6/12 justify-center md:p-5 p-2 border-r'>
             <Routes>
               <Route exact path={`/`}     element={!user ? <LoginPage /> : <Navigate to={`/home`}/>} />
               <Route path={`/welcome`}       element={user ? <WelcomePage/> : <Navigate to={`/`}/>} />
@@ -65,7 +65,7 @@ function App() {
             </Routes>
             {user && <TaskBar />}
           </div>
-          <div></div>
+          <div className='md:w-3/12'></div>
         </div>
         
       </div>

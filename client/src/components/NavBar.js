@@ -13,7 +13,7 @@ const NavBar = () => {
   }
 
     return ( 
-        <div className='flex justify-between md:p-2 p-1'>
+        <div className='flex justify-between md:p-2 p-1 bg-gray-200 border-b'>
             <div className='flex'>
               {user && <img src={require(`../assets/icons8-user-male-100.png`)} alt="pic1" className='w-12 h-12 mx-2 rounded-full object-cover' />}
               <div className='flex flex-col justify-center'>

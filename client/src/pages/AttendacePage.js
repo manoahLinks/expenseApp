@@ -30,11 +30,13 @@ const AttendancePage = () => {
         
         setError(false)
         setSuccess(true)
-        setMessage('Dear user we hope you are doing great, hope to see you in work soon')
+        setMessage('Dear user we hope you are doing great, hope to see you at work soon')
     }
 
     return ( 
         <div className="flex flex-col items-center justify-center gap-y-4">
+            {error && <AlertBox message={message}></AlertBox>}
+            {success && <AlertBox message={message}></AlertBox> }
             <h4 className="text-left p-2">Hello dear Employee, its great to have you around ;</h4>
             <div className="bg-purple-200 p-5 rounded-full">
                 {<img src={require(`../assets/icons8-user-male-100.png`)} alt="" />}
@@ -46,8 +48,6 @@ const AttendancePage = () => {
                 <button onClick={handleAbsent} className="text-sm font-semibold bg-red-200 p-2 rounded-md">Absent</button>
                 <button className="text-sm font-semibold bg-amber-200 p-2 rounded-md">sick</button>
             </div>
-            {error && <AlertBox message={message}></AlertBox>}
-            {success && <AlertBox message={message}></AlertBox> }
         </div>
      );
 }

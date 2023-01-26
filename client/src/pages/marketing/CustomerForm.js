@@ -1,6 +1,7 @@
 import { useState } from "react";
 import {useDataContext} from '../../hooks/useDataContext'
 import { useAuthContext } from "../../hooks/useAuthContext";
+import AlertBox from "../../components/AlertBox";
 
 const CustomerForm = () => {
 
@@ -10,6 +11,7 @@ const CustomerForm = () => {
     const [phone, setPhone] = useState('')
     const [email, setEmail] = useState('')
     const [address, setAddress] = useState('')
+    const [success, setSuccess] =useState(false)
     const [isPending, setIsPending] = useState(false)
     const [error, setError] = useState(null)
 
@@ -24,7 +26,7 @@ const CustomerForm = () => {
 
         setIsPending(true)
 
-        const response = await fetch(`https://expesetracker.herokuapp.com/api/customer`, {
+        const response = await fetch(`http://localhost:5500/api/customer`, {
             method: 'POST',
             headers: {
                 'Authorization': `Bearer ${user.token}`,
@@ -48,11 +50,13 @@ const CustomerForm = () => {
             setIsPending(false)
             console.log(json)
             dispatch({type: 'CREATE_DATA', payload: json})
+            setSuccess(true)
         }
     }
 
     return ( 
         <div className="grid grid-cols-1 gap-y-2">
+            {success && <AlertBox message={`successful`} />}
             <h4 className="text-green-500 m-2 font-semibold text-sm p-2">Register new customer</h4>
 
             <form className="flex flex-col gap-y-2 px-2 py-4 m-2 bg-gray-100" onSubmit={handleSubmit}>

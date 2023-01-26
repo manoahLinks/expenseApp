@@ -25,7 +25,7 @@ const RawmaterialForm = () => {
 
         setIsPending(true)
 
-        const response = await fetch(`https://expesetracker.herokuapp.com/api/rawmaterial`, {
+        const response = await fetch(`http://localhost:5500/api/rawmaterial`, {
             method: 'POST',
             headers: {
                 'Authorization': `Bearer ${user.token}`,

@@ -10,7 +10,7 @@ const CustomerList = () => {
     useEffect(()=>{
 
         const fetchData = async () => {
-            const response = await fetch(`https://expesetracker.herokuapp.com/api/customer`, {
+            const response = await fetch(`http://localhost:5500/api/customer`, {
                 headers:{
                     'Authorization': `Bearer ${user.token}`
                 }
@@ -29,6 +29,13 @@ const CustomerList = () => {
 
     return ( 
         <div className="grid grid-cols-1 gap-y-2">
+            <div className="flex p-2 bg-gray-200">
+                <input 
+                    type="search"
+                    className="w-full"
+                    placeholder="type keyword"
+                />
+            </div>
             {data && data.map((customer)=>(
                 <div className="m-2 p-2 flex justify-between items-center shadow bg-gray-100">
                     <div className="flex rounded-full p-2 bg-white">
@@ -36,7 +43,7 @@ const CustomerList = () => {
                     </div>
                     <div className="flex flex-col justify-center gap-y-1 items-center">
                         <h4 className="text-sm font-semibold">{customer.name}</h4>
-                        <h4 className="font-light">{customer.phone}</h4>
+                        <h4 className="font-light">+234{customer.phone}</h4>
                     </div>
                     <div className="flex p-2 rounded-full bg-white">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
