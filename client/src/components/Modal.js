@@ -1,12 +1,37 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
 import ExpenseDetails from "./ExpenseDetails";
-import useFetch from "../useFetch";
 import LoadingPage from "./Loading";
 import AlertBox from "./AlertBox";
+import {useDataContext} from '../hooks/useDataContext'
+import { useAuthContext } from "../hooks/useAuthContext";
 
 const Modal = ({setModalOn, expense}) => {
 
-    const {result, isPending, error} = useFetch(`https://expesetracker.herokuapp.com/api/expense/${expense}`)
+    const {user} = useAuthContext()
+    const {data, dispatch} = useDataContext()
+    const [isPending, setIsPending] = useState(false)
+    const [error, setError] = useState(false)
+
+    useEffect(()=>{
+
+        const fetchData = async () => {
+            const response = await fetch(`http://localhost:5500/api/expense/${expense}`, {
+                headers:{
+                    'Authorization': `Bearer ${user.token}`
+                }
+            })
+            const json = await response.json()
+
+            if(response.ok){
+                dispatch({type: 'SET_DATA', payload: json})
+            }    
+        }
+        if(user){
+            fetchData()
+            setIsPending(false)
+        }
+        
+    }, [dispatch, user])
 
     const handleCancelClick = () =>{
         setModalOn(false)
@@ -23,7 +48,7 @@ const Modal = ({setModalOn, expense}) => {
                         </svg>
                     </span>
                 </div>
-                {result && <ExpenseDetails result={result} cancelClick={handleCancelClick} />}
+                {data && <ExpenseDetails result={data} cancelClick={handleCancelClick} />}
             </div>
             {isPending && <LoadingPage></LoadingPage>}
             {error && <AlertBox message={`failed to find resource check your internet connection`}></AlertBox>}

@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 const Finance = () => {
     return ( 
         <div className="flex flex-col justify-evenly p-2 gap-y-4">
@@ -7,14 +9,18 @@ const Finance = () => {
                     {<img className="-mt-5" src={require(`../../assets/icons8-safe-48.png`)} alt="" />}
                     <h4 className="font-semibold text-sm text-gray-400 text-center">Create a new Account</h4>
                </div>
-               <div className="flex gap-x-4 shadow-md items-center rounded-lg p-2 bg-gray-50">
+               <Link to={`/finance/expense/new`} className="flex gap-x-4 shadow-md items-center rounded-lg p-2 bg-gray-50">
                     <img className="-mt-5" src={require(`../../assets/icons8-cash-48.png`)} />
                     <h4 className="font-semibold text-sm text-gray-400 text-center">Make an expenditure</h4>
-               </div>
+               </Link>
                <div className="flex gap-x-4 shadow-md items-center rounded-lg p-2 bg-gray-50">
                     {<img className="-mt-5" src={require(`../../assets/icons8-in-transit-48.png`)} alt="" />}
                     <h4 className="font-semibold text-sm text-gray-400 text-center">Supplier's Bill/payment</h4>
                </div>
+               <Link to={`/finance/transactions`} className="flex gap-x-4 shadow-md items-center rounded-lg p-2 bg-gray-50">
+                    <img className="-mt-5" src={require(`../../assets/icons8-list-view-48.png`)} />
+                    <h4 className="font-semibold text-sm text-gray-400 text-center">View my transactions</h4>
+               </Link>
             </div>
         </div>
      );

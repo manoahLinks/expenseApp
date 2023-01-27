@@ -45,9 +45,9 @@ app.use(bodyParser.urlencoded({extended : false}))
 app.use(bodyParser.json())
 
 // defining my routes
-// app.use('/api/expense', isAuth, appRoutes)
+app.use('/api/expense', isAuth, appRoutes)
 // app.use('/api/account', isAuth, accountRoute)
-// app.use('/api/deposit', isAuth, depositRoute)
+app.use('/api/deposit', isAuth, depositRoute)
 app.use('/api/rawmaterial', isAuth, rawmaterialRoute)
 app.use('/api/customer', isAuth,  customerRoute)
 app.use('/api/user', userRoute)

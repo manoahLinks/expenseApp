@@ -1,9 +1,11 @@
-import { useEffect } from "react";
+import {useState, useEffect } from "react";
 import {useDataContext} from '../../hooks/useDataContext'
 import { useAuthContext } from "../../hooks/useAuthContext";
 
 const ProductsForm = () => {
 
+    const [amount, setAmount] = useState(null)
+    const [weight, setWeight] = useState(null)
     const {data, dispatch} = useDataContext()
     const {user} = useAuthContext()
 
@@ -69,7 +71,9 @@ const ProductsForm = () => {
                             <input 
                                 type="number"
                                 placeholder="grms"
-                                className="text-xs border-none rounded-md font-light"  
+                                className="text-xs border-none rounded-md font-light"
+                                onChange={(e)=>{setWeight(e.target.value)}}
+                                value={weight}  
                             />
                         
                             <input 
@@ -81,7 +85,8 @@ const ProductsForm = () => {
                             <input 
                                 type="number" 
                                 className="text-xs font-light  border-none rounded-md"
-                                value={``}
+                                onChange={(e)=>{setAmount(weight * (material.netPrice/material.netWeight))}}
+                                value={amount}
                             />
                             
                           

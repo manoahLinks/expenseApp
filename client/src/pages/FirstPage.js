@@ -33,8 +33,7 @@ const Homepage = () => {
             <div className="grid grid-cols-1 m-2 p-2 border rounded-md">
                 <h4 className="font-semibold text-center">Dashboard</h4>
                 <table className="grid grid-cols-1 gap-y-2  p-2">
-                    <h4 className="font-light">Stock analysis</h4>
-                    <thead className="grid grid-cols-5 border items-center bg-gray-50 p-1">
+                    <thead className="grid grid-cols-5 items-center bg-gray-50 p-1">
                         <th className="text-center">Product</th>
                         <th className="text-center">BAGS</th>
                         <th className="text-center">PROD</th>

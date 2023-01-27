@@ -1,17 +1,41 @@
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 import DepositGrid from "./DepositGrid";
 import useFetch from "../useFetch";
 import TableGrid from "./TableGrid";
 import LoadingPage from "./Loading";
 import AlertBox from "./AlertBox";
-
+import {useDataContext} from '../hooks/useDataContext'
+import { useAuthContext } from "../hooks/useAuthContext";
 
 const Transactions = () => {  
 
+    const {user} = useAuthContext()
     const [deposits, setDeposits] = useState(true)
-    const [expenses, setExpenses] = useState(true) 
-    const {result, isPending, error} = useFetch(`https://expesetracker.herokuapp.com/api/deposit`)
-    const {result:expense} = useFetch(`https://expesetracker.herokuapp.com/api/expense`)
+    const [expenses, setExpenses] = useState(true)
+    const [isPending, setIsPending] = useState(true)
+    const [error, setError] = useState(false) 
+    const {data, dispatch} = useDataContext()
+
+    useEffect(()=>{
+
+        const fetchData = async () => {
+            const response = await fetch(`http://localhost:5500/api/expense`, {
+                headers:{
+                    'Authorization': `Bearer ${user.token}`
+                }
+            })
+            const json = await response.json()
+
+            if(response.ok){
+                dispatch({type: 'SET_DATA', payload: json})
+            }    
+        }
+        if(user){
+            fetchData()
+            setIsPending(false)
+        }
+        
+    }, [dispatch, user])
 
     const handleDeposits = () =>{
         setExpenses(false)
@@ -30,6 +54,7 @@ const Transactions = () => {
  
     return ( 
         <div className="grid grid-cols-1 bg-gray-100 text-gray-700">
+            {error && <AlertBox message={`failed to find resource check your internet connection`}></AlertBox>}
             <div className="flex items-center p-2 justify-between">
                 <div className="flex">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-4 h-4 text-purple-900">
@@ -41,9 +66,9 @@ const Transactions = () => {
             </div>
 
             <div className="flex justify-evenly p-2">
-                <h4 className="px-2 p-1 text-purple-500 bg-purple-200 rounded-lg" onClick={handleAll}>All</h4>
-                <h4 className="px-2 p-1 text-purple-500 bg-purple-200 rounded-lg" onClick={handleDeposits}>Re-imbursements</h4>
-                <h4 className="px-2 p-1 text-purple-500 bg-purple-200 rounded-lg" onClick={handleExpenses}>Expenses</h4>
+                <h4 className="p-1 bg-gray-300 text-white rounded" onClick={handleAll}>All</h4>
+                <h4 className="p-1 bg-gray-300 text-white rounded" onClick={handleDeposits}>Re-imbursements</h4>
+                <h4 className="p-1 bg-gray-300 text-white rounded" onClick={handleExpenses}>Expenses</h4>
             </div>
 
             <div className="flex justify-between p-2">
@@ -59,10 +84,8 @@ const Transactions = () => {
             </div>
 
             <div className="grid grid-cols-1">
-                {deposits && result && <DepositGrid deposits={result}></DepositGrid>}
-                {expenses && expense && <TableGrid expenses={expense}></TableGrid>}
+                {data && <TableGrid expenses={data}></TableGrid>}
                 {isPending && <LoadingPage></LoadingPage>}
-                {error && <AlertBox message={`failed to find resource check your internet connection`}></AlertBox>}
             </div>
             
 

@@ -13,7 +13,7 @@ const NavBar = () => {
   }
 
     return ( 
-        <div className='flex justify-between md:p-2 p-1 bg-gray-200 border-b'>
+        <div className='flex justify-between md:p-2 p-1 border-b'>
             <div className='flex'>
               {user && <img src={require(`../assets/icons8-user-male-100.png`)} alt="pic1" className='w-12 h-12 mx-2 rounded-full object-cover' />}
               <div className='flex flex-col justify-center'>
@@ -23,7 +23,7 @@ const NavBar = () => {
             </div>
             <div className='flex items-center'>
 
-              {user && <div onClick={handleLogout} className="p-1 font-semibold border text-white font-semibold bg-green-500 rounded-lg shadow">
+              {user && <div onClick={handleLogout} className="p-1 border text-gray-400 rounded">
                 <h4>Logout</h4>
               </div>}
             </div>

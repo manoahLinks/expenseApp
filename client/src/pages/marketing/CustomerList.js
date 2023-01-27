@@ -29,10 +29,10 @@ const CustomerList = () => {
 
     return ( 
         <div className="grid grid-cols-1 gap-y-2">
-            <div className="flex p-2 bg-gray-200">
+            <div className="flex">
                 <input 
                     type="search"
-                    className="w-full"
+                    className="w-full rounded-full border border-gray-300"
                     placeholder="type keyword"
                 />
             </div>

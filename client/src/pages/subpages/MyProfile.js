@@ -5,7 +5,7 @@ const MyProfile = () => {
         <div className="flex flex-col justify-evenly p-2 gap-y-4">
             <h4 className="text-xl text-center font-light p-5">My Profile</h4>
             <div className="grid grid-cols-1 gap-y-6 items-center">
-               <div className="transition duration-1000 ease-in-ou flex gap-x-4 items-center shadow-md rounded-lg p-2 bg-gray-50">
+               <div className="flex gap-x-4 items-center shadow rounded p-2 bg-gray-50 hover:bg-green-100">
                     {<img className="-mt-5" src={require(`../../assets/icons8-control-panel-48.png`)} alt="" />}
                     <h4 className="font-semibold text-sm text-gray-400 text-center">View my dashboard</h4>
                </div>

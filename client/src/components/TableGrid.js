@@ -25,7 +25,7 @@ const TableGrid = ({expenses}) => {
                     
                         <div className="flex flex-col mx-2">
                             <h4 className="font-semibold">{expense.type}</h4>
-                            <h4 className='text-xs font-light'>{`${expense.description.slice(0,20)}...`}</h4>
+                            <h4 className='text-xs font-light'>{`${expense.description}...`}</h4>
                             <h4 className="text-blue-700">{formatDistanceToNow(new Date(expense.createdAt), {addSuffix: true})}</h4>
                         </div>
                     </div>
