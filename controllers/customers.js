@@ -18,8 +18,8 @@ exports.createCustomer = async (req, res) => {
     const {name, phone, email, address} = req.body
 
     try {
-        
-        const response = await Customer.create({name, phone, email, address})
+        const createdBy = req.user._id
+        const response = await Customer.create({name, phone, email, address, createdBy})
         res.status(201).json(response)
 
     } catch (error) {

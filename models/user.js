@@ -3,12 +3,14 @@ const bcrypt = require('bcryptjs')
 const validator = require('validator')
 
 let userSchema = new mongoose.Schema({
-    email: {type: String, required: true, unique: true},
+
+    email:      {type: String, required: true, unique: true},
     department: {type: String},
-    isAdmin: {type: Boolean, default: false},
-    password: {type: String, default: 1234},
-    ipAddress: {type: String}
-})
+    isAdmin:    {type: Boolean, default: false},
+    password:   {type: String},
+    ipAddress:  {type: String}
+
+}, {timestamps: true})
 
 userSchema.statics.signup = async function (email, password) {
 

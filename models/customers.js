@@ -6,8 +6,10 @@ const customerSchema = new mongoose.Schema({
     sex:        {type: String},
     phone:      {type: Number, required: true},
     email:      {type: String},
-    address:   {type: String, required: true}
-})
+    address:    {type: String, required: true},
+    createdBy:  {type: String},
+    updatedBy:  {type: String}
+}, {timestamps: true})
 
 const Customer = mongoose.model('customer', customerSchema)
 

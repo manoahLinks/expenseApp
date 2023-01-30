@@ -13,8 +13,8 @@ exports.registerNewSupplier = async (req, res) => {
         if(!name || !location || !phone || !email ){
             throw Error(`All fields are required`)
         }
-
-        const response = await supplier.create({name, location, phone, email })
+        const createdBy = req.user._id
+        const response = await supplier.create({name, location, phone, email, createdBy})
         const json =  await res.status(201).json(response)
 
     } catch (error) {
@@ -119,11 +119,12 @@ exports.paySupplier = async (req, res) => {
 exports.updateSupplierInformation = async (req, res) => {
 
     const {id} = req.params
+    const updatedBy = req.user._id
     const {name, location, email, phone} = req.body
 
     try {
 
-        const updatedSupplier = await supplier.findByIdAndUpdate(id, {location: location, email: email, phone: phone})
+        const updatedSupplier = await supplier.findByIdAndUpdate(id, {location: location, email: email, phone: phone, updatedBy: updatedBy})
 
         return res.status(200).json(updatedSupplier)
         

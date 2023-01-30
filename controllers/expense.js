@@ -1,4 +1,5 @@
-const expenseDb = require('../models/expense'),
+const Expense = require('../models/expense'),
+    Account = require('../models/account'),
       mongoose = require('mongoose')
 
 
@@ -6,6 +7,7 @@ const expenseDb = require('../models/expense'),
 exports.addNewExpense = async (req, res) => {
 
     const {accountName ,type, description, amount} = req.body
+    const createdBy = req.user._id
 
     try{
 
@@ -23,9 +25,7 @@ exports.addNewExpense = async (req, res) => {
                 balance: newBalance
             })
 
-            const user_id = req.user._id
-
-            const newExpense = await Expense.create({type, description, amount})
+            const newExpense = await Expense.create({type, description, amount, createdBy})
             res.status(200).json(newExpense)
         }
         
@@ -62,8 +62,9 @@ exports.getSingleExpense = async (req, res) =>{
 
 // update an expense record
 exports.disburseExpense = async (req , res) => {
-    let {id} = req.params
-    const updatedExpense = await Expense.findByIdAndUpdate(id, {isDisbursed: true})
+    const {id} = req.params
+    const disbursedBy = req.user._id
+    const updatedExpense = await Expense.findByIdAndUpdate(id, {isDisbursed: true, disbursedBy: disbursedBy})
                 .then ((updatedExpense) => {
                     res.status(200).json(updatedExpense)
                 })
@@ -75,7 +76,8 @@ exports.disburseExpense = async (req , res) => {
 // update an expense record
 exports.approveExpense = async (req , res) => {
     let {id} = req.params
-    const updatedExpense = await Expense.findByIdAndUpdate(id, {isApproved: true})
+    const approvedBy = req.user._id
+    const updatedExpense = await Expense.findByIdAndUpdate(id, {isApproved: true, approvedBy: approvedBy})
                 .then ((updatedExpense) => {
                     res.status(200).json(updatedExpense)
                 })

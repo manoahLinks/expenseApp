@@ -23,8 +23,8 @@ exports.createAccount = async (req, res) =>{
     const {name, pin} = req.body
 
     try {
-        
-        let response = await Account.create({name, pin})
+        const createdBy = req.user._id
+        let response = await Account.create({name, pin, createdBy})
         res.status(201).json(response)
 
     } catch (error) {

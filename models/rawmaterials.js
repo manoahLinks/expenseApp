@@ -9,9 +9,11 @@ const rawmaterialSchema = new mongoose.Schema({
     qtyAvailable:       {type: Number, default: 0},
     totQtyPurchased:    {type: Number, default: 0},
     reOrderLevel:       {type: Number, required: true},
-    pricePerGram:       {type: Number}
+    pricePerGram:       {type: Number},
+    createdBy:          {type: String},
+    updatedBy:          {type: String}
 
-})
+}, {timestamps: true})
 
 
 const Rawmaterial = mongoose.model('rawmaterial', rawmaterialSchema)

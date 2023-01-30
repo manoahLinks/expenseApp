@@ -26,10 +26,12 @@ exports.createRawMaterial = async (req, res) => {
         reOrderLevel,
 
     } = req.body
+    
+    const createdBy = req.user._id 
 
     try {
         
-        const response = await Rawmaterial.create({name, netWeight, netPrice, reOrderLevel})
+        const response = await Rawmaterial.create({name, netWeight, netPrice, reOrderLevel, createdBy})
         return res.status(201).json(response)
 
     } catch (error) {
@@ -122,11 +124,12 @@ exports.recieveRawmaterial = async (req, res) => {
 exports.updateRawmaterialInformation = async (req, res) => {
 
     const {id} = req.params
+    const updatedBy = req.user._id
     const {name, supplier, netWeight, netPrice, reOrderLevel} = req.body
 
     try {
         
-        const updatedRawmaterial = await Rawmaterial.findByIdAndUpdate(id, {supplier: supplier, netweight: netWeight, netPrice: netPrice, reOrderLevel: reOrderLevel})
+        const updatedRawmaterial = await Rawmaterial.findByIdAndUpdate(id, {supplier: supplier, netweight: netWeight, netPrice: netPrice, reOrderLevel: reOrderLevel, updatedBy: updatedBy})
 
         return res.status(200).json(updatedRawmaterial)
         

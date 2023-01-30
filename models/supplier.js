@@ -7,7 +7,9 @@ const supplierSchema = new mongoose.Schema({
     email:          {type: String},
     phone:          {type: Number},
     totalSupplies:  {type: Number, default: 0},
-    totalPayments:  {type: Number, default: 0}
+    totalPayments:  {type: Number, default: 0},
+    createdBy:      {type: String},
+    updatedBy:      {type: String}
 },{timestamps: true})
 
 
