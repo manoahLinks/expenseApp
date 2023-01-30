@@ -11,6 +11,7 @@ const express = require('express'),
       depositRoute = require('./routes/deposit'),
       rawmaterialRoute = require('./routes/rawmaterials'),
       customerRoute = require('./routes/customers'),
+      supplierRoute = require('./routes/suppliers'),
       userRoute = require('./routes/user'),
       cors      = require('cors'),
       app       = express(),
@@ -50,6 +51,7 @@ app.use('/api/expense', isAuth, appRoutes)
 app.use('/api/deposit', isAuth, depositRoute)
 app.use('/api/rawmaterial', isAuth, rawmaterialRoute)
 app.use('/api/customer', isAuth,  customerRoute)
+app.use('/api/supplier', isAuth, supplierRoute)
 app.use('/api/user', userRoute)
 
 app.get(/^\/(?!api).*/, function(_, res) {

@@ -6,8 +6,8 @@ const rawmaterialSchema = new mongoose.Schema({
     supplier:           {type: String},  
     netWeight:          {type: Number, required: true},
     netPrice:           {type: Number, required: true},
-    qtyAvailable:       {type: Number},
-    totQtyPurchased:    {type: Number},
+    qtyAvailable:       {type: Number, default: 0},
+    totQtyPurchased:    {type: Number, default: 0},
     reOrderLevel:       {type: Number, required: true},
     pricePerGram:       {type: Number}
 
