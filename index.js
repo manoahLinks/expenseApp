@@ -10,6 +10,7 @@ const express = require('express'),
       accountRoute = require('./routes/account'),
       depositRoute = require('./routes/deposit'),
       rawmaterialRoute = require('./routes/rawmaterials'),
+      productRoute = require('./routes/product'),
       customerRoute = require('./routes/customers'),
       supplierRoute = require('./routes/suppliers'),
       userRoute = require('./routes/user'),
@@ -50,6 +51,7 @@ app.use('/api/expense', isAuth, appRoutes)
 app.use('/api/account', isAuth, accountRoute)
 app.use('/api/deposit', isAuth, depositRoute)
 app.use('/api/rawmaterial', isAuth, rawmaterialRoute)
+app.use('/api/product', isAuth, productRoute)
 app.use('/api/customer', isAuth,  customerRoute)
 app.use('/api/supplier', isAuth, supplierRoute)
 app.use('/api/user', userRoute)
