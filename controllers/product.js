@@ -59,6 +59,7 @@ exports.updateProduct = async (req, res) => {
 
     try {
         
+        const updatedBy = req.user._id
         const updatedProduct = await Product.findByIdAndUpdate(id, {})
         return res.status(200).json(updatedProduct)
 

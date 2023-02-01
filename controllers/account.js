@@ -33,7 +33,6 @@ exports.createAccount = async (req, res) =>{
 }
 
 // finding a single account
-
 exports.findSingleAccount = async (req, res) => {
     let {id} = req.params
 
@@ -58,27 +57,38 @@ exports.fundAccount = async (req, res) => {
 
     try {
 
+        // checking if bjecId is valid
         if(!mongoose.Types.ObjectId.isValid(id)){
             res.status(400).json({message: 'invalid id'})
         }
         
-        let balance = await Account.findById(id)
-        const newBalance = Number(balance.balance) + Number(amount)
+        // finding account selected
+        let foundAcct = await Account.findById(id)
 
-        if(balance.pin == pin){
+        //adding the balance of the found account to the new amount to be funded 
+        const newBalance = Number(foundAcct.balance) + Number(amount)
+
+        // checking if foundAcct pin is equalto pin provided
+        if(foundAcct.pin == pin){
             
-            let newDeposit = await Deposit.create({amount})
+            const accountName = foundAcct.name
+            const depositedBy = req.user._id
+            // creating a new deposit transaction
+            let newDeposit = await Deposit.create({amount, depositedBy, accountName})
 
+            // updating the account with the new balance addeded above
             let account = await Account.findOneAndUpdate({name: balance.name}, {
                 balance: newBalance
             } )
             res.status(200).json({account: account, deposit: newDeposit})
         }else{
-            res.status(400).json({message: 'incorrect pin'})
+            // throwing error if pin is incorrect 
+            throw Error('Incorrect pin')
         }
 
     } catch (error) {
-        res.status(404).json({error: error})
+        // catching all error and displaying error message
+        res.status(404).json(error.message)
     }
 }
 
@@ -88,15 +98,18 @@ exports.deleteAccount = async (req, res) => {
     const {id} = req.params
     try {
         
+        // checking if account id is valid
         if(!mongoose.Types.ObjectId.isValid(id)){
-            res.status(400).json({message: 'invalid id'})
+            throw Error('invalid id')
         }
 
+        // deleting account using its id and returning response
         let response = await Account.findByIdAndDelete(id)
         res.status(200).json(response)
 
     } catch (error) {
-        res.status(400).json({error: error})
+        // catching all errors
+        res.status(400).json(error.message)
     }
 }
 

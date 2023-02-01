@@ -11,6 +11,12 @@ const ProductsForm = () => {
     const {data, dispatch} = useDataContext()
     const {user} = useAuthContext()
 
+    const addMaterial = () => {
+        
+        materialArray.push({material: material, qty: weight, amount: amount}) 
+        console.log(materialArray)
+    } 
+
     useEffect(()=>{
 
         const fetchData = async () => {
@@ -31,12 +37,6 @@ const ProductsForm = () => {
         }
         
     }, [dispatch, user])
-
-    const addMaterial = () => {
-        
-        materialArray.push({material: material, qty: weight, amount: amount}) 
-        console.log(materialArray)
-    } 
 
  
     return ( 

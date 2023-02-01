@@ -2,9 +2,10 @@ const mongoose = require('mongoose')
 
 const depositSchema = new mongoose.Schema({
 
-    amount: {type: String, required: true},
-    user_id:{type: String, required: true}
-
+    amount:      {type: String, required: true},
+    accountName:   {type: String},
+    depositedBy: {type: String, required: true},
+    updatedBy:   {type: String}
 
 }, {timestamps: true})
 

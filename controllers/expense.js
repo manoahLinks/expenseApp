@@ -10,35 +10,40 @@ exports.addNewExpense = async (req, res) => {
     const createdBy = req.user._id
 
     try{
-
+        // find account to be debited
         const account = await Account.findOne({name: accountName})
 
         if(!account){
-            res.status(404).json({message: 'error in finding account'})
+            // throwing error if account not found
+            throw Error('error in finding account') 
         }
 
+        // checking if balance on account is greater than the amount to be debited
         if(account.balance >= amount){
 
+            // substract the amount from the balance in the account
             let newBalance = Number(account.balance) - Number(amount)
 
+            // updating the account with the new balance
             const UpdatedAccount = await Account.findOneAndUpdate({name: account.name}, {
                 balance: newBalance
             })
 
+            // creating a new expenses
             const newExpense = await Expense.create({type, description, amount, createdBy})
             res.status(200).json(newExpense)
         }
         
     }
-    catch(err){
-        res.status(400).json({message:"Cannot create new record", error:err})
+    catch(error){
+        // catching an error if any
+        res.status(400).json(error.message)
     }
 }  
 
 
 //display all expense records
 exports.getAllExpenses = async (req, res) =>{
-    req.session.isAuth = true
     const allExpenses = await Expense.find({}).sort({createdAt: -1})
                     .then((allExpenses) => {
                         res.status(200).json(allExpenses)
