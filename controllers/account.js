@@ -1,4 +1,4 @@
-const { default: mongoose, mongo } = require('mongoose')
+const mongoose = require('mongoose')
 const Account = require('../models/account'),
         Deposit = require('../models/deposit')
 
@@ -57,12 +57,12 @@ exports.fundAccount = async (req, res) => {
 
     try {
 
-        // checking if bjecId is valid
+        // checking if objecId is valid
         if(!mongoose.Types.ObjectId.isValid(id)){
-            res.status(400).json({message: 'invalid id'})
+            throw Error('invalid id')
         }
         
-        // finding account selected
+        // finding account to be funded
         let foundAcct = await Account.findById(id)
 
         //adding the balance of the found account to the new amount to be funded 
@@ -89,6 +89,54 @@ exports.fundAccount = async (req, res) => {
     } catch (error) {
         // catching all error and displaying error message
         res.status(404).json(error.message)
+    }
+}
+
+// transfer to another account
+exports.transferToAnotherAccount = async (req, res) => {
+
+    const {id} = req.params 
+    const {payee, amount, pin} = req.body
+
+    try {
+        
+        // find payer account
+        const foundAccount = await Account.findById(id)
+
+        // check if pin is correct
+        if(foundAccount.pin != pin){
+            throw Error('Incorrect pin')
+        }
+
+        // check is balance is greater or equal to transfer amount
+        if(foundAccount.balance >= amount){
+
+            // substract payer current balance to the funding amount
+            const newPayerBalance = Number(foundAccount.balance) - Number(amount)
+
+            // update the payer account with new balance
+            const updatedPayerAccount = await Account.findByIdAndUpdate(id, {balance: newPayerBalance})
+
+            // find payee account using name
+            const payeeAccount = await Account.findOne({name: payee})
+
+            // add payee account balance to the funding amount
+            const newPayeeBalance = await Number(payeeAccount.balance) + Number(amount)
+            
+            // update the payee account with new balance
+            const updatedPayeeAccount = await Account.findOneAndUpdate({name: payee}, {balance: newPayeeBalance})
+
+            // return results
+            return res.status(200).json({payer: updatedPayerAccount, payee: updatedPayeeAccount})
+
+        }else{
+            // error if payer account balance is less than funding amount
+            throw Error('Insufficient balance')
+        }
+        
+    } catch (error) {
+        // catch all error and display to the frontend
+        res.status(400).json(error.message)
     }
 }
 

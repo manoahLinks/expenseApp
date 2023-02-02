@@ -1,5 +1,6 @@
 const Expense = require('../models/expense'),
-    Account = require('../models/account'),
+      Account = require('../models/account'),
+      Withdrawal = require('../models/withdrawal'),
       mongoose = require('mongoose')
 
 
@@ -65,7 +66,7 @@ exports.getSingleExpense = async (req, res) =>{
                     })
 }
 
-// update an expense record
+// disburse an expense record
 exports.disburseExpense = async (req , res) => {
     const {id} = req.params
     const disbursedBy = req.user._id
@@ -78,7 +79,7 @@ exports.disburseExpense = async (req , res) => {
                 })
 }
 
-// update an expense record
+// approve an expense record
 exports.approveExpense = async (req , res) => {
     let {id} = req.params
     const approvedBy = req.user._id
