@@ -7,6 +7,7 @@ const express = require('express'),
       mongoDBSession = require('connect-mongodb-session')(session),
       dbConnect = require('./models'),
       appRoutes = require('./routes/expense'),
+      dbarRoute = require('./routes/dbar'),
       accountRoute = require('./routes/account'),
       depositRoute = require('./routes/deposit'),
       rawmaterialRoute = require('./routes/rawmaterials'),
@@ -48,6 +49,7 @@ app.use(bodyParser.json())
 
 // defining my routes
 app.use('/api/expense', isAuth, appRoutes)
+app.use('/api/dbar', isAuth, dbarRoute)
 app.use('/api/account', isAuth, accountRoute)
 app.use('/api/deposit', isAuth, depositRoute)
 app.use('/api/rawmaterial', isAuth, rawmaterialRoute)
