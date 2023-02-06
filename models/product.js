@@ -10,6 +10,8 @@ const productSchema = new mongoose.Schema({
     costOfRent:      {type: Number, required: true},
     productionPrice: {type: Number, required: true},
     marketPrice:     {type: Number, required: true},
+    productBenchMark: {type: Number, required: true},
+    salesBenchMark:   {type: Number, required: true},
     createdBy:       {type: String},
     updatedBy:       {type: String}
 

@@ -12,13 +12,15 @@ exports.createProduct = async (req, res) => {
         costOfRent,
         netWeight,
         productionPrice,
-        marketPrice
+        marketPrice,
+        productionBenchMark,
+        salesBenchMark
     } = req.body
 
     try {
         
         const createdBy = req.user._id
-        const newProduct = await Product.create({name, materials, costOfLabour, costOfPackaging, costOfEnergy, costOfRent, netWeight, productionPrice, marketPrice, createdBy})
+        const newProduct = await Product.create({name, materials, costOfLabour, costOfPackaging, costOfEnergy, costOfRent, netWeight, productionPrice, marketPrice, productionBenchMark, salesBenchMark,createdBy})
         return res.status(201).json(newProduct)
 
     } catch (error) {
