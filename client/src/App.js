@@ -81,7 +81,7 @@ function App() {
               <Route path={`/products/new`}        element={user ? <ProductsForm/> : <Navigate to={`/`}/>} />
               <Route path={`/products/list`}        element={user ? <ProductList/> : <Navigate to={`/`}/>} />
             </Routes>
-            {user && <TaskBar />}
+            {/* {user && <TaskBar />} */}
           </div>
           <div className='md:w-3/12'></div>
         </div>

@@ -3,7 +3,7 @@ const mongoose = require('mongoose')
 const productSchema = new mongoose.Schema({
 
     name:            {type: String, required: true, unique: true},
-    materials:       [{type: mongoose.Schema.Types.ObjectId, ref: 'rawmaterial'}],
+    materials:       [[]],
     costOfLabour:    {type: Number, required: true},
     costOfPackaging: {type: Number, required: true},
     costOfEnergy:    {type: Number, required: true},

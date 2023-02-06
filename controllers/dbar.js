@@ -1,5 +1,6 @@
 const mongoose = require('mongoose'),
-    Dbar = require('../models/dbar')
+    Dbar = require('../models/dbar'),
+    Product = require('../models/product')
 
 exports.getDbar = async (req, res) => {
 
@@ -16,27 +17,30 @@ exports.getDbar = async (req, res) => {
 exports.createDdbar = async (req, res) => {
 
     const { 
-        date
+        product
+
     } = req.body
 
     const today = new Date()
 
     try {
 
-        if(date.getDate() > today.getDate()){
-            throw Error('cannot enter this report, date not yet reached')
+        const foundProduct = await Product.findOne({name: product})
+
+        if(!product){
+            throw Error('no product found')
+        } 
+
+        const multiplyQtyByBags = () => {
+
+            foundProduct.materials.forEach((material)=>{
+                console.log(material)
+            })
+            
         }
-        console.log(date, today)
 
-        const foundReport = await Dbar.findOne({createdAt: date})
-
-        if(foundReport) {
-            throw Error('Records already submitted')
-        }
-
-        const newDbar = await Dbar.create({})
-        res.status(200).json(newDbar)
-
+        multiplyQtyByBags()
+ 
     } catch (error) {
         res.status(400).json(error.message)
     }
