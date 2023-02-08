@@ -1,10 +1,10 @@
 const ProductDetails = ({modalOff}) => {
     return ( 
-        <div className="grid grid-cols-1 md:grid-cols-4 fixed inset-0 bg-gray-300 bg-opacity-20">
+        <div className="grid grid-cols-1 md:grid-cols-4 fixed inset-0 h-screen bg-gray-300 bg-opacity-20">
             <div>
 
             </div>
-            <div className="flex flex-col gap-y-4 p-5 modal md:col-span-2 bg-white">
+            <div className="flex flex-col gap-y-4 p-5 modal md:col-span-2 bg-white overflow-scroll">
                 <div className="grid grid-cols-3">
                     <div onClick={modalOff} className="flex">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor" className="w-5 h-5">
@@ -66,8 +66,8 @@ const ProductDetails = ({modalOff}) => {
                             
                         </div>
                     </div>
-                    <div className="grid grid-cols-2 gap-x-2 gap-y-2 md:gap-x-4 md:gap-y-4 ">
-                        <div className="flex flex-col">
+                    <div className="grid grid-cols-1 gap-x-2 gap-y-2 md:gap-x-4 md:gap-y-4 ">
+                        <div className="flex ">
                             <label>
                                 <h4>total dough weight</h4>
                             </label>
