@@ -66,8 +66,109 @@ const ProductDetails = ({modalOff}) => {
                             
                         </div>
                     </div>
-                   
+                    <div className="grid grid-cols-2 gap-x-2 gap-y-2 md:gap-x-4 md:gap-y-4 ">
+                        <div className="flex flex-col">
+                            <label>
+                                <h4>total dough weight</h4>
+                            </label>
+                            <input 
+                                type="number" 
+                                className="text-xs md:text-sm rounded font-light"
+                            />
+                        </div>
+                        <div className="flex flex-col">
+                            <label>
+                                <h4>cost of Recipe</h4>
+                            </label>
+                            <input 
+                                type="number" 
+                                className="text-xs md:text-sm rounded font-light"
+                            />
+                        </div>
+                        <div className="flex flex-col">
+                            <label>
+                                <h4>Labour</h4>
+                            </label>
+                            <input 
+                                type="number" 
+                                className="text-xs md:text-sm rounded font-light"
+                            />
+                        </div>
 
+                        <div className="flex flex-col">
+                            <label>
+                                <h4>Packaging</h4>
+                            </label>
+                            <input 
+                                type="number"
+                                className="text-xs md:text-sm rounded font-light" 
+                            />
+                        </div>
+
+                        <div className="flex flex-col">
+                            <label>
+                                <h4>Enery</h4>
+                            </label>
+                            <input 
+                                type="number"
+                                className="text-xs md:text-sm rounded font-light" 
+                            />
+                        </div>
+
+                        <div className="flex flex-col">
+                            <label>
+                                <h4>Rent</h4>
+                            </label>
+                            <input 
+                                type="number" 
+                                className="text-xs md:text-sm rounded font-light"
+                            />
+                        </div>
+
+                        <div className="flex flex-col">
+                            <label>
+                                <h4>Production price</h4>
+                            </label>
+                            <input 
+                                type="number" 
+                                className="text-xs md:text-sm rounded font-light"
+                            />
+                        </div>
+
+                        <div className="flex flex-col">
+                            <label>
+                                <h4>Market price</h4>
+                            </label>
+                            <input 
+                                type="number" 
+                                className="text-xs md:text-sm rounded font-light"
+                            />
+                        </div>
+
+                        <div className="flex flex-col">
+                            <label>
+                                <h4>Production Benchmark</h4>
+                            </label>
+                            <input 
+                                type="number" 
+                                className="text-xs md:text-sm rounded font-light"
+                            />
+                        </div>
+
+                        <div className="flex flex-col">
+                            <label>
+                                <h4>Sales Benchmark</h4>
+                            </label>
+                            <input 
+                                type="number" 
+                                className="text-xs md:text-sm rounded font-light"
+                            />
+                        </div>
+                    </div>
+
+                    <div className="p-5 bg-gray-300 bg-opacity-50">
+                        <h4></h4>
+                    </div>
                 </form>
             </div>
             

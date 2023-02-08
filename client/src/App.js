@@ -33,7 +33,7 @@ function App() {
 
   return (
     <Router>
-      <div className="flex flex-col relative h-screen text-gray-500 text-xs md:text-sm">
+      <div className="flex flex-col h-screen text-gray-500 text-xs md:text-sm">
         <NavBar/>
         <div className='flex flex-col md:flex-row'>
           <div className='md:w-3/12 border-r grid grid-cols-1 hidden md:block'>

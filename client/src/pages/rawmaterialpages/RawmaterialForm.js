@@ -8,6 +8,7 @@ const RawmaterialForm = () => {
     const [name, setName] = useState('')
     const [netWeight, setNetWeight] = useState('')
     const [netPrice, setNetprice] = useState('')
+    const [supplier, setSupplier] = useState('')
     const [pricePerGram, setPricePerGram] = useState('')
     const [reOrderLevel, setReOrderLevel] = useState('')
     const [error, setError] = useState(null)
@@ -33,7 +34,7 @@ const RawmaterialForm = () => {
                 'Authorization': `Bearer ${user.token}`,
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({name, netWeight, netPrice, reOrderLevel}) 
+            body: JSON.stringify({name, netWeight, netPrice, reOrderLevel, supplier}) 
         })
 
         const json = await response.json()
@@ -49,6 +50,7 @@ const RawmaterialForm = () => {
             setNetprice('')
             setReOrderLevel('')
             setPricePerGram('')
+            setSupplier('')
             setIsPending(false)
             console.log(json)
             setSuccess(true)
@@ -61,67 +63,104 @@ const RawmaterialForm = () => {
             {success && <AlertBox message={`successfully created new Raw material`}/>}
             <h4 className="text-sm font-semibold">Register new raw material</h4>
             <div className="grid md:grid-cols-2 grid-cols-1 border">
-                <div className="hidden md:block flex bg-gray-100 p-2">
+                <div className="hidden md:block flex  p-2">
                     <h4>CREATE A NEW PRODUCT NOW !</h4>
                 </div>
                 <form className="grid grid-cols-1 gap-y-4 p-5 items-center" onSubmit={handleSubmit}>
                     <div className="flex flex-col">
-                        <label htmlFor="materialName">Name :</label>
+                        <label className="flex text-green-700 items-center gap-x-2">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-4 h-4 md:w-5 md:h-5">
+                                <path strokeLinecap="round" strokeLinejoin="round" d="M15 9h3.75M15 12h3.75M15 15h3.75M4.5 19.5h15a2.25 2.25 0 002.25-2.25V6.75A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25v10.5A2.25 2.25 0 004.5 19.5zm6-10.125a1.875 1.875 0 11-3.75 0 1.875 1.875 0 013.75 0zm1.294 6.336a6.721 6.721 0 01-3.17.789 6.721 6.721 0 01-3.168-.789 3.376 3.376 0 016.338 0z" />
+                            </svg>
+                            <h4>name</h4>
+                        </label>
                         <input 
                             type="text"
-                            id="materialName"
-                            className="border border-gray-200 rounded-md text-sm font-light"
-                            placeholder="enter name"
                             onChange={(e)=>{setName(e.target.value)}}
-                            value={name} 
+                            value={name}
+                            className="border-none font-light rounded p-2 bg-gray-50 text-xs md:text-lg"
+                            
                         />
                     </div>
-                    
-                    <div className="flex flex-col">
-                        <label htmlFor="netweight">net weight :</label>
-                        <input 
-                            type="number"
-                            id="netweight"
-                            className="border border-gray-200 rounded-md text-sm font-light"
-                            placeholder="net weight"
-                            onChange={(e)=>{setNetWeight(e.target.value), setPricePerGram(netPrice/netWeight)}}
-                            value={netWeight} 
-                        />
-                    </div>
-                    
-                    <div className="flex flex-col">
-                        <label htmlFor="price">Price :</label>
-                        <input 
-                            type="number"
-                            id="price"
-                            className="border border-gray-200 text-sm rounded-md font-light"
-                            placeholder="net price"
-                            onChange={(e)=>{setNetprice(e.target.value), setPricePerGram(netPrice/netWeight)}}
-                            value={netPrice} 
-                        />
-                    </div>
-                    
-                    <div className="flex flex-col">
-                        <label htmlFor="pricepergram">Price per gram :</label>
-                        <input 
-                            type="number"
-                            className="border border-gray-200 text-sm rounded-md font-light text-green-500"
-                            placeholder="price per gram"
-                            onChange={(e)=>{setPricePerGram(netPrice/netWeight)}}
-                            value={pricePerGram} 
-                        />
-                    </div>
+                    <div className="grid grid-cols-2 gap-x-2 gap-y-2 md:gap-x-4 md:gap-y-8">
+                        <div className="flex flex-col">
+                            <label className="flex text-green-700 items-center gap-x-2">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-3 h-3 md:w-5 md:h-5">
+                                    <path strokeLinecap="round" strokeLinejoin="round" d="M12 3v17.25m0 0c-1.472 0-2.882.265-4.185.75M12 20.25c1.472 0 2.882.265 4.185.75M18.75 4.97A48.416 48.416 0 0012 4.5c-2.291 0-4.545.16-6.75.47m13.5 0c1.01.143 2.01.317 3 .52m-3-.52l2.62 10.726c.122.499-.106 1.028-.589 1.202a5.988 5.988 0 01-2.031.352 5.988 5.988 0 01-2.031-.352c-.483-.174-.711-.703-.59-1.202L18.75 4.971zm-16.5.52c.99-.203 1.99-.377 3-.52m0 0l2.62 10.726c.122.499-.106 1.028-.589 1.202a5.989 5.989 0 01-2.031.352 5.989 5.989 0 01-2.031-.352c-.483-.174-.711-.703-.59-1.202L5.25 4.971z" />
+                                </svg>
+                                <h4>Net-weight</h4>
+                            </label>
+                            <input 
+                                type="text"
+                                onChange={(e)=>{setNetWeight(e.target.value)}}
+                                value={netWeight}
+                                className="border-none font-light rounded p-2 bg-gray-50 text-xs md:text-lg"
+                            />
+                        </div>
 
-                    <div className="flex flex-col">
-                        <label htmlFor="price">Re-order level :</label>
-                        <input 
-                            type="number"
-                            id="reorder"
-                            className="border border-gray-200 rounded-md text-sm font-light"
-                            placeholder="enter re-order level"
-                            onChange={(e)=>{setReOrderLevel(e.target.value)}}
-                            value={reOrderLevel} 
-                        />
+                        <div className="flex flex-col">
+                            <label className="flex text-green-700 items-center gap-x-2">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-3 h-3 md:w-5 md:h-5">
+                                    <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 10.5V6a3.75 3.75 0 10-7.5 0v4.5m11.356-1.993l1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 01-1.12-1.243l1.264-12A1.125 1.125 0 015.513 7.5h12.974c.576 0 1.059.435 1.119 1.007zM8.625 10.5a.375.375 0 11-.75 0 .375.375 0 01.75 0zm7.5 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z" />
+                                </svg>
+                                <h4>Net-price</h4>
+                            </label>
+                            <input 
+                                type="text"
+                                onChange={(e)=>{setNetprice(e.target.value)}}
+                                value={netPrice}
+                                className="border-none rounded font-light p-2 bg-gray-50 text-xs md:text-lg"
+                            />
+                        </div>
+
+                        <div className="flex flex-col">
+                            <label className="flex text-green-700 items-center gap-x-2">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-3 h-3 md:w-5 md:h-5">
+                                    <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 7.125C2.25 6.504 2.754 6 3.375 6h6c.621 0 1.125.504 1.125 1.125v3.75c0 .621-.504 1.125-1.125 1.125h-6a1.125 1.125 0 01-1.125-1.125v-3.75zM14.25 8.625c0-.621.504-1.125 1.125-1.125h5.25c.621 0 1.125.504 1.125 1.125v8.25c0 .621-.504 1.125-1.125 1.125h-5.25a1.125 1.125 0 01-1.125-1.125v-8.25zM3.75 16.125c0-.621.504-1.125 1.125-1.125h5.25c.621 0 1.125.504 1.125 1.125v2.25c0 .621-.504 1.125-1.125 1.125h-5.25a1.125 1.125 0 01-1.125-1.125v-2.25z" />
+                                </svg>
+                                <h4>price per gram</h4>
+                            </label>
+                            <input 
+                                type="text"
+                                onChange={(e)=>{setPricePerGram(e.target.value)}}
+                                value={pricePerGram}
+                                className="border-none font-light rounded p-2 bg-gray-50 text-xs md:text-lg"
+                            />
+                        </div>
+
+                        <div className="flex flex-col">
+                            <label className="flex text-green-700 items-center gap-x-1">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-3 h-3 md:w-5 md:h-5">
+                                    <path strokeLinecap="round" strokeLinejoin="round" d="M21 10.5h.375c.621 0 1.125.504 1.125 1.125v2.25c0 .621-.504 1.125-1.125 1.125H21M4.5 10.5h6.75V15H4.5v-4.5zM3.75 18h15A2.25 2.25 0 0021 15.75v-6a2.25 2.25 0 00-2.25-2.25h-15A2.25 2.25 0 001.5 9.75v6A2.25 2.25 0 003.75 18z" />
+                                </svg>
+                                <h4>re-order level</h4>
+                            </label>
+                            <input 
+                                type="text"
+                                className="border-none font-light rounded p-2 bg-gray-50 text-xs md:text-lg"
+                            />
+                        </div>
+
+                        <div className="flex flex-col">
+                            <label className="flex text-green-700 items-center gap-x-2">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-6 h-6">
+                                    <path d="M3.375 4.5C2.339 4.5 1.5 5.34 1.5 6.375V13.5h12V6.375c0-1.036-.84-1.875-1.875-1.875h-8.25zM13.5 15h-12v2.625c0 1.035.84 1.875 1.875 1.875h.375a3 3 0 116 0h3a.75.75 0 00.75-.75V15z" />
+                                    <path d="M8.25 19.5a1.5 1.5 0 10-3 0 1.5 1.5 0 003 0zM15.75 6.75a.75.75 0 00-.75.75v11.25c0 .087.015.17.042.248a3 3 0 015.958.464c.853-.175 1.522-.935 1.464-1.883a18.659 18.659 0 00-3.732-10.104 1.837 1.837 0 00-1.47-.725H15.75z" />
+                                    <path d="M19.5 19.5a1.5 1.5 0 10-3 0 1.5 1.5 0 003 0z" />
+                                </svg>
+                                <h4>Supplier</h4>
+                            </label>
+                            <select
+                                onChange={(e)=>{setSupplier(e.target.value)}}
+                                value={supplier}
+                                className="border-none font-light rounded p-2 bg-gray-50 text-xs md:text-sm"
+                            >
+                                <option value="">please select</option>
+                                <option value="">Muabsa</option>
+                                <option value="">Muabsa</option>
+                            </select>
+                        </div>
+
                     </div>
                     
                     

@@ -44,7 +44,7 @@ const RawmaterialList = () => {
                 <h4 className="text-sm font-semibold">Raw Materials</h4>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-y-4 md:gap-y-8 md:gap-x-4 m-2 md:m-5">
+            <div className="grid grid-cols-1 gap-y-4 md:gap-y-8 md:gap-x-4 m-2 md:m-5">
                 {data && data.map((material)=>(
                     <div key={material._id} className="grid grid-cols-1 rounded shadow">
                         <div onClick={modalOn} className={`flex items-center justify-between p-2`}>

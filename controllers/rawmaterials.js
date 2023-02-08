@@ -24,6 +24,7 @@ exports.createRawMaterial = async (req, res) => {
         netWeight,
         netPrice,
         reOrderLevel,
+        supplier
 
     } = req.body
     
@@ -31,7 +32,7 @@ exports.createRawMaterial = async (req, res) => {
 
     try {
         
-        const response = await Rawmaterial.create({name, netWeight, netPrice, reOrderLevel, createdBy})
+        const response = await Rawmaterial.create({name, netWeight, netPrice, reOrderLevel, supplier,createdBy})
         return res.status(201).json(response)
 
     } catch (error) {
