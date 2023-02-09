@@ -64,7 +64,7 @@ const RawmaterialForm = () => {
             <h4 className="text-sm font-semibold">Register new raw material</h4>
             <div className="grid md:grid-cols-2 grid-cols-1 border">
                 <div className="hidden md:block flex  p-2">
-                    <h4>CREATE A NEW PRODUCT NOW !</h4>
+                    <h4 className="text-primary">CREATE A NEW RAW MATERIAL NOW !</h4>
                 </div>
                 <form className="grid grid-cols-1 gap-y-4 p-5 items-center" onSubmit={handleSubmit}>
                     <div className="flex flex-col">

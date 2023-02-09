@@ -2,7 +2,7 @@ const Sidebar = () => {
     return ( 
         <div className='md:w-3/12 border-r grid grid-cols-1 hidden md:block'>
             <div className='flex flex-col p-5 items-center border-b'>
-                <img src={require(`../assets/ole.jpg`)} className='w-32 h-32 rounded-full' alt="" />
+                
                 <button className='p-1 bg-gray-100 rounded'>Edit profile</button>
             </div>
             <div className='border-b p-5 flex flex-col items-center'>      
@@ -15,8 +15,11 @@ const Sidebar = () => {
                 <h4>Staff Appriasal</h4>
             </div>
             <div className='flex'>
-                
+            
             </div>
+            </div>
+            <div className="grid grid-cols-1">
+                
             </div>
         </div>
      );

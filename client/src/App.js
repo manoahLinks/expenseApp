@@ -17,6 +17,8 @@ import MyProfile from './pages/subpages/MyProfile';
 import SalesPage from './pages/subpages/SalesPage';
 import RawMaterials from './pages/subpages/RawMaterials';
 import Marketing from './pages/subpages/Marketing';
+import BarChart from './components/BarChart';
+import PieChart from './components/PieChart';
 import Finance from './pages/subpages/Finance';
 import RawMaterialAnalytics from './pages/AnalysisPages/RawMaterialAnalytics';
 import Products from './pages/subpages/Products';
@@ -66,7 +68,11 @@ function App() {
             </Routes>
             {/* {user && <TaskBar />} */}
           </div>
-          <div className='md:w-3/12'></div>
+          <div className='grid grid-cols-1 md:w-3/12'>
+            <BarChart />
+            {/* <PieChart className={`h-1/3`} /> */}
+            
+          </div>
         </div>
         
       </div>
