@@ -80,7 +80,7 @@ const BarChart = () => {
 
 
   return (
-    <div className="flex p-5 rounded-md bg-primary bg-opacity-10">
+    <div className="flex justify-center m-2 shadow-md rounded-md">
       <Bar
         data={chartData}
         width={100}

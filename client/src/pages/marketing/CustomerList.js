@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import {useDataContext} from '../../hooks/useDataContext'
 import { useAuthContext } from "../../hooks/useAuthContext";
 import CustomerDetails from "./CustomerDetails";
+import CustomerTable from "./component/Customertable"
 
 const CustomerList = () => {
 
@@ -39,15 +40,13 @@ const CustomerList = () => {
 
     return ( 
         <div className="grid grid-cols-1 gap-y-2">
-            <div className="flex">
-                <input 
-                    type="search"
-                    className="w-full rounded-full border border-gray-300"
-                    placeholder="type keyword"
-                />
+
+            <div className="grid grid-cols-1 hidden md:block">
+                <CustomerTable customers={data}/>
             </div>
+
             {data && data.map((customer)=>(
-                <div onClick={modalOn} className="p-2 flex items-center justify-between shadow rounded">
+                <div onClick={modalOn} className="md:hidden p-2 flex items-center justify-between shadow rounded">
                     <div className="flex gap-x-2">
                         <div className="flex rounded p-2 bg-green-100">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-6 h-6 text-green-700">

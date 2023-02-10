@@ -19,6 +19,7 @@ import RawMaterials from './pages/subpages/RawMaterials';
 import Marketing from './pages/subpages/Marketing';
 import BarChart from './components/BarChart';
 import PieChart from './components/PieChart';
+import DailyActivityReportSheet from './pages/DailyActivityReportSheet';
 import Finance from './pages/subpages/Finance';
 import RawMaterialAnalytics from './pages/AnalysisPages/RawMaterialAnalytics';
 import Products from './pages/subpages/Products';
@@ -38,16 +39,16 @@ function App() {
     <Router>
       <div className="flex flex-col min-h-screen relative text-gray-500 text-xs md:text-sm">
         <NavBar />
-        <div className='flex flex-col md:flex-row my-16 w-full'>
+        <div className='flex flex-col md:flex-row my-12 w-full'>
           <Sidebar />
-          <div className='grid grid-cols-1 md:w-9/12 md:ml-auto scroll-smooth  md:grid-cols-3 md:p-5 p-2 '>
+          <div className='grid grid-cols-1 md:w-10/12 md:ml-auto scroll-smooth  md:grid-cols-3'>
             <div className='grid grid-cols-1 md:col-span-2 border-r'>
               <Routes>
                 <Route exact path={`/`}     element={!user ? <LoginPage /> : <Navigate to={`/home`}/>} />
                 <Route path={`/welcome`}       element={user ? <WelcomePage/> : <Navigate to={`/`}/>} />
                 <Route path={`/home`}         element={user ? <Homepage /> : <Navigate to={`/`}/>} />
                 <Route path={`/profile`}      element={user ? <ProfilePage /> : <Navigate to={`/`}/>} />
-                <Route path={`/cards`}        element={user ? <Checkout /> : <Navigate to={`/`}/>} />
+                <Route path={`/dbar`}        element={user ? <DailyActivityReportSheet /> : <Navigate to={`/`}/>} />
                 <Route path={`/signup`}       element={!user ? <SignupPage /> : <Navigate to={`/`}/>} />
                 <Route path={`/myprofile/attendance`}   element={user ? <AttendancePage /> : <Navigate to={`/`}/>} />
                 <Route path={`/analytics`}    element={user ? <AnalyticsPage /> : <Navigate to={`/`}/>} />
@@ -73,8 +74,8 @@ function App() {
               <div className='grid grid-cols-1 h-48'>
                 <BarChart />
               </div>
-              <div>
-
+              <div className='grid grid-cols-1 h-48'>
+                
               </div>
               <div></div> 
             </div>

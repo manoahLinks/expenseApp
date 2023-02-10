@@ -13,13 +13,9 @@ const NavBar = () => {
   }
 
     return ( 
-        <div className='fixed top-0 z-10 bg-primary bg-opacity-10 shadow w-full flex justify-between md:p-2 p-1 border-b'>
-            <div className='flex'>
-              {user && <img src={require(`../assets/icons8-user-male-100.png`)} alt="pic1" className='w-12 h-12 mx-2 rounded-full object-cover' />}
-              <div className='flex flex-col justify-center'>
-                {user && <h4 className="font-semibold">Manoah</h4>}
-              {user && <h6 className="font-light">{user.email}</h6>}
-              </div>
+        <div className='fixed top-0 z-10 shadow w-full flex justify-between md:p-2 p-1 border-b'>
+            <div className='flex items-center'>
+              <h4 className="font-bold text-md text-primary">SMART WORK</h4>
             </div>
             <div className='flex items-center'>
 
