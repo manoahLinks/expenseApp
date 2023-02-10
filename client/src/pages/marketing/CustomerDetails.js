@@ -2,7 +2,7 @@
 const CustomerDetails = ({modalOff, customer}) => {
 
     return ( 
-        <div className="grid h-screen grid-cols-1 md:grid-cols-4 fixed inset-0 bg-gray-300 bg-opacity-20">
+        <div className="grid h-screen md:mt-16 grid-cols-1 md:grid-cols-4 fixed inset-0 bg-gray-300 bg-opacity-20">
             <div>
 
             </div>

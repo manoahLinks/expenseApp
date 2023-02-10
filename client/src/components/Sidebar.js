@@ -1,6 +1,6 @@
 const Sidebar = () => {
     return ( 
-        <div className='md:w-3/12 border-r grid grid-cols-1 hidden md:block'>
+        <div className='w-3/12 bg-primary bg-opacity-10 border-r fixed h-full grid grid-cols-1 hidden md:block'>
             <div className='flex flex-col p-5 items-center border-b'>
                 
                 <button className='p-1 bg-gray-100 rounded'>Edit profile</button>

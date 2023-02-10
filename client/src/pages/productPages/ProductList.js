@@ -20,7 +20,7 @@ const ProductList = () => {
     useEffect(()=>{
 
         const fetchData = async () => {
-            const response = await fetch(`https://expesetracker.herokuapp.com/api/product`, {
+            const response = await fetch(`http://localhost:5500/api/product`, {
                 headers:{
                     'Authorization': `Bearer ${user.token}`
                 }

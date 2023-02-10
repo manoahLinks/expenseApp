@@ -62,11 +62,9 @@ const RawMaterialAnalytics = () => {
                         
                     </tbody>
                 </table>
-
-                  
                 <div className="grid grid-cols-1 gap-y-2 p-2">
-                    <div className="grid md:grid-cols-3 grid-cols-2 gap-y-2 gap-x-2 md:gap-x-4">
-                        <div className="flex flex-col gap-y-2 md:gap-y-4 shadow md:p-3 p-1 rounded-md">
+                    <div className="grid md:grid-cols-3 grid-cols-1 gap-y-2 gap-x-2 ">
+                        <div className="flex flex-col gap-y-2 md:gap-y-4 shadow-lg md:p-3 p-1 rounded-md">
                             <div className='flex justify-between items-center'>
                                 <div className='flex self-start p-1 rounded bg-primary bg-opacity-20'>
                                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5 fill-primary">
@@ -82,10 +80,10 @@ const RawMaterialAnalytics = () => {
                                 </div>
                             </div>
                             <h4 className="font-light text-center">worth of Purchase</h4>
-                            <h4 className="font-semibold md:text-lg text-slate-400 text-center">N6,550,000</h4>
+                            <h4 className="font-semibold md:text-md text-slate-400 text-center">N6,550,000</h4>
                         </div>
 
-                        <div className="flex flex-col gap-x-2 md:gap-y-4 gap-y-2 shadow md:p-3 p-1 rounded-md">
+                        <div className="flex flex-col gap-x-2 md:gap-y-4 shadow-lg gap-y-2 bg-primary bg-opacity-10 md:p-3 p-1 rounded-md">
                             <div className='flex justify-between items-center'>
                                 <div className='flex self-start p-1 rounded bg-primary bg-opacity-20'>
                                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5 fill-primary">
@@ -102,10 +100,10 @@ const RawMaterialAnalytics = () => {
                             </div>
                             
                             <h4 className="font-light ">Worth of Usage</h4>
-                            <h4 className="font-semibold md:text-lg text-primary text-center">N2,500,000</h4>
+                            <h4 className="font-semibold md:text-md text-primary text-center">N2,500,000</h4>
                         </div>
 
-                        <div className="flex flex-col gap-y-2 md:gap-y-4 shadow p-3 rounded-md">
+                        <div className="flex flex-col gap-y-2 md:gap-y-4 shadow-lg md:p-3 p-1 rounded-md">
                             <div className='flex justify-between items-center'>
                                 <div className='flex self-start p-1 rounded bg-primary bg-opacity-20'>
                                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5 fill-primary">
@@ -121,7 +119,7 @@ const RawMaterialAnalytics = () => {
                                 </div>
                             </div>
                             <h4 className="font-light text-center">Worth of Available stock</h4>
-                            <h4 className="font-semibold md:text-lg text-primary text-center">N4,050,000</h4>
+                            <h4 className="font-semibold md:text-md text-primary text-center">N4,050,000</h4>
                         </div>
                     </div>
                    

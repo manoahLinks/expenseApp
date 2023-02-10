@@ -36,45 +36,50 @@ function App() {
 
   return (
     <Router>
-      <div className="flex flex-col h-screen text-gray-500 text-xs md:text-sm">
-        <NavBar/>
-        <div className='flex flex-col md:flex-row'>
+      <div className="flex flex-col min-h-screen relative text-gray-500 text-xs md:text-sm">
+        <NavBar />
+        <div className='flex flex-col md:flex-row my-16 w-full'>
           <Sidebar />
-          <div className='flex flex-col md:w-6/12 justify-center md:p-5 p-2 border-r'>
-            <Routes>
-              <Route exact path={`/`}     element={!user ? <LoginPage /> : <Navigate to={`/home`}/>} />
-              <Route path={`/welcome`}       element={user ? <WelcomePage/> : <Navigate to={`/`}/>} />
-              <Route path={`/home`}         element={user ? <Homepage /> : <Navigate to={`/`}/>} />
-              <Route path={`/profile`}      element={user ? <ProfilePage /> : <Navigate to={`/`}/>} />
-              <Route path={`/cards`}        element={user ? <Checkout /> : <Navigate to={`/`}/>} />
-              <Route path={`/signup`}       element={!user ? <SignupPage /> : <Navigate to={`/`}/>} />
-              <Route path={`/myprofile/attendance`}   element={user ? <AttendancePage /> : <Navigate to={`/`}/>} />
-              <Route path={`/analytics`}    element={user ? <AnalyticsPage /> : <Navigate to={`/`}/>} />
-              <Route path={`/myprofile`}    element={user ? <MyProfile /> : <Navigate to={`/`}/>} />
-              <Route path={`/sales`}        element={user ? <SalesPage/> : <Navigate to={`/`}/>} />
-              <Route path={`/rawmaterials`}        element={user ? <RawMaterials/> : <Navigate to={`/`}/>} />
-              <Route path={`/marketing`}        element={user ? <Marketing/> : <Navigate to={`/`}/>} />
-              <Route path={`/marketing/registercustomer`}        element={user ? <CustomerForm/> : <Navigate to={`/`}/>} />
-              <Route path={`/marketing/mycustomers`}        element={user ? <CustomerList/> : <Navigate to={`/`}/>} />
-              <Route path={`/finance`}        element={user ? <Finance/> : <Navigate to={`/`}/>} />
-              <Route path={`/finance/transactions`} element={user ? <Transactions /> : <Navigate to={`/`}/>} />
-              <Route path={`/finance/expense/new`} element={user ? <ExpenseForm/>: <Navigate to={`/`}/>}/>
-              <Route path={`/rmanalytics`}        element={user ? <RawMaterialAnalytics/> : <Navigate to={`/`}/>} />
-              <Route path={`/products`}        element={user ? <Products/> : <Navigate to={`/`}/>} />
-              <Route path={`/rawmaterials/new`}        element={user ? <RawmaterialForm/> : <Navigate to={`/`}/>} />
-              <Route path={`/rawmaterials/list`}        element={user ? <RawmaterialList/> : <Navigate to={`/`}/>} />
-              <Route path={`/products/new`}        element={user ? <ProductsForm/> : <Navigate to={`/`}/>} />
-              <Route path={`/products/list`}        element={user ? <ProductList/> : <Navigate to={`/`}/>} />
-            </Routes>
-            {/* {user && <TaskBar />} */}
-          </div>
-          <div className='grid grid-cols-1 md:w-3/12'>
-            <BarChart />
-            {/* <PieChart className={`h-1/3`} /> */}
+          <div className='grid grid-cols-1 md:w-9/12 md:ml-auto scroll-smooth  md:grid-cols-3 md:p-5 p-2 '>
+            <div className='grid grid-cols-1 md:col-span-2 border-r'>
+              <Routes>
+                <Route exact path={`/`}     element={!user ? <LoginPage /> : <Navigate to={`/home`}/>} />
+                <Route path={`/welcome`}       element={user ? <WelcomePage/> : <Navigate to={`/`}/>} />
+                <Route path={`/home`}         element={user ? <Homepage /> : <Navigate to={`/`}/>} />
+                <Route path={`/profile`}      element={user ? <ProfilePage /> : <Navigate to={`/`}/>} />
+                <Route path={`/cards`}        element={user ? <Checkout /> : <Navigate to={`/`}/>} />
+                <Route path={`/signup`}       element={!user ? <SignupPage /> : <Navigate to={`/`}/>} />
+                <Route path={`/myprofile/attendance`}   element={user ? <AttendancePage /> : <Navigate to={`/`}/>} />
+                <Route path={`/analytics`}    element={user ? <AnalyticsPage /> : <Navigate to={`/`}/>} />
+                <Route path={`/myprofile`}    element={user ? <MyProfile /> : <Navigate to={`/`}/>} />
+                <Route path={`/sales`}        element={user ? <SalesPage/> : <Navigate to={`/`}/>} />
+                <Route path={`/rawmaterials`}        element={user ? <RawMaterials/> : <Navigate to={`/`}/>} />
+                <Route path={`/marketing`}        element={user ? <Marketing/> : <Navigate to={`/`}/>} />
+                <Route path={`/marketing/registercustomer`}        element={user ? <CustomerForm/> : <Navigate to={`/`}/>} />
+                <Route path={`/marketing/mycustomers`}        element={user ? <CustomerList/> : <Navigate to={`/`}/>} />
+                <Route path={`/finance`}        element={user ? <Finance/> : <Navigate to={`/`}/>} />
+                <Route path={`/finance/transactions`} element={user ? <Transactions /> : <Navigate to={`/`}/>} />
+                <Route path={`/finance/expense/new`} element={user ? <ExpenseForm/>: <Navigate to={`/`}/>}/>
+                <Route path={`/rmanalytics`}        element={user ? <RawMaterialAnalytics/> : <Navigate to={`/`}/>} />
+                <Route path={`/products`}        element={user ? <Products/> : <Navigate to={`/`}/>} />
+                <Route path={`/rawmaterials/new`}        element={user ? <RawmaterialForm/> : <Navigate to={`/`}/>} />
+                <Route path={`/rawmaterials/list`}        element={user ? <RawmaterialList/> : <Navigate to={`/`}/>} />
+                <Route path={`/products/new`}        element={user ? <ProductsForm/> : <Navigate to={`/`}/>} />
+                <Route path={`/products/list`}        element={user ? <ProductList/> : <Navigate to={`/`}/>} />
+              </Routes>
+            </div>
             
+            <div className='grid grid-cols-1 gap-y-2 '>
+              <div className='grid grid-cols-1 h-48'>
+                <BarChart />
+              </div>
+              <div>
+
+              </div>
+              <div></div> 
+            </div>
           </div>
         </div>
-        
       </div>
     </Router>    
   );

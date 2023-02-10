@@ -21,6 +21,7 @@ ChartJS.register(
   Legend
 )
 
+
 const BarChart = () => {
 
   const [chartData, setChartData] = useState({
@@ -36,13 +37,14 @@ const BarChart = () => {
         {
           label: "sales report 2023",
           backgroundColor: "#357266",
-          borderColor: "rgba(255,99,132,1)",
+          borderColor: "",
           borderWidth: 0,
-          hoverBackgroundColor: "rgba(255,99,132,0.4)",
-          hoverBorderColor: "rgba(255,99,132,1)",
+          hoverBackgroundColor: "#408C7D",
+          hoverBorderColor: "#408C7D",
           data: [10, 59, 80, 81, 56, 55, 20],
         },
       ],
+      
     })
 
     setChartOptions({
@@ -54,14 +56,31 @@ const BarChart = () => {
         title: {
           display: true,
           text: 'sales 2023'
-        }
-      }
+        },
+      },
+      scales: {
+        x: {
+          border: {
+            display: false
+          },
+          grid: {
+            display: false,
+          }
+        },
+        y: {
+          border: {
+            display: false
+          },
+          grid: {
+            display: false,
+          }
+      }}
     })
   }, [])
 
 
   return (
-    <div className="flex flex-col p-5 ">
+    <div className="flex p-5 rounded-md bg-primary bg-opacity-10">
       <Bar
         data={chartData}
         width={100}

@@ -20,7 +20,7 @@ const CustomerList = () => {
     useEffect(()=>{
 
         const fetchData = async () => {
-            const response = await fetch(`https://expesetracker.herokuapp.com/api/customer`, {
+            const response = await fetch(`http://localhost:5500/api/customer`, {
                 headers:{
                     'Authorization': `Bearer ${user.token}`
                 }
