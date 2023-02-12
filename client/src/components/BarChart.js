@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from "react";
+import {useDataContext} from '../hooks/useDataContext'
+import { useAuthContext } from "../hooks/useAuthContext";
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -22,7 +24,7 @@ ChartJS.register(
 )
 
 
-const BarChart = () => {
+const BarChart = ({data,label}) => {
 
   const [chartData, setChartData] = useState({
     datasets: []
@@ -31,8 +33,9 @@ const BarChart = () => {
   const [chartOptions, setChartOptions] = useState({})
 
   useEffect(()=> {
+
     setChartData({
-      labels: ["January", "February", "March", "April", "May", "June"],
+      labels: label,
       datasets: [
         {
           label: "sales report 2023",
@@ -41,7 +44,7 @@ const BarChart = () => {
           borderWidth: 0,
           hoverBackgroundColor: "#408C7D",
           hoverBorderColor: "#408C7D",
-          data: [10, 59, 80, 81, 56, 55, 20],
+          data: data,
         },
       ],
       
@@ -76,11 +79,11 @@ const BarChart = () => {
           }
       }}
     })
-  }, [])
+  }, [dispatch])
 
 
   return (
-    <div className="flex justify-center m-2 shadow-md rounded-md">
+    <div className="flex justify-center shadow-md rounded-md p-2">
       <Bar
         data={chartData}
         width={100}

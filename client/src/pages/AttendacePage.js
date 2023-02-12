@@ -38,7 +38,7 @@ const AttendancePage = () => {
             {error && <AlertBox message={message}></AlertBox>}
             {success && <AlertBox message={message}></AlertBox> }
             <h4 className="text-left p-2">Hello dear Employee, its great to have you around ;</h4>
-            <div className="bg-purple-200 p-5 rounded-full">
+            <div className="bg-purple-200 shadow p-2 rounded-full">
                 {<img src={require(`../assets/icons8-user-male-100.png`)} alt="" />}
             </div>
 

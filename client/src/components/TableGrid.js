@@ -1,5 +1,4 @@
 import { formatDistanceToNow } from 'date-fns'
-import Modal from "./Modal";
 import React, {useState} from 'react';
 
 const TableGrid = ({expenses}) => {
@@ -36,7 +35,6 @@ const TableGrid = ({expenses}) => {
                     </div>                    
                 </div>
             ))}
-            {modal && <Modal expense={singleExpense} setModalOn={setModalOn}></Modal>}
         </div>
        
      );

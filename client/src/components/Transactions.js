@@ -1,7 +1,4 @@
 import React, {useState, useEffect} from "react";
-import DepositGrid from "./DepositGrid";
-import useFetch from "../useFetch";
-import TableGrid from "./TableGrid";
 import LoadingPage from "./Loading";
 import AlertBox from "./AlertBox";
 import {useDataContext} from '../hooks/useDataContext'
@@ -84,7 +81,6 @@ const Transactions = () => {
             </div>
 
             <div className="grid grid-cols-1">
-                {data && <TableGrid expenses={data}></TableGrid>}
                 {isPending && <LoadingPage></LoadingPage>}
             </div>
             

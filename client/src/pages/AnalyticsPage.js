@@ -1,6 +1,6 @@
 const AnalyticsPage = () => {
     return ( 
-        <div className="grid grid-cols-1 gay-y-4 overflow-scroll">
+        <div className="grid grid-cols-1 gay-y-4">
             {/* store */}
 
             <div className="flex flex-col gap-y-2 border border-light rounded-lg m-2 p-2">

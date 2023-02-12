@@ -39,7 +39,7 @@ const CustomerList = () => {
     }, [dispatch, user])
 
     return ( 
-        <div className="grid grid-cols-1 gap-y-2">
+        <div className="grid grid-cols-1 gap-y-2 shadow rounded-md">
 
             <div className="grid grid-cols-1 hidden md:block">
                 <CustomerTable customers={data}/>
