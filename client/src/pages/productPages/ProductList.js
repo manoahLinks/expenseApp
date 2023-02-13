@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import {useDataContext} from '../../hooks/useDataContext'
 import { useAuthContext } from "../../hooks/useAuthContext";
 import ProductDetails from "./ProductDetails";
+import ProductTable from "./components/ProductTable";
 
 const ProductList = () => {
 
@@ -44,8 +45,9 @@ const ProductList = () => {
             </div>
 
             <div className="grid grid-cols-1 gap-y-2 m-2">
+                {data && <ProductTable data={data} />}
                 {data && data.map((product)=>(
-                    <div onClick={modalOn} className="flex rounded-md shadow-md justify-between">
+                    <div onClick={modalOn} className="md:hidden flex rounded-md shadow-md justify-between">
                         <div className="flex p-2 gap-x-2">
                             <div className="flex p-1 rounded bg-green-100">
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">

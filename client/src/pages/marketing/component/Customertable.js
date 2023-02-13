@@ -16,7 +16,7 @@ const CustomerTable = ({customers}) => {
                     <tr className="">
                         <td className="px-4 py-2">{customer.name}</td>
                         <td className="px-4 py-2">{customer.email}</td>
-                        <td className="px-4 py-2">{}</td>
+                        <td className="px-4 py-2">{customer.address}</td>
                         <td className="px-4 py-2">0{customer.phone}</td>
                         <td className="px-4 py-2">{}</td>
                     </tr>

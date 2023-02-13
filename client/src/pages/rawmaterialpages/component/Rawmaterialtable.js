@@ -1,11 +1,11 @@
 const RawmaterialTable = ({materials}) => {
     return ( 
-        <div className="grid grid-cols-1 p-5">
-            <table className="table table-auto w-full text-left text-xs border-collapse">
+        <div className="grid grid-cols-1">
+            <table className="table table-fixed w-full text-left text-xs border-collapse">
                 <thead>
                     <tr className="">
                         <th className="border px-4 py-2">Raw material</th>
-                        <th className="border px-4 py-2">net weight</th>
+                        <th className="border px-4 py-2">net weight <sub>grms</sub></th>
                         <th className="border px-4 py-2">price</th>
                         <th className="border px-4 py-2">price <sup>-grm</sup></th>
                         <th className="border px-4 py-2">Purchases</th>
@@ -16,15 +16,15 @@ const RawmaterialTable = ({materials}) => {
                 </thead>
                 <tbody>
                 {materials && materials.map((material)=>(
-                    <tr className="p-2">
+                    <tr className="">
                         <td className="border px-4 py-2">{material.name}</td>
+                        <td className="border px-4 py-2">{material.netWeight}</td>
+                        <td className="border px-4 py-2">{material.netPrice}</td>
+                        <td className="border px-4 py-2 overflow-hidden">{material.netWeight/material.netPrice}</td>
+                        <td className="border px-4 py-2">{material.totQtyPurchased}</td>
                         <td className="border px-4 py-2">{}</td>
-                        <td className="border px-4 py-2">{}</td>
-                        <td className="border px-4 py-2">{}</td>
-                        <td className="border px-4 py-2">{}</td>
-                        <td className="border px-4 py-2">{}</td>
-                        <td className="border px-4 py-2">{}</td>
-                        <td className="border px-4 py-2">{}</td>
+                        <td className="border px-4 py-2">{material.qtyAvailable}</td>
+                        <td className="border px-4 py-2">{material.qtyAvailable < material.reOrderLevel ? 'low': 'instock'}</td>
                     </tr>
                 ))}
                     

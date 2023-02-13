@@ -3,6 +3,8 @@ import {
   Chart as ChartJS,
   CategoryScale,
   LinearScale,
+  ArcElement,
+  PieController,
   Title,
   Tooltip,
   Legend
@@ -14,12 +16,14 @@ import { Pie } from "react-chartjs-2";
 ChartJS.register(
   CategoryScale,
   LinearScale,
+  ArcElement,
+  PieController,
   Title,
   Tooltip,
   Legend
 )
 
-const PieChart = () => {
+const PieChart = ({ data }) => {
 
   const [chartData, setChartData] = useState({
     datasets: []
@@ -29,13 +33,13 @@ const PieChart = () => {
 
   useEffect(()=> {
     setChartData({
-      labels: ["January", "February", "March", "April", "May", "June"],
+      labels: ['family', 'slice', 'jumbo', 'choco', 'mini'],
       datasets: [
         {
           label: "sales report 2023",
           backgroundColor: ['#357266', '#A3BBAD', '#D0DCD5', '#D0DCD5', '#D0DCD5', '#A3BBAD', '#A3BBAD'],
           borderWidth: [0,0,0,0,0,0],
-          data: [10, 59, 80, 81, 56, 55],
+          data: [50, 60, 30, 50, 70],
         },
       ],
     })

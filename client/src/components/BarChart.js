@@ -24,7 +24,9 @@ ChartJS.register(
 )
 
 
-const BarChart = ({data,label}) => {
+const BarChart = () => {
+
+  
 
   const [chartData, setChartData] = useState({
     datasets: []
@@ -35,7 +37,7 @@ const BarChart = ({data,label}) => {
   useEffect(()=> {
 
     setChartData({
-      labels: label,
+      labels: ['1st', '2nd', '3rd', '4th'],
       datasets: [
         {
           label: "sales report 2023",
@@ -44,7 +46,7 @@ const BarChart = ({data,label}) => {
           borderWidth: 0,
           hoverBackgroundColor: "#408C7D",
           hoverBorderColor: "#408C7D",
-          data: data,
+          data: [1, 2, 50, 56],
         },
       ],
       

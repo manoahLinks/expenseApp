@@ -15,6 +15,7 @@ import PieChart from './components/PieChart';
 import DailyActivityReportSheet from './pages/DailyActivityReportSheet';
 import Finance from './pages/subpages/Finance';
 import Products from './pages/subpages/Products';
+import RawmaterialChart from './pages/rawmaterialpages/component/RawmaterialChart';
 
 
 
@@ -38,16 +39,16 @@ function App() {
                 <Route path={`/analytics`}    element={user ? <AnalyticsPage /> : <Navigate to={`/`}/>} />
                 <Route path={`/myprofile`}    element={user ? <MyProfile /> : <Navigate to={`/`}/>} />
                 <Route path={`/sales`}        element={user ? <SalesPage/> : <Navigate to={`/`}/>} />
-                <Route path={`/rawmaterials`}        element={user ? <RawMaterials/> : <Navigate to={`/`}/>} />
+                <Route path={`/rawmaterial`}        element={user ? <RawMaterials/> : <Navigate to={`/`}/>} />
                 <Route path={`/marketing`}        element={user ? <Marketing/> : <Navigate to={`/`}/>} />
                 <Route path={`/finance`}        element={user ? <Finance/> : <Navigate to={`/`}/>} />
-                <Route path={`/products`}        element={user ? <Products/> : <Navigate to={`/`}/>} />
+                <Route path={`/product`}        element={user ? <Products/> : <Navigate to={`/`}/>} />
               </Routes>
             </div>
             
             <div className='grid grid-cols-1 gap-y-2 h-full '>
               <div className='grid grid-cols-1 m-4 p-4 border'>
-                
+                <PieChart/>
               </div>
               <div className='grid grid-cols-1'>
                 

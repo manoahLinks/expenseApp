@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import AttendancePage from '../AttendacePage'
+import ProductionChart from "../productPages/components/ProductionChart";
 
 const MyProfile = () => {
 
@@ -53,7 +54,7 @@ const MyProfile = () => {
                 )}
 
                 {currentSection == 3 && ( 
-                    <h4>my job description</h4>
+                    <ProductionChart />
                 )}
 
                 {currentSection == 4 && ( 
