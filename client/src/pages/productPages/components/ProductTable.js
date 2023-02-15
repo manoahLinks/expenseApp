@@ -1,6 +1,6 @@
 const ProductTable = ({data}) => {
     return ( 
-        <div className="grid grid-cols-1">
+        <div className="md:block hidden grid grid-cols-1">
             <table className="table-auto w-full text-xs text-left shadow">
                 <thead>
                     <tr className="border-b grid grid-cols-6">

@@ -1,23 +1,66 @@
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
+import {useDataContext} from '../hooks/useDataContext'
+import { useAuthContext } from "../hooks/useAuthContext";
+import accounting from 'accounting-js'
 
 const DailyActivityReportSheet = () => {
 
+    const [quantities, setQuantities] = useState({})
+    const [sales, setSales] = useState({})
+    const [bags, setBags] = useState({})
     const [currentSection, setCurrentSection] = useState(1)
     const [activeTab, setActiveTab] = useState(1)
+    const {user} = useAuthContext()
+    const {data, dispatch} = useDataContext()
+
+    const handleQuantities= (productId, quantity) => {
+        // update the quantity state variable with the quantity entered by the user
+        setQuantities({ ...quantities, [productId]: quantity });
+      };
+
+      const handleSales= (productId, quantity) => {
+        // update the quantity state variable with the quantity entered by the user
+        setSales({ ...sales, [productId]: quantity });
+      };
+
+      const handleBags= (productId, bag) => {
+        // update the quantity state variable with the quantity entered by the user
+        setBags({ ...bags, [productId]: bag });
+      };
 
     const handleClick = (section) => {
         setCurrentSection(section)
         setActiveTab(section)
     }
 
+    useEffect(()=>{
+
+        const fetchData = async () => {
+            const response = await fetch(`http://localhost:5500/api/product` , {
+                headers:{
+                    'Authorization': `Bearer ${user.token}`
+                }
+            })
+            const json = await response.json()
+
+            if(response.ok){
+                dispatch({type: 'SET_DATA', payload: json})
+            }    
+        }
+        if(user){
+            fetchData()
+        }
+        
+    }, [dispatch, user])
+
     return ( 
         <div className="flex flex-col">
             <div className='p-2 overflow-x-auto justify-evenly text-xs border-b flex items-center gap-x-1'>
-                <span className={`md:p-2 hover:bg-primary font-semibold hover:text-white hover:font-semibold p-1 justify-center border rounded flex gap-x-2`}>
+                <span onClick={()=>{handleClick(0)}} className={`${ activeTab == 0 ? `bg-primary text-white` : `bg-white`} md:p-2 hover:bg-primary font-semibold hover:text-white hover:font-semibold p-1 items-center border rounded flex gap-x-2`}>
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className={`w-4 h-4`}>
                          <path fillRule="evenodd" d="M10.362 1.093a.75.75 0 00-.724 0L2.523 5.018 10 9.143l7.477-4.125-7.115-3.925zM18 6.443l-7.25 4v8.25l6.862-3.786A.75.75 0 0018 14.25V6.443zm-8.75 12.25v-8.25l-7.25-4v7.807a.75.75 0 00.388.657l6.862 3.786z" clipRule="evenodd" />
                     </svg>
-                    <h4>Quick activity</h4>
+                    <h4>Material cost</h4>
                 </span>
                 <span onClick={()=>{handleClick(1)}} className={`${ activeTab == 1 ? `bg-primary text-white` : `bg-white`} md:p-2 hover:bg-primary font-semibold hover:text-white hover:font-semibold p-1 items-center border rounded flex gap-x-2`}>
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className={`w-3 h-3 ${ activeTab == 1 ? `-rotate-12` : ``}`}>
@@ -52,25 +95,63 @@ const DailyActivityReportSheet = () => {
                 </span>
             </div>
             <form className="p-5 grid grid-cols-1 justify-items-center">
-                {currentSection === 1 && ( 
-                    <div className="gap-y-4 grid grid-cols-1">
-                        
+                {currentSection === 0 && ( 
+                    <div className="grid grid-cols-1">
                         <table className="table table-auto w-full text-left border-collapse">
                             <thead>
-                                <tr className="border-t grid grid-cols-4 gap-x-4">
-                                    <th className="px-4 py-2">Product Type</th>
-                                    <th className="px-4 py-2">Qty produced</th>
-                                    <th className="px-4 py-2">unit price</th>
-                                    <th className="px-4 py-2">Amount</th>
+                                <tr className="grid grid-cols-4">
+                                    <th className="px-4 py-2 border">Raw material</th>
+                                    <th className="px-4 py-2 border">Quantity</th>
+                                    <th className="px-4 py-2 border">unit price</th>
+                                    <th className="px-4 py-2 border">Amount</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr className="border grid grid-cols-4 gap-x-4 p-1">
-                                    <input className="text-xs border-slate-300 rounded" type="text" name="" id="" />
-                                    <input className="text-xs border-slate-300 rounded" type="number" name="" id="" />
-                                    <input className="text-xs border-slate-300 rounded" type="number" name="" id="" />
-                                    <input className="text-xs border-slate-300 rounded" type="number" name="" id="" />
+                                {data && data.map((product)=>(
+                                    <tr className="grid grid-cols-4" key={product._id}>
+                                        
+                                    </tr>
+                                ))}
+                                
+                            </tbody>
+                        </table>
+                    </div>
+                )}
+
+                {currentSection === 1 && ( 
+                    <div className="gap-y-4 grid grid-cols-1">
+                        
+                        <table className="table table-auto w-full text-xs border-collapse">
+                            <thead>
+                                <tr className="grid grid-cols-7 border-b bg-primary bg-opacity-20">
+                                    <th className="px-4 py-2">Product Type</th>
+                                    <th className="px-4 py-2">Bags produced</th>
+                                    <th className="px-4 py-2">loaves yielded</th>
+                                    <th className="px-4 py-2">unit price</th>
+                                    <th className="px-4 py-2">Expected yield</th>
+                                    <th className="px-4 py-2">Actual yield</th>
+                                    <th className="px-4 py-2">variance</th>
                                 </tr>
+                            </thead>
+                            <tbody>
+                                {data && data.map((product)=>(
+                                    <tr className="grid grid-cols-7 border-b" key={product._id}>
+                                        <td className="px-4 py-2">{product.name}</td>
+                                        <input className="px-4 py-2 border-none bg-sky-200 text-xs" type="number" 
+                                            value={bags[product._id] || ''}
+                                            onChange={(e)=>{handleBags(product._id , e.target.value)}}
+                                        />
+                                        <input className="px-4 py-2 border-none bg-sky-200 text-xs" type="number" 
+                                            value={quantities[product._id] || ''}
+                                            onChange={(e)=>{handleQuantities(product._id , e.target.value)}}
+                                        />
+                                        <td className="px-4 py-2">{product.productionPrice}</td>
+                                        <td className="px-4 py-2">{accounting.formatNumber(2500 * bags[product._id])}</td>
+                                        <td className="px-4 py-2">{accounting.formatNumber(product.productionPrice * quantities[product._id])}</td>
+                                        <td className="px-4 py-2 bg-green-200 text-green-500">{accounting.formatNumber((2500 * bags[product._id]) - (product.productionPrice * quantities[product._id]))}</td>
+                                    </tr>
+                                ))}
+                                
                             </tbody>
                         </table>
                     </div>
@@ -78,7 +159,30 @@ const DailyActivityReportSheet = () => {
 
                 {currentSection === 2 && ( 
                     <div className="grid grid-cols-1">
-                        <h4>Section2</h4>
+                        <table className="table table-auto text-center w-full text-xs border-collapse">
+                            <thead>
+                                <tr className="grid grid-cols-4 border-b bg-primary bg-opacity-20">
+                                    <th className="px-4 py-2">Product Type</th>
+                                    <th className="px-4 py-2">Qty Sold</th>
+                                    <th className="px-4 py-2">unit price</th>
+                                    <th className="px-4 py-2">Revenue</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {data && data.map((product)=>(
+                                    <tr className="grid grid-cols-4 border-b" key={product._id}>
+                                        <td className="px-4 py-2">{product.name}</td>
+                                        <input className="text-xs text-center border-none bg-amber-100 text-amber-500" type="number" 
+                                            value={sales[product._id] || ''}
+                                            onChange={(e)=>{handleSales(product._id , e.target.value)}}
+                                        />
+                                        <td>{product.marketPrice}</td>
+                                        <td className="bg-green-200 text-green-500">{sales[product._id] * product.marketPrice}</td>
+                                    </tr>
+                                ))}
+                                
+                            </tbody>
+                        </table>
                     </div>
                 )}
 

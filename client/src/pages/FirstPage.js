@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-
+import PieChart from '../components/PieChart'
 const Homepage = () => {
     return ( 
         <div className="grid grid-cols-1 items-center">
@@ -30,7 +30,15 @@ const Homepage = () => {
                     <h4 className="text-center md:text-sm font-semibold">Finance</h4>
                 </Link>
             </div>
-            
+            <div className="grid grid-cols-2">
+                
+                <div className="grid grid-cols-1">
+                    <PieChart></PieChart>
+                </div>
+                <div className="grid grid-cols-1">
+                    <PieChart></PieChart>
+                </div>
+            </div>
         </div>
      );
 }

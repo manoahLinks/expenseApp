@@ -2,12 +2,13 @@ import {useState, useEffect } from "react";
 import {useDataContext} from '../../hooks/useDataContext'
 import { useAuthContext } from "../../hooks/useAuthContext";
 
+
 const ProductsForm = () => {
 
     const materialArray = []
+    const [quantities, setQuantities] = useState({})
     const [amount, setAmount] = useState(null)
     const [material, setMaterial] = useState(null)
-    const [weight, setWeight] = useState(null)
     const {data, dispatch} = useDataContext()
     const {user} = useAuthContext()
 
@@ -16,6 +17,12 @@ const ProductsForm = () => {
         materialArray.push({material: material, qty: weight, amount: amount}) 
         console.log(materialArray)
     } 
+
+    const handleQuantities= (materialId, quantity) => {
+        // update the quantity state variable with the quantity entered by the user
+        setQuantities({ ...quantities, [materialId]: quantity });
+      };
+
 
     useEffect(()=>{
 
@@ -40,86 +47,71 @@ const ProductsForm = () => {
 
  
     return ( 
-        <div className="grid grid-cols-1 gap-y-4">
+        <div className="grid grid-cols-1 gap-y-2">
             <div className="flex justify-between p-2">
                 <h4 className="font-semibold text-sm">Create a recipe</h4>
             </div>
 
-            <div className="flex gap-x-2 p-2 m-2 bg-gray-200 items-center">
+            <div className="flex gap-x-2 p-2 m-2 bg-gray-50 items-center">
                 <label htmlFor="" className="font-semibold text-sm">Name:</label>
 
                 <input 
                     type="text"
                     placeholder="enter product name"
-                    className="text-sm font-light border-none rounded-md" 
+                    className="text-sm font-light border" 
                 />
             </div>
-            <table className="grid grid-cols-1 m-2  bg-gray-200 rounded-lg">
+            <table className="grid grid-cols-1 m-2  bg-gray-50 rounded-lg">
                 <thead className="grid text-center p-2 grid-cols-5 bg-gray-50">
-                    <th>Raw Material</th>
+                    <th className="col-span-2">Raw Material</th>
                     <th>weight (grams)</th>
                     <th>price per grm</th>
                     <th>Cost</th>
-                    <th>action</th>
                 </thead>
                 <tbody className="grid grid-cols-1">
-                    
-                        <tr className="grid grid-cols-5 text-center gap-x-0.5 p-2 items-center justify-center">
+                    {data && data.map((material)=>(
+                        <tr key={material._id} className="grid grid-cols-5 text-center gap-x-0.5 p-2 items-center justify-center">
                        
-                            <select 
+                            <input 
                                 type="text"
                                 placeholder="material"
-                                className="text-xs border-none rounded-md font-light"
-                                value= {material}
+                                className="text-xs font-light col-span-2"
+                                value= {material.name}
                                 onChange={(e)=>{setMaterial(e.target.value)}} 
-                            >
-                            <option value="">select</option>    
-                            {data && data.map((material)=>(
-                                <option
-                                    key={material._id} 
-                                    value={material.name}
-                                >{material.name}</option>
-                            ))}
-                            </select>
+                            />   
                             
                             <input 
                                 type="number"
                                 placeholder="grms"
-                                className="text-xs border-none rounded-md font-light"
-                                onChange={(e)=>{setWeight(e.target.value)}}
-                                value={weight}  
+                                className="text-xs font-light"
+                                value={quantities[material._id] || ''}
+                                onChange={(e)=>{handleQuantities(material._id , e.target.value)}} 
                             />
                         
                             <input 
                                 type="number" 
-                                className="text-xs font-light  border-none rounded-md"
-                                value={``}
+                                className="text-xs font-light"
+                                value={material.netPrice/ material.netWeight}
                             />
     
                             <input 
                                 type="number" 
-                                className="text-xs font-light  border-none rounded-md"
+                                className="text-xs bg-amber-300 font-light"
                                 onChange={(e)=>{setAmount(e.target.value)}}
-                                value={amount}
+                                value={quantities[material._id] * (material.netPrice/ material.netWeight)}
                             />
-                            
-                            <button onClick={addMaterial} className="p-1 bg-green-300 flex w-6/12 ml-4 items-center justify-center text-white rounded">
-                                <h4>Add</h4>
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-4 h-4">
-                                    <path strokeLinecap="round" strokeLinejoin="round" d="M12 9v6m3-3H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
-                                </svg>
-                            </button>
                           
                         </tr>
-                    
+                    ))}
                     
 
                     <tr className="grid grid-cols-5 text-center gap-x-0.5 p-2 items-center justify-center">
-                        <h4 className="font-semibold">Total</h4>
+                        <h4 className="font-semibold col-span-2 text-red-500">Total</h4>
                         <input 
                             type="number"
                             className="text-xs border border-green-300 bg-green-100 rounded-md font-light"  
-                            disabled 
+                            disabled
+                            value={``} 
                         />
 
                         <input 
@@ -150,6 +142,7 @@ const ProductsForm = () => {
                     
                 </tbody>
             </table>
+            
             {/* <ul>
                 {materialArray.map((mat)=>(
                     <li>{mat.qty}</li>
