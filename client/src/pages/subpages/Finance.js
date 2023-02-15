@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import Transactions from "../../components/Transactions";
+import SupplierList from "../suppliers/SuppliersList";
 
 const Finance = () => {
 
@@ -59,7 +60,7 @@ const Finance = () => {
                 )}
 
                {currentSection == 2 && ( 
-                    <h4>dashboard 2</h4>
+                    <SupplierList/>
                 )}
 
                {currentSection == 3 && ( 

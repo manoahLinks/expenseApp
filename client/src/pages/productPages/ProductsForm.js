@@ -52,13 +52,13 @@ const ProductsForm = () => {
                 <h4 className="font-semibold text-sm">Create a recipe</h4>
             </div>
 
-            <div className="flex gap-x-2 p-2 m-2 bg-gray-50 items-center">
+            <div className="flex gap-x-2 bg-gray-50 items-center">
                 <label htmlFor="" className="font-semibold text-sm">Name:</label>
 
                 <input 
                     type="text"
                     placeholder="enter product name"
-                    className="text-sm font-light border" 
+                    className="text-xs font-light border" 
                 />
             </div>
             <table className="grid grid-cols-1 m-2  bg-gray-50 rounded-lg">
