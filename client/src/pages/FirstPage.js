@@ -32,12 +32,6 @@ const Homepage = () => {
             </div>
             <div className="grid grid-cols-2">
                 
-                <div className="grid grid-cols-1">
-                    <PieChart></PieChart>
-                </div>
-                <div className="grid grid-cols-1">
-                    <PieChart></PieChart>
-                </div>
             </div>
         </div>
      );
