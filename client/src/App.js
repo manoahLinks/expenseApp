@@ -10,16 +10,13 @@ import MyProfile from './pages/subpages/MyProfile';
 import SalesPage from './pages/subpages/SalesPage';
 import RawMaterials from './pages/subpages/RawMaterials';
 import Marketing from './pages/subpages/Marketing';
-import BarChart from './components/BarChart';
 import PieChart from './components/PieChart';
 import DailyActivityReportSheet from './pages/DailyActivityReportSheet';
 import Finance from './pages/subpages/Finance';
 import Products from './pages/subpages/Products';
-import RawmaterialChart from './pages/rawmaterialpages/component/RawmaterialChart';
 
 
-
-function App() {
+function App () {
 
   const {user} = useAuthContext()
 

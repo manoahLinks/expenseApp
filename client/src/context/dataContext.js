@@ -12,7 +12,7 @@ export const dataReducer = (state, action) => {
             return {
                 data : [action.payload, ...state.data]
             }
-    
+       
         default:
             return state
     }
@@ -21,8 +21,9 @@ export const dataReducer = (state, action) => {
 export const DataContextProvider = ({ children }) => {
 
     const [state, dispatch] = useReducer(dataReducer, {
-        data: null
+        data: [], quantities: {}
     })
+    
 
     return (
         <DataContext.Provider value={{...state, dispatch}}>
