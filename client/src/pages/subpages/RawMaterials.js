@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import RawmaterialList from "../rawmaterialpages/RawmaterialList";
+import RawmaterialForm from "../rawmaterialpages/RawmaterialForm"
 
 const RawMaterials = () => {
 
@@ -15,11 +16,11 @@ const RawMaterials = () => {
     return ( 
         <div className="flex flex-col gap-y-4">
            <div className='md:p-3 p-2 text-xs grid grid-cols-4 items-center md:gap-y-2 gap-x-1 border-b'>
-                <span onClick={()=>{handleClick(1)}} className={`${activeTab == 1 ? `shadow-[inset_-2px_-2px_5px_rgba(255,255,255,0.7),inset_3px_3px_5px_rgba(0,0,0,0.1)]` :``} shadow-[-2px_-2px_10px_rgba(255,255,255,1),3px_3px_10px_rgba(0,0,0,0.2)] cursor-pointer md:py-2 py-1 justify-center rounded flex gap-x-2`}>
+                <span onClick={()=>{handleClick(1)}} className={`${activeTab == 1 ? `bg-primary text-white` : ``} cursor-pointer md:py-2 hover:bg-primary hover:text-white py-1 justify-center border rounded flex gap-x-2`}>
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className={`w-4 h-4 ${activeTab == 1 ? `-rotate-12`: ``}`}>
                          <path fillRule="evenodd" d="M10.362 1.093a.75.75 0 00-.724 0L2.523 5.018 10 9.143l7.477-4.125-7.115-3.925zM18 6.443l-7.25 4v8.25l6.862-3.786A.75.75 0 0018 14.25V6.443zm-8.75 12.25v-8.25l-7.25-4v7.807a.75.75 0 00.388.657l6.862 3.786z" clipRule="evenodd" />
                     </svg>
-                    <h4>Dashboad</h4>
+                    <h4>new rawmaterial</h4>
                 </span>
                 <span onClick={()=>{handleClick(2)}} className={`${activeTab == 2 ? `bg-primary text-white` : ``} cursor-pointer md:py-2 hover:bg-primary hover:text-white py-1 justify-center border rounded flex gap-x-2`}>
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className={`w-4 h-4 ${activeTab == 2 ? `-rotate-12`: ``}`}>
@@ -39,13 +40,13 @@ const RawMaterials = () => {
                         <path d="M3 4a2 2 0 00-2 2v1.161l8.441 4.221a1.25 1.25 0 001.118 0L19 7.162V6a2 2 0 00-2-2H3z" />
                         <path d="M19 8.839l-7.77 3.885a2.75 2.75 0 01-2.46 0L1 8.839V14a2 2 0 002 2h14a2 2 0 002-2V8.839z" />
                     </svg>
-                    <h4>Email</h4>
+                    <h4>Analytics</h4>
                 </span>
             </div>
             <div className="p-5 rounded-md shadow">
 
                 {currentSection == 1 && ( 
-                    <h4>dashboard</h4>
+                    <RawmaterialForm />
                 )}
 
                 {currentSection == 2 && ( 

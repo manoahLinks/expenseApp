@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import CustomerList from "../marketing/CustomerList";
+import CustomerForm from '../marketing/CustomerForm';
 
 const Marketing = () => {
 
@@ -57,7 +58,7 @@ const Marketing = () => {
             
           <div className="grid grid-cols-1 p-5">
                {currentSection == 1 && (
-                    <h4>section 1</h4>
+                    <CustomerForm />
                 )}
 
                 {currentSection == 2 && (

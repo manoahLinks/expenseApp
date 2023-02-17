@@ -1,21 +1,21 @@
 const { default: mongoose } = require('mongoose')
-const Withdrawal = require('../models/withdrawal')
+const Transaction = require('../models/transactions')
 
-// get all withdrawals
-exports.getAllWithdrawals = async (req, res) => {
+// get all transactions
+exports.getAllTransactions = async (req, res) => {
 
     try {
         
-        const allWithdrawals = await Withdrawal.find({})
-        return res.status(200).json(allWithdrawals)
+        const allTransactions = await Transaction.find({})
+        return res.status(200).json(allTransactions)
 
     } catch (error) {
         res.status(400).json(error.message)
     }
 }
 
-// get a single withdrawal
-exports.getSingleWithdrawal = async (req, res) => {
+// get a single transaction
+exports.getSingleTransaction = async (req, res) => {
 
     const {id} = req.params 
 
@@ -25,16 +25,16 @@ exports.getSingleWithdrawal = async (req, res) => {
             throw Error('not a valid id')   
         }
 
-        const foundWithdrawal = await Withdrawal.findById(id)
-        return res.status(200).json(foundWithdrawal)
+        const foundTransaction = await Transaction.findById(id)
+        return res.status(200).json(foundTransaction)
 
     } catch (error) {
         res.status(400).json(error.message)
     }
 }
 
-// update an expense
-exports.updateWithdrawal = async (req, res) => {
+// update a transaction
+exports.updateTransaction = async (req, res) => {
     const {id} = req.params
 
     try {
@@ -44,22 +44,22 @@ exports.updateWithdrawal = async (req, res) => {
         }
         
         const updatedBy = req.user._id
-        const updatedWithdrawal = await Withdrawal.findByIdAndUpdate(id, {})
-        return res.status(200).json(updatedWithdrawal)
+        const updatedTransaction = await Transaction.findByIdAndUpdate(id, {})
+        return res.status(200).json(updatedTransaction)
 
     } catch (error) {
         res.status(400).json(error.message)
     }
 }
 
-// delete an expense
+// delete a transaction
 exports.deleteWithdrawal = async (req, res) => {
     const {id} = req.params 
 
     try {
         
-        const deletedWithdrawal = await Withdrawal.findByIdAndDelete(id)
-        return res.status(200).json(deletedWithdrawal)
+        const deletedTransaction = await Transaction.findByIdAndDelete(id)
+        return res.status(200).json(deletedTransaction)
 
     } catch (error) {
         res.status(400).json(error.message)

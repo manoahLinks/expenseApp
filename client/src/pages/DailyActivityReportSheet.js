@@ -137,11 +137,11 @@ const DailyActivityReportSheet = () => {
                                 {data && data.map((product)=>(
                                     <tr className="grid grid-cols-7 border-b" key={product._id}>
                                         <td className="px-4 py-2">{product.name}</td>
-                                        <input className="px-4 py-2 border-none bg-sky-200 text-xs" type="number" 
+                                        <input className="px-4 py-2 border-slate-300 focus:border-slate-300 focus:outline-none bg-sky-200 text-xs" type="number" 
                                             value={bags[product._id] || ''}
                                             onChange={(e)=>{handleBags(product._id , e.target.value)}}
                                         />
-                                        <input className="px-4 py-2 border-none bg-sky-200 text-xs" type="number" 
+                                        <input className="px-4 py-2 border-slate-300 focus:border-slate-300 focus:outline-none bg-sky-200 text-xs" type="number" 
                                             value={quantities[product._id] || ''}
                                             onChange={(e)=>{handleQuantities(product._id , e.target.value)}}
                                         />
@@ -161,8 +161,13 @@ const DailyActivityReportSheet = () => {
                     <div className="grid grid-cols-1">
                         <table className="table table-auto text-center w-full text-xs border-collapse">
                             <thead>
-                                <tr className="grid grid-cols-4 border-b bg-primary bg-opacity-20">
+                                <tr className="grid grid-cols-9 border-b bg-primary bg-opacity-20">
                                     <th className="px-4 py-2">Product Type</th>
+                                    <th className="px-4 py-2">Opening stock</th>
+                                    <th className="px-4 py-2">Qty recieved</th>
+                                    <th className="px-4 py-2">Total</th>
+                                    <th className="px-4 py-2">comp/incen/ ration</th>
+                                    <th className="px-4 py-2">Closing stock</th>
                                     <th className="px-4 py-2">Qty Sold</th>
                                     <th className="px-4 py-2">unit price</th>
                                     <th className="px-4 py-2">Revenue</th>
@@ -170,12 +175,29 @@ const DailyActivityReportSheet = () => {
                             </thead>
                             <tbody>
                                 {data && data.map((product)=>(
-                                    <tr className="grid grid-cols-4 border-b" key={product._id}>
+                                    <tr className="grid grid-cols-9 border-b" key={product._id}>
                                         <td className="px-4 py-2">{product.name}</td>
-                                        <input className="text-xs text-center border-none bg-amber-100 text-amber-500" type="number" 
+                                        <td>{`0`}</td>
+                                        <input 
+                                            type="number"
+                                            className="text-xs text-center border-none bg-blue-100 text-amber-500"  
+                                        />
+                                        <td>{`0`}</td>
+                                        <input 
+                                            type="number"
+                                            className="text-xs text-center border-none bg-blue-100 text-amber-500" 
+                                        />
+                                        <input 
+                                            type="number"
+                                            className="text-xs text-center border-none bg-blue-100 text-amber-500" 
+                                        />
+                                        <input 
+                                            className="text-xs text-center border-none bg-amber-100 text-amber-500" 
+                                            type="number" 
                                             value={sales[product._id] || ''}
                                             onChange={(e)=>{handleSales(product._id , e.target.value)}}
                                         />
+
                                         <td>{product.marketPrice}</td>
                                         <td className="bg-green-200 text-green-500">{sales[product._id] * product.marketPrice}</td>
                                     </tr>

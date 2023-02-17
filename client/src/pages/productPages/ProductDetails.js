@@ -1,10 +1,10 @@
 const ProductDetails = ({modalOff}) => {
     return ( 
-        <div className="grid grid-cols-1 md:grid-cols-4 fixed mt-16 inset-0 bg-gray-300 bg-opacity-20">
+        <div className="grid grid-cols-1 md:grid-cols-4 fixed  inset-0 bg-primary bg-opacity-20">
             <div>
 
             </div>
-            <div className="flex flex-col gap-y-4 p-5 modal md:col-span-2 bg-white overflow-scroll">
+            <div className="flex flex-col gap-y-4 p-5 modal my-16 md:col-span-2 bg-white overflow-y-scroll">
                 <div className="grid grid-cols-3">
                     <div onClick={modalOff} className="flex">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor" className="w-5 h-5">

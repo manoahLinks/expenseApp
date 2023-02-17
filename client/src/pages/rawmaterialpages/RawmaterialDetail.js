@@ -10,12 +10,12 @@ const RawmaterialDetail = ({modalOff, id}) => {
 
 
     return ( 
-        <div className="grid grid-cols-1 md:grid-cols-4 md:mt-16 fixed inset-0 bg-gray-400  bg-opacity-20">
+        <div className="grid grid-cols-1 md:grid-cols-4  fixed inset-0 bg-primary  bg-opacity-20">
             <div>
 
             </div>
 
-            <div className="flex flex-col modal gap-y-4 md:col-span-2 bg-white p-5">
+            <div className="flex flex-col modal gap-y-4 md:col-span-2 md:my-12 bg-white p-5">
                 <div className="grid grid-cols-3">
                     <div onClick={modalOff} className="flex text-green-700">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor" className="w-5 h-5">

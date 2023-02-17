@@ -9,7 +9,7 @@ const express = require('express'),
       appRoutes = require('./routes/expense'),
       dbarRoute = require('./routes/dbar'),
       accountRoute = require('./routes/account'),
-      depositRoute = require('./routes/deposit'),
+      transactionRoute = require('./routes/transactions'),
       rawmaterialRoute = require('./routes/rawmaterials'),
       productRoute = require('./routes/product'),
       customerRoute = require('./routes/customers'),
@@ -51,7 +51,7 @@ app.use(bodyParser.json())
 app.use('/api/expense', isAuth, appRoutes)
 app.use('/api/dbar', isAuth, dbarRoute)
 app.use('/api/account', isAuth, accountRoute)
-app.use('/api/deposit', isAuth, depositRoute)
+app.use('/api/transaction', isAuth, transactionRoute)
 app.use('/api/rawmaterial', isAuth, rawmaterialRoute)
 app.use('/api/product', isAuth, productRoute)
 app.use('/api/customer', isAuth,  customerRoute)

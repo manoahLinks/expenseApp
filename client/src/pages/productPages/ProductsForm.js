@@ -66,17 +66,16 @@ const ProductsForm = () => {
 
     return ( 
         <div className="grid grid-cols-1 gap-y-2">
-            <div className="flex justify-between p-2">
-                <h4 className="font-semibold text-sm">Create a recipe</h4>
-            </div>
+            
+            <h4 className="font-semibold text-primary uppercase text-center mb-4 text-sm">Create a new recipe</h4>
 
-            <div className="flex gap-x-2 m-2 p-2 bg-gray-50 items-center">
+            <div className="flex gap-x-2 m-2 items-center">
                 <label htmlFor="" className="font-semibold text-xs">Name:</label>
 
                 <input 
                     type="text"
                     placeholder="enter product name"
-                    className="text-xs w-full rounded font-light border" 
+                    className="text-xs border-slate-300 focus:border-slate-300 focus:outline-none rounded font-light border" 
                 />
             </div>
             <table className="grid grid-cols-1 m-2 text-xs  bg-gray-50 rounded-lg">
@@ -93,7 +92,7 @@ const ProductsForm = () => {
                             <input 
                                 type="text"
                                 placeholder="material"
-                                className="text-xs font-light col-span-2"
+                                className="text-xs border-slate-300 focus:border-slate-300 focus:outline-none font-light col-span-2"
                                 value= {material.name}
                                 onChange={(e)=>{setMaterial(e.target.value)}} 
                             />   
@@ -101,20 +100,20 @@ const ProductsForm = () => {
                             <input 
                                 type="number"
                                 placeholder="grms"
-                                className="text-xs font-light"
+                                className="text-xs border-slate-300 focus:border-slate-300 focus:outline-none font-light"
                                 value={quantities[material._id]}
                                 onChange={(e)=>{handleQuantities(material._id , e.target.value)}} 
                             />
                         
                             <input 
                                 type="number" 
-                                className="text-xs font-light"
+                                className="text-xs border-slate-300 focus:border-slate-300 focus:outline-none font-light"
                                 value={material.netPrice/ material.netWeight}
                             />
     
                             <input 
                                 type="number" 
-                                className="text-xs bg-amber-200 font-light"
+                                className="text-xs border-slate-300 focus:border-slate-300 focus:outline-none bg-amber-200 font-light"
                                 onChange={(e)=>{setAmount(e.target.value)}}
                                 value={quantities[material._id] * (material.netPrice/ material.netWeight)}
                             />
@@ -146,49 +145,49 @@ const ProductsForm = () => {
                         />
 
                     </tr>
-                    <div className="grid grid-cols-1 p-3 rounded bg-gray-300 gap-y-2 mt-4">
+                    <div className="grid grid-cols-1 p-3 rounded border-y gap-y-2 mt-4">
                         <tr className="grid grid-cols-4 items-center justify-center">
-                            <h4 className="text-white">Cost of Labour</h4>
+                            <h4 className="">Cost of Labour</h4>
                             <input 
                                 type="text" 
-                                className="text-xs border rounded font-light"
+                                className="text-xs border-slate-300 focus:border-slate-300 focus:outline-none rounded font-light"
                                 value={labour}
                                 onChange={(e) =>{setLabour(e.target.value)}} 
                             />
                         </tr>
                         <tr className="grid grid-cols-4 items-center justify-center">
-                            <h4 className="text-white">Cost of packaging</h4>
+                            <h4 className="">Cost of packaging</h4>
                             <input 
                                 type="text" 
-                                className="text-xs rounded font-light"
+                                className="text-xs border-slate-300 focus:border-slate-300 focus:outline-none rounded font-light"
                                 value={packaging}
                                 onChange={(e)=>{setPackaging(e.target.value)}}  
                             />
                         </tr>
                         <tr className="grid grid-cols-4 items-center justify-center">
-                            <h4 className="text-white">Cost of Rent</h4>
+                            <h4 className="">Cost of Rent</h4>
                             <input 
                                 type="text" 
-                                className="text-xs rounded font-light"
+                                className="text-xs border-slate-300 focus:border-slate-300 focus:outline-none rounded font-light"
                                 value={rent}
                                 onChange={(e)=>{setRent(e.target.value)}}  
                             />
                         </tr>
                         <tr className="grid grid-cols-4 items-center justify-center">
-                            <h4 className="text-white">Cost of Energy</h4>
+                            <h4 className="">Cost of Energy</h4>
                             <input 
                                 type="text" 
-                                className="text-xs rounded font-light"
+                                className="text-xs border-slate-300 focus:border-slate-300 focus:outline-none rounded font-light"
                                 value={energy}
                                 onChange={(e)=>{setEnergy(e.target.value)}}  
                             />
 
 
                             <div className="col-span-2 ml-2 grid grid grid-cols-2 items-center">
-                                <h4 className="text-white">Total prod. overhead</h4>
+                                <h4 className="">Total prod. overhead</h4>
                                 <input 
                                     type="number"
-                                    className="text-xs rounded bg-green-100 text-green-500"
+                                    className="text-xs border-slate-300 focus:border-slate-300 focus:outline-none rounded bg-green-100 text-green-500"
                                     value={calculateProdOverhead()}  
                                 />
                             </div>

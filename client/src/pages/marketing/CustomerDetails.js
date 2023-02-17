@@ -2,11 +2,11 @@
 const CustomerDetails = ({modalOff, customer}) => {
 
     return ( 
-        <div className="grid h-screen md:mt-16 grid-cols-1 md:grid-cols-4 fixed inset-0 bg-gray-300 bg-opacity-20">
+        <div className="grid h-screen  grid-cols-1 md:grid-cols-4 fixed inset-0 bg-primary bg-opacity-20">
             <div>
 
             </div>
-            <div className="flex flex-col md:col-span-2 bg-white p-5 gap-y-8 modal">
+            <div className="flex flex-col md:my-16 md:col-span-2 bg-white p-5 gap-y-8 modal">
                 <div className="grid grid-cols-3 text-green-700">
                     <div className="flex rounded-full" onClick={modalOff}>
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"  strokeWidth={2.5} fill="currentColor" className="w-5 h-5 md:w-8 md:h-8">

@@ -13,9 +13,9 @@ const NavBar = () => {
   }
 
     return ( 
-        <div className='fixed top-0 z-10 bg-gray-200 shadow w-full flex justify-between md:p-2 p-1 border-b'>
+        <div className='fixed top-0 z-10 bg-primary shadow w-full flex justify-between md:p-2 p-1 border-b'>
             <div className='flex items-center'>
-              <h4 className="font-bold text-md text-primary">SMART WORK</h4>
+              <h4 className="font-bold text-md text-white">SMART WORK</h4>
             </div>
             <div className='flex items-center'>
 

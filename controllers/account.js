@@ -1,6 +1,6 @@
 const mongoose = require('mongoose')
 const Account = require('../models/account'),
-        Deposit = require('../models/deposit')
+        Transaction = require('../models/transactions')
 
 
 // getting all accounts in database
@@ -74,7 +74,7 @@ exports.fundAccount = async (req, res) => {
             const accountName = foundAcct.name
             const depositedBy = req.user._id
             // creating a new deposit transaction
-            let newDeposit = await Deposit.create({amount, depositedBy, accountName})
+            let newDeposit = await Transaction.create({amount, depositedBy, accountName})
 
             // updating the account with the new balance addeded above
             let account = await Account.findOneAndUpdate({name: balance.name}, {

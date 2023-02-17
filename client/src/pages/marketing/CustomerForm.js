@@ -55,20 +55,17 @@ const CustomerForm = () => {
     }
 
     return ( 
-        <div className="grid grid-cols-1 gap-y-2">
+        <div className="grid grid-cols-1 gap-y-2 justify-items-center">
             {success && <AlertBox message={`successful`} />}
-            <h4 className="text-green-500 m-2 font-semibold text-sm p-2">Register new customer</h4>
+            <h4 className="text-primary m-2 text-center font-semibold text-md p-2">Register new customer</h4>
 
-            <div className="grid grid-cols-2 border">
-                <div className="flex hidden md:block">
-                    <h4>Register new customer</h4>
-                </div>
-                <form className="flex flex-col gap-y-2 px-2 py-4 bg-gray-100" onSubmit={handleSubmit}>
+            <div className="grid grid-cols-1 shadow md:w-9/12 w-full">
+                <form className="flex flex-col gap-y-2 px-2 md:p-5 py-4" onSubmit={handleSubmit}>
                     <label htmlFor="">Name:</label>
                     <input 
                         type="text"
                         placeholder="enter customer name"
-                        className="text-xs mb-2 border-none font-light rounded-md shadow-md"
+                        className="text-xs border-slate-300 focus:border-slate-300 focus:outline-none mb-2 font-light rounded"
                         onChange={(e)=>{setName(e.target.value)}}
                         value={name}
                     />
@@ -76,7 +73,7 @@ const CustomerForm = () => {
                     <input 
                         type="number"
                         placeholder="enter phone number"
-                        className="text-xs mb-2 border-none font-light rounded-md shadow-md"
+                        className="text-xs border-slate-300 focus:border-slate-300 focus:outline-none mb-2 font-light rounded"
                         onChange={(e)=>{setPhone(e.target.value)}}
                         value={phone} 
                     />
@@ -85,7 +82,7 @@ const CustomerForm = () => {
                     <input 
                         type="email"
                         placeholder="enter email address"
-                        className="text-xs mb-2 border-none font-light rounded-md shadow-md"
+                        className="text-xs border-slate-300 focus:border-slate-300 focus:outline-none mb-2 font-light rounded"
                         onChange={(e)=>{setEmail(e.target.value)}}
                         value={email} 
                     />
@@ -93,12 +90,12 @@ const CustomerForm = () => {
                     <label htmlFor="">Shop Address:</label>
                     <textarea
                         placeholder="enter shop address"
-                        className="text-xs mb-2 border-none font-light rounded-md shadow-md"
+                        className="text-xs border-slate-300 focus:border-slate-300 focus:outline-none mb-2 font-light rounded"
                         onChange={(e)=>{setAddress(e.target.value)}}
                         value={address} 
                     />
 
-                    <button className="p-2 bg-green-500 rounded-lg text-white">Submit</button>
+                    <button className="p-1 self-end w-9/12 bg-primary font-semibold shadow rounded mt-8 text-sm text-white">Submit</button>
                 </form>
 
             </div>
