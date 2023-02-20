@@ -1,3 +1,5 @@
+import React from "react";
+
 const SupplierTable = ({suppliers}) => {
     return ( 
         <div className="grid gri-cols-1">

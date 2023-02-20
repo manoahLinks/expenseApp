@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
-import {useDataContext} from '../hooks/useDataContext'
-import { useAuthContext } from "../hooks/useAuthContext";
+
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -81,7 +80,7 @@ const BarChart = () => {
           }
       }}
     })
-  }, [dispatch])
+  }, [])
 
 
   return (

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import AlertBox from "../../components/AlertBox";
 import { useAuthContext } from "../../hooks/useAuthContext";
 import { useDataContext } from "../../hooks/useDataContext";
@@ -34,15 +34,15 @@ const RawmaterialForm = () => {
                 'Authorization': `Bearer ${user.token}`,
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({name, netWeight, netPrice, reOrderLevel, supplier}) 
+            body: JSON.stringify({name, netWeight, netPrice, reOrderLevel, supplier, pricePerGram}) 
         })
 
         const json = await response.json()
 
         if(!response.ok){
-            console.log(json.error)
+            console.log(json)
             setIsPending(false)
-            setError(json.error)
+            setError(json)
         }
         if(response.ok){
             setName('')
@@ -61,6 +61,7 @@ const RawmaterialForm = () => {
     return ( 
         <div className="grid grid-cols-1 p-2 gap-y-4 justify-items-center">
             {success && <AlertBox message={`successfully created new Raw material`}/>}
+            {error && <AlertBox message={`error`}/>}
             <h4 className="text-sm font-semibold text-center">Register new raw material</h4>
             <div className="grid md:grid-cols-1 grid-cols-1 shadow w-full md:w-9/12 ">
                 <form className="grid grid-cols-1 gap-y-4 p-5 items-center" onSubmit={handleSubmit}>
@@ -121,7 +122,7 @@ const RawmaterialForm = () => {
                             <input 
                                 type="text"
                                 onChange={(e)=>{setPricePerGram(e.target.value)}}
-                                value={pricePerGram}
+                                value={netPrice/netWeight}
                                 className="text-xs border-slate-300 focus:border-slate-300 focus:outline-none font-light rounded p-2 "
                             
                             />
@@ -137,7 +138,8 @@ const RawmaterialForm = () => {
                             <input 
                                 type="text"
                                 className="text-xs border-slate-300 focus:border-slate-300 focus:outline-none font-light rounded p-2 "
-                            
+                                onChange={(e)=>{setReOrderLevel(e.target.value)}}
+                                value={reOrderLevel}
                             />
                         </div>
 
@@ -156,9 +158,9 @@ const RawmaterialForm = () => {
                                 className="text-xs border-slate-300 focus:border-slate-300 focus:outline-none font-light rounded p-2 "
                             
                             >
-                                <option value="">please select</option>
-                                <option value="">Muabsa</option>
-                                <option value="">Muabsa</option>
+                                <option value={``}>please select</option>
+                                <option value={`Muabsa`}>Muabsa</option>
+                                <option value={`farida`}>farida</option>
                             </select>
                         </div>
 

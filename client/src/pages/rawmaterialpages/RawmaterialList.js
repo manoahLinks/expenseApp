@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import {useDataContext} from '../../hooks/useDataContext'
 import { useAuthContext } from "../../hooks/useAuthContext";
 import RawmaterialDetail from "./RawmaterialDetail";
@@ -8,7 +8,6 @@ const RawmaterialList = () => {
 
     const {data, dispatch} = useDataContext()
     const [modal, setModal] = useState(false)
-    const [selectedExpense, setSelectedExpense] = useState('')
     const {user} = useAuthContext()
 
     const modalOn = () => {
@@ -46,7 +45,7 @@ const RawmaterialList = () => {
             </div>
 
             <div className="grid grid-cols-1 hidden md:block">
-                <RawmaterialTable materials={data}/>
+                <RawmaterialTable materials={data} modalOn={modalOn}/>
             </div>
 
             <div className="md:hidden grid grid-cols-1 gap-y-4 md:gap-y-8 md:gap-x-4 m-2 md:m-5">

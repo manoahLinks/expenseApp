@@ -1,16 +1,13 @@
 import React, {useState, useEffect} from "react";
 import LoadingPage from "./Loading";
-import AlertBox from "./AlertBox";
 import {useDataContext} from '../hooks/useDataContext'
 import { useAuthContext } from "../hooks/useAuthContext";
 
 const Transactions = () => {  
 
     const {user} = useAuthContext()
-    const [deposits, setDeposits] = useState(true)
-    const [expenses, setExpenses] = useState(true)
     const [isPending, setIsPending] = useState(true)
-    const [error, setError] = useState(false) 
+    // eslint-disable-next-line
     const {data, dispatch} = useDataContext()
 
     useEffect(()=>{
@@ -34,24 +31,10 @@ const Transactions = () => {
         
     }, [dispatch, user])
 
-    const handleDeposits = () =>{
-        setExpenses(false)
-        setDeposits(true)
-    }
-
-    const handleAll = () => {
-        setExpenses(true)
-        setDeposits(true)
-    }
-
-    const handleExpenses = () =>{
-        setExpenses(true)
-        setDeposits(false)
-    }
+   
  
     return ( 
         <div className="grid grid-cols-1 bg-gray-100 text-gray-700">
-            {error && <AlertBox message={`failed to find resource check your internet connection`}></AlertBox>}
             <div className="flex items-center p-2 justify-between">
                 <div className="flex">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-4 h-4 text-purple-900">
@@ -63,9 +46,9 @@ const Transactions = () => {
             </div>
 
             <div className="flex justify-evenly p-2">
-                <h4 className="p-1 bg-gray-300 text-white rounded" onClick={handleAll}>All</h4>
-                <h4 className="p-1 bg-gray-300 text-white rounded" onClick={handleDeposits}>Re-imbursements</h4>
-                <h4 className="p-1 bg-gray-300 text-white rounded" onClick={handleExpenses}>Expenses</h4>
+                <h4 className="p-1 bg-gray-300 text-white rounded">All</h4>
+                <h4 className="p-1 bg-gray-300 text-white rounded">Re-imbursements</h4>
+                <h4 className="p-1 bg-gray-300 text-white rounded">Expenses</h4>
             </div>
 
             <div className="flex justify-between p-2">

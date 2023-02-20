@@ -1,6 +1,5 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import AlertBox from "../components/AlertBox";
 import LoadingPage from "../components/Loading";
 import { useSignup } from "../hooks/useSignup";
 

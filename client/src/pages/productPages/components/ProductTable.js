@@ -1,3 +1,5 @@
+import React from "react";
+
 const ProductTable = ({data}) => {
     return ( 
         <div className="md:block hidden grid grid-cols-1">

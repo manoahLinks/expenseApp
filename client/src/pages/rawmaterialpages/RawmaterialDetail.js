@@ -1,13 +1,6 @@
-import { useEffect } from "react"
-import {useDataContext} from '../../hooks/useDataContext'
-import { useAuthContext } from "../../hooks/useAuthContext";
-
+import React from "react"
 
 const RawmaterialDetail = ({modalOff, id}) => {
-
-    const {data, dispatch} = useDataContext()
-    const {user} = useAuthContext()
-
 
     return ( 
         <div className="grid grid-cols-1 md:grid-cols-4  fixed inset-0 bg-primary  bg-opacity-20">

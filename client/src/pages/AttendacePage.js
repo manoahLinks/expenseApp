@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import AlertBox from "../components/AlertBox";
 
 const AttendancePage = () => {
@@ -13,7 +13,7 @@ const AttendancePage = () => {
           } 
       
           function findLocation(position) {
-              if(position.coords.latitude == 9.0764785 && position.coords.longitude == 7.398574){
+              if(position.coords.latitude === 9.0764785 && position.coords.longitude === 7.398574){
                   setError(false)
                   setSuccess(true)
                   setMessage('Welcome once again, your attendance stats has been successfully recorded')

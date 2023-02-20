@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import PieChart from '../components/PieChart'
+
 const Homepage = () => {
     return ( 
         <div className="grid grid-cols-1 items-center">

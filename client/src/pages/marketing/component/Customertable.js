@@ -1,3 +1,5 @@
+import React from "react";
+
 const CustomerTable = ({customers}) => {
     return ( 
         <div className="grid grid-cols-1 p-5">

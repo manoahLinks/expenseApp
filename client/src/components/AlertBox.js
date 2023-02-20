@@ -1,14 +1,6 @@
-import { useState } from "react";
+import React from "react";
 
 const AlertBox = ({message}) => {
-
-    const [close, setClose] = useState(false)
-
-    const handleCancel = () =>{
-        setTimeout(()=>{
-            setClose(true)
-        }, 3000)
-    }
 
     return ( 
         <div className="flex flex-col">

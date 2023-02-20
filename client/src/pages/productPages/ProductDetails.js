@@ -1,3 +1,5 @@
+import React from "react";
+
 const ProductDetails = ({modalOff}) => {
     return ( 
         <div className="grid grid-cols-1 md:grid-cols-4 fixed  inset-0 bg-primary bg-opacity-20">
@@ -167,7 +169,7 @@ const ProductDetails = ({modalOff}) => {
                     </div>
 
                     <div className="p-5 bg-gray-300 bg-opacity-50">
-                        <h4></h4>
+                        <h4>hello</h4>
                     </div>
                 </form>
             </div>

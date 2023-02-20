@@ -1,7 +1,6 @@
-import {useState, useEffect } from "react";
+import React, {useState, useEffect } from "react";
 import {useDataContext} from '../../hooks/useDataContext'
 import { useAuthContext } from "../../hooks/useAuthContext";
-import accounting from 'accounting-js'
 
 
 const ProductsForm = () => {
@@ -10,8 +9,10 @@ const ProductsForm = () => {
     const [rent, setRent] = useState('')
     const [labour, setLabour] = useState('')
     const [energy, setEnergy] = useState(``)
+    // eslint-disable-next-line
     const [amount, setAmount] = useState(null)
     const [quantities, setQuantities] = useState({})
+    // eslint-disable-next-line
     const [material, setMaterial] = useState(null)
     const {data, dispatch} = useDataContext()
     const {user} = useAuthContext()

@@ -1,3 +1,5 @@
+import React from "react";
+
 const AnalyticsPage = () => {
     return ( 
         <div className="grid grid-cols-1 gay-y-4">

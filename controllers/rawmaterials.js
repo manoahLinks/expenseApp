@@ -31,6 +31,10 @@ exports.createRawMaterial = async (req, res) => {
     const createdBy = req.user._id 
 
     try {
+
+        if(!name || !netWeight || !netPrice || !reOrderLevel || !supplier ){
+            throw Error(`all fields are required`)
+        }
         
         const response = await Rawmaterial.create({name, netWeight, netPrice, reOrderLevel, supplier,createdBy})
         return res.status(201).json(response)
