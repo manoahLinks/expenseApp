@@ -45,7 +45,7 @@ const ProductList = () => {
             </div>
 
             <div className="grid grid-cols-1 gap-y-2 m-2">
-                {data && <ProductTable data={data} />}
+                {data && <ProductTable data={data} modalOn={modalOn} />}
                 {data && data.map((product)=>(
                     <div onClick={modalOn} className="md:hidden flex rounded-md shadow-md justify-between">
                         <div className="flex p-2 gap-x-2">

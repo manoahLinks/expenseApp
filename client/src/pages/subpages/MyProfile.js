@@ -14,10 +14,10 @@ const MyProfile = () => {
 
     return ( 
         <div className="flex flex-col gap-y-4">
-            <div className='md:p-3 p-2 text-xs grid grid-cols-4 items-center md:gap-y-2 gap-x-1 border-b'>
-                <span onClick={()=>{handleClick(1)}} className={`${activeTab === 1 ? `shadow-[inset_-2px_-2px_5px_rgba(255,255,255,0.7),inset_3px_3px_5px_rgba(0,0,0,0.1)]` :``} shadow-[-2px_-2px_10px_rgba(255,255,255,1),3px_3px_10px_rgba(0,0,0,0.2)] cursor-pointer md:py-2 py-1 justify-center rounded flex gap-x-2`}>
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className={`w-4 h-4 ${activeTab === 1 ? `-rotate-12`: ``}`}>
-                         <path fillRule="evenodd" d="M10.362 1.093a.75.75 0 00-.724 0L2.523 5.018 10 9.143l7.477-4.125-7.115-3.925zM18 6.443l-7.25 4v8.25l6.862-3.786A.75.75 0 0018 14.25V6.443zm-8.75 12.25v-8.25l-7.25-4v7.807a.75.75 0 00.388.657l6.862 3.786z" clipRule="evenodd" />
+            <div className='md:p-3 p-2 text-xs bg-primary bg-opacity-10 grid grid-cols-4 items-center md:gap-y-2 gap-x-1 md:gap-x-4 border-b'>
+                <span onClick={()=>{handleClick(1)}} className={`${activeTab === 1 ? `bg-white shadow-[inset_-2px_-2px_5px_rgba(255,255,255,0.7),inset_3px_3px_5px_rgba(0,0,0,0.1)]` :``} shadow-[-2px_-2px_10px_rgba(255,255,255,1),3px_3px_10px_rgba(0,0,0,0.2)] cursor-pointer md:py-2 py-1 justify-evenly rounded flex`}>
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-3 h-3 md:w-5 md:h-5">
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M10.5 6h9.75M10.5 6a1.5 1.5 0 11-3 0m3 0a1.5 1.5 0 10-3 0M3.75 6H7.5m3 12h9.75m-9.75 0a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m-3.75 0H7.5m9-6h3.75m-3.75 0a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m-9.75 0h9.75" />
                     </svg>
                     <h4>Dashboad</h4>
                 </span>
@@ -53,7 +53,7 @@ const MyProfile = () => {
                 )}
 
                 {currentSection === 3 && ( 
-                    <ProductionChart />
+                  <div>desc</div>
                 )}
 
                 {currentSection === 4 && ( 

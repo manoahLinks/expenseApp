@@ -1,6 +1,6 @@
 import React from "react";
 
-const ProductTable = ({data}) => {
+const ProductTable = ({data, modalOn}) => {
     return ( 
         <div className="md:block hidden grid grid-cols-1">
             <table className="table-auto w-full text-xs text-left shadow">
@@ -16,8 +16,8 @@ const ProductTable = ({data}) => {
                 </thead>
                 <tbody>
                     {data && data.map((product)=> (
-                        <tr key={product._id} className={`grid grid-cols-6 hover:bg-gray-100`}>
-                            <td className="px-4 py-2">{product.name}</td>
+                        <tr onClick={modalOn} key={product._id} className={`grid grid-cols-6 hover:bg-primary hover:bg-opacity-20`}>
+                            <td className="px-4 py-2 bg-primary text-white">{product.name}</td>
                             <td className="px-4 py-2">{`nil`}</td>
                             <td className="px-4 py-2">{product.productionPrice}</td>
                             <td className="px-4 py-2">{product.marketPrice}</td>

@@ -6,7 +6,7 @@ const ProductDetails = ({modalOff}) => {
             <div>
 
             </div>
-            <div className="flex flex-col gap-y-4 p-5 modal my-16 md:col-span-2 bg-white overflow-y-scroll">
+            <div className="flex flex-col gap-y-4 p-5 my-16 md:col-span-2 bg-white overflow-y-scroll">
                 <div className="grid grid-cols-3">
                     <div onClick={modalOff} className="flex">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor" className="w-5 h-5">

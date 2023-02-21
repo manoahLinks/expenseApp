@@ -42,7 +42,7 @@ const CustomerList = () => {
         <div className="grid grid-cols-1 gap-y-2 shadow rounded-md">
 
             <div className="grid grid-cols-1 hidden md:block">
-                <CustomerTable customers={data}/>
+                <CustomerTable customers={data} modalOn={modalOn} />
             </div>
 
             {data && data.map((customer)=>(
