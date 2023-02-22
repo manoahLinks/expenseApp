@@ -1,6 +1,6 @@
 import React from "react";
 
-const AccountTable = ({accounts}) => {
+const AccountTable = ({accounts, modalOn}) => {
     return ( 
         <div className="grid grid-cols-1">
             <table className="table-auto text-xs text-center">
@@ -15,7 +15,7 @@ const AccountTable = ({accounts}) => {
                 </thead>
                 <tbody>
                     {accounts && accounts.map((account) => (
-                        <tr className="grid grid-cols-5 hover:bg-primary hover:bg-opacity-20">
+                        <tr key={account._id} onClick={()=>{modalOn(account)}} className="grid grid-cols-5 hover:bg-primary hover:bg-opacity-20">
                             <td className="px-4 py-2">{account.name}</td>
                             <td className="px-4 py-2">{account.pin}</td>
                             <td className="px-4 py-2">{}</td>

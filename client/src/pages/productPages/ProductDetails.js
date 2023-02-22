@@ -2,14 +2,14 @@ import React from "react";
 
 const ProductDetails = ({modalOff}) => {
     return ( 
-        <div className="grid grid-cols-1 md:grid-cols-4 fixed  inset-0 bg-primary bg-opacity-20">
+        <div className="grid grid-cols-1 md:grid-cols-4 fixed inset-0 bg-primary bg-opacity-20">
             <div>
 
             </div>
-            <div className="flex flex-col gap-y-4 p-5 my-16 md:col-span-2 bg-white overflow-y-scroll">
-                <div className="grid grid-cols-3">
+            <div className="flex flex-col gap-y-4 p-5 my-16 md:w-10/12 md:col-span-2 overflow-y-scroll bg-white ">
+                <div className="grid grid-cols-3 border-b">
                     <div onClick={modalOff} className="flex">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor" className="w-5 h-5">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor" className="w-5 h-5 hover:bg-slate-300 rounded-full cursor-pointer">
                             <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
                         </svg> 
                     </div>
@@ -68,7 +68,7 @@ const ProductDetails = ({modalOff}) => {
                             
                         </div>
                     </div>
-                    <div className="grid grid-cols-1 gap-x-2 gap-y-2 md:gap-x-4 md:gap-y-4 ">
+                    <div className="grid grid-cols-2 gap-x-2 gap-y-2 md:gap-x-4 md:gap-y-4 ">
                         <div className="flex ">
                             <label>
                                 <h4>total dough weight</h4>

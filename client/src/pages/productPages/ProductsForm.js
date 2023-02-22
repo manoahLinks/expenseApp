@@ -66,7 +66,7 @@ const ProductsForm = () => {
     }
 
     return ( 
-        <div className="grid grid-cols-1 gap-y-2">
+        <div className="grid grid-cols-1 gap-y-2 p-2">
             
             <h4 className="font-semibold text-primary uppercase text-center mb-4 text-sm">Create a new recipe</h4>
 
@@ -76,11 +76,11 @@ const ProductsForm = () => {
                 <input 
                     type="text"
                     placeholder="enter product name"
-                    className="text-xs border-slate-300 focus:border-slate-300 focus:outline-none rounded font-light border" 
+                    className="text-xs w-full border-slate-300 focus:border-slate-300 focus:outline-none rounded font-light border" 
                 />
             </div>
-            <table className="grid grid-cols-1 m-2 text-xs  bg-gray-50 rounded-lg">
-                <thead className="grid text-center p-2 grid-cols-5 bg-gray-50">
+            <table className="grid grid-cols-1 m-2 text-xs rounded-lg">
+                <thead className="grid text-center p-2 grid-cols-5 bg-gray-200">
                     <th className="col-span-2">Raw Material</th>
                     <th>weight (grams)</th>
                     <th>price per grm</th>

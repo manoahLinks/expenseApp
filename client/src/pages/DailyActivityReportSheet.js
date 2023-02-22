@@ -121,9 +121,9 @@ const DailyActivityReportSheet = () => {
                 {currentSection === 1 && ( 
                     <div className="gap-y-4 grid grid-cols-1">
                         
-                        <table className="table table-auto w-full text-xs border-collapse">
+                        <table className="table table-auto w-full border rounded-md border-collapse">
                             <thead>
-                                <tr className="grid grid-cols-7 border-b bg-primary bg-opacity-20">
+                                <tr className="grid grid-cols-7 text-xs border-b ">
                                     <th className="px-4 py-2">Product Type</th>
                                     <th className="px-4 py-2">Bags produced</th>
                                     <th className="px-4 py-2">loaves yielded</th>
@@ -135,20 +135,22 @@ const DailyActivityReportSheet = () => {
                             </thead>
                             <tbody>
                                 {data && data.map((product)=>(
-                                    <tr className="grid grid-cols-7 border-b" key={product._id}>
+                                    <tr className="grid grid-cols-7 border-b p-2 gap-x-2" key={product._id}>
                                         <td className="px-4 py-2">{product.name}</td>
-                                        <input className="px-4 py-2 border-slate-300 focus:border-slate-300 focus:outline-none bg-sky-200 text-xs" type="number" 
-                                            value={bags[product._id] || ''}
+                                        <input className="px-4 py-2 border-slate-300 focus:border-slate-300 focus:outline-none" type="number" 
+                                            value={bags[product._id] || 0 }
                                             onChange={(e)=>{handleBags(product._id , e.target.value)}}
                                         />
-                                        <input className="px-4 py-2 border-slate-300 focus:border-slate-300 focus:outline-none bg-sky-200 text-xs" type="number" 
-                                            value={quantities[product._id] || ''}
+                                        <input className="px-4 py-2 border-slate-300 focus:border-slate-300 focus:outline-none" type="number" 
+                                            value={quantities[product._id] || 0}
                                             onChange={(e)=>{handleQuantities(product._id , e.target.value)}}
                                         />
-                                        <td className="px-4 py-2">{product.productionPrice}</td>
+                                        <td className="px-4 py-2 ">
+                                            <h4 className="bg-green-200 rounded-full text-center p-1">{product.productionPrice}</h4>
+                                        </td>
                                         <td className="px-4 py-2">{accounting.formatNumber(2500 * bags[product._id])}</td>
                                         <td className="px-4 py-2">{accounting.formatNumber(product.productionPrice * quantities[product._id])}</td>
-                                        <td className="px-4 py-2 bg-green-200 text-green-500">{accounting.formatNumber((2500 * bags[product._id]) - (product.productionPrice * quantities[product._id]))}</td>
+                                        <td className="px-4 py-2">{accounting.formatNumber((2500 * bags[product._id]) - (product.productionPrice * quantities[product._id]))}</td>
                                     </tr>
                                 ))}
                                 

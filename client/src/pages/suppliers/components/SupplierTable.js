@@ -1,6 +1,6 @@
 import React from "react";
 
-const SupplierTable = ({suppliers}) => {
+const SupplierTable = ({suppliers, modalOn}) => {
     return ( 
         <div className="grid gri-cols-1">
             <table className="table-auto w-full text-xs text-center">
@@ -16,7 +16,7 @@ const SupplierTable = ({suppliers}) => {
                 </thead>
                 <tbody className="">
                     {suppliers && suppliers.map((supplier)=>(
-                        <tr className="border-b grid grid-cols-6">
+                        <tr key={supplier._id} onClick={()=>{modalOn(supplier)}} className="border-b hover:bg-primary hover:bg-opacity-20 grid grid-cols-6">
                             <td className="px-4 py-2 bg-primary bg-opacity-50 text-white font-semibold">{supplier.name}</td>
                             <td className="px-4 py-2">{supplier.email}</td>
                             <td className="px-4 py-2">{supplier.phone}</td>

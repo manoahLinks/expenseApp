@@ -39,9 +39,8 @@ const CustomerForm = () => {
         const json = await response.json()
 
         if(!response.ok){
-            console.log(json.error)
             setIsPending(false)
-            setError(true)
+            setError(json.error)
         }
         if(response.ok){
             setName('')
@@ -58,7 +57,7 @@ const CustomerForm = () => {
     return ( 
         <div className="grid grid-cols-1 gap-y-2 justify-items-center">
             {success && <AlertBox message={`successful`} />}
-            {error && <AlertBox message={`error`} />}
+            {error && <AlertBox message={error} />}
             <h4 className="text-primary m-2 text-center font-semibold text-md p-2">Register new customer</h4>
 
             <div className="grid grid-cols-1 shadow md:w-9/12 w-full">

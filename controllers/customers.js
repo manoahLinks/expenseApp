@@ -30,5 +30,20 @@ exports.createCustomer = async (req, res) => {
     }
 }
 
+// get single customer
+exports.getSingleCustomer = async (req, res) => {
+
+    const {id} = req.params.id
+
+    try {
+        
+        const response = await Customer.findById(id)
+        return res.status(200).json(response)
+
+    } catch (error) {
+        res.status(400).json(error)
+    }
+}
+
 
 module.exports = exports

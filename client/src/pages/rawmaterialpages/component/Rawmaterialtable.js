@@ -18,7 +18,7 @@ const RawmaterialTable = ({materials, modalOn}) => {
                 </thead>
                 <tbody>
                 {materials && materials.map((material)=>(
-                    <tr className="border-b hover:bg-opacity-20 hover:bg-primary" onClick={modalOn} key={material._id}>
+                    <tr className="border-b hover:bg-opacity-20 hover:bg-primary" onClick={()=>{modalOn(material)}} key={material._id}>
                         <td className="px-4 py-2 text-white bg-opacity-50 bg-primary font-bold">{material.name}</td>
                         <td className="px-4 py-2">{material.netWeight}</td>
                         <td className="px-4 py-2">{material.netPrice}</td>

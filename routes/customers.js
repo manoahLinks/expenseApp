@@ -6,6 +6,8 @@ const express = require('express'),
 router.route(`/`)
     .get(controllers.getAllCustomers)
     .post(controllers.createCustomer)
-    
+
+router.route(`/:id`)
+    .get(controllers.getSingleCustomer)    
     
 module.exports = router    

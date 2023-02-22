@@ -8,14 +8,24 @@ const CustomerList = () => {
 
     const {data, dispatch} = useDataContext()
     const {user} = useAuthContext()
-    const [modal, setModal] = useState(false)
+    const [selectedData, setSelectedData] = useState(null)
 
-    const modalOn = () => {
-        setModal(true)
+    const modalOn = async (data) => {
+        const response = await fetch(`http://localhost:5500/api/customer/${data._id}`, {
+            headers:{
+                'Authorization': `Bearer ${user.token}`
+            }
+        })
+
+        const json = await response.json()
+
+        if(response.ok){
+            setSelectedData({...data, json})
+        }
     }
 
     const modalOff = () => {
-        setModal(false)
+        setSelectedData(null)
     }
 
     useEffect(()=>{
@@ -46,7 +56,7 @@ const CustomerList = () => {
             </div>
 
             {data && data.map((customer)=>(
-                <div onClick={modalOn} className="md:hidden p-2 flex items-center justify-between shadow rounded">
+                <div key={customer._id} onClick={()=>{modalOn(customer)}} className="md:hidden p-2 flex items-center justify-between shadow rounded">
                     <div className="flex gap-x-2">
                         <div className="flex rounded p-2 bg-green-100">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-6 h-6 text-green-700">
@@ -72,7 +82,7 @@ const CustomerList = () => {
                     </div>
                 </div>
             ))}
-           {modal && <CustomerDetails modalOff={modalOff} customer={data} />} 
+           {selectedData && <CustomerDetails modalOff={modalOff} customer={selectedData} />} 
         </div>
      );
 }
