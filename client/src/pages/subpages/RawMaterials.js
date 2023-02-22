@@ -14,7 +14,7 @@ const RawMaterials = () => {
 
     return ( 
         <div className="flex flex-col gap-y-4">
-           <div className='md:p-3 p-2 text-xs grid grid-cols-4 items-center md:gap-y-2 gap-x-1 border-b'>
+           <div className='md:p-3 p-2 text-xs grid grid-cols-4 items-center overflow-x-scroll md:gap-y-2 gap-x-1 border-b'>
                 <span onClick={()=>{handleClick(1)}} className={`${activeTab === 1 ? `bg-primary text-white` : ``} cursor-pointer md:py-2 hover:bg-primary hover:text-white py-1 justify-center border rounded flex gap-x-2`}>
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-3 h-3 md:w-5 md:h-5">
                         <path fillRule="evenodd" d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25zM12.75 9a.75.75 0 00-1.5 0v2.25H9a.75.75 0 000 1.5h2.25V15a.75.75 0 001.5 0v-2.25H15a.75.75 0 000-1.5h-2.25V9z" clipRule="evenodd" />

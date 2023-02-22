@@ -14,18 +14,18 @@ const Marketing = () => {
 
     return ( 
         <div className="flex flex-col">
-          <div className='p-2 overflow-x-auto justify-evenly text-xs border-b flex items-center gap-x-2'>
+          <div className='p-2 overflow-x-auto w-auto justify-evenly text-xs border-b flex items-center gap-x-2'>
                 <span className={`md:p-2 hover:bg-primary font-semibold hover:text-white hover:font-semibold p-1 justify-center border rounded flex gap-x-2`}>
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className={`w-4 h-4`}>
                          <path fillRule="evenodd" d="M10.362 1.093a.75.75 0 00-.724 0L2.523 5.018 10 9.143l7.477-4.125-7.115-3.925zM18 6.443l-7.25 4v8.25l6.862-3.786A.75.75 0 0018 14.25V6.443zm-8.75 12.25v-8.25l-7.25-4v7.807a.75.75 0 00.388.657l6.862 3.786z" clipRule="evenodd" />
                     </svg>
-                    <h4>Quick activity</h4>
+                    <h4>Quick-activity</h4>
                 </span>
                 <span onClick={()=>{handleClick(1)}} className={`cursor-pointer transition ease-in-out duration-150 ${ activeTab === 1 ? `bg-primary text-white` : `bg-white`} md:p-2 hover:bg-primary font-semibold hover:text-white hover:font-semibold p-1 items-center border rounded flex gap-x-2`}>
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className={`w-3 h-3 ${ activeTab === 1 ? `-rotate-12` : ``}`}>
                         <path d="M11 5a3 3 0 11-6 0 3 3 0 016 0zM2.615 16.428a1.224 1.224 0 01-.569-1.175 6.002 6.002 0 0111.908 0c.058.467-.172.92-.57 1.174A9.953 9.953 0 018 18a9.953 9.953 0 01-5.385-1.572zM16.25 5.75a.75.75 0 00-1.5 0v2h-2a.75.75 0 000 1.5h2v2a.75.75 0 001.5 0v-2h2a.75.75 0 000-1.5h-2v-2z" />
                     </svg>
-                    <h4 className="">new customer</h4>
+                    <h4 className="">new-customer</h4>
                 </span>
                 <span onClick={()=>{handleClick(2)}} className={`cursor-pointer transition ease-in-out duration-150 ${ activeTab === 2 ? `bg-primary text-white` : `bg-white`} md:p-2 hover:bg-primary font-semibold hover:text-white hover:font-semibold p-1 items-center border rounded flex gap-x-2`}>
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className={`w-3 h-3 ${ activeTab === 2 ? `-rotate-12` : ``}`}>

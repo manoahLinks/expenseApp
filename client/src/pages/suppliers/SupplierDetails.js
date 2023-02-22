@@ -1,6 +1,6 @@
 const SupplierDetails = ({supplier, modalOff}) => {
     return ( 
-        <div className="grid grid-cols-1 md:grid-cols-4  fixed inset-0 bg-primary  bg-opacity-20">
+        <div className="grid grid-cols-1 md:grid-cols-4  fixed inset-0 bg-primary bg-opacity-10">
 
             <div>
 

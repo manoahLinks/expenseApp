@@ -26,9 +26,9 @@ function App () {
       <div className="flex flex-col min-h-screen relative text-gray-700 text-xs md:text-sm">
         <NavBar />
         <div className='flex flex-col md:flex-row my-12 w-full'>
-          <Sidebar />
+          {user && <Sidebar />}
           <div className='grid grid-cols-1 md:w-10/12 md:ml-auto scroll-smooth  md:grid-cols-3'>
-            <div className='grid grid-cols-1 md:col-span-2 border-r'>
+            <div className={`grid grid-cols-1 md:col-span-2 ${user && `border-r` }`}>
               <Routes>
                 <Route exact path={`/`}     element={!user ? <LoginPage /> : <Navigate to={`/home`}/>} />
                 <Route path={`/home`}         element={user ? <Homepage /> : <Navigate to={`/`}/>} />
@@ -44,15 +44,15 @@ function App () {
               </Routes>
             </div>
             
-            <div className='grid grid-cols-1 gap-y-2 h-full '>
-              <div className='grid grid-cols-1 m-4 p-4 border'>
+            {user && <div className='grid grid-cols-1 gap-y-2 h-full '>
+              <div className='grid grid-cols-1 m-4 p-4'>
                 <PieChart/>
               </div>
               <div className='grid grid-cols-1'>
                 
               </div>
               <div></div> 
-            </div>
+            </div>}
           </div>
         </div>
       </div>

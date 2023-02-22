@@ -22,7 +22,7 @@ const Homepage = () => {
                     <h4 className="text-center md:text-sm font-semibold">Products</h4>
                 </Link>
                 <Link to={`/marketing`} className="hover:bg-gray-200 shadow-md flex flex-col gap-y-2 items-center rounded-md p-2">
-                    {<img src={require(`../assets/icons8-crowd-48.png`)} alt="" />}
+                    {<img src={require(`../assets/icons8-people-48.png`)} alt="" />}
                     <h4 className="text-center md:text-sm font-semibold">Marketing</h4>
                 </Link>
                 <Link to={`/finance`} className="transition ease-in-out duration-300 delay-150 hover: hover:bg-green-200 shadow-md flex flex-col gap-y-2 items-center rounded-md p-2">
