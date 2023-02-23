@@ -16,7 +16,7 @@ const LoginPage = () => {
     }
 
     return ( 
-        <div className="grid grid-cols-1 md:grid-cols-2 h-screen justify-center items-center bg-white">
+        <div className="grid grid-cols-1 md:grid-cols-2 md:h-screen justify-center items-center bg-white">
             <div className="flex flex-col">
                 <img src={require(`../assets/Design inspiration-pana.png`)} alt="login img" />
             </div>
@@ -49,7 +49,7 @@ const LoginPage = () => {
                         value={password} 
                     />
 
-                    <Link to={`/passwordRecovery`} className="text-primary text-right">forgot password ?</Link>
+                    <Link to={`/forgotpassword`} className="text-primary text-right">forgot password ?</Link>
                     <button className="flex rounded p-2 justify-center items-center bg-primary hover:bg-opacity-50 text-white mt-5 font-semibold">
                         <h4 className="text-sm">Login</h4>
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-4 h-4">

@@ -15,6 +15,7 @@ import PieChart from './components/PieChart';
 import DailyActivityReportSheet from './pages/DailyActivityReportSheet';
 import Finance from './pages/subpages/Finance';
 import Products from './pages/subpages/Products';
+import Forgotpassword from './pages/Forgotpassword';
 
 
 function App () {
@@ -31,6 +32,7 @@ function App () {
             <div className={`grid grid-cols-1 md:col-span-2 ${user && `border-r` }`}>
               <Routes>
                 <Route exact path={`/`}     element={!user ? <LoginPage /> : <Navigate to={`/home`}/>} />
+                <Route path={`/forgotpassword`}     element={!user ? <Forgotpassword /> : <Navigate to={`/home`}/>} />
                 <Route path={`/home`}         element={user ? <Homepage /> : <Navigate to={`/`}/>} />
                 <Route path={`/dbar`}        element={user ? <DailyActivityReportSheet /> : <Navigate to={`/`}/>} />
                 <Route path={`/signup`}       element={!user ? <SignupPage /> : <Navigate to={`/`}/>} />
