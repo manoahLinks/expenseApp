@@ -8,6 +8,7 @@ router.route(`/`)
     .post(controllers.createCustomer)
 
 router.route(`/:id`)
-    .get(controllers.getSingleCustomer)    
+    .get(controllers.getSingleCustomer)
+    .delete(controllers.deleteCustomer)    
     
 module.exports = router    

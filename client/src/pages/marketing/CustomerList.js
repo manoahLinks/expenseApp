@@ -46,7 +46,7 @@ const CustomerList = () => {
             fetchData()
         }
         
-    }, [dispatch, user])
+    }, [dispatch, data, user])
 
     return ( 
         <div className="grid grid-cols-1 gap-y-2 shadow rounded-md">

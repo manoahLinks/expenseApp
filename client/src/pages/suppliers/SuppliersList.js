@@ -47,7 +47,7 @@ const SupplierList = () => {
             fetchData()
         }
         
-    }, [dispatch, user])
+    }, [dispatch, data, user])
 
     return ( 
         <div className="grid grid-cols-1 m-2">

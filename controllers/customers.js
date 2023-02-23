@@ -33,7 +33,7 @@ exports.createCustomer = async (req, res) => {
 // get single customer
 exports.getSingleCustomer = async (req, res) => {
 
-    const {id} = req.params.id
+    const {id} = req.params
 
     try {
         
@@ -45,5 +45,18 @@ exports.getSingleCustomer = async (req, res) => {
     }
 }
 
+// delete customer
+exports.deleteCustomer = async (req, res) => {
+    const {id} = req.params
+
+    try {
+
+        const response = await Customer.findByIdAndDelete(id)
+        return res.status(200).json(response)
+        
+    } catch (error) {
+        res.status(400).json(error.message)
+    }
+}
 
 module.exports = exports
