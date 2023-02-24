@@ -13,9 +13,12 @@ const NavBar = () => {
   }
 
     return ( 
-        <div className='fixed top-0 z-10 bg-white shadow w-full flex justify-between md:p-3 p-1 border-b'>
+        <div className='fixed top-0 z-10 bg-white w-full flex justify-between md:p-3 p-1 border-b'>
             <div className='flex items-center'>
               <h4 className="font-bold text-md text-primary">SMART WORK</h4>
+            </div>
+            <div>
+              <h4>center</h4>
             </div>
             <div className='flex items-center'>
 

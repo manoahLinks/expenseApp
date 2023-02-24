@@ -2,21 +2,17 @@ import React from "react";
 
 const AnalyticsPage = () => {
     return ( 
-        <div className="grid grid-cols-1 gay-y-4">
-            {/* store */}
-
-            <div className="flex flex-col gap-y-2 border border-light rounded-lg m-2 p-2">
-                <h4 className="text-center font-semibold">STORE</h4>
+        <div className="grid grid-cols-2 gay-y-4 text-xs">
+            <div className="flex flex-col gap-y-2  p-2">
                 <table className="flex flex-col">
-                    <h4 className="font-light">raw materials</h4>
-                    <thead className="grid grid-cols-5 p-2 border bg-gray-50">
+                    <thead className="grid grid-cols-5 p-2 bg-gray-50">
                         <th className="text-center">Product</th>
                         <th className="text-center">Purchases</th>
                         <th className="text-center">Usage</th>
                         <th className="text-center">Available</th>
                         <th className="text-center">Remark</th>
                     </thead>
-                    <tbody className="grid grid-cols-1 p-2 gap-y-2 border">
+                    <tbody className="grid grid-cols-1 p-2 gap-y-2 ">
                         <tr className="grid grid-cols-5">
                             <td className="text-center">Flour</td>
                             <td className="text-center">2000</td>
@@ -25,22 +21,6 @@ const AnalyticsPage = () => {
                             <td className="text-center bg-green-200 text-green-500 rounded-md">in stock</td>
                         </tr>
 
-                        <tr className="grid grid-cols-5">
-                            <td className="text-center">Sugar</td>
-                            <td className="text-center">80</td>
-                            <td className="text-center">75</td>
-                            <td className="text-center">5</td>
-                            <td className="text-center bg-red-200 text-red-500 rounded-md">low</td>
-                        </tr>
-
-                        <tr className="grid grid-cols-5">
-                            <td className="text-center">Butter</td>
-                            <td className="text-center">25</td>
-                            <td className="text-center">15</td>
-                            <td className="text-center">10</td>
-                            <td className="text-center bg-amber-100 text-amber-500 rounded-md">re-order</td>
-                        </tr>
-                        
                     </tbody>
                 </table>
 

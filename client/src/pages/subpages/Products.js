@@ -41,7 +41,7 @@ const Products = () => {
                     <h4 className="">Assign to production</h4>
                 </span>
             </div>
-            <div className="p-5 rounded-md shadow">
+            <div className="p-5">
 
                 {currentSection === 1 && ( 
                     <ProductionDashboard />

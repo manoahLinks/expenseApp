@@ -16,14 +16,14 @@ const Finance = () => {
     return ( 
         <div className="flex flex-col gap-y-4">
           <div className='p-2 overflow-x-auto justify-evenly text-xs border-b flex items-center gap-x-1'>
-                <span className={`cursor-pointer md:p-2 hover:bg-primary font-semibold hover:text-white hover:font-semibold p-1 justify-center border rounded flex gap-x-2`}>
+                <span className={`cursor-pointer hover:bg-primary font-semibold hover:text-white hover:font-semibold p-1 justify-center border rounded flex gap-x-2`}>
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className={`w-4 h-4`}>
                          <path fillRule="evenodd" d="M10.362 1.093a.75.75 0 00-.724 0L2.523 5.018 10 9.143l7.477-4.125-7.115-3.925zM18 6.443l-7.25 4v8.25l6.862-3.786A.75.75 0 0018 14.25V6.443zm-8.75 12.25v-8.25l-7.25-4v7.807a.75.75 0 00.388.657l6.862 3.786z" clipRule="evenodd" />
                     </svg>
                     <h4>Quick activity</h4>
                 </span>
-                <span onClick={()=>{handleClick(1)}} className={`cursor-pointer ${ activeTab === 1 ? `bg-primary text-white` : `bg-white`} md:p-2 hover:bg-primary font-semibold hover:text-white hover:font-semibold p-1 items-center border rounded flex gap-x-2`}>
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className={`w-3 h-3 ${ activeTab === 1 ? `-rotate-12` : ``}`}>
+                <span onClick={()=>{handleClick(1)}} className={`cursor-pointer ${ activeTab === 1 ? `bg-primary text-white` : `bg-white`} hover:bg-primary font-semibold hover:text-white hover:font-semibold p-1 items-center border rounded flex gap-x-2`}>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className={`w-2 h-2 ${ activeTab === 1 ? `-rotate-12` : ``}`}>
                          <path d="M1 4.25a3.733 3.733 0 012.25-.75h13.5c.844 0 1.623.279 2.25.75A2.25 2.25 0 0016.75 2H3.25A2.25 2.25 0 001 4.25zM1 7.25a3.733 3.733 0 012.25-.75h13.5c.844 0 1.623.279 2.25.75A2.25 2.25 0 0016.75 5H3.25A2.25 2.25 0 001 7.25zM7 8a1 1 0 011 1 2 2 0 104 0 1 1 0 011-1h3.75A2.25 2.25 0 0119 10.25v5.5A2.25 2.25 0 0116.75 18H3.25A2.25 2.25 0 011 15.75v-5.5A2.25 2.25 0 013.25 8H7z" />
                     </svg>
                     <h4 className="">Accounts</h4>

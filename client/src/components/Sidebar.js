@@ -12,7 +12,7 @@ const Sidebar = () => {
     }
 
     return ( 
-        <div className='w-2/12 border-r fixed h-full grid grid-cols-1 hidden md:block bg-gray-50'>
+        <div className='w-2/12 fixed h-full text-xs grid grid-cols-1 hidden md:block'>
             <div className="flex items-center gap-x-2 m-1 shadow rounded p-1">
                 <div className="p-1 rounded bg-opacity-10 bg-primary">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-6 h-6 fill-primary">

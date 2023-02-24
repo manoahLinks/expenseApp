@@ -42,7 +42,7 @@ const MyProfile = () => {
                     <h4>Email</h4>
                 </span>
             </div>
-            <div className="p-5 rounded-md shadow">
+            <div className="p-5">
 
                 {currentSection === 1 && ( 
                     <h4>dashboard</h4>

@@ -4,10 +4,9 @@ import BarChart from '../../components/BarChart'
 const RawMaterialAnalytics = () => {
     return ( 
         <div className="grid grid-cols-1">
-             <div className="flex flex-col gap-y-2 md:gap-y-4 rounded-lg p-3">
-                <h4 className="text-center font-semibold">STORE</h4>
-                <table className="flex flex-col">
-                    <thead className="grid grid-cols-5 p-2 border-t bg-gray-50">
+             <div className="flex flex-col gap-y-2 md:gap-y-4 p-3">
+                <table className="flex flex-col shadow rounded-md">
+                    <thead className="grid grid-cols-5 p-2">
                         <th className="text-center">Product</th>
                         <th className="text-center">Purchases</th>
                         <th className="text-center">Usage</th>
@@ -15,7 +14,7 @@ const RawMaterialAnalytics = () => {
                         <th className="text-center">Remark</th>
                     </thead>
                     <tbody className="grid grid-cols-1 p-2 gap-y-2 ">
-                        <tr className="grid grid-cols-5 border-b p-2 hover:bg-slate-50">
+                        <tr className="grid grid-cols-5 p-2 hover:bg-slate-50">
                             <td className="text-center">Flour</td>
                             <td className="text-center">2000</td>
                             <td className="text-center">150</td>
@@ -30,7 +29,7 @@ const RawMaterialAnalytics = () => {
                             </td>
                         </tr>
 
-                        <tr className="grid grid-cols-5 border-b p-2 hover:bg-slate-50">
+                        <tr className="grid grid-cols-5 p-2 hover:bg-slate-50">
                             <td className="text-center">Sugar</td>
                             <td className="text-center">80</td>
                             <td className="text-center">75</td>
@@ -44,27 +43,12 @@ const RawMaterialAnalytics = () => {
                                 <h4>re-order</h4>
                             </td>
                         </tr>
-
-                        <tr className="grid grid-cols-5 border-b p-2 hover:bg-slate-50">
-                            <td className="text-center">Butter</td>
-                            <td className="text-center">25</td>
-                            <td className="text-center">15</td>
-                            <td className="text-center">10</td>
-                            <td className="flex text-slate-500 rounded  items-center gap-x-2">
-                                <div className='flex'>
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-4 h-4 text-primary">
-                                        <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z" clipRule="evenodd" />
-                                    </svg>
-                                </div>
-                                <h4>low</h4>
-                            </td>
-                        </tr>
                         
                     </tbody>
                 </table>
                 <div className="grid grid-cols-1 gap-y-2 p-2">
                     <div className="grid md:grid-cols-3 grid-cols-1 gap-y-2 gap-x-2 ">
-                        <div className="flex flex-col gap-y-2 md:gap-y-4 shadow-lg md:p-3 p-1 rounded-md">
+                        <div className="flex flex-col gap-y-2 md:gap-y-4 shadow md:p-3 p-1 rounded-md">
                             <div className='flex justify-between items-center'>
                                 <div className='flex self-start p-1 rounded bg-primary bg-opacity-20'>
                                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5 fill-primary">
@@ -80,10 +64,10 @@ const RawMaterialAnalytics = () => {
                                 </div>
                             </div>
                             <h4 className="font-light text-center">worth of Purchase</h4>
-                            <h4 className="font-semibold md:text-md text-slate-400 text-center">N6,550,000</h4>
+                            <h4 className="font-semibold md:text-md text-center">N6,550,000</h4>
                         </div>
 
-                        <div className="flex flex-col gap-x-2 md:gap-y-4 shadow-lg gap-y-2 bg-primary bg-opacity-10 md:p-3 p-1 rounded-md">
+                        <div className="flex flex-col gap-x-4 md:gap-y-4 shadow gap-y-2 md:p-3 p-1 rounded-md">
                             <div className='flex justify-between items-center'>
                                 <div className='flex self-start p-1 rounded bg-primary bg-opacity-20'>
                                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5 fill-primary">
@@ -100,10 +84,10 @@ const RawMaterialAnalytics = () => {
                             </div>
                             
                             <h4 className="font-light ">Worth of Usage</h4>
-                            <h4 className="font-semibold md:text-md text-primary text-center">N2,500,000</h4>
+                            <h4 className="font-semibold md:text-md text-center">N2,500,000</h4>
                         </div>
 
-                        <div className="flex flex-col gap-y-2 md:gap-y-4 shadow-lg md:p-3 p-1 rounded-md">
+                        <div className="flex flex-col gap-y-2 md:gap-y-4 shadow md:p-3 p-1 rounded-md">
                             <div className='flex justify-between items-center'>
                                 <div className='flex self-start p-1 rounded bg-primary bg-opacity-20'>
                                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5 fill-primary">
@@ -119,7 +103,7 @@ const RawMaterialAnalytics = () => {
                                 </div>
                             </div>
                             <h4 className="font-light text-center">Worth of Available stock</h4>
-                            <h4 className="font-semibold md:text-md text-primary text-center">N4,050,000</h4>
+                            <h4 className="font-semibold md:text-md text-center">N4,050,000</h4>
                         </div>
                     </div>
                    

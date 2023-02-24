@@ -60,7 +60,7 @@ const PieChart = ({ data }) => {
 
 
   return (
-    <div className="flex p-5 rounded border">
+    <div className="flex p-2 rounded shadow">
       <Pie
         data={chartData}
         width={100}

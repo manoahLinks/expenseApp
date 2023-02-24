@@ -29,7 +29,7 @@ function App () {
         <div className='flex flex-col md:flex-row my-12 w-full'>
           {user && <Sidebar />}
           <div className='grid grid-cols-1 md:w-10/12 md:ml-auto scroll-smooth  md:grid-cols-3'>
-            <div className={`grid grid-cols-1 md:col-span-2 ${user && `border-r` }`}>
+            <div className={`grid grid-cols-1 md:col-span-2 ${user && `` }`}>
               <Routes>
                 <Route exact path={`/`}     element={!user ? <LoginPage /> : <Navigate to={`/home`}/>} />
                 <Route path={`/forgotpassword`}     element={!user ? <Forgotpassword /> : <Navigate to={`/home`}/>} />

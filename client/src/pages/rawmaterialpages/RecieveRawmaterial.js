@@ -3,9 +3,12 @@ import AlertBox from '../../components/AlertBox';
 import { useAuthContext } from "../../hooks/useAuthContext";
 import { useDataContext } from "../../hooks/useDataContext";
 import useFetch from '../../hooks/useFetch';
+import { ToastContainer, toast} from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 
 const RecieveRawmaterial = () => {
 
+    const notify = () => toast('wow so easy');
     const {user} = useAuthContext()
     const {data, dispatch} = useDataContext()
     const [material, setMaterial] = useState('')
@@ -34,6 +37,7 @@ const RecieveRawmaterial = () => {
 
         if(!response.ok){
             setError(json)
+            notify()
         }
         if(response.ok){
             setMaterial('') 
@@ -47,7 +51,7 @@ const RecieveRawmaterial = () => {
     }
 
     return ( 
-        <div className="grid grid-cols-1 md:grid-cols-2">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 text-xs">
             <div className="flex">
                 <img src={require(`../../assets/Logistics-amico.png`)} alt="recieve material" />
             </div>
@@ -101,6 +105,7 @@ const RecieveRawmaterial = () => {
                         <button className="p-2 col-span-2 text-white font-semibold rounded bg-primary hover:bg-opacity-50">Confirm</button>
                     </div>
                 </form>
+                <ToastContainer />
                 
             </div>
         </div>
