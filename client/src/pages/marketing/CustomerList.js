@@ -56,7 +56,7 @@ const CustomerList = () => {
             </div>
 
             {data && data.map((customer)=>(
-                <div key={customer._id} onClick={()=>{modalOn(customer)}} className="md:hidden p-2 flex items-center justify-between shadow rounded">
+                <div key={customer._id} onClick={()=>{modalOn(customer)}} className="bg-white md:hidden p-2 flex items-center justify-between shadow rounded">
                     <div className="flex gap-x-2">
                         <div className="flex rounded p-2 bg-green-100">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-6 h-6 text-green-700">

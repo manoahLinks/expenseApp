@@ -39,12 +39,12 @@ const ProductList = () => {
     }, [dispatch, user])
 
     return ( 
-        <div className="grid grid-cols-1">
-            <div className="flex justify-between p-2">
-                <h4 className="text-sm font-semibold">product List</h4>
+        <div className="grid grid-cols-1 bg-white p-2 md:p-5 rounded-md">
+            <div className="flex justify-between ">
+                <h4 className="text-sm font-semibold text-center">product List</h4>
             </div>
 
-            <div className="grid grid-cols-1 gap-y-2 m-2">
+            <div className="grid grid-cols-1 gap-y-2 ">
                 {data && <ProductTable data={data} modalOn={modalOn} />}
                 {data && data.map((product)=>(
                     <div onClick={modalOn} className="md:hidden flex rounded-md shadow-md justify-between">

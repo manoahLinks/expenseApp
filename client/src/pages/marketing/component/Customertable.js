@@ -23,7 +23,7 @@ const CustomerTable = ({customers, modalOn}) => {
     }
 
     return ( 
-        <div className="grid grid-cols-1 p-5">
+        <div className="grid grid-cols-1 p-5 bg-white rounded-md shadow">
             <table className="table table-auto w-full text-left border-collapse">
                 <thead>
                     <tr className="border-b">

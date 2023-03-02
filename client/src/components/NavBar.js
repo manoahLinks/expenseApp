@@ -1,40 +1,36 @@
 import React from "react";
-import { useLogout } from "../hooks/useLogout";
 import { useAuthContext } from "../hooks/useAuthContext";
 
 const NavBar = () => {
 
   const {user} = useAuthContext()
 
-  const {logOut} = useLogout()
-
-  const handleLogout = () => {
-    logOut()
-  }
-
     return ( 
-        <div className='fixed top-0 z-10 bg-white w-full flex justify-between md:p-3 p-1 border-b'>
+        <div className='fixed top-0 z-10 bg-white w-full flex justify-between md:p-2 p-1 shadow'>
             <div className='flex items-center'>
               <h4 className="font-bold text-md text-primary">SMART WORK</h4>
             </div>
-            <div>
-              <h4>center</h4>
+            <div className="flex">
+              
             </div>
             <div className='flex items-center'>
 
-              <div className="gap-x-2 flex">
+              <div className="gap-x-2 flex items-center">
+
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5 text-primary">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M14.857 17.082a23.848 23.848 0 005.454-1.31A8.967 8.967 0 0118 9.75v-.7V9A6 6 0 006 9v.75a8.967 8.967 0 01-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 01-5.714 0m5.714 0a3 3 0 11-5.714 0" />
                 </svg>
+                <div className="flex items-center gap-x-2 p-1 shadow rounded">
+                  <div className="p-1 rounded-full border border-slate-300">
+                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-6 h-6">
+                          <path fillRule="evenodd" d="M18.685 19.097A9.723 9.723 0 0021.75 12c0-5.385-4.365-9.75-9.75-9.75S2.25 6.615 2.25 12a9.723 9.723 0 003.065 7.097A9.716 9.716 0 0012 21.75a9.716 9.716 0 006.685-2.653zm-12.54-1.285A7.486 7.486 0 0112 15a7.486 7.486 0 015.855 2.812A8.224 8.224 0 0112 20.25a8.224 8.224 0 01-5.855-2.438zM15.75 9a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z" clipRule="evenodd" />
+                      </svg>
+                  </div>
+                  {user && <h4>{user.email}</h4>}
+              </div>
               </div>
 
-              {user && <div onClick={handleLogout} className="p-1 bg-white shadow items-center text-xs flex gap-x-2 rounded">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-4 h-4">
-                  <path fillRule="evenodd" d="M3 4.25A2.25 2.25 0 015.25 2h5.5A2.25 2.25 0 0113 4.25v2a.75.75 0 01-1.5 0v-2a.75.75 0 00-.75-.75h-5.5a.75.75 0 00-.75.75v11.5c0 .414.336.75.75.75h5.5a.75.75 0 00.75-.75v-2a.75.75 0 011.5 0v2A2.25 2.25 0 0110.75 18h-5.5A2.25 2.25 0 013 15.75V4.25z" clipRule="evenodd" />
-                  <path fillRule="evenodd" d="M19 10a.75.75 0 00-.75-.75H8.704l1.048-.943a.75.75 0 10-1.004-1.114l-2.5 2.25a.75.75 0 000 1.114l2.5 2.25a.75.75 0 101.004-1.114l-1.048-.943h9.546A.75.75 0 0019 10z" clipRule="evenodd" />
-                </svg>
-                <h4>Logout</h4>
-              </div>}
+              
             </div>
         </div>
      );

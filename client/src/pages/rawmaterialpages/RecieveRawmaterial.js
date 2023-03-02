@@ -53,13 +53,13 @@ const RecieveRawmaterial = () => {
     return ( 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 text-xs">
             <div className="flex">
-                <img src={require(`../../assets/Logistics-amico.png`)} alt="recieve material" />
+                <img className='w-70 h-70' src={require(`../../assets/Logistics-amico.png`)} alt="recieve material" />
             </div>
             <div className="flex flex-col gap-y-4">
                 {error && <AlertBox message={error.message}/>}
                 {success && <AlertBox message={`successfully confirmed`}/>}
-                <h4 className="text-center text-primary">Recieve supply</h4>
-                <form className="grid grid-cols-1 gap-y-2" onSubmit={handleSubmit}>
+                <h4 className="text-center text-primary font-semibold text-shadow">Recieve supply</h4>
+                <form className="grid grid-cols-1 gap-y-2 bg-white rounded-md shadow p-5" onSubmit={handleSubmit}>
                     <label className="text-xs">Raw material</label>
                     <select
                         className="border-slate-300 text-xs"

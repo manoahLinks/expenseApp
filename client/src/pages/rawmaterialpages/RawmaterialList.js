@@ -55,13 +55,13 @@ const RawmaterialList = () => {
                 <h4 className="text-sm font-semibold">Raw Materials</h4>
             </div>
 
-            <div className="grid grid-cols-1 hidden md:block">
+            <div className="grid grid-cols-1 hidden md:block bg-white">
                 <RawmaterialTable materials={data} modalOn={modalOn}/>
             </div>
 
             <div className="md:hidden grid grid-cols-1 gap-y-4 md:gap-y-8 md:gap-x-4 m-2 md:m-5">
                 {data && data.map((material)=>(
-                    <div key={material._id} className="grid grid-cols-1 rounded shadow">
+                    <div key={material._id} className="grid grid-cols-1 rounded bg-white shadow">
                         <div onClick={()=>{modalOn(material)}} className={`flex items-center justify-between p-2`}>
                             <div className="flex p-1 bg-green-100 rounded">
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5">

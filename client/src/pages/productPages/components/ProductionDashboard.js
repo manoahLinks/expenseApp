@@ -1,6 +1,6 @@
 const ProductionDashboard = () => {
     return ( 
-        <div className="grid md:grid-cols-4 grid-cols-2 p-5 rounded-md shadow-md ">
+        <div className="grid md:grid-cols-4 grid-cols-2 p-5 rounded-md shadow-md bg-white">
             <div className="flex flex-col items-center md:border-r border-primary">
                 <h4>INPUT</h4>
             </div>

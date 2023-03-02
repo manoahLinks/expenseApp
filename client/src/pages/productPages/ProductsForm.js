@@ -74,7 +74,7 @@ const ProductsForm = () => {
     }
 
     return ( 
-        <div className="grid grid-cols-1 gap-y-2 p-2">
+        <div className="grid grid-cols-1 gap-y-2 p-2 bg-white rounded-md">
             
             <h4 className="font-semibold text-primary uppercase text-center mb-4 text-sm">Create a new recipe</h4>
 

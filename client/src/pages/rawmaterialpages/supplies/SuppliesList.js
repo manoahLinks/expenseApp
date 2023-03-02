@@ -28,7 +28,7 @@ const SuppliesList = () => {
 
 
     return ( 
-        <div className="grid grid-cols-1 text-xs">
+        <div className="grid grid-cols-1 text-xs bg-white md:p-5 shadow rounded-md">
             {data && <SuppliesTable supplies={data} />}
         </div>
      );

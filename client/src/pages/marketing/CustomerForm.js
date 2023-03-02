@@ -58,10 +58,10 @@ const CustomerForm = () => {
         <div className="grid grid-cols-1 gap-y-2 justify-items-center">
             {success && <AlertBox message={`successful`} />}
             {error && <AlertBox message={error} />}
-            <h4 className="text-primary m-2 text-center font-semibold text-md p-2">Register new customer</h4>
 
-            <div className="grid grid-cols-1 shadow md:w-9/12 w-full">
-                <form className="flex flex-col gap-y-2 px-2 md:p-5 py-4" onSubmit={handleSubmit}>
+            <div className="md:p-5 grid grid-cols-1 p-2 shadow md:w-6/12 rounded-md shadow w-full bg-white">
+                <h4 className="text-primary text-center font-semibold text-md ">Register new customer</h4>
+                <form className="flex flex-col gap-y-2 " onSubmit={handleSubmit}>
                     <label htmlFor="">Name:</label>
                     <input 
                         type="text"

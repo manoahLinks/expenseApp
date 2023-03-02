@@ -2,8 +2,8 @@ import React from "react";
 
 const AnalyticsPage = () => {
     return ( 
-        <div className="grid grid-cols-2 gay-y-4 text-xs">
-            <div className="flex flex-col gap-y-2  p-2">
+        <div className="grid grid-cols-1 gay-y-4  justify-items-center text-xs">
+            <div className="flex flex-col gap-y-2 shadow bg-white md:w-6/12 m-2 p-2">
                 <table className="flex flex-col">
                     <thead className="grid grid-cols-5 p-2 bg-gray-50">
                         <th className="text-center">Product</th>
@@ -48,7 +48,7 @@ const AnalyticsPage = () => {
 
             {/* production */}
 
-            <div className="grid grid-cols-1 border p-2 m-2 gap-y-2 rounded-lg items-center">
+            <div className="grid grid-cols-1 shadow p-2 m-2 gap-y-2 bg-white md:w-6/12 rounded-lg items-center">
                 <h4 className="font-semibold text-center">PRODUCTION</h4>
                 <table className="grid grid-cols-1 gap-y-2 ">
                     <h4>Production Yield</h4>
@@ -77,7 +77,7 @@ const AnalyticsPage = () => {
 
             {/* Dispatch/sales */}
 
-            <div className="grid grid-cols-1 m-2 p-2 border rounded-lg gap-y-2">
+            <div className="grid grid-cols-1 m-2 p-2 shadow bg-white md:w-6/12 rounded-lg gap-y-2">
                 <h4 className="text-center font-semibold">DISPATCH & SALES</h4>
                 <table className="grid grid-cols-1 gap-y-2  p-2">
                     <h4 className="font-light">Stock analysis</h4>
