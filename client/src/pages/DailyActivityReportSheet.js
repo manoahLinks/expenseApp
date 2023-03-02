@@ -123,30 +123,30 @@ const DailyActivityReportSheet = () => {
                         
                         <table className="table table-auto w-full text-xs shadow rounded-md border-collapse">
                             <thead>
-                                <tr className="grid grid-cols-7 text-xs border-b ">
-                                    <th className="px-4 py-2">Product Type</th>
-                                    <th className="px-4 py-2">Bags produced</th>
-                                    <th className="px-4 py-2">loaves yielded</th>
-                                    <th className="px-4 py-2">unit price</th>
-                                    <th className="px-4 py-2">Expected yield</th>
-                                    <th className="px-4 py-2">Actual yield</th>
-                                    <th className="px-4 py-2">variance</th>
+                                <tr className="grid grid-cols-8 p-2 text-left text-xs border-b ">
+                                    <th className=" col-span-2">Product Type</th>
+                                    <th className="">Bags produced</th>
+                                    <th className="">loaves yielded</th>
+                                    <th className="">unit price</th>
+                                    <th className="">Expected yield</th>
+                                    <th className="">Actual yield</th>
+                                    <th className="">variance</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 {data && data.map((product)=>(
-                                    <tr className="grid grid-cols-7 border-b p-2 gap-x-2" key={product._id}>
-                                        <td className="px-4 py-2">{product.name}</td>
-                                        <input className="p-2 border-slate-300 text-xs focus:border-slate-300 focus:outline-none" type="number" 
-                                            value={bags[product._id] || 0 }
+                                    <tr className="grid grid-cols-8 border-b p-2 md:gap-x-1" key={product._id}>
+                                        <td className="col-span-2">{product.name}</td>
+                                        <input className="border-slate-300 text-xs focus:border-slate-300 focus:outline-none" type="number" 
+                                            value={bags[product._id]}
                                             onChange={(e)=>{handleBags(product._id , e.target.value)}}
                                         />
                                         <input className=" border-slate-300 text-xs focus:border-slate-300 focus:outline-none" type="number" 
-                                            value={quantities[product._id] || 0}
+                                            value={quantities[product._id]}
                                             onChange={(e)=>{handleQuantities(product._id , e.target.value)}}
                                         />
-                                        <td className="px-4 py-2 ">
-                                            <h4 className="bg-green-200 rounded-full text-center p-1">{product.productionPrice}</h4>
+                                        <td className="">
+                                            <h4 className="bg-green-100 font-semibold text-green-500 rounded-full text-center p-1">N {product.productionPrice}</h4>
                                         </td>
                                         <td className="px-4 py-2">{accounting.formatNumber(2500 * bags[product._id])}</td>
                                         <td className="px-4 py-2">{accounting.formatNumber(product.productionPrice * quantities[product._id])}</td>

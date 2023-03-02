@@ -29,4 +29,19 @@ exports.getAllSupplies = async (req, res) => {
     }
 }
 
+// delete a supply 
+exports.DeleteSupply = async (req, res) => {
+
+    const id = req.params
+ 
+    try {
+        
+        const response = await Supplies.findByIdAndDelete(id)
+        return res.status(200).json(response)
+
+    } catch (error) {
+        res.status(400).json(error.json)
+    }
+}
+
 module.exports = exports

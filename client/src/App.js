@@ -24,7 +24,7 @@ function App () {
 
   return (
     <Router>
-      <div className="flex flex-col min-h-screen relative text-gray-700 text-xs md:text-sm">
+      <div className="flex flex-col min-h-screen relative text-slate-500 text-xs md:text-sm">
         <NavBar />
         <div className='flex flex-col md:flex-row my-12 w-full'>
           {user && <Sidebar />}

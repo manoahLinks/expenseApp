@@ -7,6 +7,9 @@ const ProductsForm = () => {
 
     const [packaging, setPackaging] = useState('')
     const [rent, setRent] = useState('')
+    const [weightPerLoaf, setWeightPerLoaf] = useState('')
+    const [marketPrice, setMarketPrice] = useState('') 
+    const [productionPrice, setProductionPrice] = useState('') 
     const [labour, setLabour] = useState('')
     const [energy, setEnergy] = useState(``)
     // eslint-disable-next-line
@@ -41,6 +44,7 @@ const ProductsForm = () => {
     const handleQuantities = (itemId, quantity) => {
         // update the quantity state variable with the quantity entered by the user
         setQuantities({ ...quantities, [itemId]: quantity})
+        console.log(quantities)
       };
 
     const calculateTotalCost = () => {
@@ -63,6 +67,10 @@ const ProductsForm = () => {
     
     const calculateProdOverhead = () => {
         return Number(rent) + Number(packaging) + Number(labour) + Number(energy)
+    }
+
+    const calculateCost = () => {
+        return calculateProdOverhead() + calculateTotalCost()
     }
 
     return ( 
@@ -194,8 +202,62 @@ const ProductsForm = () => {
                             </div>
                         </tr>
                     </div>
-                    <div className="grid grid-cols-1 p-3 rounded bg-primary bg-opacity-20 gap-y-2 mt-4">
+                    <div className="grid grid-cols-1 p-2 rounded  gap-y-4 mt-4">
                         <h4 className="text-center font-bold uppercase text-primary">Summary</h4>
+                        <table className="flex flex-col p-2 gap-y-2 text-slate-500">
+                            <tr className="grid grid-cols-3 text-center">
+                                <th>Total Dough-weight</th>
+                                <th>Weight per loaf</th>
+                                <th>Expected loaves per bag</th>
+                            </tr>
+                            <tr className="grid grid-cols-3 text-center items-center">
+                                <td><h4>{calculateTotalDoughWeight()}grms</h4></td>
+                                <td>
+                                    <input 
+                                        type="number"
+                                        className="text-xs border-slate-300 rounded-md"
+                                        value={weightPerLoaf}
+                                        onChange={(e)=>{setWeightPerLoaf(e.target.value)}} 
+                                    />
+                                </td>
+                                <td>
+                                    <h4>{calculateTotalDoughWeight()/weightPerLoaf}</h4>
+                                </td>
+                            </tr>
+                        </table>
+                        <hr />
+                        <table className="flex flex-col gap-y-2 p-2 text-slate-500">
+                            <tr className="grid grid-cols-4 text-center">
+                                <th>Total Cost of Prod.</th>
+                                <th>Expected Price per loaf</th>
+                                <th>set Market Price</th>
+                                <th>Profit per loaf</th>
+                            </tr>
+
+                            <tr className="grid grid-cols-4 text-center items-center">
+                                <td><h4>{calculateCost()}</h4></td>
+                                <td>
+                                    <input 
+                                        type="number"
+                                        className="text-xs w-9/12 border-slate-300 rounded-md"
+                                        value={calculateCost() / (calculateTotalDoughWeight()/weightPerLoaf)}
+                                        onChange={(e)=>{setProductionPrice(e.target.value)}}
+                                    />
+                                </td>
+                                <td>
+                                    <input 
+                                        type="number"
+                                        className="text-xs w-9/12 border-slate-300 rounded-md"
+                                        value={marketPrice}
+                                        onChange={(e)=>{setMarketPrice(e.target.value)}} 
+                                    />
+                                </td>
+                                <td>
+                                    <h4>{productionPrice - marketPrice }</h4>
+                                </td>
+                            </tr>
+                        </table>
+                        
                     </div>
                 </tbody>
             </table>

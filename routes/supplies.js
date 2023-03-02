@@ -7,6 +7,6 @@ router.route('/')
     .post(controllers.createSupply)   
 
 router.route('/:id')
-    .get()    
+    .delete(controllers.DeleteSupply)    
 
 module.exports = router

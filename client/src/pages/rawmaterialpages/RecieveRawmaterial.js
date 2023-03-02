@@ -68,7 +68,7 @@ const RecieveRawmaterial = () => {
                     >
                         <option value="">select rawmaterial</option>
                         {rawmaterial && rawmaterial.map((material)=>(
-                            <option key={material._id} value={material._id}>{material.name}</option>
+                            <option key={material._id} value={material.name}>{material.name}</option>
                         ))}
                     </select>
                     <div className="grid grid-cols-2 gap-y-2">
@@ -96,7 +96,7 @@ const RecieveRawmaterial = () => {
                         >
                             <option value="">select supplier</option>
                             {suppliers && suppliers.map((supplier)=>(
-                               <option value={supplier._id}>{supplier.name}</option> 
+                               <option value={supplier.name}>{supplier.name}</option> 
                             ))}
                         </select>
                     </div>
