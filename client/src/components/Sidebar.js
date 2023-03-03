@@ -19,9 +19,9 @@ const Sidebar = () => {
     }
 
     return ( 
-        <div className='shadow w-2/12 fixed h-full text-xs text-slate-400 grid grid-cols-1 hidden md:block'>
+        <div className='shadow w-2/12 fixed h-screen text-xs text-slate-500 flex flex-col hidden md:block'>
             
-            <div className="flex flex-col gap-y-2 mt-5 mx-1 font-semibold">
+            <div className="flex flex-col gap-y-2 mt-5 flex-1 font-semibold">
                 <Link to={`/`}  onClick={()=> {setActiveTab(1)}} className={`${activeTab === 1 ? `bg-primary bg-opacity-10` : ``} flex gap-x-4 items-center p-2 rounded hover:bg-primary hover:bg-opacity-20`}>
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className={`w-4 h-4 ${activeTab === 1 ? `-rotate-12 fill-primary`: `rotate-0`}`}>
                         <path fillRule="evenodd" d="M4.25 2A2.25 2.25 0 002 4.25v2.5A2.25 2.25 0 004.25 9h2.5A2.25 2.25 0 009 6.75v-2.5A2.25 2.25 0 006.75 2h-2.5zm0 9A2.25 2.25 0 002 13.25v2.5A2.25 2.25 0 004.25 18h2.5A2.25 2.25 0 009 15.75v-2.5A2.25 2.25 0 006.75 11h-2.5zm9-9A2.25 2.25 0 0011 4.25v2.5A2.25 2.25 0 0013.25 9h2.5A2.25 2.25 0 0018 6.75v-2.5A2.25 2.25 0 0015.75 2h-2.5zm0 9A2.25 2.25 0 0011 13.25v2.5A2.25 2.25 0 0013.25 18h2.5A2.25 2.25 0 0018 15.75v-2.5A2.25 2.25 0 0015.75 11h-2.5z" clipRule="evenodd" />
@@ -93,7 +93,7 @@ const Sidebar = () => {
                 </Link>
                 
             </div>
-            {user && <div onClick={handleLogout} className="p-1 bg-white text-xs flex gap-x-2 rounded">
+            {user && <div onClick={handleLogout} className=" p-1 bg-white text-xs flex gap-x-2 bottom-0 fixed">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-4 h-4">
                   <path fillRule="evenodd" d="M3 4.25A2.25 2.25 0 015.25 2h5.5A2.25 2.25 0 0113 4.25v2a.75.75 0 01-1.5 0v-2a.75.75 0 00-.75-.75h-5.5a.75.75 0 00-.75.75v11.5c0 .414.336.75.75.75h5.5a.75.75 0 00.75-.75v-2a.75.75 0 011.5 0v2A2.25 2.25 0 0110.75 18h-5.5A2.25 2.25 0 013 15.75V4.25z" clipRule="evenodd" />
                   <path fillRule="evenodd" d="M19 10a.75.75 0 00-.75-.75H8.704l1.048-.943a.75.75 0 10-1.004-1.114l-2.5 2.25a.75.75 0 000 1.114l2.5 2.25a.75.75 0 101.004-1.114l-1.048-.943h9.546A.75.75 0 0019 10z" clipRule="evenodd" />

@@ -52,7 +52,7 @@ const RecieveRawmaterial = () => {
 
     return ( 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 text-xs">
-            <div className="flex">
+            <div className="flex modal bg-white">
                 <img className='w-70 h-70' src={require(`../../assets/Logistics-amico.png`)} alt="recieve material" />
             </div>
             <div className="flex flex-col gap-y-4">

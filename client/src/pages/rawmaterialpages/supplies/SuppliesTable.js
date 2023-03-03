@@ -1,10 +1,12 @@
 import { useDataContext } from "../../../hooks/useDataContext"
 import { useAuthContext } from "../../../hooks/useAuthContext"
+import { useState, useEffect } from "react"
 
 const SuppliesTable = ({ supplies }) => {
 
     const {user} = useAuthContext()
     const {dispatch} = useDataContext()
+    const [filterDate, setFilterDate] = useState('')
 
     const handleDelete = async (id) => {
 
@@ -19,13 +21,21 @@ const SuppliesTable = ({ supplies }) => {
         response.ok ? dispatch({type:'DELETE_DATA', payload: json}) : console.log('not deleted')
     }
 
-    const searchByDate = () => {
-        const response = fetch(`http://localhost:5500/api/supplies`)
-    }
-    
+    const searchByDate = supplies.filter(supply => {
+
+        !filterDate ? true : supply.createdAt === filterDate
+    })
+
     return ( 
         <div className="grid grid-cols-1">
             <table className="flex flex-col table-auto">
+                <input 
+                    type="date" 
+                    className="w-2/12"
+                    value={filterDate}
+                    onChange={(e)=>{setFilterDate(e.target.value)}} 
+                />
+
                 <tr className="grid grid-cols-7 text-center">
                     <th>Date</th>
                     <th className="col-span-2">raw material</th>
@@ -35,7 +45,7 @@ const SuppliesTable = ({ supplies }) => {
                     <th>Action</th>
                 </tr>
                
-                {supplies && supplies.map((supply)=>(
+                {searchByDate && searchByDate.map((supply)=>(
                     <tr key={supply._id} className="grid grid-cols-7 text-center">
                         <td>{supply.createdAt}</td>
                         <td className="col-span-2">{supply.material}</td>
