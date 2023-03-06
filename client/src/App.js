@@ -28,7 +28,7 @@ function App () {
         <NavBar />
         <div className='flex flex-col md:flex-row mt-14 w-full'>
           {user && <Sidebar />}
-          <div className='grid grid-cols-1 md:w-10/12 md:ml-auto h-auto scroll-smooth bg-slate-200 bg-opacity-80'>
+          <div className='grid grid-cols-1 md:w-10/12 md:ml-auto h-auto scroll-smooth bg-slate-50 bg-opacity-80'>
             <div className={`grid grid-cols-1 h-full ${user && `` }`}>
               <Routes>
                 <Route exact path={`/`}     element={!user ? <LoginPage /> : <Navigate to={`/home`}/>} />

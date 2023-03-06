@@ -6,7 +6,7 @@ import useFetch from '../../hooks/useFetch';
 import { ToastContainer, toast} from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 
-const RecieveRawmaterial = () => {
+const RecieveRawmaterial = ({modalOff}) => {
 
     const notify = () => toast('wow so easy');
     const {user} = useAuthContext()
@@ -51,15 +51,21 @@ const RecieveRawmaterial = () => {
     }
 
     return ( 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 text-xs">
-            <div className="flex modal bg-white">
-                <img className='w-70 h-70' src={require(`../../assets/Logistics-amico.png`)} alt="recieve material" />
+        <div className="inset-0 mt-auto fixed justify-center bg-primary bg-opacity-10 justify-items-center grid grid-cols-1 text-xs">
+            <div className='flex'>
+                
             </div>
-            <div className="flex flex-col gap-y-4">
+            <div className="flex flex-col gap-y-4 mx-2 md:mx-0">
                 {error && <AlertBox message={error.message}/>}
                 {success && <AlertBox message={`successfully confirmed`}/>}
-                <h4 className="text-center text-primary font-semibold text-shadow">Recieve supply</h4>
+                <div onClick={modalOff} className='cursor-pointer'>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" strokeWidth={5} className="w-5 h-5 text-red-500">
+                        <path d="M6.28 5.22a.75.75 0 00-1.06 1.06L8.94 10l-3.72 3.72a.75.75 0 101.06 1.06L10 11.06l3.72 3.72a.75.75 0 101.06-1.06L11.06 10l3.72-3.72a.75.75 0 00-1.06-1.06L10 8.94 6.28 5.22z" />
+                    </svg>
+                </div>
+                
                 <form className="grid grid-cols-1 gap-y-2 bg-white rounded-md shadow p-5" onSubmit={handleSubmit}>
+                    <h4 className="text-center text-primary font-semibold text-shadow">Recieve supply</h4>
                     <label className="text-xs">Raw material</label>
                     <select
                         className="border-slate-300 text-xs"
@@ -100,13 +106,12 @@ const RecieveRawmaterial = () => {
                             ))}
                         </select>
                     </div>
-                    <div className="grid grid-cols-3 gap-x-4 mt-8">
-                        
-                        <button className="p-2 col-span-2 text-white font-semibold rounded bg-primary hover:bg-opacity-50">Confirm</button>
+                    <div className="flex flex-xol gap-x-2 mt-4">
+                        <button onClick={modalOff} className={`p-2 rounded bg-error text-red-500 hover:bg-red-500 hover:text-error`}>close</button>
+                        <button className="p-2 text-white font-semibold rounded bg-primary hover:bg-opacity-50">Confirm</button>
                     </div>
                 </form>
                 <ToastContainer />
-                
             </div>
         </div>
      );

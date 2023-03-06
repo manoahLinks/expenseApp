@@ -2,7 +2,9 @@ import React, { useState, useEffect } from "react";
 import {useDataContext} from '../../hooks/useDataContext'
 import { useAuthContext } from "../../hooks/useAuthContext";
 import RawmaterialDetail from "./RawmaterialDetail";
+import RawmaterialForm from './RawmaterialForm'
 import RawmaterialTable from "./component/Rawmaterialtable";
+import RawmaterialBoard from "./component/RawmaterialBoard";
 
 const RawmaterialList = () => {
 
@@ -47,15 +49,21 @@ const RawmaterialList = () => {
             fetchData()
         }
         
-    }, [dispatch, data,user])
+    }, [dispatch, data, user])
 
     return ( 
-        <div className="grid grid-cols-1">
-            <div className="flex justify-between p-2">
-                <h4 className="text-sm font-semibold">Raw Materials</h4>
+        <div className="grid md:grid-cols-3 grid-cols-1 p-2">
+            <div className="md:col-span-2 flex flex-col gap-y-4 border-r">
+                <div className="grid grid-cols-4"> 
+                    <small>raw materials: 400</small>
+                    <small>In stock: 250</small>
+                    <small>Low on stock: 50</small>
+                    <small>Out of stock: 100</small>
+                </div>
+               <RawmaterialBoard/>
             </div>
 
-            <div className="grid grid-cols-1 hidden md:block bg-white">
+            <div className="grid grid-cols-1 p-2 hidden md:block">
                 <RawmaterialTable materials={data} modalOn={modalOn}/>
             </div>
 

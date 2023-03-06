@@ -59,10 +59,10 @@ const RawmaterialForm = () => {
     }
 
     return ( 
-        <div className="grid grid-cols-1 gap-y-4 justify-items-center ">
+        <div className="inset-0 fixed grid grid-cols-1 gap-y-4">
             {success && <AlertBox message={`successfully created new Raw material`}/>}
             {error && <AlertBox message={error}/>}
-            <div className="grid md:grid-cols-1 p-5 rounded-md grid-cols-1 w-full md:w-6/12 bg-white">
+            <div className="grid md:grid-cols-1 p-3 border border-slate-300 rounded-md grid-cols-1 w-full bg-white">
                 <h4 className="text-sm font-semibold text-center">Register new raw material</h4>
                 <form className="grid grid-cols-1 gap-y-4  items-center" onSubmit={handleSubmit}>
                     <div className="flex flex-col">

@@ -45,7 +45,7 @@ const SuppliesTable = ({ supplies }) => {
                     <th>Action</th>
                 </tr>
                
-                {searchByDate && searchByDate.map((supply)=>(
+                {supplies && supplies.map((supply)=>(
                     <tr key={supply._id} className="grid grid-cols-7 text-center">
                         <td>{supply.createdAt}</td>
                         <td className="col-span-2">{supply.material}</td>
