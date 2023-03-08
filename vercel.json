@@ -1,16 +1,16 @@
 {
     "version": 2,
+    "name": "expense-tracker",
     "builds": [
         {
-            "src": "./index.js",
+            "src": "script.js",
             "use": "@vercel/node"
         }
     ],
     "routes": [
         {
             "src": "/(.*)",
-            "dest": "/"
+            "dest": "/index.js"
         }
-    ],
-    "buildCommand": "next build"
+    ]
 }

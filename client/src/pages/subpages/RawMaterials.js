@@ -46,7 +46,7 @@ const RawMaterials = () => {
             <div className="">
 
                 {currentSection === 1 && ( 
-                    <RawmaterialForm></RawmaterialForm>
+                   <RawmaterialList /> 
                 )}
 
                 {currentSection === 2 && ( 

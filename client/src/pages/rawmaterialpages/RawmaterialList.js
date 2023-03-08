@@ -9,6 +9,7 @@ import RawmaterialBoard from "./component/RawmaterialBoard";
 const RawmaterialList = () => {
 
     const {data, dispatch} = useDataContext()
+    const  [newForm, setNewForm] = useState(false)
     const [selectedMaterial, setSelectedMaterial] = useState(false)
     const {user} = useAuthContext()
 
@@ -25,6 +26,10 @@ const RawmaterialList = () => {
         if(response.ok){
             setSelectedMaterial({...data ,json})
         }
+    }
+
+    const closeNewForm = () => {
+        setNewForm(false)
     }
 
     const modalOff = () => {
@@ -60,6 +65,9 @@ const RawmaterialList = () => {
                     <small>Low on stock: 50</small>
                     <small>Out of stock: 100</small>
                 </div>
+                <div className="flex">
+                    <button onClick={()=>{setNewForm(true)}} className="p-1 rounded bg-success">Add</button>
+                </div>
                <RawmaterialBoard/>
             </div>
 
@@ -93,6 +101,7 @@ const RawmaterialList = () => {
                 
             </div>
             {selectedMaterial && <RawmaterialDetail material={selectedMaterial} modalOff={modalOff} />}
+            {newForm && <RawmaterialForm modalOff={closeNewForm} />}
         </div>
      );
 }
