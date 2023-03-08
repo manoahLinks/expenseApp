@@ -22,7 +22,7 @@ const express = require('express'),
 
 
 const store = new mongoDBSession({
-    uri: process.env.MONGODB_URI,
+    uri: process.env.URI,
     collection: 'mySession'
 }) 
 
@@ -60,7 +60,7 @@ app.use('/api/supplier', isAuth, supplierRoute)
 app.use('/api/supplies', isAuth, supplyRoute)
 app.use('/api/user', userRoute)
 
-app.get('/', function(_, res) {
+app.get(/^\/(?!api).*/, function(_, res) {
     res.sendFile(
         path.join(__dirname, "client", "build", "index.html"),
         function (err) {

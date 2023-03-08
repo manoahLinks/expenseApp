@@ -1,9 +1,11 @@
 import { useState, useEffect } from "react";
 import RecieveRawmaterial from "../RecieveRawmaterial";
+import UsageForm from '../usage/UsageForm'
 
 const RawmaterialBoard = () => {
 
     const [modal, setModal] = useState(false)
+    const [usageForm, setUsageFom] = useState(false)
 
     const handleModal = () => {
         setModal(true)
@@ -66,7 +68,7 @@ const RawmaterialBoard = () => {
                     </div>
 
                     <div className="flex mt-2 gap-x-2 justify-end">
-                        <button className="p-1 col-span-2  rounded bg-primary bg-opacity-50 hover:bg-opacity-90 text-white">New Usage</button>
+                        <button onClick={()=>{setUsageFom(true)}} className="p-1 col-span-2  rounded bg-primary bg-opacity-50 hover:bg-opacity-90 text-white">New Usage</button>
                     </div>
                 </div>
 
@@ -91,6 +93,7 @@ const RawmaterialBoard = () => {
 
                 </div>
                 {modal && <RecieveRawmaterial modalOff={modalOff}/>}
+                {usageForm && <UsageForm/>}
             </div>
         </div>
      );
