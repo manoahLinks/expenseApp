@@ -60,7 +60,7 @@ app.use('/api/supplier', isAuth, supplierRoute)
 app.use('/api/supplies', isAuth, supplyRoute)
 app.use('/api/user', userRoute)
 
-app.get(/^\/(?!api).*/, function(_, res) {
+app.get('/', function(_, res) {
     res.sendFile(
         path.join(__dirname, "client", "build", "index.html"),
         function (err) {
