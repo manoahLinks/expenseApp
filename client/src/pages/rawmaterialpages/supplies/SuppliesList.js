@@ -11,7 +11,7 @@ const SuppliesList = () => {
     useEffect(()=>{
 
         const fetchData = async () => {
-            const response = await fetch(`http://localhost:5500/api/supplies/`, {
+            const response = await fetch(`http://localhost:5500/api/rawmaterial-transaction/`, {
                 headers: {
                     'Authorization' : `Bearer ${user.token}`
                 }

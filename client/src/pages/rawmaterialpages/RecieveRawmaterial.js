@@ -24,7 +24,7 @@ const RecieveRawmaterial = ({modalOff}) => {
     const handleSubmit = async (e) => {
         e.preventDefault()
 
-        const response = await fetch(`http://localhost:5500/api/supplies`, {
+        const response = await fetch(`http://localhost:5500/api/rawmaterial-transaction`, {
             method: 'POST',
             headers: {
                 'Authorization': `Bearer ${user.token}`,

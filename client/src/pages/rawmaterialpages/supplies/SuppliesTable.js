@@ -10,7 +10,7 @@ const SuppliesTable = ({ supplies }) => {
 
     const handleDelete = async (id) => {
 
-        const response = await fetch(`http://localhost:5500/api/supplies/${id}`, {
+        const response = await fetch(`http://localhost:5500/api/rawmaterial-transaction/${id}`, {
             headers:{
                 method: 'DELETE',
                 'Authorization': `Bearer ${user.token}`
@@ -36,8 +36,9 @@ const SuppliesTable = ({ supplies }) => {
                     onChange={(e)=>{setFilterDate(e.target.value)}} 
                 />
 
-                <tr className="grid grid-cols-7 text-center">
+                <tr className="grid grid-cols-8 text-center">
                     <th>Date</th>
+                    <th>type</th>
                     <th className="col-span-2">raw material</th>
                     <th>Quantity</th>
                     <th>Price</th>
@@ -46,8 +47,9 @@ const SuppliesTable = ({ supplies }) => {
                 </tr>
                
                 {supplies && supplies.map((supply)=>(
-                    <tr key={supply._id} className="grid grid-cols-7 text-center">
+                    <tr key={supply._id} className="grid grid-cols-8 text-center">
                         <td>{supply.createdAt}</td>
+                        <td>{supply.type}</td>
                         <td className="col-span-2">{supply.material}</td>
                         <td>{supply.quantity}</td>
                         <td>{supply.amount}</td>

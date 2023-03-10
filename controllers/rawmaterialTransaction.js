@@ -1,4 +1,4 @@
-const Supplies = require('../models/supplies')
+const RawmaterialTransactions = require('../models/rawmaterialTransactions')
 
 // creating a new supply record
 exports.createSupply = async (req, res) => {
@@ -8,7 +8,22 @@ exports.createSupply = async (req, res) => {
     try {
         
         const createdBy = req.user._id
-        const response = await Supplies.create({material, quantity, amount, supplier, createdBy})
+        const response = await RawmaterialTransactions.create({type: 'purchase', material, quantity, amount, supplier, createdBy})
+        return res.status(200).json(response)
+
+    } catch (error) {
+        res.status(400).json(error.message)
+    }
+}
+
+exports.createUsage = async (req, res) => {
+
+    const {material, quantity, amount, description} = req.body
+
+    try {
+        
+        const createdBy = req.user._id
+        const response = await RawmaterialTransactions.create({type: 'usage', material, quantity, amount, description, reciever,createdBy})
         return res.status(200).json(response)
 
     } catch (error) {
@@ -21,7 +36,7 @@ exports.getAllSupplies = async (req, res) => {
 
     try {
         
-        const response = await Supplies.find({})
+        const response = await RawmaterialTransactions.find({})
         return res.status(200).json(response)
 
     } catch (error) {
@@ -36,7 +51,7 @@ exports.DeleteSupply = async (req, res) => {
  
     try {
         
-        const response = await Supplies.findByIdAndDelete(id)
+        const response = await RawmaterialTransactions.findByIdAndDelete(id)
         return res.status(200).json(response)
 
     } catch (error) {

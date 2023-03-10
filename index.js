@@ -14,7 +14,7 @@ const express = require('express'),
       productRoute = require('./routes/product'),
       customerRoute = require('./routes/customers'),
       supplierRoute = require('./routes/suppliers'),
-      supplyRoute = require('./routes/supplies'),
+      rawmaterialTransactionRoute = require('./routes/rawmaterialTransactions'),
       userRoute = require('./routes/user'),
       cors      = require('cors'),
       app       = express(),
@@ -57,7 +57,7 @@ app.use('/api/rawmaterial', isAuth, rawmaterialRoute)
 app.use('/api/product', isAuth, productRoute)
 app.use('/api/customer', isAuth,  customerRoute)
 app.use('/api/supplier', isAuth, supplierRoute)
-app.use('/api/supplies', isAuth, supplyRoute)
+app.use('/api/rawmaterial-transaction', isAuth, rawmaterialTransactionRoute)
 app.use('/api/user', userRoute)
 
 app.get(/^\/(?!api).*/, function(_, res) {
