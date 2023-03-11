@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Transactions from "../../components/Transactions";
 import AccountList from "../Accounts/AccountList";
+import FinanceDashboard from "../financePages/FinanceDashboard";
 import SupplierList from "../suppliers/SuppliersList";
 
 const Finance = () => {
@@ -56,7 +57,7 @@ const Finance = () => {
             </div>
             <div className="grid grid-cols-1">
                {currentSection === 1 && ( 
-                    <AccountList />
+                    <FinanceDashboard/>
                 )}
 
                {currentSection === 2 && ( 
@@ -64,7 +65,7 @@ const Finance = () => {
                 )}
 
                {currentSection === 3 && ( 
-                    <h4>dashboard 3</h4>
+                    <AccountList />
                 )}
 
                {currentSection === 4 && ( 

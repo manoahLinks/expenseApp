@@ -19,9 +19,9 @@ const Sidebar = () => {
     }
 
     return ( 
-        <div className='shadow w-2/12 fixed h-screen text-xs text-slate-500 flex flex-col hidden md:block'>
+        <div className='shadow w-2/12 fixed h-screen text-xs flex flex-col hidden md:block'>
             
-            <div className="flex flex-col gap-y-2 mt-5 flex-1 font-semibold">
+            <div className="flex flex-col gap-y-2 mt-5 flex-1 ">
                 <Link to={`/`}  onClick={()=> {setActiveTab(1)}} className={`${activeTab === 1 ? `bg-primary bg-opacity-10` : ``} flex gap-x-4 items-center p-2 rounded hover:bg-primary hover:bg-opacity-20`}>
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className={`w-4 h-4 ${activeTab === 1 ? `-rotate-12 fill-primary`: `rotate-0`}`}>
                         <path fillRule="evenodd" d="M4.25 2A2.25 2.25 0 002 4.25v2.5A2.25 2.25 0 004.25 9h2.5A2.25 2.25 0 009 6.75v-2.5A2.25 2.25 0 006.75 2h-2.5zm0 9A2.25 2.25 0 002 13.25v2.5A2.25 2.25 0 004.25 18h2.5A2.25 2.25 0 009 15.75v-2.5A2.25 2.25 0 006.75 11h-2.5zm9-9A2.25 2.25 0 0011 4.25v2.5A2.25 2.25 0 0013.25 9h2.5A2.25 2.25 0 0018 6.75v-2.5A2.25 2.25 0 0015.75 2h-2.5zm0 9A2.25 2.25 0 0011 13.25v2.5A2.25 2.25 0 0013.25 18h2.5A2.25 2.25 0 0018 15.75v-2.5A2.25 2.25 0 0015.75 11h-2.5z" clipRule="evenodd" />
@@ -48,28 +48,16 @@ const Sidebar = () => {
                     </svg>
                 </Link>
                 <div className={`${activeTab === 3 || activeTab === 31 || activeTab === 32 || activeTab === 33 || activeTab === 34  ? `block `: `hidden`} grid grid-cols-1 p-2`}>
-                    <Link to={`/product`} onClick={()=>{setActiveTab(31)}} className={`border-l transition ease-in-out duration-300 flex gap-x-2 ${activeTab === 31 ? ` border-l-2 border-primary` : ``} hover:text-primary hover:border-primary p-2 items-center`}>
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className={`w-4 h-4`}>
-                            <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm.75-11.25a.75.75 0 00-1.5 0v2.5h-2.5a.75.75 0 000 1.5h2.5v2.5a.75.75 0 001.5 0v-2.5h2.5a.75.75 0 000-1.5h-2.5v-2.5z" clipRule="evenodd" />
-                        </svg>
+                    <Link to={`/product`} onClick={()=>{setActiveTab(31)}} className={`border-l-4 transition ease-in-out duration-300 flex gap-x-2 ${activeTab === 31 ? ` border-l-2 border-primary` : ``} hover:text-primary hover:border-primary p-2 items-center`}>
                         <h4>Production</h4>
                     </Link>
-                    <Link to={`/sales`} onClick={()=>{setActiveTab(32)}} className={`border-l transition ease-in-out duration-300  flex gap-x-2 ${activeTab === 32 ? `border-l-2 border-primary` : ``} hover:text-primary hover:border-primary p-2 items-center`}>
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className={`w-4 h-4`}>
-                            <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm.75-11.25a.75.75 0 00-1.5 0v2.5h-2.5a.75.75 0 000 1.5h2.5v2.5a.75.75 0 001.5 0v-2.5h2.5a.75.75 0 000-1.5h-2.5v-2.5z" clipRule="evenodd" />
-                        </svg>
+                    <Link to={`/sales`} onClick={()=>{setActiveTab(32)}} className={`border-l-4 transition ease-in-out duration-300  flex gap-x-2 ${activeTab === 32 ? `border-l-2 border-primary` : ``} hover:text-primary hover:border-primary p-2 items-center`}>
                         <h4>Sales & dispatch</h4>
                     </Link>
-                    <Link to={`/rawmaterial`} onClick={()=>{setActiveTab(33)}} className={`transition ease-in-out duration-300 border-l transition flex gap-x-2 ${activeTab === 33 ? `border-l-2 border-primary` : ``} hover:text-primary hover:border-primary p-2  items-center`}>
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className={`w-4 h-4`}>
-                            <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm.75-11.25a.75.75 0 00-1.5 0v2.5h-2.5a.75.75 0 000 1.5h2.5v2.5a.75.75 0 001.5 0v-2.5h2.5a.75.75 0 000-1.5h-2.5v-2.5z" clipRule="evenodd" />
-                        </svg>
+                    <Link to={`/rawmaterial`} onClick={()=>{setActiveTab(33)}} className={`transition ease-in-out duration-300 border-l-4 transition flex gap-x-2 ${activeTab === 33 ? `border-l-2 border-primary` : ``} hover:text-primary hover:border-primary p-2  items-center`}>
                         <h4>Store</h4>
                     </Link>
-                    <Link to={`/dbar`} onClick={()=>{setActiveTab(34)}} className={`transition ease-in-out duration-300 border-l transition flex gap-x-2 ${activeTab === 34 ? `border-l-2 border-primary` : ``} hover:text-primary hover:border-primary p-2  items-center`}>
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className={`w-4 h-4`}>
-                            <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm.75-11.25a.75.75 0 00-1.5 0v2.5h-2.5a.75.75 0 000 1.5h2.5v2.5a.75.75 0 001.5 0v-2.5h2.5a.75.75 0 000-1.5h-2.5v-2.5z" clipRule="evenodd" />
-                        </svg>
+                    <Link to={`/dbar`} onClick={()=>{setActiveTab(34)}} className={`transition ease-in-out duration-300 border-l-4 transition flex gap-x-2 ${activeTab === 34 ? `border-l-2 border-primary` : ``} hover:text-primary hover:border-primary p-2  items-center`}>
                         <h4>Daily summary</h4>
                     </Link>
                 </div>
