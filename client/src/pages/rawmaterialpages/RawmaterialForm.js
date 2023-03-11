@@ -28,7 +28,7 @@ const RawmaterialForm = ({modalOff}) => {
 
         setIsPending(true)
 
-        const response = await fetch(`http://localhost:5500/api/rawmaterial`, {
+        const response = await fetch(`https://expense-app-manoahlinks.vercel.app/api/rawmaterial`, {
             method: 'POST',
             headers: {
                 'Authorization': `Bearer ${user.token}`,
