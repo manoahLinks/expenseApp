@@ -1,4 +1,5 @@
 import React, { useState } from "react"
+import SalesDashbord from "../sales/SalesDashboard"
 
 const SalesPage = () => {
 
@@ -42,7 +43,7 @@ const SalesPage = () => {
             <div className="p-5">
 
                 {currentSection === 1 && ( 
-                    <h4>dashboard</h4>
+                    <SalesDashbord/>
                 )}
 
                 {currentSection === 2 && ( 

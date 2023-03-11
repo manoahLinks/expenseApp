@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import CustomerList from "../marketing/CustomerList";
 import CustomerForm from '../marketing/CustomerForm';
+import CustomerDashboard from "../marketing/component/CustomerDashboard";
 
 const Marketing = () => {
 
@@ -57,11 +58,11 @@ const Marketing = () => {
             
           <div className="grid grid-cols-1 p-5">
                {currentSection === 1 && (
-                    <CustomerForm />
+                   <CustomerDashboard/>
                 )}
 
                 {currentSection === 2 && (
-                    <h4>section 1</h4>
+                    <div>gird</div>
                 )}
 
                 {currentSection === 3 && (

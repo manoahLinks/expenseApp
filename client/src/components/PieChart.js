@@ -37,7 +37,7 @@ const PieChart = ({ data }) => {
       datasets: [
         {
           label: "sales report 2023",
-          backgroundColor: ['#357266', '#A3BBAD', '#D0DCD5', '#D0DCD5', '#D0DCD5', '#A3BBAD', '#A3BBAD'],
+          backgroundColor: ['#357266', '#A3BBAD', '#D0DCD5', '#D0DCD4', '#D0DCD6', '#A3BBAD', '#A3BBAD'],
           borderWidth: [0,0,0,0,0,0],
           data: [50, 60, 30, 50, 70],
         },
