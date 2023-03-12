@@ -32,7 +32,7 @@ const AccountList = () => {
     useEffect(()=>{
 
         const fetchData = async () => {
-            const response = await fetch(`https://expense-app-manoahlinks.vercel.app/api/account`, {
+            const response = await fetch(`https://cors-anywhere-five-xi.vercel.app/https://expense-app-manoahlinks.vercel.app/api/account`, {
                 headers:{
                     'Authorization': `Bearer ${user.token}`
                 }

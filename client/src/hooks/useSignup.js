@@ -11,7 +11,7 @@ export const useSignup = () => {
         setIsLoading(true)
         setError(null)
 
-        const response = await fetch(`https://expense-app-manoahlinks.vercel.app/api/user/register`, {
+        const response = await fetch(`https://cors-anywhere-five-xi.vercel.app/https://expense-app-manoahlinks.vercel.app/api/user/register`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
