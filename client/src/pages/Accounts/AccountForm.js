@@ -16,7 +16,7 @@ const AccountForm = ({modalOff}) => {
 
         e.preventDefault()
 
-        const response = await fetch(`https://cors-anywhere-five-xi.vercel.app/https://expense-app-manoahlinks.vercel.app/api/account`, {
+        const response = await fetch(`https://expense-app-manoahlinks.vercel.app/api/account`, {
             method: 'POST',
             headers: {
                 'Authorization': `Bearer ${user.token}`
