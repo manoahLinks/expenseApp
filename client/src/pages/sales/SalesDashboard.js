@@ -40,6 +40,29 @@ const SalesDashbord = () => {
                     </div>
                     
                 </div>
+
+                <div className="flex flex-col gap-y-4">
+                    <div className="flex md:p-5 p-2 bg-white flex-col shadow-md rounded-lg">
+                        <div className="flex">
+                            <h4 className="uppercase text-xs">Order's recieved</h4>
+                        </div>
+                        <h4 className="text-xl text-center">50</h4>
+                    </div>
+
+                    <div className="flex md:p-5 p-2 bg-white flex-col shadow-md rounded-lg">
+                        <div className="flex">
+                            <h4 className="uppercase text-xs">Products recieved</h4>
+                        </div>
+                        <h4 className="text-xl text-center">50</h4>
+                    </div>
+
+                    <div className="flex md:p-5 p-2 bg-white flex-col shadow-md rounded-lg">
+                        <div className="flex">
+                            <h4 className="uppercase text-xs">sales completed</h4>
+                        </div>
+                        <h4 className="text-xl text-center">50</h4>
+                    </div>
+                </div>
             </div>
 
             <div>

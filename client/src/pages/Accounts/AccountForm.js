@@ -16,10 +16,12 @@ const AccountForm = ({modalOff}) => {
 
         e.preventDefault()
 
-        const response = await fetch(`https://expense-app-manoahlinks.vercel.app/api/account`, {
+        console.log(name, pin)
+        const response = await fetch(`http://localhost:5500/api/account`, {
             method: 'POST',
             headers: {
-                'Authorization': `Bearer ${user.token}`
+                'Authorization': `Bearer ${user.token}`,
+                'Content-Type': 'application/json'
             },
             body: JSON.stringify({name, pin})
         })

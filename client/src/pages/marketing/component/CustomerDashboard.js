@@ -8,6 +8,7 @@ const CustomerDashboard = () => {
     const {user} = useAuthContext()
     const {data, dispatch} = useDataContext()
     const [customerForm, setCustomerForm] = useState(false)
+    const [orderForm, setOrderForm] = useState(false)
 
     const modalOff = () =>{
         setCustomerForm(false)
@@ -17,7 +18,7 @@ const CustomerDashboard = () => {
     useEffect(()=>{
 
         const fetchData = async () => {
-            const response = await fetch(`https://expense-app-manoahlinks.vercel.app/api/customer`, {
+            const response = await fetch(`http://localhost:5500/api/customer`, {
                 headers:{
                     'Authorization': `Bearer ${user.token}`
                 }
@@ -52,11 +53,19 @@ const CustomerDashboard = () => {
                         <div className="flex justify-between">
                             <h4>Orders sent</h4>
                         </div>
+                        <h4 className="text-xl">75</h4>
+                        <div onClick={()=>{setCustomerForm(true)}}>
+                            <button className="p-1 rounded border text-xs bg-slate-100 border-slate-300 shadow-md">send new order</button>
+                        </div>
                     </div>
 
                     <div className="md:p-5 p-3 shadow-md bg-white flex flex-col gap-y-6 rounded-lg">
                         <div className="flex justify-between">
-                            <h4>Schedules sent</h4>
+                            <h4>Active Routes</h4>
+                        </div>
+                        <h4 className="text-xl">80 +</h4>
+                        <div onClick={()=>{setCustomerForm(true)}}>
+                            <button className="p-1 rounded border text-xs bg-slate-100 border-slate-300 shadow-md">new customer</button>
                         </div>
                     </div>
                 </div>

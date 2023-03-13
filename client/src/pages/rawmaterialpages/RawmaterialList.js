@@ -39,7 +39,7 @@ const RawmaterialList = () => {
     useEffect(()=>{
 
         const fetchData = async () => {
-            const response = await fetch(`https://expense-app-manoahlinks.vercel.app/api/rawmaterial`, {
+            const response = await fetch(`http://localhost:5500/api/rawmaterial`, {
                 headers:{
                     'Authorization': `Bearer ${user.token}`
                 }

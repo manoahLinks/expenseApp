@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
 
 const dbarSchema = new mongoose.Schema({
-
+    
     
 }, {timestamps: true})
 

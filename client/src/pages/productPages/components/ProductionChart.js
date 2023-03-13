@@ -13,7 +13,7 @@ const ProductionChart = () => {
     useEffect(()=>{
 
         const fetchData = async () => {
-            const response = await fetch(`https://expense-app-manoahlinks.vercel.app/api/product`, {
+            const response = await fetch(`http://localhost:5500/api/product`, {
                 headers:{
                     'Authorization': `Bearer ${user.token}`
                 }

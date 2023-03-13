@@ -12,7 +12,7 @@ const SupplierList = () => {
 
     const modalOn = async (data) => {
 
-        const response = await fetch(`https://expense-app-manoahlinks.vercel.app/api/supplier/${data._id}`, {
+        const response = await fetch(`http://localhost:5500/api/supplier/${data._id}`, {
             headers: {
                 'Authorization': `Bearer ${user.token}`
             }
@@ -32,7 +32,7 @@ const SupplierList = () => {
     useEffect(()=>{
 
         const fetchData = async () => {
-            const response = await fetch(`https://expense-app-manoahlinks.vercel.app/api/supplier`, {
+            const response = await fetch(`http://localhost:5500/api/supplier`, {
                 headers:{
                     'Authorization': `Bearer ${user.token}`
                 }

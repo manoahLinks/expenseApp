@@ -11,7 +11,7 @@ export const useSignup = () => {
         setIsLoading(true)
         setError(null)
 
-        const response = await fetch(`https://expense-app-manoahlinks.vercel.app/api/user/register`, {
+        const response = await fetch(`http://localhost:5500/api/user/register`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
