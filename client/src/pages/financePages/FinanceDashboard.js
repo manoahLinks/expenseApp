@@ -1,5 +1,6 @@
 import { useState } from "react";
 import AccountForm from "../Accounts/AccountForm";
+import SuppliersGrid from "../suppliers/components/SuppliersGrid" 
 
 const FinanceDashboard = () => {
 
@@ -10,8 +11,8 @@ const FinanceDashboard = () => {
     }
 
     return ( 
-        <div className="grid md:grid-cols-3 grid-cols-1">
-            <div className="flex flex-col col-span-2 md:p-5">
+        <div className="grid md:grid-cols-3 grid-cols-1 ">
+            <div className="flex flex-col col-span-2 md:p-5 ">
 
                 <div className="grid md:grid-cols-4 grid-cols-2 gap-y-2 gap-x-2 md:mx-0 mx-2">
                     <div className="flex flex-col gap-y-2 rounded-md bg-blue-400 text-white p-3 shadow">
@@ -50,8 +51,8 @@ const FinanceDashboard = () => {
                 </div>
 
             </div>
-            <div className="flex flex-col p-5">
-                <div className="flex flex-col bg-white rounded-lg p-2 md:p-5 gap-y-6 border border-slate-200">
+            <div className="flex flex-col gap-y-4">
+                <div className="flex flex-col bg-white rounded-lg p-2 md:p-5 gap-y-4 border border-slate-200">
                     <h4 className="font-bold text-slate-900">My Account</h4>
 
                     <div className="grid grid-cols-1 rounded-lg p-5 shadow-md bg-blue-700 gap-y-8">
@@ -80,6 +81,10 @@ const FinanceDashboard = () => {
 
                         <h4>Add new account</h4>
                     </button>
+                </div>
+
+                <div className="grid bg-white shadow-md grid-cols-1">
+                    <SuppliersGrid/>
                 </div>
                 {accountForm && <AccountForm modalOff={modalOff}/>}
             </div>

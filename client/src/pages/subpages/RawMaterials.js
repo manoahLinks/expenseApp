@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import RawmaterialList from "../rawmaterialpages/RawmaterialList";
 import RawmaterialForm from "../rawmaterialpages/RawmaterialForm"
 import RawMaterialAnalytics from "../AnalysisPages/RawMaterialAnalytics";
@@ -17,29 +18,20 @@ const RawMaterials = () => {
 
     return ( 
         <div className="flex flex-col">
-            <div className="grid grid-cols-1 md:grid-cols-3 bg-white shadow ">
-                <div className='md:p-3 p-2 md:col-span-2 md:overflow-x-hidden justify-evenly  overflow-x-scroll w-auto  text-xs flex items-center  md:gap-y-2 gap-x-1'>
-                    <span onClick={()=>{handleClick(1)}} className={`whitespace-nowrap w-auto ${activeTab === 1 ? `bg-primary text-white` : ``} cursor-pointer p-1 justify-center rounded flex gap-x-2`}>
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-3 h-3 md:w-5 md:h-5">
-                            <path fillRule="evenodd" d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25zM12.75 9a.75.75 0 00-1.5 0v2.25H9a.75.75 0 000 1.5h2.25V15a.75.75 0 001.5 0v-2.25H15a.75.75 0 000-1.5h-2.25V9z" clipRule="evenodd" />
+            <div className="grid grid-cols-2 p-3 bg-white">
+                <div className='text-xs flex items-center'>
+                    <Link to={`/home`} className="flex p-2 rounded-md">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5 text-slate-300 hover:text-green-400">
+                            <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25" />
                         </svg>
-                        <h4>blank</h4>
+                    </Link>
+                    
+                    <span onClick={()=>{handleClick(1)}} className={`flex p-2 ${activeTab === 1 ? `border-b-2 border-green-400` :``} p-2 border-b-2 cursor-pointer `}>
+                        <h4>Dashboard</h4>
                     </span>
-                    <span onClick={()=>{handleClick(2)}} className={`whitespace-nowrap ${activeTab === 2 ? `bg-primary text-white` : ``} cursor-pointer p-2 hover:bg-primary hover:text-white justify-center rounded flex gap-x-2`}>
-                        <h4>blank</h4>
-                    </span>
-                    <span onClick={()=>{handleClick(3)}} className={`whitespace-nowrap ${activeTab === 3 ? `bg-primary text-white` : ``} cursor-pointer py-1 px-2 hover:bg-primary hover:text-white justify-center rounded flex gap-x-2`}>
-                        <h4>Raw materials</h4>
-                    </span>
-                    <span onClick={()=>{handleClick(4)}} className={`whitespace-nowrap ${activeTab === 4 ? `bg-primary text-white` : ``} cursor-pointer py-1 px-2 hover:bg-primary hover:text-white justify-center rounded flex gap-x-2`}>
-                        <h4>Analytics</h4>
-                    </span>
-                    <span onClick={()=>{handleClick(5)}} className={`whitespace-nowrap ${activeTab === 5 ? `bg-primary text-white` : ``} cursor-pointer py-1 px-2 hover:bg-primary hover:text-white  justify-center rounded flex gap-x-2`}>
-                        <h4>suppliesList</h4>
-                    </span>
-                </div>
-                <div className="grid">
-
+                    <span onClick={()=>{handleClick(2)}} className={`flex p-2 ${activeTab === 2 ? `border-b-2 border-green-400` : ``} p-2 border-b-2 cursor-pointer`}>
+                        <h4>Admin</h4>
+                    </span>    
                 </div>
             </div>
           

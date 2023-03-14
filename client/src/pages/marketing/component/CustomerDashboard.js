@@ -36,7 +36,7 @@ const CustomerDashboard = () => {
     }, [dispatch, data, user])
 
     return ( 
-        <div className="grid grid-cols-1 md:grid-cols-3">
+        <div className="grid grid-cols-1 md:grid-cols-3 p-3 gap-y-4 md:gap-y-0">
             <div className="flex flex-col col-span-2 md:p-5">
                 <div className="grid md:grid-cols-3 gap-x-4 gap-y-4 md:gap-y-0 grid-cols-2 col-span-2">
                     <div className="md:p-5 p-3 shadow-md bg-white flex flex-col gap-y-6 rounded-lg">
