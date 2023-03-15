@@ -11,7 +11,7 @@ const CustomerList = () => {
     const [selectedData, setSelectedData] = useState(null)
 
     const modalOn = async (data) => {
-        const response = await fetch(`http://localhost:5500/api/customer/${data._id}`, {
+        const response = await fetch(`https://smartwork-api.onrender.com/api/customer/${data._id}`, {
             headers:{
                 'Authorization': `Bearer ${user.token}`
             }
@@ -31,7 +31,7 @@ const CustomerList = () => {
     useEffect(()=>{
 
         const fetchData = async () => {
-            const response = await fetch(`http://localhost:5500/api/customer`, {
+            const response = await fetch(`https://smartwork-api.onrender.com/api/customer`, {
                 headers:{
                     'Authorization': `Bearer ${user.token}`
                 }

@@ -10,7 +10,7 @@ const SuppliesTable = ({ supplies }) => {
 
     const handleDelete = async (id) => {
 
-        const response = await fetch(`http://localhost:5500/api/rawmaterial-transaction/${id}`, {
+        const response = await fetch(`https://smartwork-api.onrender.com/api/rawmaterial-transaction/${id}`, {
             headers:{
                 method: 'DELETE',
                 'Authorization': `Bearer ${user.token}`

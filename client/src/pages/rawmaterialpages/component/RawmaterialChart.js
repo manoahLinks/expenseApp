@@ -12,7 +12,7 @@ const RawmaterialChart = () => {
     useEffect(()=>{
 
         const fetchData = async () => {
-            const response = await fetch(`http://localhost:5500/api/rawmaterial`, {
+            const response = await fetch(`https://smartwork-api.onrender.com/api/rawmaterial`, {
                 headers:{
                     'Authorization': `Bearer ${user.token}`
                 }

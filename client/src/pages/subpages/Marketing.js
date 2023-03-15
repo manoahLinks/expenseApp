@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import CustomerList from "../marketing/CustomerList";
 import CustomerForm from '../marketing/CustomerForm';
 import CustomerDashboard from "../marketing/component/CustomerDashboard";
-import TagDate from "../../components/TagDate";
+
 
 const Marketing = () => {
 
@@ -31,7 +31,7 @@ const Marketing = () => {
                         <h4>Admin</h4>
                     </span>    
                 </div>
-                <TagDate/>
+                
             </div>
             
           <div className="grid grid-cols-1">
@@ -40,7 +40,7 @@ const Marketing = () => {
                 )}
 
                 {currentSection === 2 && (
-                    <div>gird</div>
+                     <CustomerList />
                 )}
 
                 {currentSection === 3 && (
@@ -48,7 +48,7 @@ const Marketing = () => {
                 )}
 
                 {currentSection === 4 && (
-                    <CustomerList />
+                   <div>sec4</div>
                 )}
 
                {currentSection === 5 && (

@@ -16,7 +16,7 @@ const UsageForm = ({modalOff}) => {
     const handleSubmit = async (e) => {
         e.preventDefault()
 
-        const response = await fetch(`http://localhost:5500/api/rawmaterial-transaction/usage`, {
+        const response = await fetch(`https://smartwork-api.onrender.com/api/rawmaterial-transaction/usage`, {
             method: 'POST',
             headers:{
                 'Authorization' : `Bearer ${user.token}`

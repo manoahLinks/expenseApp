@@ -18,13 +18,13 @@ const RecieveRawmaterial = ({modalOff}) => {
     const [error, setError] = useState(null)
     const [success, setSuccess] = useState(null)
 
-    const {data:rawmaterial} = useFetch(`http://localhost:5500/api/rawmaterial`)
-    const {data:suppliers} = useFetch(`http://localhost:5500/api/supplier`)
+    const {data:rawmaterial} = useFetch(`https://smartwork-api.onrender.com/api/rawmaterial`)
+    const {data:suppliers} = useFetch(`https://smartwork-api.onrender.com/api/supplier`)
 
     const handleSubmit = async (e) => {
         e.preventDefault()
 
-        const response = await fetch(`http://localhost:5500/api/rawmaterial-transaction`, {
+        const response = await fetch(`https://smartwork-api.onrender.com/api/rawmaterial-transaction`, {
             method: 'POST',
             headers: {
                 'Authorization': `Bearer ${user.token}`,
