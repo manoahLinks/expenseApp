@@ -59,14 +59,8 @@ const RawmaterialList = () => {
     return ( 
         <div className="grid md:grid-cols-3 grid-cols-1 p-2">
             <div className="md:col-span-2 flex flex-col gap-y-4 border-r">
-                <div className="grid grid-cols-4"> 
-                    <small>raw materials: 400</small>
-                    <small>In stock: 250</small>
-                    <small>Low on stock: 50</small>
-                    <small>Out of stock: 100</small>
-                </div>
                 <div className="flex">
-                    <button onClick={()=>{setNewForm(true)}} className="p-1 rounded bg-success">Add</button>
+                    <button onClick={()=>{setNewForm(true)}} className="p-1 rounded-full shadow-md">Add</button>
                 </div>
                <RawmaterialBoard/>
             </div>
@@ -75,9 +69,9 @@ const RawmaterialList = () => {
                 <RawmaterialTable materials={data} modalOn={modalOn}/>
             </div>
 
-            <div className="md:hidden grid grid-cols-1 gap-y-4 md:gap-y-8 md:gap-x-4 m-2 md:m-5">
+            <div className="shadow-md md:hidden grid grid-cols-1 md:gap-y-8 md:gap-x-4 m-2 md:m-5">
                 {data && data.map((material)=>(
-                    <div key={material._id} className="grid grid-cols-1 rounded bg-white shadow">
+                    <div key={material._id} className="grid grid-cols-1 bg-white ">
                         <div onClick={()=>{modalOn(material)}} className={`flex items-center justify-between p-2`}>
                             <div className="flex p-1 bg-green-100 rounded">
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5">
@@ -95,7 +89,7 @@ const RawmaterialList = () => {
                                 
                             </div>
                         </div>
-                        
+                        <hr />
                  </div>
                 ))}
                 

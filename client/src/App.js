@@ -16,6 +16,7 @@ import DailyActivityReportSheet from './pages/DailyActivityReportSheet';
 import Finance from './pages/subpages/Finance';
 import Products from './pages/subpages/Products';
 import Forgotpassword from './pages/Forgotpassword';
+import TaskBar from './components/TaskBar';
 
 
 function App () {
@@ -25,11 +26,11 @@ function App () {
   return (
     <Router>
       <div className="flex flex-col min-h-screen relative text-slate-500 text-xs md:text-sm">
-        <NavBar />
-        <div className='flex flex-col md:flex-row mt-14 w-full'>
+        {user && <NavBar />}
+        <div className={`flex flex-col md:flex-row ${ user && `mt-14`} w-full`}>
           {user && <Sidebar />}
-          <div className='grid grid-cols-1 md:w-10/12 md:ml-auto h-auto scroll-smooth bg-slate-50 bg-opacity-80'>
-            <div className={`grid grid-cols-1 h-full ${user && `` }`}>
+          <div className={`grid grid-cols-1  ${user && `md:w-10/12 ml-auto`} w-full  h-auto scroll-smooth `}>
+            <div className={`grid grid-cols-1 h-full  ${user && `` }`}>
               <Routes>
                 <Route exact path={`/`}     element={!user ? <LoginPage /> : <Navigate to={`/home`}/>} />
                 <Route path={`/forgotpassword`}     element={!user ? <Forgotpassword /> : <Navigate to={`/home`}/>} />
@@ -44,17 +45,11 @@ function App () {
                 <Route path={`/finance`}        element={user ? <Finance/> : <Navigate to={`/`}/>} />
                 <Route path={`/product`}        element={user ? <Products/> : <Navigate to={`/`}/>} />
               </Routes>
+
+              
             </div>
+            {user && <TaskBar/>}
             
-            {user && <div className='grid grid-cols-1 gap-y-2 h-full '>
-              <div className='grid grid-cols-1 m-4 p-4'>
-                
-              </div>
-              <div className='grid grid-cols-1'>
-                
-              </div>
-              <div></div> 
-            </div>}
           </div>
         </div>
       </div>

@@ -1,10 +1,15 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { useAuthContext } from "../hooks/useAuthContext";
 
 const Homepage = () => {
+
+    const {user} = useAuthContext()
+
     return ( 
         <div className="grid grid-cols-1 items-center">
-            <div className="grid grid-cols-3 md:grid-cols-6 gap-x-2 gap-y-2 md:gap-x-4 p-2">
+            {user && <h4 className="block md:hidden p-2">Welcome back, <span>{user.email}</span></h4>}
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-x-2 gap-y-2 md:gap-x-4 p-2">
                 <Link to={`/myprofile`} className="hover:bg-gray-200 shadow-md flex flex-col bg-white gap-y-2 items-center rounded-md p-2">
                     {<img src={require(`../assets/icons8-male-user-48.png`)} alt="" />}
                     <h4 className="text-center md:text-sm font-semibold">My Profile</h4>

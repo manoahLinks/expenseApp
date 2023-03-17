@@ -26,18 +26,25 @@ const Finance = () => {
                     <span onClick={()=>{handleClick(1)}} className={`flex p-2 ${activeTab === 1 ? `border-b-2 border-green-400` :``} p-2 border-b-2 cursor-pointer `}>
                         <h4>Dashboard</h4>
                     </span>
-                    <span onClick={()=>{handleClick(2)}} className={`flex p-2 ${activeTab === 2 ? `border-b-2 border-green-400` : ``} p-2 border-b-2 cursor-pointer`}>
-                        <h4>Admin</h4>
+
+                    {/* <span onClick={()=>{handleClick(2)}} className={`flex p-2 ${activeTab === 2 ? `border-b-2 border-green-400` : ``} p-2 border-b-2 cursor-pointer`}>
+                        <h4>Expenditure</h4>
+                    </span> 
+                    <span onClick={()=>{handleClick(3)}} className={`flex p-2 ${activeTab === 3 ? `border-b-2 border-green-400` : ``} p-2 border-b-2 cursor-pointer`}>
+                        <h4>Account</h4>
+                    </span>    */}
+                    <span onClick={()=>{handleClick(4)}} className={`flex p-2 ${activeTab === 4 ? `border-b-2 border-green-400` : ``} p-2 border-b-2 cursor-pointer`}>
+                        <h4>Suppliers</h4>
                     </span>    
                 </div>
             </div>
-            <div className="grid grid-cols-1">
+            <div className="grid grid-cols-1 mb-auto">
                {currentSection === 1 && ( 
                     <FinanceDashboard/>
                 )}
 
                {currentSection === 2 && ( 
-                    <SupplierList/>
+                    <h4>Transactions</h4>
                 )}
 
                {currentSection === 3 && ( 
@@ -45,7 +52,7 @@ const Finance = () => {
                 )}
 
                {currentSection === 4 && ( 
-                    <h4>hi</h4>
+                   <SupplierList/>
                 )}
 
                {currentSection === 5 && ( 
