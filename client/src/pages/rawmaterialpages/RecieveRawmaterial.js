@@ -19,7 +19,7 @@ const RecieveRawmaterial = ({modalOff}) => {
     const [success, setSuccess] = useState(null)
 
     const {data:rawmaterial} = useFetch(`https://smartwork-api.onrender.com/api/rawmaterial`)
-    const {data:suppliers} = useFetch(`https://smartwork-api.onrender.com5500/api/supplier`)
+    const {data:suppliers} = useFetch(`https://smartwork-api.onrender.com/api/supplier`)
 
     const handleSubmit = async (e) => {
         e.preventDefault()
