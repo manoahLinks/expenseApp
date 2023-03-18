@@ -52,7 +52,7 @@ const FinanceDashboard = () => {
 
             </div>
             <div className="flex flex-col gap-y-4">
-                <div className="flex flex-col bg-white rounded-lg p-2 md:p-5 gap-y-4 border border-slate-200">
+                <div className="flex flex-col bg-white rounded-lg p-2 md:p-5 gap-y-4">
                     <h4 className="font-bold text-slate-900">My Account</h4>
 
                     <div className="grid grid-cols-1 rounded-lg p-5 shadow-md bg-blue-700 gap-y-8">

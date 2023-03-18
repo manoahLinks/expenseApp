@@ -17,7 +17,7 @@ const AccountForm = ({modalOff}) => {
         e.preventDefault()
 
         console.log(name, pin)
-        const response = await fetch(`http://localhost:5500/api/account`, {
+        const response = await fetch(`https://smartwork-api.onrender.com/api/account`, {
             method: 'POST',
             headers: {
                 'Authorization': `Bearer ${user.token}`,

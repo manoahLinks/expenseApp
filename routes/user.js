@@ -10,7 +10,7 @@ router.route('/')
 router.route('/register')
     .post(controller.registerUser)
     
-router.route('/:id')
-    .get(controller.getSingleUser)    
+router.route('/:email')
+    .get(controller.getSingleUserByEmail)    
 
 module.exports = router

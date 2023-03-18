@@ -30,6 +30,18 @@ exports.getSingleUser = async (req, res) => {
     }
 }
 
+exports.getSingleUserByEmail = async (req, res) => {
+    let {email} = req.params
+    try {
+        
+        const response = await User.findOne({email: email})
+        res.status(200).json(response)
+
+    } catch (error) {
+        res.status(400).json(error)
+    }
+}
+
 exports.registerUser = async (req, res) => {
 
     let {email, password} = req.body
