@@ -31,7 +31,7 @@ const UserDashboard = () => {
                 <img src="" alt="profile pic" />
                 <div className="grid grid-cols-2">
                     <h4>Email</h4>
-                    <h4>{user.email}</h4>
+                    <h4>{data.email}</h4>
                 </div>
             </div>
         </div>
