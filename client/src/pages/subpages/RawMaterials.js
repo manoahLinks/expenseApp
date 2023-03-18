@@ -42,7 +42,7 @@ const RawMaterials = () => {
                 )}
 
                 {currentSection === 2 && ( 
-                    <div>something2</div>
+                      <SuppliesList/>
                 )}
 
                 {currentSection === 3 && ( 
@@ -53,7 +53,7 @@ const RawMaterials = () => {
                     <RawMaterialAnalytics/>
                 )}
                 {currentSection === 5 && ( 
-                    <SuppliesList/>   
+                    <div>something2</div>   
                 )}
                 
             </div>  

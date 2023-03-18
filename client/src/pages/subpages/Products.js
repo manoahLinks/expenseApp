@@ -38,11 +38,11 @@ const Products = () => {
                 )}
 
                 {currentSection === 2 && ( 
-                   <ProductForm/>
+                    <ProductList/>
                 )}
 
                 {currentSection === 3 && ( 
-                    <ProductList/>
+                    <ProductForm/>
                 )}
 
                 {currentSection === 4 && ( 

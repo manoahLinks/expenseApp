@@ -44,7 +44,7 @@ const Finance = () => {
                 )}
 
                {currentSection === 2 && ( 
-                    <h4>Transactions</h4>
+                    <AccountList />
                 )}
 
                {currentSection === 3 && ( 

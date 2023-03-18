@@ -1,6 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200;0,300;0,400;0,500;1,200;1,300;1,400&display=swap');
 
 .inset{
     border: 1px inset rgb(250, 219, 250);
@@ -10,4 +11,8 @@
 .modal{
     border-bottom-left-radius: 25px;
     border-bottom-right-radius: 25px;
+}
+
+body{
+    font-family: Nunito;
 }
