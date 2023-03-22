@@ -27,12 +27,12 @@ const Finance = () => {
                         <h4>Dashboard</h4>
                     </span>
 
-                    {/* <span onClick={()=>{handleClick(2)}} className={`flex p-2 ${activeTab === 2 ? `border-b-2 border-green-400` : ``} p-2 border-b-2 cursor-pointer`}>
+                    <span onClick={()=>{handleClick(2)}} className={`flex p-2 ${activeTab === 2 ? `border-b-2 border-green-400` : ``} p-2 border-b-2 cursor-pointer`}>
                         <h4>Expenditure</h4>
                     </span> 
                     <span onClick={()=>{handleClick(3)}} className={`flex p-2 ${activeTab === 3 ? `border-b-2 border-green-400` : ``} p-2 border-b-2 cursor-pointer`}>
                         <h4>Account</h4>
-                    </span>    */}
+                    </span>   
                     <span onClick={()=>{handleClick(4)}} className={`flex p-2 ${activeTab === 4 ? `border-b-2 border-green-400` : ``} p-2 border-b-2 cursor-pointer`}>
                         <h4>Suppliers</h4>
                     </span>    
