@@ -49,9 +49,9 @@ const CustomerList = () => {
     }, [dispatch, data, user])
 
     return ( 
-        <div className="grid grid-cols-1 gap-y-2 shadow rounded-md">
+        <div className="grid grid-cols-1 gap-y-2 rounded-md">
 
-            <div className="grid grid-cols-1 hidden md:block">
+            <div className="grid grid-cols-1 hidden md:block p-5">
                 <CustomerTable customers={data} modalOn={modalOn} />
             </div>
 

@@ -1,13 +1,14 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import AttendancePage from '../AttendacePage'
-import ProductionChart from "../productPages/components/ProductionChart";
 import UserDashboard from "../profile/userDashboard";
+import UserList from "../profile/UserList";
 
 const MyProfile = () => {
 
     const [currentSection, setCurrentSection] = useState(1)
     const [activeTab, setActiveTab] = useState(1)
+
 
     const handleClick = (section) => {
         setCurrentSection(section)
@@ -28,7 +29,10 @@ const MyProfile = () => {
                     </span>
                     <span onClick={()=>{handleClick(2)}} className={`flex p-2 ${activeTab === 2 ? `border-b-2 border-green-400` : ``} p-2 border-b-2 cursor-pointer`}>
                         <h4>Admin</h4>
-                    </span>    
+                    </span>
+                    <span onClick={()=>{handleClick(3)}} className={`flex p-2 ${activeTab === 3 ? `border-b-2 border-green-400` : ``} p-2 border-b-2 cursor-pointer`}>
+                        <h4>users</h4>
+                    </span>      
                 </div>
             </div>
             <div className="">
@@ -41,7 +45,7 @@ const MyProfile = () => {
                 )}
 
                 {currentSection === 3 && ( 
-                  <div>desc</div>
+                    <UserList/>
                 )}
 
                 {currentSection === 4 && ( 
