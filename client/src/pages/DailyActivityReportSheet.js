@@ -36,7 +36,7 @@ const DailyActivityReportSheet = () => {
     useEffect(()=>{
 
         const fetchData = async () => {
-            const response = await fetch(`https://smartwork-api.onrender.com/api/product` , {
+            const response = await fetch(`https://smartwork-api.onrender.com/api/rawmaterial` , {
                 headers:{
                     'Authorization': `Bearer ${user.token}`
                 }
