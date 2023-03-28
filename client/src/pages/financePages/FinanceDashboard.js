@@ -1,13 +1,19 @@
 import { useState } from "react";
 import AccountForm from "../Accounts/AccountForm";
+import AccountTransactions from "../Accounts/AccountTransactions";
 import SuppliersGrid from "../suppliers/components/SuppliersGrid" 
 
 const FinanceDashboard = () => {
 
     const [accountForm, setAccountForm] = useState(false)
+    const [transactionModal, setTransactionModal] = useState(false)
 
     const modalOff = () => {
         setAccountForm(false)
+    }
+
+    const handleTransactionsModal = () => {
+        setTransactionModal(true)
     }
 
     return ( 
@@ -49,7 +55,7 @@ const FinanceDashboard = () => {
                 </div>
 
             </div>
-            <div className="md:block hidden flex flex-col gap-y-4">
+            <div onClick={handleTransactionsModal} className=" flex flex-col gap-y-4">
                 <div className="flex flex-col bg-white rounded-lg p-2 md:p-5 gap-y-4">
                     <h4 className="font-bold text-slate-900">My Account</h4>
 
@@ -85,6 +91,7 @@ const FinanceDashboard = () => {
                     <SuppliersGrid/>
                 </div>
                 {accountForm && <AccountForm modalOff={modalOff}/>}
+                {transactionModal && <AccountTransactions/>}
             </div>
 
         </div>

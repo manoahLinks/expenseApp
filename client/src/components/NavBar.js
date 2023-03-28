@@ -1,20 +1,36 @@
-import React from "react";
+import React, {useState} from "react";
 import { useAuthContext } from "../hooks/useAuthContext";
 import { useLogout } from "../hooks/useLogout";
+import Sidebar from "./Sidebar";
 
 const NavBar = () => {
 
-  const {user} = useAuthContext()
-  
-  const {logOut} = useLogout()
+    const {user} = useAuthContext()
+    const [sidebar, setSidebar] = useState(false)
+    
+    const {logOut} = useLogout()
 
-  const handleLogout = () => {
-      logOut()
-  }
+    const handleLogout = () => {
+        logOut()
+    }
+
+    const toggleSidebar = () => {
+      if(!sidebar){
+        setSidebar(true)
+      }
+      else{
+        setSidebar(false)
+      }
+    }
 
     return ( 
         <div className='fixed top-0 z-10 bg-white w-full flex shadow justify-between md:p-2 p-2'>
-            <div className='flex items-center'>
+            <div className='flex items-center gap-x-2'>
+              <div onClick={toggleSidebar} className="flex md:hidden block">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+                </svg>
+              </div>
               <h4 className="font-bold text-md text-primary">SMART WORK</h4>
             </div>
             <div className=" md:border-l p-2 flex font-light gap-x-4">
@@ -36,11 +52,9 @@ const NavBar = () => {
                     <h4>Logout</h4>
                 </div>
 
-                
-            
               </div>
 
-              
+              {sidebar && <Sidebar />}
             </div>
         </div>
      );
