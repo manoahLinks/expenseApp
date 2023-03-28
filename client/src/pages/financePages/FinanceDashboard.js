@@ -46,12 +46,10 @@ const FinanceDashboard = () => {
                             <small>12% increase from target</small>
                         </div>
                     </div>
-
-
                 </div>
 
             </div>
-            <div className="flex flex-col gap-y-4">
+            <div className="md:block hidden flex flex-col gap-y-4">
                 <div className="flex flex-col bg-white rounded-lg p-2 md:p-5 gap-y-4">
                     <h4 className="font-bold text-slate-900">My Account</h4>
 

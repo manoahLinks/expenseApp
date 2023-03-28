@@ -1,17 +1,16 @@
 import React, {useState, useEffect} from "react";
-import {useDataContext} from '../hooks/useDataContext'
 import { useAuthContext } from "../hooks/useAuthContext";
 import accounting from 'accounting-js'
+import useFetch from '../useFetch'
 
 const DailyActivityReportSheet = () => {
 
     const [quantities, setQuantities] = useState({})
     const [sales, setSales] = useState({})
     const [bags, setBags] = useState({})
-    const [currentSection, setCurrentSection] = useState(1)
-    const [activeTab, setActiveTab] = useState(1)
+    const [currentSection, setCurrentSection] = useState(0)
+    const [activeTab, setActiveTab] = useState(0)
     const {user} = useAuthContext()
-    const {data, dispatch} = useDataContext()
 
     const handleQuantities= (productId, quantity) => {
         // update the quantity state variable with the quantity entered by the user
@@ -33,25 +32,18 @@ const DailyActivityReportSheet = () => {
         setActiveTab(section)
     }
 
-    useEffect(()=>{
+    const handlePrevious = () => {
+        setCurrentSection(currentSection - 1)
+        setActiveTab(currentSection - 1)
+    }
 
-        const fetchData = async () => {
-            const response = await fetch(`https://smartwork-api.onrender.com/api/rawmaterial` , {
-                headers:{
-                    'Authorization': `Bearer ${user.token}`
-                }
-            })
-            const json = await response.json()
+    const handleNext = () => {
+        setCurrentSection(currentSection + 1)
+        setActiveTab(currentSection + 1)
+    }
 
-            if(response.ok){
-                dispatch({type: 'SET_DATA', payload: json})
-            }    
-        }
-        if(user){
-            fetchData()
-        }
-        
-    }, [dispatch, user])
+    const {result:rawmaterials} = useFetch(`http://localhost:5500/api/rawmaterial`)
+    const {result:products} = useFetch(`http://localhost:5500/api/product`)
 
     return ( 
         <div className="flex flex-col">
@@ -86,9 +78,9 @@ const DailyActivityReportSheet = () => {
                                 </tr>
                             </thead>
                             <tbody className="flex flex-col gap-y-1">
-                                {data && data.map((product)=>(
-                                    <tr className="whitespace-nowrap justify-items-center md:grid md:grid-cols-6 flex gap-x-1" key={product._id}>
-                                        <h4 className="w-32 md:w-full p-2">{product.name}</h4>
+                                {rawmaterials && rawmaterials.map((rawmaterial)=>(
+                                    <tr className="whitespace-nowrap justify-items-center md:grid md:grid-cols-6 flex gap-x-1" key={rawmaterial._id}>
+                                        <h4 className="w-32 md:w-full p-2 sticky">{rawmaterial.name}</h4>
                                         <input className="w-32 md:w-full p-2 border-none bg-slate-100" type="number" />
                                         <input className="w-32 md:w-full p-2 border-none bg-slate-100" type="number" />
                                         <h4 className="w-32 md:w-full p-2">6500</h4>
@@ -119,19 +111,19 @@ const DailyActivityReportSheet = () => {
                                 </tr>
                             </thead>
                             <tbody>
-                                {data && data.map((product)=>(
-                                    <tr className="grid grid-cols-7 border-b p-2 md:gap-x-1" key={product._id}>
+                                {products && products.map((product)=>(
+                                    <tr className="grid grid-cols-7 border-b md:gap-x-1" key={product._id}>
                                         <td className="md:w-full w-32 ">{product.name}</td>
-                                        <input className="md:w-full w-32 border-slate-300 text-xs focus:border-slate-300 focus:outline-none" type="number" 
+                                        <input className="md:w-full w-32 border-none bg-slate-100 text-xs focus:border-slate-300 focus:outline-none" type="number" 
                                             value={bags[product._id]}
                                             onChange={(e)=>{handleBags(product._id , e.target.value)}}
                                         />
-                                        <input className=" md:w-full w-32 border-slate-300 text-xs focus:border-slate-300 focus:outline-none" type="number" 
+                                        <input className=" md:w-full w-32 border-none bg-slate-100 text-xs focus:border-slate-300 focus:outline-none" type="number" 
                                             value={quantities[product._id]}
                                             onChange={(e)=>{handleQuantities(product._id , e.target.value)}}
                                         />
                                         <td className="md:w-full w-32 ">
-                                            <h4 className="bg-green-100 font-semibold text-green-500 rounded-full text-center p-1">N {product.productionPrice}</h4>
+                                            <h4 className="font-semibold text-green-500 rounded-full text-center">N {product.productionPrice}</h4>
                                         </td>
                                         <td className="md:w-full w-32">{accounting.formatNumber(2500 * bags[product._id])}</td>
                                         <td className="md:w-full w-32">{accounting.formatNumber(product.productionPrice * quantities[product._id])}</td>
@@ -161,22 +153,22 @@ const DailyActivityReportSheet = () => {
                                 </tr>
                             </thead>
                             <tbody>
-                                {data && data.map((product)=>(
+                                {products && products.map((product)=>(
                                     <tr className="md:grid md:grid-cols-9 flex border-b" key={product._id}>
                                         <td className="w-32 md:w-full px-4 py-2">{product.name}</td>
                                         <td className='w-32 md:w-full'>{`0`}</td>
                                         <input 
                                             type="number"
-                                            className="w-32 md:w-full text-xs text-center border-slate-300 text-amber-500"  
+                                            className="w-32 md:w-full text-xs text-center border-none bg-slate-100 text-amber-500"  
                                         />
                                         <td className='w-32 md:w-full'>{`0`}</td>
                                         <input 
                                             type="number"
-                                            className="w-32 md:w-full text-xs text-center border-slate-300 text-amber-500" 
+                                            className="w-32 md:w-full text-xs text-center border-none bg-slate-100 text-amber-500" 
                                         />
                                         <input 
                                             type="number"
-                                            className="w-32 md:w-full text-xs text-center border-slate-300 text-amber-500" 
+                                            className="w-32 md:w-full text-xs text-center border-none bg-slate-100 text-amber-500" 
                                         />
                                         <input 
                                             className="w-32 md:w-full text-xs text-center border-none bg-amber-100 text-amber-500" 
@@ -213,6 +205,11 @@ const DailyActivityReportSheet = () => {
                     </div>
                 )}
             </form>
+
+            <div className="justify-between flex md:p-5 p-3">
+                {currentSection > 0 && <button onClick={handlePrevious} className="p-1 rounded-md text-white bg-primary">Previous</button>}
+                {currentSection < 3 &&  <button onClick={handleNext} className="p-1 rounded-md text-white bg-primary">Next</button>}
+            </div>
         </div>
      );
 }
