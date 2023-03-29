@@ -16,11 +16,11 @@ const LoginPage = () => {
     }
 
     return ( 
-        <div className="grid grid-cols-1 md:grid-cols-1 bg-white items-center">
+        <div className="grid grid-cols-1 bg-white items-center fixed inset-0">
             {/* <div className="flex flex-col">
                 <img className="" src={require(`../assets/Design inspiration-pana.png`)} alt="login img" />
             </div> */}
-            <div className="flex flex-col border border-slate-200 p-5 m-2 gap-y-4 md:w-6/12 md:mx-auto rounded-md">
+            <div className="flex flex-col border border-slate-200 p-5 m-2 gap-y-4 md:w-4/12 md:mx-auto rounded-md">
                 <h4 className="text-primary font-semibold text-xl">LOGIN</h4>
                 {error && <div className="flex p-2 border border-error items-center gap-x-2 bg-error text-red-500 rounded-md">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">

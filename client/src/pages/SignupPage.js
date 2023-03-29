@@ -16,14 +16,11 @@ const SignupPage = () => {
     }
 
     return ( 
-        <div className="grid grid-cols-1 md:grid-cols-2 md:h-screen justify-center items-center bg-white">
-            <div className="flex flex-col">
+        <div className="grid grid-cols-1 bg-slate-900 items-center fixed inset-0">
+            {/* <div className="flex flex-col">
                 <img src={require(`../assets/Design inspiration-bro.png`)} alt="login img" />
-            </div>  
-            <div className="flex flex-col p-5 m-2 gap-y-4 rounded-md">
-                {/* <div className="self-center p-3 bg-white rounded-full -mt-12 shadow-lg">
-                    {<img src={require(`../assets/icons8-company-96.png`)} alt="" />}
-                </div> */}
+            </div>   */}
+            <div className="flex flex-col border border-slate-200 p-5 m-2 gap-y-4 bg-white md:w-4/12 md:mx-auto shadow-lg rounded-md">
                 <h4 className="text-primary font-semibold text-xl">SIGN UP</h4>
                 {error && <div className="flex p-2 border border-red-500 items-center gap-x-2 bg-red-100 text-red-500 rounded-md">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">

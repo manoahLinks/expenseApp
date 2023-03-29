@@ -48,7 +48,7 @@ function App () {
 
               
             </div>
-            {user && <TaskBar/>}
+            {/* {user && <TaskBar/>} */}
             
           </div>
         </div>
