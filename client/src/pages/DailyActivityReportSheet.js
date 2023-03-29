@@ -42,8 +42,8 @@ const DailyActivityReportSheet = () => {
         setActiveTab(currentSection + 1)
     }
 
-    const {result:rawmaterials} = useFetch(`http://localhost:5500/api/rawmaterial`)
-    const {result:products} = useFetch(`http://localhost:5500/api/product`)
+    const {result:rawmaterials} = useFetch(`https://smartwork-api.onrender.com/api/rawmaterial`)
+    const {result:products} = useFetch(`https://smartwork-api.onrender.com/api/product`)
 
     return ( 
         <div className="flex flex-col">
