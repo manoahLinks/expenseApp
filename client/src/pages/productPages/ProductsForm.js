@@ -2,7 +2,6 @@ import React, {useState, useEffect } from "react";
 import {useDataContext} from '../../hooks/useDataContext'
 import { useAuthContext } from "../../hooks/useAuthContext";
 
-
 const ProductsForm = () => {
 
     const [packaging, setPackaging] = useState('')
@@ -10,6 +9,8 @@ const ProductsForm = () => {
     const [weightPerLoaf, setWeightPerLoaf] = useState('')
     const [marketPrice, setMarketPrice] = useState('') 
     const [productionPrice, setProductionPrice] = useState('') 
+    const [costOfProdution, setCostOfProduction] = useState('')
+    const [totalDoughWeight, setTotalDoughWeight] = useState('') 
     const [labour, setLabour] = useState('')
     const [energy, setEnergy] = useState(``)
     // eslint-disable-next-line
@@ -19,6 +20,7 @@ const ProductsForm = () => {
     const [material, setMaterial] = useState(null)
     const {data, dispatch} = useDataContext()
     const {user} = useAuthContext()
+
 
     useEffect(()=>{
 
@@ -44,12 +46,8 @@ const ProductsForm = () => {
     const handleQuantities = (itemId, quantity) => {
         // update the quantity state variable with the quantity entered by the user
         setQuantities({ ...quantities, [itemId]: quantity})
-        console.log(quantities)
+        console.log(quantities, costOfProdution, totalDoughWeight)
       };
-
-      const handlesubmit = () => {
-        console.log(quantities)
-      }
 
     const calculateTotalCost = () => {
         let total = 0;
@@ -77,9 +75,29 @@ const ProductsForm = () => {
         return calculateProdOverhead() + calculateTotalCost()
     }
 
+    const handleSubmit = async () => {
+
+        const response = await fetch(`http://localhost:5500/api/product`, {
+            method: 'POST',
+            headers: {
+                'Authorization': `Bearer ${user.token}`
+            },
+            body: JSON.stringify({}) 
+        })
+
+        const json = await response.json()
+
+        if(!response.Ok){
+
+        }
+        if(response.ok){
+            dispatch({type: 'CREATE_DATA', payload: json})
+        }
+    }
+
     return ( 
         <div className="grid grid-cols-1 items-center overflow-y-scroll justify-items-center inset-0 fixed bg-primary bg-opacity-20 rounded-md">
-            <div className="flex flex-col bg-white md:p-5 mt-12 p-3 gap-y-4 md:w-6/12">
+            <div className="flex flex-col bg-white md:p-5 mt-10 p-3 gap-y-4 md:w-6/12">
                 <div className="flex justify-between items-center md:mb-6 mb-4">
                     <h4 className="font-semibold text-primary uppercase text-center">Create a new recipe</h4>
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 cursor-pointer">
@@ -146,6 +164,7 @@ const ProductsForm = () => {
                                 className="text-xs border-none border-slate-500 bg-slate-50 rounded-md font-light"  
                                 disabled
                                 value={calculateTotalDoughWeight()}
+                                onChange={(e)=>{setTotalDoughWeight(e.target.value)}}
                             />
 
                             <input 
@@ -158,7 +177,8 @@ const ProductsForm = () => {
                             <input 
                                 type="number"
                                 className="text-xs bg-slate-50 border-none "
-                                value={calculateTotalCost()}  
+                                value={calculateTotalCost()}
+                                onChange={(e)=>{setCostOfProduction(e.target.value)}}  
                                 disabled 
                             />
 
@@ -269,9 +289,9 @@ const ProductsForm = () => {
                         </div>
                     </tbody>
                 </table>
-                <div className="grid grid-cols-3 gap-x-12 my-6">
-                    <button className="border p-2">cancel</button>
-                    <button onClick={handleQuantities} className="border p-2 col-span-2">Proceed</button>    
+                <div className="flex gap-x-12 my-6">
+                    <button className="border py-2 px-10 border hover:bg-red-500 hover:bg-opacity-20">cancel</button>
+                    <button className="border px-12 py-2 rounded-lg bg-gradient-to-r from-cyan-500 to-blue-500 font-semibold text-white">Proceed</button>    
                 </div>
             </div>
                     

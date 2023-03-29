@@ -15,7 +15,7 @@ const AccountTransactions = () => {
                 </div>
 
                 <div className="flex flex-col md:gap-y-8 gap-y-6">
-                    <div className="grid grid-cols-1 rounded-lg p-5 shadow-md bg-gray-700 gap-y-8">
+                    <div className="grid grid-cols-1 rounded-lg p-5 shadow-md bg-gradient-to-r from-violet-500 to-fuchsia-500 gap-y-8">
                         <div className="flex justify-between">
                             <h4 className="font-semibold text-white">Chase</h4>
                             <button className="py-1 px-4 rounded-md flex items-center bg-white">

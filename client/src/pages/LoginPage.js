@@ -16,11 +16,11 @@ const LoginPage = () => {
     }
 
     return ( 
-        <div className="grid grid-cols-1 bg-white items-center fixed inset-0">
+        <div className="grid grid-cols-1 bg-gradient-to-r from-violet-500 to-fuchsia-500 items-center fixed inset-0">
             {/* <div className="flex flex-col">
                 <img className="" src={require(`../assets/Design inspiration-pana.png`)} alt="login img" />
             </div> */}
-            <div className="flex flex-col border border-slate-200 p-5 m-2 gap-y-4 md:w-4/12 md:mx-auto rounded-md">
+            <div className="flex flex-col bg-white  p-5 m-2 gap-y-4 md:w-4/12 md:mx-auto shadow-lg rounded-md">
                 <h4 className="text-primary font-semibold text-xl">LOGIN</h4>
                 {error && <div className="flex p-2 border border-error items-center gap-x-2 bg-error text-red-500 rounded-md">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
@@ -49,7 +49,7 @@ const LoginPage = () => {
                     />
 
                     <Link to={`/forgotpassword`} className="text-primary text-right">forgot password ?</Link>
-                    <button className="flex rounded p-2 justify-center items-center bg-primary hover:bg-opacity-50 text-white mt-5 font-semibold">
+                    <button className="flex rounded p-2 justify-center items-center bg-gradient-to-l from-violet-500 to-fuchsia-500 hover:bg-opacity-50 text-white mt-5 font-semibold">
                         <h4 className="text-sm">Login</h4>
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-4 h-4">
                             <path fillRule="evenodd" d="M3 4.25A2.25 2.25 0 015.25 2h5.5A2.25 2.25 0 0113 4.25v2a.75.75 0 01-1.5 0v-2a.75.75 0 00-.75-.75h-5.5a.75.75 0 00-.75.75v11.5c0 .414.336.75.75.75h5.5a.75.75 0 00.75-.75v-2a.75.75 0 011.5 0v2A2.25 2.25 0 0110.75 18h-5.5A2.25 2.25 0 013 15.75V4.25z" clipRule="evenodd" />
