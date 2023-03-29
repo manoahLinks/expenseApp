@@ -68,20 +68,20 @@ const DailyActivityReportSheet = () => {
                     <div className="grid overflow-x-scroll md:overflow-x-hidden grid-cols-1 bg-white">
                         <table className="table table-auto flex w-full">
                             <thead>
-                                <tr className="md:grid whitespace-nowrap md:grid-cols-6 flex gap-x-1">
-                                    <th className="w-32 md:w-full p-2 flex-1 border">Raw material</th>
-                                    <th className="w-32 md:w-full p-2 flex-1 border">Opening stock</th>
-                                    <th className="w-32 md:w-full p-2 flex-1 border">Qty recieved</th>
-                                    <th className="w-32 md:w-full p-2 flex-1 border">Total</th>
-                                    <th className="w-32 md:w-full p-2 flex-1 border">closing stock</th>
-                                    <th className="w-32 md:w-full p-2 flex-1 border">Usage</th>
+                                <tr className="md:grid whitespace-nowrap md:grid-cols-6 flex border-b">
+                                    <th className="w-32 md:w-full p-2 flex-1">Raw material</th>
+                                    <th className="w-32 md:w-full p-2 flex-1">Opening stock</th>
+                                    <th className="w-32 md:w-full p-2 flex-1">Qty recieved</th>
+                                    <th className="w-32 md:w-full p-2 flex-1">Total</th>
+                                    <th className="w-32 md:w-full p-2 flex-1">closing stock</th>
+                                    <th className="w-32 md:w-full p-2 flex-1">Usage</th>
                                 </tr>
                             </thead>
-                            <tbody className="flex flex-col gap-y-1">
+                            <tbody className="flex flex-col">
                                 {rawmaterials && rawmaterials.map((rawmaterial)=>(
-                                    <tr className="whitespace-nowrap justify-items-center md:grid md:grid-cols-6 flex gap-x-1" key={rawmaterial._id}>
-                                        <h4 className="w-32 md:w-full p-2 sticky">{rawmaterial.name}</h4>
-                                        <input className="w-32 md:w-full p-2 border-none bg-slate-100" type="number" />
+                                    <tr className="whitespace-nowrap justify-items-center text-center md:grid md:grid-cols-6 flex" key={rawmaterial._id}>
+                                        <h4 className="w-32 md:w-full p-2 ">{rawmaterial.name}</h4>
+                                        <input className="w-32 md:w-full p-2 border-none" type="number" />
                                         <input className="w-32 md:w-full p-2 border-none bg-slate-100" type="number" />
                                         <h4 className="w-32 md:w-full p-2">6500</h4>
                                         <input className="w-32 md:w-full p-2 border-none bg-slate-100" type="number" />
@@ -112,7 +112,7 @@ const DailyActivityReportSheet = () => {
                             </thead>
                             <tbody>
                                 {products && products.map((product)=>(
-                                    <tr className="grid grid-cols-7 border-b md:gap-x-1" key={product._id}>
+                                    <tr className="grid grid-cols-7 text-center items-center md:gap-x-1" key={product._id}>
                                         <td className="md:w-full w-32 ">{product.name}</td>
                                         <input className="md:w-full w-32 border-none bg-slate-100 text-xs focus:border-slate-300 focus:outline-none" type="number" 
                                             value={bags[product._id]}
@@ -140,7 +140,7 @@ const DailyActivityReportSheet = () => {
                     <div className="grid grid-cols-1 overflow-x-scroll md:overflow-hidden bg-white">
                         <table className="table table-auto whitespace-nowrap text-center w-full text-xs">
                             <thead>
-                                <tr className="md:grid md:grid-cols-9 flex border-b bg-primary bg-opacity-20">
+                                <tr className="md:grid md:grid-cols-9 flex border-b">
                                     <th className="w-32 md:w-full px-4 py-2">Product Type</th>
                                     <th className="w-32 md:w-full px-4 py-2">Opening stock</th>
                                     <th className="w-32 md:w-full px-4 py-2">Qty recieved</th>
@@ -154,7 +154,7 @@ const DailyActivityReportSheet = () => {
                             </thead>
                             <tbody>
                                 {products && products.map((product)=>(
-                                    <tr className="md:grid md:grid-cols-9 flex border-b" key={product._id}>
+                                    <tr className="md:grid md:grid-cols-9 text-center items-center flex" key={product._id}>
                                         <td className="w-32 md:w-full px-4 py-2">{product.name}</td>
                                         <td className='w-32 md:w-full'>{`0`}</td>
                                         <input 
@@ -178,7 +178,7 @@ const DailyActivityReportSheet = () => {
                                         />
 
                                         <td className='w-32 md:w-full'>{product.marketPrice}</td>
-                                        <td className="w-32 md:w-full bg-green-200 text-green-500">{sales[product._id] * product.marketPrice}</td>
+                                        <td className="w-32 md:w-full text-green-500">{sales[product._id] * product.marketPrice}</td>
                                     </tr>
                                 ))}
                                 
@@ -207,8 +207,8 @@ const DailyActivityReportSheet = () => {
             </form>
 
             <div className="justify-between flex md:p-5 p-3">
-                {currentSection > 0 && <button onClick={handlePrevious} className="p-1 rounded-md text-white bg-primary">Previous</button>}
-                {currentSection < 3 &&  <button onClick={handleNext} className="p-1 rounded-md text-white bg-primary">Next</button>}
+                {currentSection > 0 && <button onClick={handlePrevious} className="py-1 px-2 bg-gradient-to-r from-blue-300 to-cyan-500 rounded-md text-white bg-primary">Previous</button>}
+                {currentSection < 3 &&  <button onClick={handleNext} className="py-1 px-2 bg-gradient-to-l from-blue-300 to-cyan-500 rounded-md text-white bg-primary">Next</button>}
             </div>
         </div>
      );

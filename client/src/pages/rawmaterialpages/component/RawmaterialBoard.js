@@ -23,7 +23,7 @@ const RawmaterialBoard = () => {
         <div className="flex flex-col text-xs">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-y-6 md:gap-y-4 md:gap-x-6 md:p-3 p-1">
 
-                <div className="shadow-md rounded-md md:p-3 p-2 flex flex-col gap-y-2 bg-white">
+                <div className="shadow-md rounded-md md:p-3 p-2 flex flex-col gap-y-4 bg-white">
                     <div className="flex justify-between items-center">
                         <h4 className="font-semibold">Purchase trend</h4>
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-3 h-3">

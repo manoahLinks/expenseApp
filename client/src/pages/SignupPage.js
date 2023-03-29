@@ -16,7 +16,7 @@ const SignupPage = () => {
     }
 
     return ( 
-        <div className="grid grid-cols-1 bg-slate-900 items-center fixed inset-0">
+        <div className="grid grid-cols-1 bg-gradient-to-r from-violet-500 to-fuchsia-500 items-center fixed inset-0">
             {/* <div className="flex flex-col">
                 <img src={require(`../assets/Design inspiration-bro.png`)} alt="login img" />
             </div>   */}

@@ -1,8 +1,32 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useAuthContext } from "../../hooks/useAuthContext";
+import { useDataContext } from "../../hooks/useDataContext";
 
 const AccountTransactions = () => {
 
     const [activeTab, setActiveTab] = useState(0)
+    const {user} = useAuthContext()
+    const {data, dispatch} = useDataContext()
+
+    useEffect(()=>{
+
+        const fetchData = async () => {
+            const response = await fetch(`https://smartwork-api.onrender.com/api/transaction`, {
+                headers:{
+                    'Authorization': `Bearer ${user.token}`
+                }
+            })
+            const json = await response.json()
+
+            if(response.ok){
+                dispatch({type: 'SET_DATA', payload: json})
+            }    
+        }
+        if(user){
+            fetchData()
+        }
+        
+    }, [dispatch, user])
 
     return ( 
         <div className="grid grid-cols-1 inset-0 fixed bg-primary bg-opacity-20 justify-center justify-items-center">
@@ -34,6 +58,11 @@ const AccountTransactions = () => {
                                 <h4 className="text-xl font-semibold">$74,330</h4>
                             </div>
                         </div>
+
+                        <div className="flex justify-between">
+                            <button className="p-1 border">Fund</button>
+                            <button className="p-1 border">Transfer</button>
+                        </div>
                     </div>
                     <div className="grid grid-cols-2 gap-x-4">
                         <button className="flex items-center justify-center gap-x-2 p-1 border rounded border-slate-300">
@@ -52,6 +81,10 @@ const AccountTransactions = () => {
                     </div>
                 </div>
 
+                <div className="grid grid-cols-1">
+
+                </div>
+
                 <div className="flex flex-col gap-y-4">
                     <div className="grid grid-cols-4 text-center cursor-pointer">
                         <h4 onClick={()=>{setActiveTab(0)}} className={`p-2 border-b-2  ${activeTab == 0 ? `border-blue-600` : `border-slate-100`}`}>View All</h4>
@@ -60,20 +93,22 @@ const AccountTransactions = () => {
                         <h4 onClick={()=>{setActiveTab(3)}} className={`p-2 border-b-2  ${activeTab == 3 ? `border-blue-600` : `border-slate-100`}`}>Transfer</h4>
                     </div>
                     <div className="flex flex-col">
-                        <div className="flex p-2 justify-between items-center border-b">
-                            <div className="flex gap-x-2 items-center">
-                                <div className="p-2 rounded-full bg-slate-100">
-                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
-                                        <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 8.25h19.5M2.25 9h19.5m-16.5 5.25h6m-6 2.25h3m-3.75 3h15a2.25 2.25 0 002.25-2.25V6.75A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25v10.5A2.25 2.25 0 004.5 19.5z" />
-                                    </svg>
+                        {data && data.map((transaction)=>(
+                            <div className="flex p-2 justify-between items-center border-b">
+                                <div className="flex gap-x-2 items-center">
+                                    <div className="p-2 rounded-full bg-slate-100">
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
+                                            <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 8.25h19.5M2.25 9h19.5m-16.5 5.25h6m-6 2.25h3m-3.75 3h15a2.25 2.25 0 002.25-2.25V6.75A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25v10.5A2.25 2.25 0 004.5 19.5z" />
+                                        </svg>
+                                    </div>
+                                    <div className="flex flex-col">
+                                        <h4 className="font-semibold">{transaction.type}</h4>
+                                        <h4>Expiry 06/2024</h4>
+                                    </div>
                                 </div>
-                                <div className="flex flex-col">
-                                    <h4 className="font-semibold">Visa card ending in 1234</h4>
-                                    <h4>Expiry 06/2024</h4>
-                                </div>
+                                <h4>+{transaction.amount}</h4>
                             </div>
-                            <h4>+560,000</h4>
-                        </div>
+                        ))}      
                     </div>
                 </div>   
             </div>
