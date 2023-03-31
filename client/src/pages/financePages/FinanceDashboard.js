@@ -55,11 +55,11 @@ const FinanceDashboard = () => {
                 </div>
 
             </div>
-            <div onClick={handleTransactionsModal} className=" flex flex-col gap-y-4">
+            <div  className=" flex flex-col gap-y-4">
                 <div className="flex flex-col bg-white rounded-lg p-2 md:p-5 gap-y-4">
                     <h4 className="font-bold text-slate-900">My Account</h4>
 
-                    <div className="grid grid-cols-1 rounded-lg p-5 shadow-md bg-gradient-to-r from-violet-500 to-fuchsia-500 gap-y-8">
+                    <div onClick={handleTransactionsModal} className="grid grid-cols-1 rounded-lg p-5 shadow-md bg-gradient-to-r from-violet-500 to-fuchsia-500 gap-y-8">
                         <div className="flex justify-between">
                             <h4 className="font-semibold text-white">Chase</h4>
                             <button className="py-1 px-4 rounded-md flex items-center bg-white">

@@ -30,7 +30,7 @@ const AccountTransactions = () => {
 
     return ( 
         <div className="grid grid-cols-1 inset-0 fixed bg-primary bg-opacity-20 justify-center justify-items-center">
-            <div className="flex flex-col md:w-4/12 mt-10 gap-y-6 bg-white rounded-lg md:p-5 p-3">
+            <div className="flex flex-col ml-auto md:w-4/12 mt-10 gap-y-6 bg-white rounded-lg md:p-5 p-3">
                 <div className="flex justify-between font-bold">
                     <h4>Accounts</h4>
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
@@ -38,7 +38,7 @@ const AccountTransactions = () => {
                     </svg>
                 </div>
 
-                <div className="flex flex-col md:gap-y-8 gap-y-6">
+                <div className="flex flex-col gap-y-2 bg-gray-200">
                     <div className="grid grid-cols-1 rounded-lg p-5 shadow-md bg-gradient-to-r from-violet-500 to-fuchsia-500 gap-y-8">
                         <div className="flex justify-between">
                             <h4 className="font-semibold text-white">Chase</h4>
