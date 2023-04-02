@@ -11,7 +11,7 @@ const AccountTransactions = () => {
     useEffect(()=>{
 
         const fetchData = async () => {
-            const response = await fetch(`https://smartwork-api.onrender.com/api/transaction`, {
+            const response = await fetch(`http://localhost:5500/api/transaction`, {
                 headers:{
                     'Authorization': `Bearer ${user.token}`
                 }
@@ -38,8 +38,8 @@ const AccountTransactions = () => {
                     </svg>
                 </div>
 
-                <div className="flex flex-col gap-y-2 bg-gray-200">
-                    <div className="grid grid-cols-1 rounded-lg p-5 shadow-md bg-gradient-to-r from-violet-500 to-fuchsia-500 gap-y-8">
+                <div className="flex flex-col gap-y-2 ">
+                    <div className="grid grid-cols-1 rounded-lg p-5 shadow-md bg-gradient-to-r from-violet-500 to-fuchsia-500 gap-y-4">
                         <div className="flex justify-between">
                             <h4 className="font-semibold text-white">Chase</h4>
                             <button className="py-1 px-4 rounded-md flex items-center bg-white">
@@ -60,8 +60,8 @@ const AccountTransactions = () => {
                         </div>
 
                         <div className="flex justify-between">
-                            <button className="p-1 border">Fund</button>
-                            <button className="p-1 border">Transfer</button>
+                            <button className="py-1 px-2 text-white rounded-lg border">Fund</button>
+                            <button className="py-1 px-2 text-white rounded-lg border">Transfer</button>
                         </div>
                     </div>
                     <div className="grid grid-cols-2 gap-x-4">

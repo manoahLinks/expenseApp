@@ -2,14 +2,17 @@ import { useState } from "react";
 import AccountForm from "../Accounts/AccountForm";
 import AccountTransactions from "../Accounts/AccountTransactions";
 import SuppliersGrid from "../suppliers/components/SuppliersGrid" 
+import SupplierForm from "../suppliers/SupplierForm";
 
 const FinanceDashboard = () => {
 
     const [accountForm, setAccountForm] = useState(false)
+    const [supplierForm, setSupplierForm] = useState(false)
     const [transactionModal, setTransactionModal] = useState(false)
 
     const modalOff = () => {
         setAccountForm(false)
+        setSupplierForm(false)
     }
 
     const handleTransactionsModal = () => {
@@ -89,9 +92,13 @@ const FinanceDashboard = () => {
 
                 <div className="grid bg-white shadow-md grid-cols-1">
                     <SuppliersGrid/>
+                    <button onClick={()=>{setSupplierForm(true)}} className='border w-6/12 self-center text-xs border-slate-300 p-1 rounded gap-x-2'>
+                        <h4>new supplier</h4>
+                    </button>
                 </div>
                 {accountForm && <AccountForm modalOff={modalOff}/>}
                 {transactionModal && <AccountTransactions/>}
+                {supplierForm && <SupplierForm modalOff={modalOff}/>}
             </div>
 
         </div>

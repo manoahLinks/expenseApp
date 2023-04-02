@@ -5,10 +5,10 @@ const express = require('express'),
 
 router.route('/')
     .get(controller.getAllSuppliers)
-    .post(controller.sendOrderToSupplier)    
+    .post(controller.registerNewSupplier)    
 
-router.route('/new')
-    .post(controller.registerNewSupplier)
+router.route('/order')
+    .post(controller.sendOrderToSupplier)
 
 router.route(`/payment`)    
     .post(controller.paySupplier)
