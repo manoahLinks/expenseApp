@@ -5,6 +5,7 @@ const transactionSchema = new mongoose.Schema({
     amount:      {type: Number, required: true},
     type:        {type: Number, required: true},
     accountName: {type: String},
+    beneficiary: {type: String},
     createdBy:   {type: String},
     updatedBy:   {type: String}
 

@@ -59,10 +59,6 @@ const AccountTransactions = () => {
                             </div>
                         </div>
 
-                        <div className="flex justify-between">
-                            <button className="py-1 px-2 text-white rounded-lg border">Fund</button>
-                            <button className="py-1 px-2 text-white rounded-lg border">Transfer</button>
-                        </div>
                     </div>
                     <div className="grid grid-cols-2 gap-x-4">
                         <button className="flex items-center justify-center gap-x-2 p-1 border rounded border-slate-300">

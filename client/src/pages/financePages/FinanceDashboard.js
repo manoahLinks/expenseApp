@@ -3,16 +3,19 @@ import AccountForm from "../Accounts/AccountForm";
 import AccountTransactions from "../Accounts/AccountTransactions";
 import SuppliersGrid from "../suppliers/components/SuppliersGrid" 
 import SupplierForm from "../suppliers/SupplierForm";
+import TransferForm from "../Accounts/components/TransferForm";
 
 const FinanceDashboard = () => {
 
     const [accountForm, setAccountForm] = useState(false)
     const [supplierForm, setSupplierForm] = useState(false)
     const [transactionModal, setTransactionModal] = useState(false)
+    const [transferForm, setTransferForm] = useState(false)
 
     const modalOff = () => {
         setAccountForm(false)
         setSupplierForm(false)
+        setTransferForm(false)
     }
 
     const handleTransactionsModal = () => {
@@ -62,10 +65,10 @@ const FinanceDashboard = () => {
                 <div className="flex flex-col bg-white rounded-lg p-2 md:p-5 gap-y-4">
                     <h4 className="font-bold text-slate-900">My Account</h4>
 
-                    <div onClick={handleTransactionsModal} className="grid grid-cols-1 rounded-lg p-5 shadow-md bg-gradient-to-r from-violet-500 to-fuchsia-500 gap-y-8">
+                    <div  className="grid grid-cols-1 rounded-lg p-5 shadow-md bg-gradient-to-r from-violet-500 to-fuchsia-500 gap-y-4">
                         <div className="flex justify-between">
                             <h4 className="font-semibold text-white">Chase</h4>
-                            <button className="py-1 px-4 rounded-md flex items-center bg-white">
+                            <button onClick={handleTransactionsModal} className="py-1 px-4 rounded-md flex items-center bg-white">
                                 <h4 className="text-xs">chase</h4>
                             </button>
                         </div>
@@ -81,6 +84,10 @@ const FinanceDashboard = () => {
                                 <h4 className="text-xl font-semibold">$74,330</h4>
                             </div>
                         </div>
+                        <div className="flex justify-between">
+                            <button className="py-1 px-2 text-white rounded-lg border">Fund</button>
+                            <button onClick={()=>{setTransferForm(true)}} className="py-1 px-2 text-white rounded-lg border">Transfer</button>
+                        </div>
 
                     </div>
 
@@ -90,7 +97,7 @@ const FinanceDashboard = () => {
                     </button>
                 </div>
 
-                <div className="grid bg-white shadow-md grid-cols-1">
+                <div className="grid grid-cols-1">
                     <SuppliersGrid/>
                     <button onClick={()=>{setSupplierForm(true)}} className='border w-6/12 self-center text-xs border-slate-300 p-1 rounded gap-x-2'>
                         <h4>new supplier</h4>
@@ -99,6 +106,7 @@ const FinanceDashboard = () => {
                 {accountForm && <AccountForm modalOff={modalOff}/>}
                 {transactionModal && <AccountTransactions/>}
                 {supplierForm && <SupplierForm modalOff={modalOff}/>}
+                {transferForm && <TransferForm modalOff={modalOff}/>}
             </div>
 
         </div>

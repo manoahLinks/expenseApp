@@ -53,7 +53,7 @@ exports.updateTransaction = async (req, res) => {
 }
 
 // delete a transaction
-exports.deleteWithdrawal = async (req, res) => {
+exports.deleteTransation = async (req, res) => {
     const {id} = req.params 
 
     try {
