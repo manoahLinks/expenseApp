@@ -42,13 +42,13 @@ const DailyActivityReportSheet = () => {
         setActiveTab(currentSection + 1)
     }
 
-    const {result:rawmaterials} = useFetch(`https://smartwork-api.onrender.com/api/rawmaterial`)
-    const {result:products} = useFetch(`https://smartwork-api.onrender.com/api/product`)
+    const {result:rawmaterials} = useFetch(`http://localhost:5500/api/rawmaterial`)
+    const {result:products} = useFetch(`http://localhost:5500/api/product`)
 
     return ( 
         <div className="flex flex-col">
            <div className="grid grid-cols-2 p-3 bg-white">
-                <div className='text-xs flex items-center whitespace-nowrap'>
+                <div className='flex items-center whitespace-nowrap'>
                     <span onClick={()=>{handleClick(0)}} className={`flex p-2 ${activeTab === 0 ? `border-b-2 border-green-400` :``} p-2 border-b-2 cursor-pointer `}>
                         <h4>Raw materials</h4>
                     </span>
@@ -66,26 +66,26 @@ const DailyActivityReportSheet = () => {
             <form className="grid grid-cols-1 p-5">
                 {currentSection === 0 && ( 
                     <div className="grid overflow-x-scroll md:overflow-x-hidden grid-cols-1 bg-white">
-                        <table className="table table-auto flex w-full">
+                        <table className="table border table-auto flex w-full">
                             <thead>
-                                <tr className="md:grid whitespace-nowrap md:grid-cols-6 flex border-b">
-                                    <th className="w-32 md:w-full p-2 flex-1">Raw material</th>
-                                    <th className="w-32 md:w-full p-2 flex-1">Opening stock</th>
-                                    <th className="w-32 md:w-full p-2 flex-1">Qty recieved</th>
-                                    <th className="w-32 md:w-full p-2 flex-1">Total</th>
-                                    <th className="w-32 md:w-full p-2 flex-1">closing stock</th>
-                                    <th className="w-32 md:w-full p-2 flex-1">Usage</th>
+                                <tr className="md:grid whitespace-nowrap p-0.5 gap-x-0.5 md:grid-cols-6 flex border-b">
+                                    <th className="w-32 border md:w-full p-2 flex-1">Raw material</th>
+                                    <th className="w-32 border md:w-full p-2 flex-1">Opening stock</th>
+                                    <th className="w-32 border md:w-full p-2 flex-1">Qty recieved</th>
+                                    <th className="w-32 border md:w-full p-2 flex-1">Total</th>
+                                    <th className="w-32 border md:w-full p-2 flex-1">closing stock</th>
+                                    <th className="w-32 border md:w-full p-2 flex-1">Usage</th>
                                 </tr>
                             </thead>
                             <tbody className="flex flex-col">
                                 {rawmaterials && rawmaterials.map((rawmaterial)=>(
-                                    <tr className="whitespace-nowrap justify-items-center text-center md:grid md:grid-cols-6 flex" key={rawmaterial._id}>
-                                        <h4 className="w-32 md:w-full p-2 ">{rawmaterial.name}</h4>
-                                        <input className="w-32 md:w-full p-2 border-none" type="number" />
-                                        <input className="w-32 md:w-full p-2 border-none bg-slate-100" type="number" />
-                                        <h4 className="w-32 md:w-full p-2">6500</h4>
-                                        <input className="w-32 md:w-full p-2 border-none bg-slate-100" type="number" />
-                                        <h4 className="w-32 md:w-full p-2">5800</h4>
+                                    <tr className="whitespace-nowrap p-0.5 gap-x-0.5 justify-items-center text-center md:grid md:grid-cols-6 flex" key={rawmaterial._id}>
+                                        <h4 className="w-32 border md:w-full p-2 ">{rawmaterial.name}</h4>
+                                        <input className="w-32 border md:w-full p-2 border-none" type="number" />
+                                        <input className="w-32 border md:w-full p-2 border-none bg-slate-100" type="number" />
+                                        <h4 className="w-32 border md:w-full p-2">6500</h4>
+                                        <input className="w-32 border md:w-full p-2 border-none bg-slate-100" type="number" />
+                                        <h4 className="w-32 border md:w-full p-2">5800</h4>
 
                                     </tr>
                                 ))}
@@ -98,36 +98,36 @@ const DailyActivityReportSheet = () => {
                 {currentSection === 1 && ( 
                     <div className="gap-y-4 grid grid-cols-1 overflow-x-scroll md:overflow-hidden bg-white">
                         
-                        <table className="table table-auto w-full text-xs shadow rounded-md border-collapse">
+                        <table className="table table-auto border w-full shadow rounded-md border-collapse">
                             <thead>
-                                <tr className="md:grid md:grid-cols-7 flex p-2 text-xs border-b ">
-                                    <th className="md:w-full w-32">Product Type</th>
-                                    <th className="md:w-full w-32">Bags produced</th>
-                                    <th className="md:w-full w-32">loaves yielded</th>
-                                    <th className="md:w-full w-32">unit price</th>
-                                    <th className="md:w-full w-32">Expected yield</th>
-                                    <th className="md:w-full w-32">Actual yield</th>
-                                    <th className="md:w-full w-32">variance</th>
+                                <tr className="md:grid md:grid-cols-7 flex p-0.5 gap-x-0.5 border-b ">
+                                    <th className="md:w-full border p-2 w-32">Product Type</th>
+                                    <th className="md:w-full border p-2 w-32">Bags produced</th>
+                                    <th className="md:w-full border p-2 w-32">loaves yielded</th>
+                                    <th className="md:w-full border p-2 w-32">unit price</th>
+                                    <th className="md:w-full border p-2 w-32">Expected yield</th>
+                                    <th className="md:w-full border p-2 w-32">Actual yield</th>
+                                    <th className="md:w-full border p-2 w-32">variance</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 {products && products.map((product)=>(
-                                    <tr className="grid grid-cols-7 text-center items-center md:gap-x-1" key={product._id}>
-                                        <td className="md:w-full w-32 ">{product.name}</td>
-                                        <input className="md:w-full w-32 border-none bg-slate-100 text-xs focus:border-slate-300 focus:outline-none" type="number" 
+                                    <tr className="grid grid-cols-7 p-0.5 gap-x-0.5 text-center items-center" key={product._id}>
+                                        <td className="md:w-full border p-2 w-32 ">{product.name}</td>
+                                        <input className="md:w-full border p-2 w-32 border-none bg-slate-100 focus:border-slate-300 focus:outline-none" type="number" 
                                             value={bags[product._id]}
                                             onChange={(e)=>{handleBags(product._id , e.target.value)}}
                                         />
-                                        <input className=" md:w-full w-32 border-none bg-slate-100 text-xs focus:border-slate-300 focus:outline-none" type="number" 
+                                        <input className=" md:w-full border p-2 w-32 border-none bg-slate-100 focus:border-slate-300 focus:outline-none" type="number" 
                                             value={quantities[product._id]}
                                             onChange={(e)=>{handleQuantities(product._id , e.target.value)}}
                                         />
-                                        <td className="md:w-full w-32 ">
-                                            <h4 className="font-semibold text-green-500 rounded-full text-center">N {product.productionPrice}</h4>
+                                        <td className="md:w-full border p-2 w-32 ">
+                                            <h4 className="font-semibold text-green-700 rounded-full text-center">N {product.productionPrice}</h4>
                                         </td>
-                                        <td className="md:w-full w-32">{accounting.formatNumber(2500 * bags[product._id])}</td>
-                                        <td className="md:w-full w-32">{accounting.formatNumber(product.productionPrice * quantities[product._id])}</td>
-                                        <td className="md:w-full w-32">{accounting.formatNumber((2500 * bags[product._id]) - (product.productionPrice * quantities[product._id]))}</td>
+                                        <td className="md:w-full border p-2 w-32">{accounting.formatNumber(2500 * bags[product._id])}</td>
+                                        <td className="md:w-full border p-2 w-32">{accounting.formatNumber(product.productionPrice * quantities[product._id])}</td>
+                                        <td className="md:w-full border p-2 w-32">{accounting.formatNumber((2500 * bags[product._id]) - (product.productionPrice * quantities[product._id]))}</td>
                                     </tr>
                                 ))}
                                 
@@ -138,47 +138,47 @@ const DailyActivityReportSheet = () => {
 
                 {currentSection === 2 && ( 
                     <div className="grid grid-cols-1 overflow-x-scroll md:overflow-hidden bg-white">
-                        <table className="table table-auto whitespace-nowrap text-center w-full text-xs">
+                        <table className="table table-auto border whitespace-nowrap text-center w-full">
                             <thead>
-                                <tr className="md:grid md:grid-cols-9 flex border-b">
-                                    <th className="w-32 md:w-full px-4 py-2">Product Type</th>
-                                    <th className="w-32 md:w-full px-4 py-2">Opening stock</th>
-                                    <th className="w-32 md:w-full px-4 py-2">Qty recieved</th>
-                                    <th className="w-32 md:w-full px-4 py-2">Total</th>
-                                    <th className="w-32 md:w-full px-4 py-2">comp/incen/ ration</th>
-                                    <th className="w-32 md:w-full px-4 py-2">Closing stock</th>
-                                    <th className="w-32 md:w-full px-4 py-2">Qty Sold</th>
-                                    <th className="w-32 md:w-full px-4 py-2">unit price</th>
-                                    <th className="w-32 md:w-full px-4 py-2">Revenue</th>
+                                <tr className="md:grid md:grid-cols-9 flex gap-x-0.5 p-0.5 border-b">
+                                    <th className="w-32 md:w-full p-2 border">Product Type</th>
+                                    <th className="w-32 md:w-full p-2 border">Opening stock</th>
+                                    <th className="w-32 md:w-full p-2 border">Qty recieved</th>
+                                    <th className="w-32 md:w-full p-2 border">Total</th>
+                                    <th className="w-32 md:w-full p-2 border truncate">comp/incen/ration</th>
+                                    <th className="w-32 md:w-full p-2 border">Closing stock</th>
+                                    <th className="w-32 md:w-full p-2 border">Qty Sold</th>
+                                    <th className="w-32 md:w-full p-2 border">unit price</th>
+                                    <th className="w-32 md:w-full p-2 border">Revenue</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 {products && products.map((product)=>(
-                                    <tr className="md:grid md:grid-cols-9 text-center items-center flex" key={product._id}>
-                                        <td className="w-32 md:w-full px-4 py-2">{product.name}</td>
-                                        <td className='w-32 md:w-full'>{`0`}</td>
+                                    <tr className="md:grid md:grid-cols-9 text-center items-center flex gap-x-0.5 p-0.5" key={product._id}>
+                                        <td className="w-32 border p-2 md:w-full px-4 py-2">{product.name}</td>
+                                        <td className='w-32 border p-2 md:w-full'>{`0`}</td>
                                         <input 
                                             type="number"
-                                            className="w-32 md:w-full text-xs text-center border-none bg-slate-100 text-amber-500"  
+                                            className="w-32 border p-2 md:w-full text-center border-none bg-slate-100 text-amber-500"  
                                         />
-                                        <td className='w-32 md:w-full'>{`0`}</td>
+                                        <td className='w-32 border p-2 md:w-full'>{`0`}</td>
                                         <input 
                                             type="number"
-                                            className="w-32 md:w-full text-xs text-center border-none bg-slate-100 text-amber-500" 
+                                            className="w-32 border p-2 md:w-full text-center border-none bg-slate-100 text-amber-500" 
                                         />
                                         <input 
                                             type="number"
-                                            className="w-32 md:w-full text-xs text-center border-none bg-slate-100 text-amber-500" 
+                                            className="w-32 border p-2 md:w-full text-center border-none bg-slate-100 text-amber-500" 
                                         />
                                         <input 
-                                            className="w-32 md:w-full text-xs text-center border-none bg-amber-100 text-amber-500" 
+                                            className="w-32 border p-2 md:w-full text-center border-none bg-amber-100 text-amber-500" 
                                             type="number" 
                                             value={sales[product._id] || ''}
                                             onChange={(e)=>{handleSales(product._id , e.target.value)}}
                                         />
 
-                                        <td className='w-32 md:w-full'>{product.marketPrice}</td>
-                                        <td className="w-32 md:w-full text-green-500">{sales[product._id] * product.marketPrice}</td>
+                                        <td className='w-32 border p-2 md:w-full'>{product.marketPrice}</td>
+                                        <td className="w-32 border p-2 md:w-full text-green-500">{sales[product._id] * product.marketPrice}</td>
                                     </tr>
                                 ))}
                                 

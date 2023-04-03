@@ -2,6 +2,11 @@ const mongoose = require('mongoose')
 
 const dbarSchema = new mongoose.Schema({
     
+    rawmaterials: [],
+    production: [],
+    sales : [],
+    expenditure: [],
+    cashBreakdown: []
     
 }, {timestamps: true})
 

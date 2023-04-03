@@ -54,7 +54,7 @@ const NavBar = () => {
 
               </div>
 
-              {sidebar && <Sidebar />}
+              {sidebar && <Sidebar  />}
             </div>
         </div>
      );
