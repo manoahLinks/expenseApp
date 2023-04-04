@@ -4,14 +4,16 @@ const productSchema = new mongoose.Schema({
 
     name:            {type: String, required: true, unique: true},
     materials:       [],
+    quantities:     [],
     costOfLabour:    {type: Number, required: true},
     costOfPackaging: {type: Number, required: true},
     costOfEnergy:    {type: Number, required: true},
     costOfRent:      {type: Number, required: true},
-    productionPrice: {type: Number, required: true},
-    marketPrice:     {type: Number, required: true},
-    productBenchMark: {type: Number, required: true},
-    salesBenchMark:   {type: Number, required: true},
+    weightPerLoaf:   {type: Number},
+    productionPrice: {type: Number},
+    marketPrice:     {type: Number},
+    productBenchMark: {type: Number},
+    salesBenchMark:   {type: Number},
     createdBy:       {type: String},
     updatedBy:       {type: String}
 

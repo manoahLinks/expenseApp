@@ -16,8 +16,8 @@ const ProductTable = ({data, modalOn}) => {
                 </thead>
                 <tbody>
                     {data && data.map((product)=> (
-                        <tr onClick={modalOn} key={product._id} className={`grid grid-cols-6 hover:bg-primary hover:bg-opacity-20`}>
-                            <td className="px-4 py-2 bg-primary text-white">{product.name}</td>
+                        <tr key={product._id} className={`grid grid-cols-6 hover:bg-primary hover:bg-opacity-20`}>
+                            <td onClick={()=>{modalOn(product)}} className="px-4 py-2 cursor-pointer bg-primary text-white">{product.name}</td>
                             <td className="px-4 py-2">{`nil`}</td>
                             <td className="px-4 py-2">{product.productionPrice}</td>
                             <td className="px-4 py-2">{product.marketPrice}</td>

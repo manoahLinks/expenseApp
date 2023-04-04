@@ -1,25 +1,29 @@
 import React, {useState, useEffect } from "react";
 import {useDataContext} from '../../hooks/useDataContext'
 import { useAuthContext } from "../../hooks/useAuthContext";
+import AlertBox from "../../components/AlertBox";
 
 const ProductsForm = () => {
 
-    const [packaging, setPackaging] = useState('')
-    const [rent, setRent] = useState('')
+    const [name, setName] = useState('')
+    const [material, setMaterial] = useState(null)
+    const [costOfLabour, setCostOfLabour] = useState('')
+    const [costOfPackaging, setCostOfPackaging] = useState('')
+    const [costOfEnergy, setCostOfEnergy] = useState('')
+    const [costOfRent, setCostOfRent] = useState('')
     const [weightPerLoaf, setWeightPerLoaf] = useState('')
-    const [marketPrice, setMarketPrice] = useState('') 
     const [productionPrice, setProductionPrice] = useState('') 
+    const [marketPrice, setMarketPrice] = useState('')
+    const [productionBenchMark, setProductionBenchMark] = useState('')
+    const [salesBenchMark, setSalesBenchMark] = useState('') 
+    
     const [costOfProdution, setCostOfProduction] = useState('')
     const [totalDoughWeight, setTotalDoughWeight] = useState('') 
-    const [labour, setLabour] = useState('')
-    const [energy, setEnergy] = useState(``)
-    // eslint-disable-next-line
     const [amount, setAmount] = useState(null)
     const [quantities, setQuantities] = useState({})
-    // eslint-disable-next-line
-    const [material, setMaterial] = useState(null)
     const {data, dispatch} = useDataContext()
     const {user} = useAuthContext()
+    const [error, setError] = useState(null)
 
 
     useEffect(()=>{
@@ -27,7 +31,7 @@ const ProductsForm = () => {
         const fetchData = async () => {
             const response = await fetch(`http://localhost:5500/api/rawmaterial`, {
                 headers:{
-                    'Authorization': `Bearer ${user.token}`
+                    'Authorization': `Bearer ${user.token}`,
                 }
             })
             const json = await response.json()
@@ -42,12 +46,6 @@ const ProductsForm = () => {
         }
         
     }, [dispatch, user])
-
-    const handleQuantities = (itemId, quantity) => {
-        // update the quantity state variable with the quantity entered by the user
-        setQuantities({ ...quantities, [itemId]: quantity})
-        console.log(quantities, costOfProdution, totalDoughWeight)
-      };
 
     const calculateTotalCost = () => {
         let total = 0;
@@ -68,43 +66,65 @@ const ProductsForm = () => {
     } 
     
     const calculateProdOverhead = () => {
-        return Number(rent) + Number(packaging) + Number(labour) + Number(energy)
+        return Number(costOfRent) + Number(costOfPackaging) + Number(costOfLabour) + Number(costOfEnergy)
     }
 
     const calculateCost = () => {
         return calculateProdOverhead() + calculateTotalCost()
     }
 
-    const handleSubmit = async () => {
+    const handleSubmit = async (e) => {
 
+        e.preventDefault()
         const response = await fetch(`http://localhost:5500/api/product`, {
             method: 'POST',
             headers: {
-                'Authorization': `Bearer ${user.token}`
+                'Authorization': `Bearer ${user.token}`,
+                'Content-Type': 'application/json'
             },
-            body: JSON.stringify({}) 
+            body: JSON.stringify({
+                name, 
+                quantities, 
+                costOfLabour, 
+                costOfPackaging, 
+                costOfEnergy,
+                costOfRent,
+                weightPerLoaf,
+                productionPrice,
+                marketPrice,
+                productionBenchMark,
+                salesBenchMark
+            }) 
         })
 
         const json = await response.json()
 
         if(!response.Ok){
-
+            setError(json)
+            console.log('error encountered')
         }
         if(response.ok){
-            dispatch({type: 'CREATE_DATA', payload: json})
+            cosole.log('successfully created')
+            dispatch({type:'CREATE_DATA', payload:json})
         }
     }
 
+    const handleQuantities = (itemId, quantity) => {
+        // update the quantity state variable with the quantity entered by the user
+        setQuantities({...quantities, [itemId]: quantity})
+        console.log(quantities, costOfProdution, totalDoughWeight)
+      };
+
     return ( 
         <div className="grid grid-cols-1 items-center overflow-y-scroll justify-items-center inset-0 fixed bg-primary bg-opacity-20 rounded-md">
-            <div className="flex flex-col bg-white md:p-5 mt-10 p-3 gap-y-4 md:w-6/12">
+            <form onSubmit={handleSubmit} className="flex flex-col bg-white md:p-5 mt-10 p-3 gap-y-4 md:w-6/12">
                 <div className="flex justify-between items-center md:mb-6 mb-4">
                     <h4 className="font-semibold text-primary uppercase text-center">Create a new recipe</h4>
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 cursor-pointer">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
                     </svg>
                 </div>
-                
+                {error && <AlertBox message={error}/>}
                 <div className="flex gap-x-4 m-2 items-center">
                     <label htmlFor="" className="font-semibold">Name:</label>
 
@@ -112,6 +132,8 @@ const ProductsForm = () => {
                         type="text"
                         placeholder="enter product name"
                         className="text-xs w-full border-slate-300 focus:border-slate-300 focus:outline-none rounded border" 
+                        onChange={(e)=>{setName(e.target.value)}}
+                        value={name}
                     />
                 </div>
                 <table className="grid grid-cols-1">
@@ -189,8 +211,8 @@ const ProductsForm = () => {
                                 <input 
                                     type="text" 
                                     className="text-xs border-slate-300 focus:border-slate-300 focus:outline-none rounded font-light"
-                                    value={labour}
-                                    onChange={(e) =>{setLabour(e.target.value)}} 
+                                    value={costOfLabour}
+                                    onChange={(e) =>{setCostOfLabour(e.target.value)}} 
                                 />
                             </tr>
                             <tr className="grid grid-cols-4 items-center justify-center">
@@ -198,8 +220,8 @@ const ProductsForm = () => {
                                 <input 
                                     type="text" 
                                     className="text-xs border-slate-300 focus:border-slate-300 focus:outline-none rounded font-light"
-                                    value={packaging}
-                                    onChange={(e)=>{setPackaging(e.target.value)}}  
+                                    value={costOfPackaging}
+                                    onChange={(e)=>{setCostOfPackaging(e.target.value)}}  
                                 />
                             </tr>
                             <tr className="grid grid-cols-4 items-center justify-center">
@@ -207,8 +229,8 @@ const ProductsForm = () => {
                                 <input 
                                     type="text" 
                                     className="text-xs border-slate-300 focus:border-slate-300 focus:outline-none rounded font-light"
-                                    value={rent}
-                                    onChange={(e)=>{setRent(e.target.value)}}  
+                                    value={costOfRent}
+                                    onChange={(e)=>{setCostOfRent(e.target.value)}}  
                                 />
                             </tr>
                             <tr className="grid grid-cols-4 items-center justify-center">
@@ -216,8 +238,8 @@ const ProductsForm = () => {
                                 <input 
                                     type="text" 
                                     className="text-xs border-slate-300 focus:border-slate-300 focus:outline-none rounded font-light"
-                                    value={energy}
-                                    onChange={(e)=>{setEnergy(e.target.value)}}  
+                                    value={costOfEnergy}
+                                    onChange={(e)=>{setCostOfEnergy(e.target.value)}}  
                                 />
                             </tr>
                             <tr className="grid grid-cols-4 items-center justify-center">
@@ -293,7 +315,7 @@ const ProductsForm = () => {
                     <button className="border py-2 px-10 border hover:bg-red-500 hover:bg-opacity-20">cancel</button>
                     <button className="border px-12 py-2 rounded-lg bg-gradient-to-r from-cyan-500 to-blue-500 font-semibold text-white">Proceed</button>    
                 </div>
-            </div>
+            </form>
                     
         </div>
      );

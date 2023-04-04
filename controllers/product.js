@@ -5,12 +5,12 @@ exports.createProduct = async (req, res) => {
 
     const {
         name,
-        materials,
+        quantities,
         costOfLabour,
         costOfPackaging,
         costOfEnergy,
         costOfRent,
-        netWeight,
+        weightPerLoaf,
         productionPrice,
         marketPrice,
         productionBenchMark,
@@ -20,11 +20,11 @@ exports.createProduct = async (req, res) => {
     try {
         
         const createdBy = req.user._id
-        const newProduct = await Product.create({name, materials, costOfLabour, costOfPackaging, costOfEnergy, costOfRent, netWeight, productionPrice, marketPrice, productionBenchMark, salesBenchMark,createdBy})
+        const newProduct = await Product.create({name, quantities, costOfLabour, costOfPackaging, costOfEnergy, costOfRent, weightPerLoaf, productionPrice, marketPrice, productionBenchMark, salesBenchMark,createdBy})
         return res.status(201).json(newProduct)
 
     } catch (error) {
-        res.status(400).json(error.message)
+        return res.status(400).json(error.message)
     }
 }
 

@@ -7,21 +7,32 @@ import ProductTable from "./components/ProductTable";
 const ProductList = () => {
 
     const {data, dispatch} = useDataContext()
-    const [modal, setModal] = useState(false)
+    const [selectedProduct, setSelectedProduct] = useState(null)
     const {user} = useAuthContext()
 
-    const modalOn = () => {
-        setModal(true)
+    const modalOn = async (data) => {
+        
+        const response = await fetch(`http://localhost:5500/api/product/${data._id}`, {
+            headers: {
+                'Authorization': `Bearer ${user.token}`
+            }
+        })
+
+        const json = await response.json()
+
+        if(response.ok){
+            setSelectedProduct({...data ,json})
+        }
     }
 
     const modalOff = () => {
-        setModal(false)
+        setSelectedProduct(false)
     }
 
     useEffect(()=>{
 
         const fetchData = async () => {
-            const response = await fetch(`https://smartwork-api.onrender.com/api/product`, {
+            const response = await fetch(`http://localhost:5500/api/product`, {
                 headers:{
                     'Authorization': `Bearer ${user.token}`
                 }
@@ -47,7 +58,7 @@ const ProductList = () => {
             <div className="grid grid-cols-1 gap-y-2 ">
                 {data && <ProductTable data={data} modalOn={modalOn} />}
                 {data && data.map((product)=>(
-                    <div onClick={modalOn} className="md:hidden flex rounded-md shadow-md justify-between">
+                    <div onClick={()=>{modalOn(product)}} className="md:hidden flex rounded-md shadow-md justify-between">
                         <div className="flex p-2 gap-x-2">
                             <div className="flex p-1 rounded bg-green-100">
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
@@ -78,7 +89,7 @@ const ProductList = () => {
                 ))}
                 
             </div>
-            {modal && <ProductDetails modalOff={modalOff} />}
+            {selectedProduct && <ProductDetails product={selectedProduct} modalOff={modalOff} />}
         </div>
      );
 }
