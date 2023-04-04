@@ -16,10 +16,11 @@ const UsageForm = ({modalOff}) => {
     const handleSubmit = async (e) => {
         e.preventDefault()
 
-        const response = await fetch(`https://smartwork-api.onrender.com/api/rawmaterial-transaction/usage`, {
+        const response = await fetch(`http://localhost:5500/api/rawmaterial-transaction/usage`, {
             method: 'POST',
             headers:{
-                'Authorization' : `Bearer ${user.token}`
+                'Authorization' : `Bearer ${user.token}`,
+                'Content-Type' : `application/json`
             },
             body: JSON.stringify({material, quantity, amount, description})
         })
@@ -31,18 +32,15 @@ const UsageForm = ({modalOff}) => {
     }
 
     return ( 
-        <div className="grid grid-cols-1 inset-0 fixed bg-primary bg-opacity-10 justify-items-center text-xs">
-            <div>
-
-            </div>
-            <div className="">
-                <div onClick={modalOff} className='cursor-pointer'>
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" strokeWidth={5} className="w-5 h-5 text-red-500">
+        <div className="grid grid-cols-1 inset-0 fixed bg-primary  bg-opacity-10 items-center justify-items-center text-xs">
+            <div className="flex flex-col bg-white rounded-md shadow gap-y-4 p-5">
+                <div className='flex flex-row-reverse justify-between'>
+                    <svg onClick={modalOff}  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" strokeWidth={5} className="w-5 h-5 text-red-500 cursor-pointer">
                         <path d="M6.28 5.22a.75.75 0 00-1.06 1.06L8.94 10l-3.72 3.72a.75.75 0 101.06 1.06L10 11.06l3.72 3.72a.75.75 0 101.06-1.06L11.06 10l3.72-3.72a.75.75 0 00-1.06-1.06L10 8.94 6.28 5.22z" />
                     </svg>
-                </div>
-                <form onSubmit={handleSubmit} className="grid grid-cols-1 gap-y-2 bg-white rounded-md shadow p-5">
                     <h4 className="text-center text-primary font-semibold text-shadow">Rawmaterial Usage</h4>
+                </div>
+                <form onSubmit={handleSubmit} className="grid grid-cols-1 gap-y-2">
                     <label className="text-xs">Raw material</label>
                     <select
                         className="border-slate-300 text-xs"

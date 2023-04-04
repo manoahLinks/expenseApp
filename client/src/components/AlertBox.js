@@ -6,7 +6,7 @@ const AlertBox = ({message}) => {
 
     setTimeout(()=>{
         setAlert(false)
-    }, 1000)
+    }, 4000)
 
     return ( 
         <div className="flex flex-col">

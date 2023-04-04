@@ -77,7 +77,7 @@ const ProductsForm = () => {
 
     const handleSubmit = async () => {
 
-        const response = await fetch(`https://smartwork-api.onrender.com/api/product`, {
+        const response = await fetch(`http://localhost:5500/api/product`, {
             method: 'POST',
             headers: {
                 'Authorization': `Bearer ${user.token}`

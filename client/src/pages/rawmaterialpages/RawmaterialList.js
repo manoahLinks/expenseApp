@@ -15,7 +15,7 @@ const RawmaterialList = () => {
 
     const modalOn = async (data) => {
         
-        const response = await fetch(`https://smartwork-api.onrender.com/api/rawmaterial/${data._id}`, {
+        const response = await fetch(`http://localhost:5500/api/rawmaterial/${data._id}`, {
             headers: {
                 'Authorization': `Bearer ${user.token}`
             }
@@ -39,7 +39,7 @@ const RawmaterialList = () => {
     useEffect(()=>{
 
         const fetchData = async () => {
-            const response = await fetch(`https://smartwork-api.onrender.com/api/rawmaterial`, {
+            const response = await fetch(`http://localhost:5500/api/rawmaterial`, {
                 headers:{
                     'Authorization': `Bearer ${user.token}`
                 }

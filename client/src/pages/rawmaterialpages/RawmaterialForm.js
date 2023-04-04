@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import AlertBox from "../../components/AlertBox";
 import { useAuthContext } from "../../hooks/useAuthContext";
 import { useDataContext } from "../../hooks/useDataContext";
+import useFetch from "../../useFetch";
 
 const RawmaterialForm = ({modalOff}) => {
 
@@ -16,6 +17,7 @@ const RawmaterialForm = ({modalOff}) => {
     const [success, setSuccess] = useState(false)
     const {user} = useAuthContext()
     const {dispatch} = useDataContext()
+    const {data} = useFetch(`http://localhost:5500/api/supplier`)
 
     const handleSubmit = async (e) => {
         e.preventDefault()
@@ -28,7 +30,7 @@ const RawmaterialForm = ({modalOff}) => {
 
         setIsPending(true)
 
-        const response = await fetch(`https://smartwork-api.onrender.com/api/rawmaterial`, {
+        const response = await fetch(`http://localhost:5500/api/rawmaterial`, {
             method: 'POST',
             headers: {
                 'Authorization': `Bearer ${user.token}`,
@@ -59,21 +61,18 @@ const RawmaterialForm = ({modalOff}) => {
     }
 
     return ( 
-        <div className="inset-0 justify-center text-xs fixed justify-items-center bg-primary bg-opacity-10 mt-auto items-center grid grid-cols-1">
-            <div>
-
-            </div>
-            <div className="flex flex-col gap-y-4 mx-2 md:mx-0">
+        <div className="inset-0 justify-center text-xs fixed justify-items-center bg-primary bg-opacity-10 grid grid-cols-1">
+            <div className="md:p-5 flex flex-col gap-y-4 ml-auto mt-10 p-2 shadow md:w-4/12 rounded-md shadow w-full bg-white">
                 {success && <AlertBox message={`successfully created new Raw material`}/>}
                 {error && <AlertBox message={error}/>}
-                <div onClick={modalOff} className='cursor-pointer'>
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" strokeWidth={5} className="w-5 h-5 text-red-500">
+                <div className='flex flex-row-reverse justify-between'>
+                    <svg onClick={modalOff} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" strokeWidth={5} className="w-5 h-5 text-red-500 cursor-pointer">
                         <path d="M6.28 5.22a.75.75 0 00-1.06 1.06L8.94 10l-3.72 3.72a.75.75 0 101.06 1.06L10 11.06l3.72 3.72a.75.75 0 101.06-1.06L11.06 10l3.72-3.72a.75.75 0 00-1.06-1.06L10 8.94 6.28 5.22z" />
                     </svg>
+                    <h4 className="text-sm font-semibold text-center">Register new raw material</h4>
                 </div>
                 <div className="grid rounded-md grid-cols-1">
                     <form className="grid grid-cols-1 gap-y-2 p-5 bg-white items-center" onSubmit={handleSubmit}>
-                        <h4 className="text-sm font-semibold text-center">Register new raw material</h4>
                         <div className="flex flex-col">
                             <label className="flex items-center gap-x-2">
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-3 h-3 md:w-4 md:h-4">
@@ -88,6 +87,14 @@ const RawmaterialForm = ({modalOff}) => {
                                 className="text-xs border-slate-300 focus:border-slate-300 focus:outline-none font-light rounded p-2 "
                                 
                             />
+                        </div>
+                        <div class="relative flex w-full flex-wrap items-stretch mb-3">
+                            <span class="z-10 h-full leading-snug font-normal absolute text-center text-slate-300 absolute bg-transparent rounded text-base items-center justify-center w-8 pl-3 py-3">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-3 h-3 md:w-4 md:h-4">
+                                    <path strokeLinecap="round" strokeLinejoin="round" d="M15 9h3.75M15 12h3.75M15 15h3.75M4.5 19.5h15a2.25 2.25 0 002.25-2.25V6.75A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25v10.5A2.25 2.25 0 004.5 19.5zm6-10.125a1.875 1.875 0 11-3.75 0 1.875 1.875 0 013.75 0zm1.294 6.336a6.721 6.721 0 01-3.17.789 6.721 6.721 0 01-3.168-.789 3.376 3.376 0 016.338 0z" />
+                                </svg>
+                            </span>
+                            <input type="text" placeholder="Placeholder" class="px-3 py-3 placeholder-slate-300 text-slate-600 relative bg-white bg-white rounded text-sm border-0 shadow outline-none focus:outline-0 focus:ring w-full pl-10"/>
                         </div>
                         <div className="grid grid-cols-2 gap-x-2 gap-y-2 md:gap-x-4 md:gap-y-8">
                             <div className="flex flex-col">
@@ -168,8 +175,10 @@ const RawmaterialForm = ({modalOff}) => {
                                 
                                 >
                                     <option value={``}>please select</option>
-                                    <option value={`Muabsa`}>Muabsa</option>
-                                    <option value={`farida`}>farida</option>
+                                    {data && data.map((supplier)=>(
+                                        <option key={supplier._id} value={supplier._id}>{supplier.name}</option>
+                                    ))}
+                                    
                                 </select>
                             </div>
 
