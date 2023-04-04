@@ -18,7 +18,7 @@ const UserList = () => {
             const json = await response.json()
 
             if(response.ok){
-                dispatch({type: 'SET_DATA', payload: json})
+                dispatch({type: 'SET_DATA', payload:json})
             }    
         }
         if(user){
@@ -36,7 +36,9 @@ const UserList = () => {
                 </div>
 
                 <div className="grid grid-cols-3">
-
+                    {data && data.map((profile)=>(
+                        <h4>{profile.name}</h4>
+                    ))}
                 </div>
             </div>
         </div>

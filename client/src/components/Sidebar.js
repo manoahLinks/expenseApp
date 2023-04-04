@@ -19,9 +19,9 @@ const Sidebar = () => {
     }
 
     return ( 
-        <div className={`md:w-2/12 fixed bg-white h-screen md:text-sm text-xs flex flex-col hidden md:block w-9/12`}>
+        <div className={`md:w-2/12 fixed bg-white h-screen grid grid-cols-1 hidden md:block w-9/12`}>
             
-            <div className="flex flex-col gap-y-2 mt-5 flex-1 ">
+            <div className="flex flex-col gap-y-2 mt-5 ">
                 <Link to={`/`}  onClick={()=> {setActiveTab(1)}} className={`${activeTab === 1 ? `bg-primary bg-opacity-10` : ``} flex gap-x-4 items-center p-2 rounded hover:bg-primary hover:bg-opacity-20`}>
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className={`w-4 h-4 ${activeTab === 1 ? `fill-green-400`: `fill-slate-300 `}`}>
                         <path fillRule="evenodd" d="M4.25 2A2.25 2.25 0 002 4.25v2.5A2.25 2.25 0 004.25 9h2.5A2.25 2.25 0 009 6.75v-2.5A2.25 2.25 0 006.75 2h-2.5zm0 9A2.25 2.25 0 002 13.25v2.5A2.25 2.25 0 004.25 18h2.5A2.25 2.25 0 009 15.75v-2.5A2.25 2.25 0 006.75 11h-2.5zm9-9A2.25 2.25 0 0011 4.25v2.5A2.25 2.25 0 0013.25 9h2.5A2.25 2.25 0 0018 6.75v-2.5A2.25 2.25 0 0015.75 2h-2.5zm0 9A2.25 2.25 0 0011 13.25v2.5A2.25 2.25 0 0013.25 18h2.5A2.25 2.25 0 0018 15.75v-2.5A2.25 2.25 0 0015.75 11h-2.5z" clipRule="evenodd" />
@@ -34,7 +34,7 @@ const Sidebar = () => {
                     </svg>
                     <h4>My Profile</h4>
                 </Link>
-                <Link onClick={toggleBody} className={` ${activeTab === 3 || activeTab === 31 || activeTab === 32 || activeTab === 33 || activeTab === 34 ? `bg-primary bg-opacity-10` : ``} flex justify-between p-2 items-baseline rounded hover:bg-primary hover:bg-opacity-20`}>
+                <Link onClick={toggleBody} className={` ${activeTab === 3 || activeTab === 31 || activeTab === 32 || activeTab === 33 || activeTab === 34 ? `bg-primary bg-opacity-10` : ``} flex justify-between p-3 items-baseline rounded hover:bg-primary hover:bg-opacity-20`}>
                     <div className="flex">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className={`w-4 h-4 ${activeTab === 3 || activeTab === 31 || activeTab === 32 || activeTab === 33 || activeTab === 34 ? `fill-green-400`: `fill-slate-300 `} `}>
                             <path fillRule="evenodd" d="M18 5.25a2.25 2.25 0 00-2.012-2.238A2.25 2.25 0 0013.75 1h-1.5a2.25 2.25 0 00-2.238 2.012c-.875.092-1.6.686-1.884 1.488H11A2.5 2.5 0 0113.5 7v7h2.25A2.25 2.25 0 0018 11.75v-6.5zM12.25 2.5a.75.75 0 00-.75.75v.25h3v-.25a.75.75 0 00-.75-.75h-1.5z" clipRule="evenodd" />
@@ -43,7 +43,7 @@ const Sidebar = () => {
                         <h4 className="mx-2">DailyActivity</h4>
                     </div>
                     
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className={` w-4 h-4  ${activeTab === 3 || activeTab === 31 || activeTab === 32 || activeTab === 33 || activeTab === 34 ? `fill-green-400 text-slate-300 -rotate-180`: ``}`}>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className={` w-4 h-4  ${activeTab === 3 || activeTab === 31 || activeTab === 32 || activeTab === 33 || activeTab === 34 ? `fill-green-400 text-slate-300 rotate-90`: ``}`}>
                         <path fillRule="evenodd" d="M7.21 14.77a.75.75 0 01.02-1.06L11.168 10 7.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z" clipRule="evenodd" />
                     </svg>
                 </Link>
@@ -82,7 +82,7 @@ const Sidebar = () => {
                 
             </div>
 
-            {user && <div className="flex flex-col gap-y-2 bottom-4 p-3 fixed bg-slate-100  shadow">
+            {user && <div className="flex flex-col gap-y-2 p-3 bg-slate-100 shadow">
                 <div onClick={handleLogout} className="cursor-pointer text-xs flex gap-x-2">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-4 h-4">
                         <path fillRule="evenodd" d="M3 4.25A2.25 2.25 0 015.25 2h5.5A2.25 2.25 0 0113 4.25v2a.75.75 0 01-1.5 0v-2a.75.75 0 00-.75-.75h-5.5a.75.75 0 00-.75.75v11.5c0 .414.336.75.75.75h5.5a.75.75 0 00.75-.75v-2a.75.75 0 011.5 0v2A2.25 2.25 0 0110.75 18h-5.5A2.25 2.25 0 013 15.75V4.25z" clipRule="evenodd" />

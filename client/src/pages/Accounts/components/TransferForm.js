@@ -1,4 +1,9 @@
+import useFetch from "../../../hooks/useFetch";
+
 const TransferForm = ({modalOff}) => {
+
+    const {data} = useFetch(`http://localhost:5500/api/account`)
+
     return ( 
         <div className="grid grid-cols-1 inset-0 fixed items-center justify-items-center justify-center bg-primary bg-opacity-10">
             <div className='flex flex-col md:w-4/12 w-full gap-y-4 rounded-lg bg-white md:p-5 p-2'>
@@ -11,10 +16,12 @@ const TransferForm = ({modalOff}) => {
 
                 <form className='grid grid-cols-1 gap-y-2'>
                     <label>Beneficiary Acct</label>
-                    <input 
-                        type="text"
-                        className="w-full border-slate-300" 
-                    />
+                    <select className="w-full border-slate-300">
+                        <option value="">select beneficiary</option>
+                        {data && data.map((account)=>(
+                            <option key={account._id} value={account._id}>{account.name}</option>
+                        ))}
+                    </select>
                     <label>Amount</label>
                     <input 
                         type="number"
