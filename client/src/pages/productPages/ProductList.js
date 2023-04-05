@@ -47,7 +47,7 @@ const ProductList = () => {
             fetchData()
         }
         
-    }, [dispatch, user])
+    }, [dispatch, user, data])
 
     return ( 
         <div className="grid grid-cols-1 bg-white p-2 md:p-5 rounded-md">

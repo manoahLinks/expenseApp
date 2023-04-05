@@ -80,7 +80,7 @@ exports.deleteProduct = async (req, res) => {
         return res.status(200).json(deletedProduct)
 
     } catch (error) {
-        res.status(400).json(error.message)
+        return res.status(400).json(error.message)
     }
 }
  

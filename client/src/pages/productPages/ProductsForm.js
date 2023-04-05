@@ -25,7 +25,7 @@ const ProductsForm = () => {
     const {user} = useAuthContext()
     const [error, setError] = useState(null)
 
-
+    // hook to handle fetching of all rawmaterials from server
     useEffect(()=>{
 
         const fetchData = async () => {
@@ -47,32 +47,7 @@ const ProductsForm = () => {
         
     }, [dispatch, user])
 
-    const calculateTotalCost = () => {
-        let total = 0;
-        for (let item of data) {
-          const quantity = quantities[item._id] || 0;
-          total += (item.netPrice/item.netWeight) * quantity;
-        }
-        return total;
-    } 
-
-    const calculateTotalDoughWeight = () => {
-        let total = 0
-        for (let item of data) {
-            const quantity = quantities[item._id] || 0;
-            total += Number(quantity);
-          }
-          return total;
-    } 
-    
-    const calculateProdOverhead = () => {
-        return Number(costOfRent) + Number(costOfPackaging) + Number(costOfLabour) + Number(costOfEnergy)
-    }
-
-    const calculateCost = () => {
-        return calculateProdOverhead() + calculateTotalCost()
-    }
-
+    // submit function to handle submit request to server
     const handleSubmit = async (e) => {
 
         e.preventDefault()
@@ -109,6 +84,42 @@ const ProductsForm = () => {
         }
     }
 
+    // function to calculate cost of each rawmaterial
+    const calculateTotalCost = () => {
+        let total = 0;
+        for (let item of data) {
+          const quantity = quantities[item._id] || 0;
+          total += (item.netPrice/item.netWeight) * quantity;
+        }
+        return total;
+    } 
+
+    // function to calculate total doughWeight
+    const calculateTotalDoughWeight = () => {
+        let total = 0
+        for (let item of data) {
+            const quantity = quantities[item._id] || 0;
+            total += Number(quantity);
+          }
+          return total;
+    } 
+
+    // function to calculate production price per loaf
+    const calculateProductionPrice = () => {
+        return calculateCost() / (calculateTotalDoughWeight()/weightPerLoaf)
+    }
+    
+    // function to calculate the production overhead cost
+    const calculateProdOverhead = () => {
+        return Number(costOfRent) + Number(costOfPackaging) + Number(costOfLabour) + Number(costOfEnergy)
+    }
+
+    // function to calculate cost of rawmaterials and overhead cost
+    const calculateCost = () => {
+        return calculateProdOverhead() + calculateTotalCost()
+    }
+
+    // function to calculate cost of each rawmaterial
     const handleQuantities = (itemId, quantity) => {
         // update the quantity state variable with the quantity entered by the user
         setQuantities({...quantities, [itemId]: quantity})
@@ -290,7 +301,7 @@ const ProductsForm = () => {
                                         <input 
                                             type="number"
                                             className="text-xs w-9/12 border-slate-300 rounded-md"
-                                            value={calculateCost() / (calculateTotalDoughWeight()/weightPerLoaf)}
+                                            value={calculateProductionPrice()}
                                             onChange={(e)=>{setProductionPrice(e.target.value)}}
                                         />
                                     </td>
