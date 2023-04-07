@@ -2,6 +2,16 @@ import {useState, useEffect} from "react"
 
 const ProductDetails = ({modalOff, product}) => {
 
+    const [viewRecipe, setViewRecipe] = useState(false)
+
+    const toggleRecipe = () => {
+        if(!viewRecipe){
+            setViewRecipe(true)
+        }else{
+            setViewRecipe(false)
+        }
+    }
+
     return ( 
         <div className="grid grid-cols-1 md:grid-cols-1 fixed inset-0 bg-primary bg-opacity-20">
             <div className="flex flex-col gap-y-4 p-5 mt-10 ml-auto md:w-3/12 w-full overflow-y-scroll bg-white ">
@@ -30,11 +40,11 @@ const ProductDetails = ({modalOff, product}) => {
                     </div>
                     <div className='flex justify-between items-center'>
                         <h4 className='text-slate-400'>Rawmaterials:</h4>
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-4 h-4">
+                        <svg onClick={toggleRecipe} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className={`w-4 h-4 ${viewRecipe ? `rotate-90` : `rotate-0`}`}>
                             <path fill-rule="evenodd" d="M7.21 14.77a.75.75 0 01.02-1.06L11.168 10 7.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z" clip-rule="evenodd" />
                         </svg>
                     </div>
-                    <table className={`hidden`}>
+                    {viewRecipe && <table className={``}>
                         <thead>
                             <tr className='grid grid-cols-3'>
                                 <th>Material</th>
@@ -51,7 +61,7 @@ const ProductDetails = ({modalOff, product}) => {
                             </tr>
                         ))}
                         </tbody>
-                    </table>
+                    </table>}
 
                     <div className="grid grid-cols-1 p-2 bg-slate-50">
                         <div className='flex justify-between'>

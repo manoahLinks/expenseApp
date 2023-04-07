@@ -27,8 +27,16 @@ const TransferForm = ({modalOff}) => {
                         type="number"
                         className='w-full border-slate-300' 
                     />
+                    <div className='grid grid-cols-1 gap-y-2'>
+                        <h4 className='p-2 rounded-md bg-slate-50'>Enter your pin to proceed</h4>
+                        <input 
+                            type="Number"
+                            className='border-slate-200 w-full' 
+                        />
+                    </div>
+                   
                     <div className='flex justify-between'>
-                        <button className='p-1 bg-gradient-to-r from-amber-400 to-lime-200'>Proceed</button>
+                        <button className='py-1 px-2 text-white rounded-md bg-gradient-to-r from-cyan-400 to-blue-300'>Proceed</button>
                     </div>
                 </form>
             </div>

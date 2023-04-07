@@ -87,7 +87,7 @@ const SupplierForm = ({modalOff}) => {
 
                     <div className='grid grid-cols-3 mt-6 gap-x-4'>
                         <button onClick={modalOff} className='border border-cyan-500 p-1 bg-white text-cyan-500 rounded-md'>cancel</button>
-                        <button className='col-span-2 rounded-md bg-gradient-to-r from-cyan-400 to-blue-300'>Proceed</button>
+                        <button className='col-span-2 rounded-md text-white bg-gradient-to-r from-cyan-400 to-blue-300'>Proceed</button>
                     </div>
                 </form>
             </div>

@@ -102,7 +102,11 @@ const AccountTransactions = () => {
                                         <h4>Expiry 06/2024</h4>
                                     </div>
                                 </div>
-                                <h4>+{transaction.amount}</h4>
+                                <div className="flex flex-col">
+                                    <h4>+{transaction.amount}</h4>
+                                    <h4>{transaction.createdAt}</h4>
+                                </div>
+                                
                             </div>
                         ))}      
                     </div>
