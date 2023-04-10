@@ -24,7 +24,7 @@ const NavBar = () => {
     }
 
     return ( 
-        <div className='fixed top-0 z-10 bg-white w-full flex shadow justify-between md:p-2 p-2'>
+        <div className='fixed top-0 z-10 bg-white shadow w-full flex justify-between md:p-3 p-2'>
             <div className='flex items-center gap-x-2'>
               <div onClick={toggleSidebar} className="flex md:hidden block">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
@@ -32,10 +32,6 @@ const NavBar = () => {
                 </svg>
               </div>
               <h4 className="font-bold text-md text-primary">SMART WORK</h4>
-            </div>
-            <div className=" md:border-l p-2 flex font-light gap-x-4">
-              {user && <h4 className="hidden md:block">Hi, {user.email}</h4>}
-              
             </div>
             <div className='flex items-center'>
 
@@ -53,7 +49,6 @@ const NavBar = () => {
                 </div>
 
               </div>
-
               {sidebar && <Sidebar  />}
             </div>
         </div>

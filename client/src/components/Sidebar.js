@@ -19,7 +19,7 @@ const Sidebar = () => {
     }
 
     return ( 
-        <div className={`md:w-2/12 fixed bg-white h-screen grid grid-cols-1 hidden md:block w-9/12`}>
+        <div className={`md:w-2/12 fixed bg-white border-r h-screen grid grid-cols-1 hidden md:block w-9/12`}>
             
             <div className="flex flex-col gap-y-2 mt-5 ">
                 <Link to={`/`}  onClick={()=> {setActiveTab(1)}} className={`${activeTab === 1 ? `bg-primary bg-opacity-10` : ``} flex gap-x-4 items-center p-2 rounded hover:bg-primary hover:bg-opacity-20`}>

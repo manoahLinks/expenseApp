@@ -33,6 +33,7 @@ const Products = () => {
                         <h4>create product</h4>
                     </span>    
                 </div>
+                <hr />
             </div>
             <div className="">
 

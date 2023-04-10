@@ -18,7 +18,7 @@ const RawMaterials = () => {
 
     return ( 
         <div className="flex flex-col">
-            <div className="grid grid-cols-2 p-3 bg-white">
+            <div className="grid grid-cols-1 p-3 bg-white">
                 <div className='text-xs flex items-center'>
                     <Link to={`/home`} className="flex p-2 rounded-md">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-5 h-5">
@@ -33,6 +33,7 @@ const RawMaterials = () => {
                         <h4>Admin</h4>
                     </span>    
                 </div>
+                <hr />
             </div>
           
             <div className="">

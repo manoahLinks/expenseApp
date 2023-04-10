@@ -37,6 +37,7 @@ const Finance = () => {
                         <h4>Suppliers</h4>
                     </span>    
                 </div>
+                <hr />
             </div>
             <div className="grid grid-cols-1 mb-auto">
                {currentSection === 1 && ( 
