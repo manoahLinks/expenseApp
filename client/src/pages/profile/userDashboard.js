@@ -26,13 +26,13 @@ const UserDashboard = () => {
     }, [user, data, dispatch])
 
     return ( 
-        <div className="grid grid-cols-1">
-            <div className="border w-9/12 mx-auto md:p-5 grid md:grid-cols-2 grid-cols-1">
-                <img src="" alt="profile pic" />
-                <div className="grid grid-cols-2">
-                    <h4>Email</h4>
-                    <h4>{data.email}</h4>
+        <div className="flex flex-col justify-items-center">
+            <div className="flex flex-col md:gap-y-4 gap-y-2 md:w-6/12 justify-items-center self-center">
+                <div className="flex md:w-72 md:h-72 self-center">
+                    <img className="object-fit" src={require(`../../assets/Design community-pana.png`)} alt="" />
                 </div>
+                <p className="text-center font-light">You can create and manage your employee's account here accounts here</p>
+                <button className="bg-orange-300 text-white px-2 py-1 m-auto rounded-lg">new user</button>
             </div>
         </div>
      );

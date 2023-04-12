@@ -9,6 +9,9 @@ module.exports = {
         'primary': '#357266',
         'error': '#FFD6D6',
         'success': '#C6F1BB'
+      },
+      backgroundImage: {
+        'userbackground': "url('assets/Design inspiration-amico.png')"
       }
     },
   },
