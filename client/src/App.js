@@ -2,6 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
 import NavBar from './components/NavBar';
 import Homepage from './pages/FirstPage';
+import HomePage from './pages/Homepage';
 import Sidebar from './components/Sidebar';
 import LoginPage from './pages/LoginPage';
 import SignupPage from './pages/SignupPage';
@@ -18,6 +19,8 @@ import Products from './pages/subpages/Products';
 import Forgotpassword from './pages/Forgotpassword';
 import TaskBar from './components/TaskBar';
 import Suppliers from './pages/subpages/Suppliers';
+import Orders from './pages/subpages/Orders';
+import Supplies from './pages/subpages/Supplies';
 
 
 function App () {
@@ -35,7 +38,8 @@ function App () {
               <Routes>
                 <Route exact path={`/`}     element={!user ? <LoginPage /> : <Navigate to={`/home`}/>} />
                 <Route path={`/forgotpassword`}     element={!user ? <Forgotpassword /> : <Navigate to={`/home`}/>} />
-                <Route path={`/home`}         element={user ? <Homepage /> : <Navigate to={`/`}/>} />
+                <Route path={`/dashboard`}         element={user ? <Homepage /> : <Navigate to={`/`}/>} />
+                <Route path={`/home`}         element={user ? <HomePage /> : <Navigate to={`/`}/>} />
                 <Route path={`/dbar`}        element={user ? <DailyActivityReportSheet /> : <Navigate to={`/`}/>} />
                 <Route path={`/signup`}       element={!user ? <SignupPage /> : <Navigate to={`/`}/>} />
                 <Route path={`/analytics`}    element={user ? <AnalyticsPage /> : <Navigate to={`/`}/>} />
@@ -46,6 +50,8 @@ function App () {
                 <Route path={`/finance`}        element={user ? <Finance/> : <Navigate to={`/`}/>} />
                 <Route path={`/product`}        element={user ? <Products/> : <Navigate to={`/`}/>} />
                 <Route path={`/supplier`}        element={user ? <Suppliers/> : <Navigate to={`/`}/>} />
+                <Route path={`/order`}        element={user ? <Orders/> : <Navigate to={`/`}/>} />
+                <Route path={`/supplies`}        element={user ? <Supplies/> : <Navigate to={`/`}/>} />
               </Routes>
 
               

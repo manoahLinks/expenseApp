@@ -2,8 +2,15 @@ import { Link } from "react-router-dom";
 
 const HomePage = () => {
     return ( 
-        <div className="grid grid-cols-1">
-            <div className="grid grid-cols-2 md:grid-cols-3 gap-x-2 gap-y-2 md:gap-x-4 p-2">
+        <div className="grid grid-cols-1 md:justify-items-center md:p-5">
+
+            <div className="flex gap-x-4 items-center md:block hidden border">
+                <div className="flex border w-72 justify-center h-72">
+                    <img src={require(`../assets/Design inspiration-pana.png`)} alt="" />
+                </div>
+                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. A error debitis ad culpa alias provident quae corrupti placeat nihil repudiandae hic ipsam sed labore amet consectetur exercitationem quisquam dolor accusamus eveniet aliquam, suscipit expedita! Qui perferendis corrupti pariatur, deserunt animi iusto eum doloribus. Minima amet libero, cupiditate iste soluta ipsa.</p>
+            </div>
+            <div className="md:hidden block grid grid-cols-2 md:grid-cols-3 gap-x-2 gap-y-2 md:gap-x-4 p-2">
                 <Link to={`/myprofile`} className="hover:bg-gray-200 shadow-md flex flex-col bg-white gap-y-2 items-center rounded-md p-2">
                     {<img src={require(`../assets/icons8-male-user-48.png`)} alt="" />}
                     <h4 className="text-center md:text-sm font-semibold">My Profile</h4>
