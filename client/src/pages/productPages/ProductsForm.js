@@ -135,6 +135,9 @@ const ProductsForm = () => {
                         <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
                     </svg>
                 </div>
+                <div className="flex bg-slate-200 md:p-5 p-2 border rounded-md">
+                    <p>while creating a recipe, always put in mind that quantities are recorded in grams</p>
+                </div>
                 {error && <AlertBox message={error}/>}
                 <div className="flex gap-x-4 m-2 items-center">
                     <label htmlFor="" className="font-semibold">Name:</label>

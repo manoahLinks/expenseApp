@@ -3,15 +3,18 @@ import {useDataContext} from '../../hooks/useDataContext'
 import { useAuthContext } from "../../hooks/useAuthContext";
 import CustomerDetails from "./CustomerDetails";
 import CustomerTable from "./component/Customertable"
+import LoadingPage from "../../components/Loading";
 
 const CustomerList = () => {
 
     const {data, dispatch} = useDataContext()
     const {user} = useAuthContext()
     const [selectedData, setSelectedData] = useState(null)
+    const [isLoading, setIsLoading] = useState(false)
 
     const modalOn = async (data) => {
-        const response = await fetch(`https://smartwork-api.onrender.com/api/customer/${data._id}`, {
+
+        const response = await fetch(`http://localhost:5500/api/customer/${data._id}`, {
             headers:{
                 'Authorization': `Bearer ${user.token}`
             }
@@ -29,9 +32,9 @@ const CustomerList = () => {
     }
 
     useEffect(()=>{
-
+        
         const fetchData = async () => {
-            const response = await fetch(`https://smartwork-api.onrender.com/api/customer`, {
+            const response = await fetch(`http://localhost:5500/api/customer`, {
                 headers:{
                     'Authorization': `Bearer ${user.token}`
                 }
@@ -41,6 +44,7 @@ const CustomerList = () => {
             if(response.ok){
                 dispatch({type: 'SET_DATA', payload: json})
             }    
+            setIsLoading(false)
         }
         if(user){
             fetchData()
@@ -50,6 +54,8 @@ const CustomerList = () => {
 
     return ( 
         <div className="grid grid-cols-1 gap-y-2 rounded-md">
+
+            {isLoading && <LoadingPage/>}
 
             <div className="grid grid-cols-1 hidden md:block p-5">
                 <CustomerTable customers={data} modalOn={modalOn} />

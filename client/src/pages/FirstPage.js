@@ -8,7 +8,7 @@ const Homepage = () => {
 
     return ( 
         <div className="grid grid-cols-1 gap-y-2 md:mx-5 mx-2">
-            <div className="flex justify-between items-center ">
+            <div className="md:flex grid-cols-1 md:justify-between items-center ">
                 <div className='flex gap-x-4 items-center'>
                     <img className='bg-slate-50 w-16 h-16 rounded-full' src={require(`../assets/icons8-user-male-100.png`)} alt="" />
                     <div className='flex flex-col'>

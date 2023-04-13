@@ -17,6 +17,7 @@ import Finance from './pages/subpages/Finance';
 import Products from './pages/subpages/Products';
 import Forgotpassword from './pages/Forgotpassword';
 import TaskBar from './components/TaskBar';
+import Suppliers from './pages/subpages/Suppliers';
 
 
 function App () {
@@ -44,6 +45,7 @@ function App () {
                 <Route path={`/marketing`}        element={user ? <Marketing/> : <Navigate to={`/`}/>} />
                 <Route path={`/finance`}        element={user ? <Finance/> : <Navigate to={`/`}/>} />
                 <Route path={`/product`}        element={user ? <Products/> : <Navigate to={`/`}/>} />
+                <Route path={`/supplier`}        element={user ? <Suppliers/> : <Navigate to={`/`}/>} />
               </Routes>
 
               

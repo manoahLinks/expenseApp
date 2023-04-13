@@ -50,10 +50,7 @@ const ProductList = () => {
     }, [dispatch, user, data])
 
     return ( 
-        <div className="grid grid-cols-1 bg-white p-2 md:p-5 rounded-md">
-            <div className="flex justify-between ">
-                <h4 className="text-sm font-semibold text-center">product List</h4>
-            </div>
+        <div className="grid grid-cols-1 p-2 md:p-5 rounded-md gap-y-4 h-96">
 
             <div className="grid grid-cols-1 gap-y-2 ">
                 {data && <ProductTable data={data} modalOn={modalOn} />}

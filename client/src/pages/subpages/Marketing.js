@@ -50,11 +50,11 @@ const Marketing = () => {
             
           <div className="grid grid-cols-1">
                {currentSection === 1 && (
-                   <CustomerDashboard/>
+                    <CustomerList />
                 )}
 
                 {currentSection === 2 && (
-                     <CustomerList />
+                    <CustomerDashboard/>
                 )}
 
                 {currentSection === 3 && (

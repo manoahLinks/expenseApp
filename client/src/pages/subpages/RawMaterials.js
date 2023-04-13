@@ -5,6 +5,7 @@ import RawmaterialForm from "../rawmaterialpages/RawmaterialForm"
 import RawMaterialAnalytics from "../AnalysisPages/RawMaterialAnalytics";
 import RecieveRawmaterial from "../rawmaterialpages/RecieveRawmaterial";
 import SuppliesList from "../rawmaterialpages/supplies/SuppliesList";
+import RawmaterialTable from "../rawmaterialpages/component/Rawmaterialtable";
 
 const RawMaterials = () => {
 
@@ -39,7 +40,7 @@ const RawMaterials = () => {
             <div className="">
 
                 {currentSection === 1 && ( 
-                   <RawmaterialList /> 
+                    <RawmaterialTable/> 
                 )}
 
                 {currentSection === 2 && ( 

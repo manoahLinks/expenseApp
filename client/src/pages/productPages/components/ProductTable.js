@@ -26,7 +26,7 @@ const ProductTable = ({data, modalOn}) => {
         <div className="md:block hidden grid grid-cols-1">
             <table className="table-auto w-full text-left">
                 <thead>
-                    <tr className="border-b grid grid-cols-7">
+                    <tr className="grid grid-cols-7">
                         <td className="px-4 py-2">Name</td>
                         <td className="px-4 py-2">cost of prod.</td>
                         <td className="px-4 py-2">Prod price</td>
@@ -36,9 +36,9 @@ const ProductTable = ({data, modalOn}) => {
                         <td className="px-4 py-2">Action</td>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody className="flex flex-col gap-y-2">
                     {data && data.map((product)=> (
-                        <tr key={product._id} className={`grid grid-cols-7 hover:bg-primary hover:bg-opacity-20`}>
+                        <tr key={product._id} className={`grid bg-slate-50 border border-slate-300 grid-cols-7 hover:border-slate-900 hover:bg-opacity-20`}>
                             <td onClick={()=>{modalOn(product)}} className="px-4 py-2 cursor-pointer">{product.name}</td>
                             <td className="px-4 py-2">{`nil`}</td>
                             <td className="px-4 py-2">{product.productionPrice}</td>

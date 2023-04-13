@@ -16,7 +16,7 @@ const LoginPage = () => {
     }
 
     return ( 
-        <div className="grid grid-cols-1 bg-gradient-to-r from-violet-500 to-fuchsia-500 items-center fixed inset-0">
+        <div className="grid grid-cols-1 bg-gradient-to-r from-orange-500 to-orange-300 items-center fixed inset-0">
             {/* <div className="flex flex-col">
                 <img className="" src={require(`../assets/Design inspiration-pana.png`)} alt="login img" />
             </div> */}

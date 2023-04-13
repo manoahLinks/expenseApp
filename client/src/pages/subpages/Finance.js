@@ -41,11 +41,11 @@ const Finance = () => {
             </div>
             <div className="grid grid-cols-1 mb-auto">
                {currentSection === 1 && ( 
-                    <FinanceDashboard/>
+                    <AccountList />
                 )}
 
                {currentSection === 2 && ( 
-                    <AccountList />
+                   <FinanceDashboard/>
                 )}
 
                {currentSection === 3 && ( 
