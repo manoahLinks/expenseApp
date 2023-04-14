@@ -12,7 +12,7 @@ const SupplierList = () => {
 
     const modalOn = async (data) => {
 
-        const response = await fetch(`https://smartwork-api.onrender.com/api/supplier/${data._id}`, {
+        const response = await fetch(`http://localhost:5500/api/supplier/${data._id}`, {
             headers: {
                 'Authorization': `Bearer ${user.token}`
             }

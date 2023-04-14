@@ -39,7 +39,7 @@ const RawmaterialList = () => {
     useEffect(()=>{
 
         const fetchData = async () => {
-            const response = await fetch(`https://smartwork-api.onrender.com/api/rawmaterial`, {
+            const response = await fetch(`/api/rawmaterial`, {
                 headers:{
                     'Authorization': `Bearer ${user.token}`
                 }
