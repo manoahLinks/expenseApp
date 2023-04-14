@@ -19,7 +19,7 @@ const Sidebar = ({sidebar}) => {
     }
 
     return ( 
-        <div className={`md:w-2/12 fixed bg-white md:overflow-y-hidden overflow-y-scroll inset-0 mt-10 md:mt-12 md:border-r h-screen grid grid-cols-1 ${sidebar ? `block`: `hidden`} md:block w-9/12`}>
+        <div className={`md:w-2/12 transition-ease-in fixed bg-white md:overflow-y-hidden overflow-y-scroll inset-0 mt-10 md:mt-12 md:border-r h-screen grid grid-cols-1 ${sidebar ? `block`: `hidden`} md:block w-9/12`}>
             
             <div className="flex flex-col gap-y-2  mt-5 gap-y-8 mx-4">
                 <div className="grid grid-cols-1 gap-y-2">

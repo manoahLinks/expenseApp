@@ -34,8 +34,8 @@ const RawmaterialTable = ({materials, modalOn}) => {
                     <path fillRule="evenodd" d="M9 3.5a5.5 5.5 0 100 11 5.5 5.5 0 000-11zM2 9a7 7 0 1112.452 4.391l3.328 3.329a.75.75 0 11-1.06 1.06l-3.329-3.328A7 7 0 012 9z" clipRule="evenodd" />
                 </svg>
             </div>
-            <table className="table table-auto w-full bg-white shadow rounded text-center text-xs">
-                <thead className="text-primary">
+            <table className="table table-auto w-full bg-white shadow rounded">
+                <thead className="">
                     <tr className="">
                         <th className="p-2">Raw material</th>
                         <th className="p-2">Re-order</th>
@@ -46,7 +46,7 @@ const RawmaterialTable = ({materials, modalOn}) => {
                 </thead>
                 <tbody>
                 {materials && materials.map((material)=>(
-                    <tr className="" key={material._id}>
+                    <tr className="border border-slate-300" key={material._id}>
                         <td onClick={()=>{modalOn(material)}} className="p-2 hover:font-bold cursor-pointer text-primary">{material.name}</td>
                         <td className="p-2">{material.qtyAvailable}</td>
                         <td className="p-2">{material.reOrderLevel}</td>
