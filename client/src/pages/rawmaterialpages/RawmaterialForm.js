@@ -61,8 +61,8 @@ const RawmaterialForm = ({modalOff}) => {
     }
 
     return ( 
-        <div className="inset-0 justify-center text-xs fixed justify-items-center bg-primary bg-opacity-10 grid grid-cols-1">
-            <div className="md:p-5 flex flex-col gap-y-4 ml-auto mt-10 p-2 shadow md:w-4/12 rounded-md shadow w-full bg-white">
+        <div className="inset-0 justify-center fixed items-center justify-items-center bg-primary bg-opacity-10 grid grid-cols-1">
+            <div className="md:p-5 flex flex-col gap-y-4 mt-10 p-2 shadow md:w-4/12 rounded-md shadow-lg w-full bg-white">
                 {success && <AlertBox message={`successfully created new Raw material`}/>}
                 {error && <AlertBox message={error}/>}
                 <div className='flex flex-row-reverse justify-between'>

@@ -13,8 +13,8 @@ const ProductDetails = ({modalOff, product}) => {
     }
 
     return ( 
-        <div className="grid grid-cols-1 md:grid-cols-1 fixed inset-0 bg-primary bg-opacity-20">
-            <div className="flex flex-col gap-y-4 p-5 mt-10 ml-auto md:w-3/12 w-full overflow-y-scroll bg-white ">
+        <div className="grid grid-cols-1 md:grid-cols-1 items-center justify-items-center fixed inset-0 bg-primary bg-opacity-20">
+            <div className="flex flex-col gap-y-4 p-5 mt-10 md:w-4/12 w-full shadow-lg rounded-lg bg-white ">
                 <div className="flex flex-row-reverse justify-between">
                     <div onClick={modalOff} className="flex">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor" className="w-5 h-5 hover:text-red-500 cursor-pointer">

@@ -6,13 +6,19 @@ import SupplierForm from "../suppliers/SupplierForm";
 
 const Suppliers = () => {
 
-        const [currentSection, setCurrentSection] = useState(1)
-        const [activeTab, setActiveTab] = useState(1)
+    const [currentSection, setCurrentSection] = useState(1)
+    const [activeTab, setActiveTab] = useState(1)
+    const [supplierForm, setSupplierForm] = useState(false)
 
-        const handleClick = (section) => {
-                setCurrentSection(section)
-                setActiveTab(section)
-        }
+    const handleClick = (section) => {
+            setCurrentSection(section)
+            setActiveTab(section)
+    }
+
+
+    const modalOff = () => {
+        setSupplierForm(false)    
+    }
 
     return ( 
         <div className="flex flex-col">
@@ -27,11 +33,11 @@ const Suppliers = () => {
                         <h4 className="text-lg font-bold">Suppliers</h4>
                     </div>
                     <div className="flex">
-                        <span onClick={()=>{handleClick(3)}} className="flex bg-orange-300 text-orange-900 font-semibold items-center gap-x-2 p-1 text-white rounded-md">
+                        <span onClick={()=>{setSupplierForm(true)}} className="cursor-pointer flex bg-orange-300 text-orange-900 font-semibold items-center gap-x-2 p-1 text-white rounded-md">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5">
                                 <path strokeLinecap="round" strokeLinejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
                             </svg>
-                            <small>create new Supplier</small>
+                            <small className="md:block hidden">create new Supplier</small>
                         </span>
                     </div>
                 </div>
@@ -52,14 +58,8 @@ const Suppliers = () => {
                     <div>123</div>
                 )}
 
-                {currentSection === 3 && ( 
-                    <SupplierForm/>
-                )}
-
-                {currentSection === 4 && ( 
-                    <h4>update info</h4>
-                )}
             </div>
+            {supplierForm && <SupplierForm modalOff={modalOff}/>}
         </div>
      );
 }

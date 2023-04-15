@@ -7,14 +7,20 @@ import RecieveRawmaterial from "../rawmaterialpages/RecieveRawmaterial";
 import SuppliesList from "../rawmaterialpages/supplies/SuppliesList";
 import RawmaterialTable from "../rawmaterialpages/component/Rawmaterialtable";
 
+
 const RawMaterials = () => {
 
         const [currentSection, setCurrentSection] = useState(1)
         const [activeTab, setActiveTab] = useState(1)
+        const [newForm, setNewForm] = useState(false)
 
         const handleClick = (section) => {
                 setCurrentSection(section)
                 setActiveTab(section)
+        }
+
+        const closeNewForm = () => {
+            setNewForm(false)
         }
 
     return ( 
@@ -30,7 +36,7 @@ const RawMaterials = () => {
                         <h4 className="font-bold text-lg">Rawmaterials</h4>
                     </div> 
                     <div className="flex items-center">
-                        <button className="p-1 bg-blue-500 text-white rounded-lg flex gap-x-2 items-center">
+                        <button onClick={()=>{setNewForm(true)}} className="p-1 bg-blue-500 text-white rounded-lg flex gap-x-2 items-center">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-4 h-4">
                                 <path strokeLinecap="round" strokeLinejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
                             </svg>
@@ -66,7 +72,8 @@ const RawMaterials = () => {
                     <div>something2</div>   
                 )}
                 
-            </div>  
+            </div> 
+            {newForm && <RawmaterialForm modalOff={closeNewForm} />} 
         </div>
      );
 }

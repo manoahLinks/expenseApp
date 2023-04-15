@@ -2,14 +2,12 @@ import React, { useState, useEffect } from "react";
 import {useDataContext} from '../../hooks/useDataContext'
 import { useAuthContext } from "../../hooks/useAuthContext";
 import RawmaterialDetail from "./RawmaterialDetail";
-import RawmaterialForm from './RawmaterialForm'
 import RawmaterialTable from "./component/Rawmaterialtable";
 import RawmaterialBoard from "./component/RawmaterialBoard";
 
 const RawmaterialList = () => {
 
     const {data, dispatch} = useDataContext()
-    const  [newForm, setNewForm] = useState(false)
     const [selectedMaterial, setSelectedMaterial] = useState(false)
     const {user} = useAuthContext()
 
@@ -28,10 +26,6 @@ const RawmaterialList = () => {
         }
     }
 
-    const closeNewForm = () => {
-        setNewForm(false)
-    }
-
     const modalOff = () => {
         setSelectedMaterial(null)
     }
@@ -39,7 +33,7 @@ const RawmaterialList = () => {
     useEffect(()=>{
 
         const fetchData = async () => {
-            const response = await fetch(`/api/rawmaterial`, {
+            const response = await fetch(`http://localhost:5500/api/rawmaterial`, {
                 headers:{
                     'Authorization': `Bearer ${user.token}`
                 }
@@ -89,7 +83,6 @@ const RawmaterialList = () => {
                 
             </div>
             {selectedMaterial && <RawmaterialDetail material={selectedMaterial} modalOff={modalOff} />}
-            {newForm && <RawmaterialForm modalOff={closeNewForm} />}
         </div>
      );
 }

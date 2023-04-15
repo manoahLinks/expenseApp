@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import RecieveRawmaterial from "../rawmaterialpages/RecieveRawmaterial";
 import SuppliesList from "../rawmaterialpages/supplies/SuppliesList";
 
 
@@ -7,12 +8,16 @@ const Supplies = () => {
 
         const [currentSection, setCurrentSection] = useState(1)
         const [activeTab, setActiveTab] = useState(1)
+        const [modal, setModal] = useState(false)
 
         const handleClick = (section) => {
                 setCurrentSection(section)
                 setActiveTab(section)
         }
 
+        const modalOff = () => {
+            setModal(false)
+        }
     return ( 
         <div className="flex flex-col">
             <div className="flex flex-col gap-y-4 md:p-5 p-2">
@@ -26,7 +31,7 @@ const Supplies = () => {
                         <h4 className="text-lg font-bold">Supplies</h4>
                     </div>
                     <div className="flex">
-                        <span onClick={()=>{handleClick(3)}} className="flex bg-orange-300 text-orange-900 font-semibold items-center gap-x-2 p-1 text-white rounded-md">
+                        <span onClick={()=>{setModal(true)}} className="flex cursor-pointer bg-orange-300 text-orange-900 font-semibold items-center gap-x-2 p-1 text-white rounded-md">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5">
                                 <path strokeLinecap="round" strokeLinejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
                             </svg>
@@ -48,6 +53,7 @@ const Supplies = () => {
 
                 
             </div>
+            {modal && <RecieveRawmaterial modalOff={modalOff}/>}
         </div>
      );
 }

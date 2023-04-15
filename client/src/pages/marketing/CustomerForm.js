@@ -55,8 +55,8 @@ const CustomerForm = ({modalOff}) => {
     }
 
     return ( 
-        <div className="inset-0 fixed flex bg-primary bg-opacity-10 grid grid-cols-1 justify-items-center">
-            <div className="md:p-5 flex flex-col gap-y-4 ml-auto mt-10 p-2 shadow md:w-4/12 rounded-md shadow w-full bg-white">
+        <div className="inset-0 fixed flex bg-primary items-center bg-opacity-10 grid grid-cols-1 justify-items-center">
+            <div className="md:p-5 flex flex-col gap-y-4 mt-10 p-2 shadow-lg md:w-4/12 rounded-md w-full bg-white">
                 <div className='flex flex-row-reverse justify-between items-center'>
                     <svg onClick={modalOff} className='w-5 h-5 text-red-500 cursor-pointer' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" strokeWidth={5}>
                         <path d="M6.28 5.22a.75.75 0 00-1.06 1.06L8.94 10l-3.72 3.72a.75.75 0 101.06 1.06L10 11.06l3.72 3.72a.75.75 0 101.06-1.06L11.06 10l3.72-3.72a.75.75 0 00-1.06-1.06L10 8.94 6.28 5.22z" />

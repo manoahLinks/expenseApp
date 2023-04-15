@@ -3,7 +3,7 @@ import {useDataContext} from '../../hooks/useDataContext'
 import { useAuthContext } from "../../hooks/useAuthContext";
 import AlertBox from "../../components/AlertBox";
 
-const ProductsForm = () => {
+const ProductsForm = ({modalOff}) => {
 
     const [name, setName] = useState('')
     const [material, setMaterial] = useState(null)
@@ -131,7 +131,7 @@ const ProductsForm = () => {
             <form onSubmit={handleSubmit} className="flex flex-col bg-white md:p-5 mt-10 p-3 gap-y-4 md:w-6/12">
                 <div className="flex justify-between items-center md:mb-6 mb-4">
                     <h4 className="font-semibold text-primary uppercase text-center">Create a new recipe</h4>
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 cursor-pointer">
+                    <svg onClick={modalOff} xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 cursor-pointer">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
                     </svg>
                 </div>
@@ -326,7 +326,7 @@ const ProductsForm = () => {
                     </tbody>
                 </table>
                 <div className="flex gap-x-12 my-6">
-                    <button className="border py-2 px-10 border hover:bg-red-500 hover:bg-opacity-20">cancel</button>
+                    <button onClick={modalOff} className="border py-2 px-10 border hover:bg-red-500 hover:bg-opacity-20">cancel</button>
                     <button className="border px-12 py-2 rounded-lg bg-gradient-to-r from-cyan-500 to-blue-500 font-semibold text-white">Proceed</button>    
                 </div>
             </form>

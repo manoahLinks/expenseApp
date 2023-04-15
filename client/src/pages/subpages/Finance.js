@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import AccountForm from "../Accounts/AccountForm";
 import AccountList from "../Accounts/AccountList";
 import FinanceDashboard from "../financePages/FinanceDashboard";
 import SupplierList from "../suppliers/SuppliersList";
@@ -8,6 +9,11 @@ const Finance = () => {
 
     const [currentSection, setCurrentSection] = useState(1)
     const [activeTab, setActiveTab] = useState(1)
+    const [accountForm, setAccountForm] = useState(false)
+
+    const modalOff = () => {
+        setAccountForm(false)
+    }
 
     const handleClick = (section) => {
         setCurrentSection(section)
@@ -26,7 +32,7 @@ const Finance = () => {
                     <h4 className="text-lg font-semibold">Accounts</h4>  
                 </div>
                 <div className="flex">
-                    <button className="flex items-center p-1 bg-cyan-400 rounded-lg text-white font-bold">
+                    <button onClick={()=>{setAccountForm(true)}} className="flex items-center p-1 bg-cyan-400 rounded-lg text-white font-bold">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-4 h-4">
                             <path strokeLinecap="round" strokeLinejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
                         </svg>
@@ -56,6 +62,7 @@ const Finance = () => {
                     <h4>dashboard 5</h4>
                 )}
             </div>
+            {accountForm && <AccountForm modalOff={modalOff}/>}
         </div>
      );
 }

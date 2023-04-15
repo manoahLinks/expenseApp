@@ -43,8 +43,8 @@ const SupplierForm = ({modalOff}) => {
     }
 
     return ( 
-        <div className="grid grid-cols-1 inset-0 fixed justify-items-center justify-center bg-primary bg-opacity-10">
-            <div className="flex flex-col ml-auto mt-10 md:w-4/12 w-full gap-y-4 rounded-lg bg-white md:p-5 p-2">
+        <div className="grid grid-cols-1 inset-0 fixed items-center justify-items-center justify-center bg-primary bg-opacity-10">
+            <div className="flex flex-col mt-10 md:w-4/12 w-full gap-y-4 shadow-lg rounded-lg bg-white md:p-5 p-2">
                 <div className={`flex flex-row-reverse items-center justify-between`}>
                     <svg onClick={modalOff} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" strokeWidth={5} className="w-5 h-5 cursor-pointer text-red-500">
                         <path d="M6.28 5.22a.75.75 0 00-1.06 1.06L8.94 10l-3.72 3.72a.75.75 0 101.06 1.06L10 11.06l3.72 3.72a.75.75 0 101.06-1.06L11.06 10l3.72-3.72a.75.75 0 00-1.06-1.06L10 8.94 6.28 5.22z" />

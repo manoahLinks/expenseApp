@@ -8,11 +8,19 @@ const MyProfile = () => {
 
     const [currentSection, setCurrentSection] = useState(1)
     const [activeTab, setActiveTab] = useState(1)
+    const [attendancePage, setAttendancePage] = useState(false)
 
 
     const handleClick = (section) => {
         setCurrentSection(section)
         setActiveTab(section)
+    }
+
+    const modalOn = () => {
+        setAttendancePage(true)
+    }
+    const modalOff = () =>{
+        setAttendancePage(false)
     }
 
     return ( 
@@ -46,21 +54,15 @@ const MyProfile = () => {
             <hr />
             <div className="">
                 {currentSection === 1 && ( 
-                    <UserDashboard/>
+                    <UserDashboard modalOn={modalOn} />
                 )}
 
                 {currentSection === 2 && ( 
-                    <AttendancePage/>
-                )}
-
-                {currentSection === 3 && ( 
                     <UserList/>
                 )}
 
-                {currentSection === 4 && ( 
-                    <h4>update info</h4>
-                )}
             </div>
+            {attendancePage && <AttendancePage modalOff={modalOff} /> }
         </div>
      );
 }

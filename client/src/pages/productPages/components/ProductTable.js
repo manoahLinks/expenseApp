@@ -23,7 +23,7 @@ const ProductTable = ({data, modalOn}) => {
     }
 
     return ( 
-        <div className="md:block hidden grid grid-cols-1">
+        <div className="md:block grid grid-cols-1">
             <table className="table-auto w-full text-left">
                 <thead>
                     <tr className="grid grid-cols-7">
