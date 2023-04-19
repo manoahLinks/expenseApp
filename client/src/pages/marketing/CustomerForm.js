@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import {useDataContext} from '../../hooks/useDataContext'
 import { useAuthContext } from "../../hooks/useAuthContext";
 import AlertBox from "../../components/AlertBox";
+import {ToastContainer, toast} from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 
 
 const CustomerForm = ({modalOff}) => {
@@ -40,7 +42,16 @@ const CustomerForm = ({modalOff}) => {
 
         if(!response.ok){
             setIsPending(false)
-            setError(json.error)
+            toast.error(json.error, {
+                position: "bottom-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "light",
+            });
         }
         if(response.ok){
             setName('')
@@ -50,7 +61,16 @@ const CustomerForm = ({modalOff}) => {
             setIsPending(false)
             console.log(json)
             dispatch({type: 'CREATE_DATA', payload: json})
-            setSuccess(true)
+            toast.success(`created sucessfully`, {
+                position: "bottom-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "light",
+            });
         }
     }
 
@@ -112,7 +132,7 @@ const CustomerForm = ({modalOff}) => {
                 </form>
 
             </div>
-            
+            <ToastContainer/>
         </div>
      );
 }

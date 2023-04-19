@@ -1,6 +1,8 @@
 import React from "react";
 import { useAuthContext } from "../../../hooks/useAuthContext";
 import { useDataContext } from "../../../hooks/useDataContext";
+import {ToastContainer, toast} from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 
 const CustomerTable = ({customers, modalOn}) => {
 
@@ -17,8 +19,31 @@ const CustomerTable = ({customers, modalOn}) => {
 
         const json = await response.json()
 
+        if(!response.ok){
+            toast.error(json.error, {
+                position: "bottom-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "light",
+                });
+        }
+
         if(response.ok){
             dispatch({type: `DELETE_DATA`, payload: json})
+            toast.success(`Deleted ${json._id} sucessfully`, {
+                position: "bottom-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "light",
+            });
         }
     }
 
@@ -84,6 +109,7 @@ const CustomerTable = ({customers, modalOn}) => {
                     
                 </tbody>
             </table>
+            <ToastContainer/>
         </div>
         
      );
