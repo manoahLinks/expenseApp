@@ -23,12 +23,17 @@ exports.createAccount = async (req, res) =>{
     const {name, pin} = req.body
 
     try {
+
+        if(!name || !pin) {
+            throw Error('All fields are required')
+        }
+
         const createdBy = req.user._id
         let response = await Account.create({name, pin, createdBy})
         res.status(201).json(response)
 
     } catch (error) {
-        res.status(400).json({error: error, message: 'unable to create account'})
+        return res.status(400).json({error: error.message, message: 'unable to create account'})
     }
 }
 

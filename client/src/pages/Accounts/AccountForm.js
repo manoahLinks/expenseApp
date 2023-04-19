@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 import { useDataContext } from '../../hooks/useDataContext'
 import { useAuthContext } from "../../hooks/useAuthContext";
+import {ToastContainer, toast} from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 
 const AccountForm = ({modalOff}) => {
 
@@ -30,7 +32,16 @@ const AccountForm = ({modalOff}) => {
         const json = await response.json()
 
         if(!response.ok){
-            setError(json)
+            toast.error(json.error, {
+                position: "bottom-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "light",
+            });
         } 
         if(response.ok){
             setName('')
@@ -38,6 +49,16 @@ const AccountForm = ({modalOff}) => {
             setPin('')
             setConfirmPin('')
             dispatch({type: 'CREATE_DATA', payload: json})
+            toast.success(`created sucessfully`, {
+                position: "bottom-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "light",
+            });
         }
     }
 
@@ -50,9 +71,6 @@ const AccountForm = ({modalOff}) => {
                     </svg>
                     <h4 className='font-semibold'>create new account</h4>
                 </div>
-                {error && <div className="flex bg-red-100 p-3 rounded text-red-500">
-                    <h4>{error.message}</h4>
-                </div>}
                 <form className="grid grid-cols-1 gap-y-2 md:p-5 p-3 rounded-lg" onSubmit={handleSubmit}>
                     <label className='text-slate-500' htmlFor="">account name</label>
                     <input 
@@ -96,9 +114,8 @@ const AccountForm = ({modalOff}) => {
 
                     </div>
                 </form>
-                
-                
             </div>
+            <ToastContainer/>
         </div>
      );
 }
