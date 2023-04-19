@@ -8,7 +8,8 @@ let userSchema = new mongoose.Schema({
     department: {type: String},
     isAdmin:    {type: Boolean, default: false},
     password:   {type: String},
-    ipAddress:  {type: String}
+    ipAddress:  {type: String},
+    role:       {type: String, enum: ['user', 'admin', 'storekeeper'], default: 'user'}
 
 }, {timestamps: true})
 

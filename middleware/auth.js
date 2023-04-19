@@ -13,9 +13,10 @@ exports.isAuth = async (req, res, next) => {
     const token = authorization.split(' ')[1]
 
     try {
-        const {_id} = jwt.verify(token, process.env.SECRET_KEY)
+        const {_id, role} = jwt.verify(token, process.env.SECRET_KEY)
         
-        req.user = await User.findOne({ _id }).select('_id')  
+        req.user = _id  
+        req.role = role 
         next()
 
     } catch (error) {

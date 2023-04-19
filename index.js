@@ -1,4 +1,5 @@
-const { isAuth } = require('./middleware/auth');
+const { isAuth } = require('./middleware/auth')
+const {checkRole} = require('./middleware/checkRole');
 
 require('dotenv').config()
 const express = require('express'),
@@ -53,7 +54,7 @@ app.use('/api/expense', isAuth, appRoutes)
 app.use('/api/dbar', isAuth, dbarRoute)
 app.use('/api/account', isAuth, accountRoute)
 app.use('/api/transaction', isAuth, transactionRoute)
-app.use('/api/rawmaterial', isAuth, rawmaterialRoute)
+app.use('/api/rawmaterial', isAuth, checkRole('storekeeper'), rawmaterialRoute)
 app.use('/api/product', isAuth, productRoute)
 app.use('/api/customer', isAuth,  customerRoute)
 app.use('/api/supplier', isAuth, supplierRoute)

@@ -7,6 +7,9 @@ router.route('/')
     .get(controller.getAllUsers)
     .post(controller.loginUser)
 
+router.route('/assign-role')
+    .post(controller.assignRole)
+
 router.route('/register')
     .post(controller.registerUser)
     
