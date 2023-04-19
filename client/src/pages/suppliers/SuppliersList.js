@@ -3,6 +3,7 @@ import {useDataContext} from '../../hooks/useDataContext'
 import { useAuthContext } from "../../hooks/useAuthContext";
 import SupplierTable from "./components/SupplierTable";
 import SupplierDetails from "./SupplierDetails";
+import SuppliersGrid from "./components/SuppliersGrid";
 
 const SupplierList = () => {
 
@@ -52,6 +53,7 @@ const SupplierList = () => {
     return ( 
         <div className="grid grid-cols-1 m-2">
             {data && <SupplierTable modalOn={modalOn} suppliers={data}/>}
+            {data && <SuppliersGrid modalOn={modalOn} suppliers={data}/>}
             {selectedData && <SupplierDetails supplier={selectedData} modalOff={modalOff} />}
         </div>
      );

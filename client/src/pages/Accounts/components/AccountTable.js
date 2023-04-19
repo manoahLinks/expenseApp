@@ -35,7 +35,7 @@ const AccountTable = ({accounts, modalOn}) => {
     }
 
     return ( 
-        <div className="grid grid-cols-1">
+        <div className="md:block hidden grid grid-cols-1">
             <table className="table-auto text-xs text-center">
                 <thead>
                     <tr className="grid grid-cols-6 border-b">

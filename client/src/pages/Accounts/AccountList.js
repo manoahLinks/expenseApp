@@ -3,6 +3,7 @@ import {useDataContext} from '../../hooks/useDataContext'
 import { useAuthContext } from "../../hooks/useAuthContext";
 import AccountTable from "./components/AccountTable";
 import AccountDetails from "./AccountDetails";
+import AccountGrid from "./components/AccountGrid";
 
 const AccountList = () => {
 
@@ -52,6 +53,7 @@ const AccountList = () => {
     return ( 
         <div className="grid grid-cols-1">
             {data && <AccountTable accounts={data} modalOn={modalOn} />}
+            {data && <AccountGrid accounts={data} modalOn={modalOn} />}
             {selectedData && <AccountDetails account={selectedData} modalOff={modalOff} />}
         </div>
      );

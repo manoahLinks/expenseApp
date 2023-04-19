@@ -35,7 +35,7 @@ const SupplierTable = ({suppliers, modalOn}) => {
     }
 
     return ( 
-        <div className="grid grid-cols-1">
+        <div className="grid grid-cols-1 hidden md:block">
             <table className="table-fixed w-full text-xs text-center border">
                 <thead className="border-b bg-gray-100">
                     <tr className="grid grid-cols-8">

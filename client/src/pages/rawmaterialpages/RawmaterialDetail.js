@@ -2,8 +2,8 @@ import React, { useEffect, useState } from "react"
 
 const RawmaterialDetail = ({modalOff, material}) => {
     return ( 
-        <div className="grid grid-cols-1  fixed inset-0 bg-primary  bg-opacity-20">
-            <div className="flex flex-col gap-y-4 md:w-4/12 w-full ml-auto mt-10 bg-white p-5">
+        <div className="grid grid-cols-1  fixed inset-0 bg-primary items-center justify-center justify-items-center shadow-lg bg-opacity-20">
+            <div className="flex flex-col gap-y-4 md:w-4/12 w-full mt-10 bg-white p-5">
                 <div className="grid grid-cols-3 p-2">
                     <div onClick={modalOff} className="flex">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor" className="w-5 h-5 hover:bg-slate-300 rounded-full">

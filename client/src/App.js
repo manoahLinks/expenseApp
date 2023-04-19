@@ -29,7 +29,7 @@ function App () {
 
   return (
     <Router>
-      <div className="flex Nunito flex-col min-h-screen relative  md:text-sm">
+      <div className="flex Nunito flex-col min-h-screen relative text-xs  md:text-sm">
         {user && <NavBar />}
         <div className={`flex flex-col md:flex-row ${ user && `mt-14`} w-full`}>
           {user && <Sidebar />}
