@@ -1,6 +1,8 @@
 import {useState} from "react";
 import { useAuthContext } from "../../hooks/useAuthContext";
 import { useDataContext } from "../../hooks/useDataContext";
+import {ToastContainer, toast} from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 
 const SupplierForm = ({modalOff}) => {
 
@@ -28,8 +30,17 @@ const SupplierForm = ({modalOff}) => {
         const json = await response.json()
 
         if(!response.ok){
-            setError(json)
             console.log(name, email, location, phone)
+            toast.error(json, {
+                position: "bottom-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "light",
+            });
         }
         if(response.ok){
             setName('')
@@ -38,6 +49,16 @@ const SupplierForm = ({modalOff}) => {
             setLocation('')
             console.log('created')
             dispatch({type: 'CREATE_DATA', payload: json})
+            toast.success(`created sucessfully`, {
+                position: "bottom-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "light",
+            });
         }
 
     }
@@ -53,7 +74,6 @@ const SupplierForm = ({modalOff}) => {
                 </div>
                 <div className='bg-slate-200 p-3 rounded'>
                     <h4>fill in correct details to create a new supplier</h4>
-                    {error && <h4>{error}</h4>}
                 </div>
                 <form onSubmit={handleSubmit} className='grid gird-cols-1 md:p-5 p-3'>
                     <label htmlFor="">name</label>
@@ -91,7 +111,7 @@ const SupplierForm = ({modalOff}) => {
                     </div>
                 </form>
             </div>
-            
+            <ToastContainer/>
         </div>
      );
 }
