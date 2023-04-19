@@ -1,6 +1,8 @@
 import React from "react";
 import { useAuthContext } from "../../../hooks/useAuthContext";
 import { useDataContext } from "../../../hooks/useDataContext";
+import {ToastContainer, toast} from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 
 const RawmaterialTable = ({materials, modalOn}) => {
 
@@ -19,6 +21,16 @@ const RawmaterialTable = ({materials, modalOn}) => {
 
         if(response.ok){
             dispatch({type: `DELETE_DATA`, payload: json})
+            toast.info(`successfully deleted ${json._id}` , {
+                position: "bottom-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "light",
+            });
         }
     }
 
@@ -63,6 +75,7 @@ const RawmaterialTable = ({materials, modalOn}) => {
                     
                 </tbody>
             </table>
+            <ToastContainer/>
         </div>
         
      );

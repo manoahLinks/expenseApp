@@ -3,6 +3,8 @@ import AlertBox from "../../components/AlertBox";
 import { useAuthContext } from "../../hooks/useAuthContext";
 import { useDataContext } from "../../hooks/useDataContext";
 import useFetch from "../../hooks/useFetch";
+import {ToastContainer, toast} from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 
 const RawmaterialForm = ({modalOff}) => {
 
@@ -44,7 +46,16 @@ const RawmaterialForm = ({modalOff}) => {
         if(!response.ok){
             console.log(json)
             setIsPending(false)
-            setError(json)
+            toast.error(json, {
+                position: "bottom-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "light",
+            });
         }
         if(response.ok){
             setName('')
@@ -55,16 +66,23 @@ const RawmaterialForm = ({modalOff}) => {
             setSupplier('')
             setIsPending(false)
             console.log(json)
-            setSuccess(true)
             dispatch({type: 'CREATE_DATA', payload: json})
+            toast.success(`created sucessfully`, {
+                position: "bottom-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "light",
+            });
         }
     }
 
     return ( 
         <div className="inset-0 justify-center fixed items-center justify-items-center bg-primary bg-opacity-10 grid grid-cols-1">
             <div className="md:p-5 flex flex-col gap-y-4 mt-10 p-2 shadow md:w-4/12 rounded-md shadow-lg w-full bg-white">
-                {success && <AlertBox message={`successfully created new Raw material`}/>}
-                {error && <AlertBox message={error}/>}
                 <div className='flex flex-row-reverse justify-between'>
                     <svg onClick={modalOff} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" strokeWidth={5} className="w-5 h-5 text-red-500 cursor-pointer">
                         <path d="M6.28 5.22a.75.75 0 00-1.06 1.06L8.94 10l-3.72 3.72a.75.75 0 101.06 1.06L10 11.06l3.72 3.72a.75.75 0 101.06-1.06L11.06 10l3.72-3.72a.75.75 0 00-1.06-1.06L10 8.94 6.28 5.22z" />
@@ -196,8 +214,7 @@ const RawmaterialForm = ({modalOff}) => {
 
                 </div>
             </div>
-            
-            
+            <ToastContainer/>
         </div>
      );
 }
