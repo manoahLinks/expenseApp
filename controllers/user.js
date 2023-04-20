@@ -88,6 +88,7 @@ exports.assignRole = async (req, res) => {
 
     try {
         const user = await User.findById(userId)
+        console.log(userId)
         if(!user){
             throw Error('user not found in database')
         }

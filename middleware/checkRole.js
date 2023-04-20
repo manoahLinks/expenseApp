@@ -1,9 +1,9 @@
-exports.checkRole = (role) => {
+exports.checkRole = (roles) => {
 
     return (req, res, next) => {
 
         try {
-            if(req.role != role) {
+            if(!roles.includes(req.role)) {
                 throw Error('your role is not authorized access')
             } 
             next()
