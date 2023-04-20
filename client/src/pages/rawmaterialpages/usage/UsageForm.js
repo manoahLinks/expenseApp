@@ -2,12 +2,14 @@ import useFetch from "../../../hooks/useFetch";
 import { useState } from "react";
 import { useAuthContext } from "../../../hooks/useAuthContext";
 import { useDataContext } from "../../../hooks/useDataContext";
+import { ToastContainer, toast} from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 
 const UsageForm = ({modalOff}) => {
     const {data, dispatch} = useDataContext()
     const {user} = useAuthContext()
     const {data:rawmaterial} = useFetch(`http://localhost:5500/api/rawmaterial`)
-    const [error, setError] = useState(false)
+    const [receiver, setReciever] = useState('')
     const [material, setMaterial] = useState('')
     const [quantity, setQuantity] = useState('')
     const [amount, setAmount] = useState('')
@@ -22,18 +24,46 @@ const UsageForm = ({modalOff}) => {
                 'Authorization' : `Bearer ${user.token}`,
                 'Content-Type' : `application/json`
             },
-            body: JSON.stringify({material, quantity, amount, description})
+            body: JSON.stringify({material, quantity, amount, description, receiver})
         })
 
         const json = await response.json()
 
-        response.ok ? dispatch({type: 'CREATE_DATA', payload: json}) : setError(true)
+        if(!response.ok){
+            toast.error(json, {
+                position: "bottom-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "light",
+            });
+        }
+        if(response.ok){
+            setMaterial('') 
+            setQuantity('')
+            setAmount('')
+            receiver('')
+            dispatch({type: 'CREATE_DATA', payload: json})
+            toast.success(`assigned sucessfully`, {
+                position: "bottom-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "light",
+            });
+        }
 
     }
 
     return ( 
-        <div className="grid grid-cols-1 inset-0 fixed bg-primary  bg-opacity-10 items-center justify-items-center text-xs">
-            <div className="flex flex-col bg-white rounded-md shadow gap-y-4 p-5">
+        <div className="grid grid-cols-1 inset-0 fixed bg-primary bg-opacity-10 items-center justify-items-center">
+            <div className="flex flex-col bg-white rounded-md shadow gap-y-4 p-2 md:p-5">
                 <div className='flex flex-row-reverse justify-between'>
                     <svg onClick={modalOff}  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" strokeWidth={5} className="w-5 h-5 text-red-500 cursor-pointer">
                         <path d="M6.28 5.22a.75.75 0 00-1.06 1.06L8.94 10l-3.72 3.72a.75.75 0 101.06 1.06L10 11.06l3.72 3.72a.75.75 0 101.06-1.06L11.06 10l3.72-3.72a.75.75 0 00-1.06-1.06L10 8.94 6.28 5.22z" />
@@ -79,10 +109,13 @@ const UsageForm = ({modalOff}) => {
 
                         <label htmlFor="">Recieved By</label>
                         <select
+                            onChange={(e)=>{setReciever(e.target.value)}}
                             className="text-xs border-slate-300"
                         
                         >
-                            <option value="">select </option>
+                            <option value="">select store</option>
+                            <option value="Abuja store">Abuja store</option>
+                            <option value="Kaduna store">Kaduna store</option>
         
                         </select>
                     </div>
@@ -92,6 +125,7 @@ const UsageForm = ({modalOff}) => {
                     </div>
                 </form>
             </div>
+            <ToastContainer />
         </div>
      );
 }

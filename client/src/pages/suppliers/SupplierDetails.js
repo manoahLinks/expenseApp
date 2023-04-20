@@ -1,7 +1,7 @@
 const SupplierDetails = ({supplier, modalOff}) => {
     return ( 
-        <div className="grid grid-cols-1 fixed inset-0 bg-primary bg-opacity-10">
-            <div className="flex flex-col md:w-3/12 w-full mt-10 ml-auto gap-y-4 bg-white p-5">
+        <div className="grid grid-cols-1 fixed items-center justify-center justify-items-center inset-0 bg-primary bg-opacity-10">
+            <div className="flex flex-col md:w-4/12 w-full gap-y-4 bg-white shadow-lg rounded-lg p-3 md:p-5">
                 <div className="grid grid-cols-1 text-green-700 p-2">
                     <div className="flex flex-row-reverse justify-between items-center">
                         <svg onClick={modalOff} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"  strokeWidth={2.5} fill="currentColor" className="w-4 h-4 md:w-6 md:h-6 hover:text-red-500 cursor-pointer">

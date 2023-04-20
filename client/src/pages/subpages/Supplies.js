@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import RecieveRawmaterial from "../rawmaterialpages/RecieveRawmaterial";
 import SuppliesList from "../rawmaterialpages/supplies/SuppliesList";
+import UsageForm from "../rawmaterialpages/usage/UsageForm"
 
 
 const Supplies = () => {
@@ -9,6 +10,7 @@ const Supplies = () => {
         const [currentSection, setCurrentSection] = useState(1)
         const [activeTab, setActiveTab] = useState(1)
         const [modal, setModal] = useState(false)
+        const [usageform, setUsageform] = useState(false)
 
         const handleClick = (section) => {
                 setCurrentSection(section)
@@ -17,6 +19,7 @@ const Supplies = () => {
 
         const modalOff = () => {
             setModal(false)
+            setUsageform(false)
         }
     return ( 
         <div className="flex flex-col">
@@ -30,20 +33,26 @@ const Supplies = () => {
                         </Link>
                         <h4 className="text-lg font-bold">Supplies</h4>
                     </div>
-                    <div className="flex">
+                    <div className="flex gap-x-4">
                         <span onClick={()=>{setModal(true)}} className="flex cursor-pointer bg-orange-300 text-orange-900 font-semibold items-center gap-x-2 p-1 text-white rounded-md">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5">
                                 <path strokeLinecap="round" strokeLinejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
                             </svg>
                             <small>recieve a supply</small>
                         </span>
+
+                        <span onClick={()=>{setUsageform(true)}} className="flex cursor-pointer border border-orange-300 text-orange-900 font-semibold items-center gap-x-2 p-1 rounded-md">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5">
+                                <path strokeLinecap="round" strokeLinejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+                            </svg>
+                            <small>record usage</small>
+                        </span>
                     </div>
                 </div>
                 <div className="grid grid-cols-1 md:p-5 border bg-slate-100 rounded-lg">
-                        <p>Supplies can be recived and managed here, any product created can be used for slaes and production purposes and records are properly documented </p>
+                    <p>Supplies/usage can be received and managed here, any product created can be used for slaes and production purposes and records are properly documented </p>
                 </div>
             </div>
-            
             <hr />
             <div className="bg-slate-50">
 
@@ -54,6 +63,7 @@ const Supplies = () => {
                 
             </div>
             {modal && <RecieveRawmaterial modalOff={modalOff}/>}
+            {usageform && <UsageForm modalOff={modalOff}/> }
         </div>
      );
 }

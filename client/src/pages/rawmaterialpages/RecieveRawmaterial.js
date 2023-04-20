@@ -8,15 +8,12 @@ import 'react-toastify/dist/ReactToastify.css'
 
 const RecieveRawmaterial = ({modalOff}) => {
 
-    const notify = () => toast('wow so easy');
     const {user} = useAuthContext()
     const {data, dispatch} = useDataContext()
     const [material, setMaterial] = useState('')
     const [quantity, setQuantity] = useState('')
     const [amount, setAmount] = useState('')
     const [supplier, setSupplier] = useState('')
-    const [error, setError] = useState(null)
-    const [success, setSuccess] = useState(null)
 
     const {data:rawmaterial} = useFetch(`http://localhost:5500/api/rawmaterial`)
     const {data:suppliers} = useFetch(`http://localhost:5500/api/supplier`)
@@ -36,35 +33,47 @@ const RecieveRawmaterial = ({modalOff}) => {
         const json = await response.json()
 
         if(!response.ok){
-            setError(json)
-            notify()
+            toast.error(json, {
+                position: "bottom-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "light",
+            });
         }
         if(response.ok){
             setMaterial('') 
             setQuantity('')
             setAmount('')
             setSupplier('')
-            setSuccess(true)
             dispatch({type: 'CREATE_DATA', payload: json})
+            toast.success(`recieved sucessfully`, {
+                position: "bottom-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "light",
+            });
         }
 
     }
 
     return ( 
-        <div className="inset-0 mt-auto fixed justify-center bg-primary bg-opacity-10 justify-items-center grid grid-cols-1 text-xs">
-            <div className='flex'>
-                
-            </div>
-            <div className="flex flex-col gap-y-4 mx-2 md:mx-0">
-                {error && <AlertBox message={error.message}/>}
-                {success && <AlertBox message={`successfully confirmed`}/>}
+        <div className="inset-0 mt-auto fixed justify-center items-center bg-primary bg-opacity-10 justify-items-center grid grid-cols-1">
+            <div className="flex flex-col gap-y-4 bg-white rounded-md shadow p-5">
                 <div onClick={modalOff} className='cursor-pointer'>
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" strokeWidth={5} className="w-5 h-5 text-red-500">
                         <path d="M6.28 5.22a.75.75 0 00-1.06 1.06L8.94 10l-3.72 3.72a.75.75 0 101.06 1.06L10 11.06l3.72 3.72a.75.75 0 101.06-1.06L11.06 10l3.72-3.72a.75.75 0 00-1.06-1.06L10 8.94 6.28 5.22z" />
                     </svg>
                 </div>
                 
-                <form className="grid grid-cols-1 gap-y-2 bg-white rounded-md shadow p-5" onSubmit={handleSubmit}>
+                <form className="grid grid-cols-1 gap-y-2 " onSubmit={handleSubmit}>
                     <h4 className="text-center text-primary font-semibold text-shadow">Recieve supply</h4>
                     <label className="text-xs">Raw material</label>
                     <select

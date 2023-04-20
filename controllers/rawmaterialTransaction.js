@@ -18,12 +18,12 @@ exports.createSupply = async (req, res) => {
 
 exports.createUsage = async (req, res) => {
 
-    const {material, quantity, amount, description} = req.body
+    const {material, quantity, amount, reciever, description} = req.body
 
     try {
         
         const createdBy = req.user._id
-        const response = await RawmaterialTransactions.create({type: 'usage', material, quantity, amount, description, reciever,createdBy})
+        const response = await RawmaterialTransactions.create({type: 'usage', material, quantity, amount, description, reciever, createdBy})
         return res.status(200).json(response)
 
     } catch (error) {
@@ -47,7 +47,7 @@ exports.getAllSupplies = async (req, res) => {
 // delete a supply 
 exports.DeleteSupply = async (req, res) => {
 
-    const id = req.params
+    const {id} = req.params
  
     try {
         
@@ -55,7 +55,7 @@ exports.DeleteSupply = async (req, res) => {
         return res.status(200).json(response)
 
     } catch (error) {
-        res.status(400).json(error.json)
+        return res.status(400).json(error.message)
     }
 }
 
