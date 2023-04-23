@@ -12,8 +12,14 @@ router.route('/assign-role')
 
 router.route('/register')
     .post(controller.registerUser)
+
+router.route('/:id/changeuserstate')
+    .post(controller.changeUserState)
     
 router.route('/:email')
-    .get(controller.getSingleUserByEmail)    
+    .get(controller.getSingleUserByEmail) 
+    
+router.route('/:id')
+    .delete(controller.deleteUser)
 
 module.exports = router

@@ -4,7 +4,7 @@ const User = require('../models/user'),
 
 const createToken = (_id, role) => {
 
-    return jwt.sign({_id: _id, role: role}, process.env.SECRET_KEY, {expiresIn: '1d'})
+    return jwt.sign({_id: _id, role: role}, process.env.SECRET_KEY, {expiresIn: '30m'})
 }    
 
 exports.getAllUsers = async (req, res) => {
@@ -103,5 +103,36 @@ exports.assignRole = async (req, res) => {
 
 }
 
+
+exports.changeUserState = async (req, res) => {
+    const {id} = req.params
+    const {state} = req.query
+
+    try {
+        const user = await User.findByIdAndUpdate(id, {isActive: state})
+
+        if(!user){
+            throw Error('user no longer in database')
+        }
+
+        return res.status(200).json({message:`successfully updated`, data: user})
+        
+    } catch (error) {
+        return res.status(403).json(error.message)
+    }
+}
+
+exports.deleteUser = async (req, res) => {
+    const {id} = req.params.id
+
+    try {
+
+        const user = await User.findByIdAndDelete(id)
+        return res.status(200).json(user)
+        
+    } catch (error) {
+        return res.status(403).json(error.message)
+    }
+}
 
 module.exports = exports

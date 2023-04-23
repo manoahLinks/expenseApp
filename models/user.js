@@ -9,7 +9,8 @@ let userSchema = new mongoose.Schema({
     isAdmin:    {type: Boolean, default: false},
     password:   {type: String},
     ipAddress:  {type: String},
-    role:       {type: String, enum: ['user', 'admin', 'storekeeper'], default: 'user'}
+    role:       {type: String, enum: ['user', 'admin', 'storekeeper'], default: 'user'},
+    isActive:   {type: Boolean, default: true}
 
 }, {timestamps: true})
 

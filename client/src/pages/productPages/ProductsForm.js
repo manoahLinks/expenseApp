@@ -1,7 +1,8 @@
 import React, {useState, useEffect } from "react";
 import {useDataContext} from '../../hooks/useDataContext'
 import { useAuthContext } from "../../hooks/useAuthContext";
-import AlertBox from "../../components/AlertBox";
+import {ToastContainer, toast} from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 
 const ProductsForm = ({modalOff}) => {
 
@@ -23,7 +24,7 @@ const ProductsForm = ({modalOff}) => {
     const [quantities, setQuantities] = useState({})
     const {data, dispatch} = useDataContext()
     const {user} = useAuthContext()
-    const [error, setError] = useState(null)
+    
 
     // hook to handle fetching of all rawmaterials from server
     useEffect(()=>{
@@ -75,11 +76,28 @@ const ProductsForm = ({modalOff}) => {
         const json = await response.json()
 
         if(!response.Ok){
-            setError(json)
-            console.log('error encountered')
+            toast.error(json, {
+                position: "bottom-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "light",
+            });
         }
         if(response.ok){
-            cosole.log('successfully created')
+            toast.success(`created sucessfully`, {
+                position: "bottom-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "light",
+            });
             dispatch({type:'CREATE_DATA', payload:json})
         }
     }
@@ -138,7 +156,6 @@ const ProductsForm = ({modalOff}) => {
                 <div className="flex bg-slate-200 md:p-5 p-2 border rounded-md">
                     <p>while creating a recipe, always put in mind that quantities are recorded in grams</p>
                 </div>
-                {error && <AlertBox message={error}/>}
                 <div className="flex gap-x-4 m-2 items-center">
                     <label htmlFor="" className="font-semibold">Name:</label>
 
@@ -322,7 +339,7 @@ const ProductsForm = ({modalOff}) => {
                     <button className="border col-span-2 p-2 rounded-lg bg-gradient-to-r from-cyan-500 to-blue-500 font-semibold text-white">Proceed</button>    
                 </div>
             </form>
-                    
+            <ToastContainer/>       
         </div>
      );
 }

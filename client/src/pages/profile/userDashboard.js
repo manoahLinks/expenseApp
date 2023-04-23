@@ -7,23 +7,23 @@ const UserDashboard = ({modalOn}) => {
     const {user} = useAuthContext()
     const {data, dispatch} = useDataContext()
 
-    useEffect(()=>{
-        const fetchData = async () => {
-            const response = await fetch(`https://smartwork-api.onrender.com/api/user/${user.email}`, {
-                headers:{
-                    'Authorization': `Bearer ${user.token}`
-                }
-            })
-            const json = await response.json()
+    // useEffect(()=>{
+    //     const fetchData = async () => {
+    //         const response = await fetch(`https://smartwork-api.onrender.com/api/user/${user.email}`, {
+    //             headers:{
+    //                 'Authorization': `Bearer ${user.token}`
+    //             }
+    //         })
+    //         const json = await response.json()
 
-            if(response.ok){
-                dispatch({type: 'SET_DATA', payload: json})
-            }    
-        }
-        if(user){
-            fetchData()
-        }
-    }, [user, data, dispatch])
+    //         if(response.ok){
+    //             dispatch({type: 'SET_DATA', payload: json})
+    //         }    
+    //     }
+    //     if(user){
+    //         fetchData()
+    //     }
+    // }, [user, data, dispatch])
 
     return ( 
         <div className="flex flex-col justify-items-center">

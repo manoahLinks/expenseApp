@@ -56,12 +56,12 @@ const SuppliesTable = ({ supplies }) => {
     return ( 
         <div className="grid grid-cols-1">
             <table className="flex flex-col table-auto">
-                <input 
+                {/* <input 
                     type="date" 
                     className="w-2/12"
                     value={filterDate}
                     onChange={(e)=>{setFilterDate(e.target.value)}} 
-                />
+                /> */}
 
                 <tr className="grid grid-cols-8 text-center">
                     <th>Date</th>

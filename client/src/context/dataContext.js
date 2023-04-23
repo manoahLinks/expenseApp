@@ -12,6 +12,10 @@ export const dataReducer = (state, action) => {
             return {
                 data : [action.payload, ...state.data]
             }
+        case 'UPDATE_DATA': 
+            return {
+                data: {...state.data, isActive: action.payload}
+            }
         case 'DELETE_DATA':
             return {
                 data : state.data.filter((d)=>{ d._id !== action.payload._id})

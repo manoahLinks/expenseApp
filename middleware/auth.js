@@ -25,4 +25,17 @@ exports.isAuth = async (req, res, next) => {
     }
 }
 
+exports.checkTokenExpiration = (req, res, next) => {
+    const token = req.headers.authorization.split(' ')[1];
+    const decodedToken = jwt.decode(token);
+  
+    if (decodedToken.exp < Date.now() / 1000) {
+      req.session.destroy();
+      console.log('session destroyed')
+      return res.redirect('/login');
+    }
+    
+    next();
+}
+
 module.exports = exports

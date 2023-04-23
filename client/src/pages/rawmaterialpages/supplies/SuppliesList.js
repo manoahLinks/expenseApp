@@ -26,9 +26,58 @@ const SuppliesList = () => {
 
     }, [dispatch, data, user])
 
+    const totalTransactions = () => {
+
+        let totValue = 0
+        for (let item of data) {
+            totValue += item.amount
+        }
+        return totValue
+    }
+
+    const totalSupplies = () => {
+
+        let totValue = 0
+        let supplies = data.filter((a)=>{
+            return a.type === 'purchase'
+        })
+        console.log(supplies)
+        for (let item of supplies) {
+            totValue += item.amount
+        }
+        return totValue
+    }
+
+    const totalUsage = () => {
+
+        let totValue = 0
+        let usages = data.filter((a)=>{
+            return a.type === 'usage'
+        })
+        for (let item of usages) {
+            totValue += item.amount
+        }
+        return totValue
+    }
+
 
     return ( 
-        <div className="grid grid-cols-1 text-xs bg-white md:p-5 shadow rounded-md">
+        <div className="grid grid-cols-1 gap-y-4 bg-white md:p-5">
+            <div className="grid grid-cols-3 gap-x-2">
+                <div className="flex flex-col p-2 border rounded-lg">
+                    <h4>Total Transactions</h4>
+                    {data && <h4>count :{data.length}</h4>}
+                    {data && <h4>Worth: N{totalTransactions()}</h4>}
+                </div>
+                <div className="flex flex-col p-2 border rounded-lg">
+                    <h4>Worth of Purchase</h4>
+                    {data && <h4>WORTH: N{totalSupplies()}</h4>}
+                </div>
+                <div className="flex flex-col p-2 border rounded-lg">
+                    <h4>Worth of usage</h4>
+                    {data && <h4>worth: N{totalUsage()}</h4>}
+                </div>
+            </div>
             {data && <SuppliesTable supplies={data} />}
         </div>
      );

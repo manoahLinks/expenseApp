@@ -32,7 +32,7 @@ const Products = () => {
                         <h4 className="text-lg font-bold">Products</h4>
                     </div>
                     <div className="flex">
-                        <span onClick={()=>{setProductForm(true)}} className="flex bg-orange-300 text-orange-900 font-semibold items-center gap-x-2 p-1 text-white rounded-md">
+                        <span onClick={()=>{handleClick(3)}} className="flex bg-orange-300 text-orange-900 font-semibold items-center gap-x-2 p-1 text-white rounded-md">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5">
                                 <path strokeLinecap="round" strokeLinejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
                             </svg>
@@ -56,6 +56,11 @@ const Products = () => {
                 {currentSection === 2 && ( 
                     <ProductionDashboard />
                 )}
+
+                {currentSection === 3 && ( 
+                    <ProductForm modalOff={modalOff}/>
+                )}
+
 
             </div>
             {productForm && <ProductForm modalOff={modalOff}/>}

@@ -1,4 +1,4 @@
-const { isAuth } = require('./middleware/auth')
+const { isAuth, checkTokenExpiration } = require('./middleware/auth')
 const {checkRole} = require('./middleware/checkRole');
 
 require('dotenv').config()
@@ -58,7 +58,7 @@ app.use('/api/rawmaterial', isAuth, checkRole(['storekeeper', 'admin']), rawmate
 app.use('/api/product', isAuth, productRoute)
 app.use('/api/customer', isAuth,  customerRoute)
 app.use('/api/supplier', isAuth, supplierRoute)
-app.use('/api/rawmaterial-transaction', isAuth, rawmaterialTransactionRoute)
+app.use('/api/rawmaterial-transaction', isAuth, checkTokenExpiration,rawmaterialTransactionRoute)
 app.use('/api/user', userRoute)
 
 app.get(/^\/(?!api).*/, function(_, res) {

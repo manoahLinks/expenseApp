@@ -54,6 +54,20 @@ const ProductList = () => {
         <div className="grid grid-cols-1 p-2 md:p-5 rounded-md gap-y-4 h-96">
 
             <div className="grid grid-cols-1 gap-y-2 ">
+                <div className="grid grid-cols-3 gap-x-2">
+                    <div className="flex flex-col p-2 border rounded-lg">
+                        <h4>TOTAL PRODUCTS</h4>
+                        {data && <h4>{data.length}</h4>}
+                    </div>
+                    <div className="flex flex-col p-2 border rounded-lg">
+                        <h4>ACTIVE</h4>
+                        {data && <h4></h4>}
+                    </div>
+                    <div className="flex flex-col p-2 border rounded-lg">
+                        <h4>INACTIVE</h4>
+                        {data && <h4></h4>}
+                    </div>
+                </div>
                 {data && <ProductTable data={data} modalOn={modalOn} />}
                 {data && <ProductGrid data={data} modalOn={modalOn}/>}
                 
