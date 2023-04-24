@@ -89,8 +89,9 @@ const RawmaterialForm = ({modalOff}) => {
                     </svg>
                     <h4 className="text-sm font-semibold text-center">Register new raw material</h4>
                 </div>
+                <hr />
                 <div className="grid rounded-md grid-cols-1">
-                    <form className="grid grid-cols-1 gap-y-2 p-5 bg-white items-center" onSubmit={handleSubmit}>
+                    <form className="grid grid-cols-1 gap-y-2 items-center" onSubmit={handleSubmit}>
                         <div className="flex flex-col">
                             <label className="flex items-center gap-x-2">
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-3 h-3 md:w-4 md:h-4">
@@ -105,14 +106,6 @@ const RawmaterialForm = ({modalOff}) => {
                                 className="text-xs border-slate-300 focus:border-slate-300 focus:outline-none font-light rounded p-2 "
                                 
                             />
-                        </div>
-                        <div class="relative flex w-full flex-wrap items-stretch mb-3">
-                            <span class="z-10 h-full leading-snug font-normal absolute text-center text-slate-300 absolute bg-transparent rounded text-base items-center justify-center w-8 pl-3 py-3">
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-3 h-3 md:w-4 md:h-4">
-                                    <path strokeLinecap="round" strokeLinejoin="round" d="M15 9h3.75M15 12h3.75M15 15h3.75M4.5 19.5h15a2.25 2.25 0 002.25-2.25V6.75A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25v10.5A2.25 2.25 0 004.5 19.5zm6-10.125a1.875 1.875 0 11-3.75 0 1.875 1.875 0 013.75 0zm1.294 6.336a6.721 6.721 0 01-3.17.789 6.721 6.721 0 01-3.168-.789 3.376 3.376 0 016.338 0z" />
-                                </svg>
-                            </span>
-                            <input type="text" placeholder="Placeholder" class="px-3 py-3 placeholder-slate-300 text-slate-600 relative bg-white bg-white rounded text-sm border-0 shadow outline-none focus:outline-0 focus:ring w-full pl-10"/>
                         </div>
                         <div className="grid grid-cols-2 gap-x-2 gap-y-2 md:gap-x-4 md:gap-y-8">
                             <div className="flex flex-col">
@@ -202,8 +195,7 @@ const RawmaterialForm = ({modalOff}) => {
 
                         </div>
                         
-                        
-                        <button className="flex justify-center items-center bg-primary p-1 rounded text-white font-semibold">
+                        <button className="flex justify-center items-center bg-gray-900 text-white p-2 rounded font-semibold">
                             <h4 className="text-sm">Submit</h4>
                             {isPending && <svg aria-hidden="true" class="w-5 h-5 text-gray-200 animate-spin mx-2" viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z" fill="currentColor"/>

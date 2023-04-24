@@ -39,7 +39,7 @@ const RawmaterialTable = ({materials, modalOn}) => {
             <div className="relative flex items-center justify-end">
                 <input 
                     type="text"
-                    className="text-xs w-full rounded-md border border-slate-300"
+                    className="text-xs m-auto rounded-md border border-slate-300"
                     placeholder="search"
                 />
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-4 h-4 absolute mr-2">
@@ -48,18 +48,18 @@ const RawmaterialTable = ({materials, modalOn}) => {
             </div>
             <table className="table table-auto w-full bg-white shadow rounded">
                 <thead className="">
-                    <tr className="">
+                    <tr className="grid grid-cols-5 text-left border">
                         <th className="p-2">Raw material</th>
-                        <th className="p-2">Re-order</th>
                         <th className="p-2">Qty Avail.</th>
+                        <th className="p-2">Re-order</th>
                         <th className="p-2">status</th>
                         <th className="p-2">Action</th>
                     </tr>
                 </thead>
                 <tbody>
                 {materials && materials.map((material)=>(
-                    <tr className="border border-slate-300" key={material._id}>
-                        <td onClick={()=>{modalOn(material)}} className="p-2 hover:font-bold cursor-pointer text-primary">{material.name}</td>
+                    <tr className="grid grid-cols-5 border-b border-slate-300" key={material._id}>
+                        <td onClick={()=>{modalOn(material)}} className="p-2 cursor-pointer">{material.name}</td>
                         <td className="p-2">{material.qtyAvailable}</td>
                         <td className="p-2">{material.reOrderLevel}</td>
                         <td className="p-2">{material.qtyAvailable < material.reOrderLevel ? 'low': 'instock'}</td>

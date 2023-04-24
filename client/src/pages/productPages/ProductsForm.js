@@ -145,13 +145,10 @@ const ProductsForm = ({modalOff}) => {
       };
 
     return ( 
-        <div className="grid grid-cols-1 items-center overflow-y-scroll justify-items-center inset-0 fixed bg-primary bg-opacity-20 rounded-md">
-            <form onSubmit={handleSubmit} className="flex flex-col bg-white md:p-5 mt-10 p-3 gap-y-4 md:w-4/12">
+        <div className="grid grid-cols-1 items-center overflow-y-scroll justify-items-center">
+            <form onSubmit={handleSubmit} className="flex flex-col bg-white md:p-5 my-5 p-3 gap-y-4 ">
                 <div className="flex justify-between items-center md:mb-6 mb-4">
                     <h4 className="font-semibold text-primary uppercase text-center">Create a new recipe</h4>
-                    <svg onClick={modalOff} xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 cursor-pointer">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
-                    </svg>
                 </div>
                 <div className="flex bg-slate-200 md:p-5 p-2 border rounded-md">
                     <p>while creating a recipe, always put in mind that quantities are recorded in grams</p>

@@ -4,7 +4,7 @@ const User = require('../models/user'),
 
 const createToken = (_id, role) => {
 
-    return jwt.sign({_id: _id, role: role}, process.env.SECRET_KEY, {expiresIn: '30m'})
+    return jwt.sign({_id: _id, role: role}, process.env.SECRET_KEY, {expiresIn: '1d'})
 }    
 
 exports.getAllUsers = async (req, res) => {

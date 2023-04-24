@@ -86,7 +86,7 @@ const UserTable = ({users}) => {
     }
 
     return ( 
-        <div className="grid grid-cols-1 hidden md:block">
+        <div className="grid grid-cols-1 hidden md:block bg-white">
             <table className="table-fixed w-full text-xs text-center border">
                 <thead className="border-b bg-gray-100">
                     <tr className="grid grid-cols-5">

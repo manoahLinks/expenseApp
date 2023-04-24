@@ -62,20 +62,26 @@ const SuppliesList = () => {
 
 
     return ( 
-        <div className="grid grid-cols-1 gap-y-4 bg-white md:p-5">
-            <div className="grid grid-cols-3 gap-x-2">
-                <div className="flex flex-col p-2 border rounded-lg">
-                    <h4>Total Transactions</h4>
-                    {data && <h4>count :{data.length}</h4>}
-                    {data && <h4>Worth: N{totalTransactions()}</h4>}
+        <div className="grid grid-cols-1 gap-y-4 md:gap-y-8 bg-white md:p-5 bg-slate-50">
+            <div className="grid grid-cols-3 md:gap-x-8 gap-x-2">
+                <div className="flex flex-col bg-white gap-y-4 md:p-5 p-2 shadow border rounded-lg">
+                    <div className="flex items-center">
+                        <small className="uppercase font-bold">Total Transactions</small>
+                    </div>
+                    {data && <h4 className="text-[30px] text-slate-400 font-bold">N{totalTransactions()}</h4>}
+                    {data && <small>result: {data.length}</small>}
                 </div>
-                <div className="flex flex-col p-2 border rounded-lg">
-                    <h4>Worth of Purchase</h4>
-                    {data && <h4>WORTH: N{totalSupplies()}</h4>}
+                <div className="flex flex-col md:p-5 p-2 bg-white gap-y-4 shadow border rounded-lg">
+                    <div className="flex items-center">
+                        <small className="uppercase font-bold">Worth of Purchase</small>
+                    </div>
+                    {data && <h4 className="text-[30px] text-slate-400 font-bold">N {totalSupplies()}</h4>}
                 </div>
-                <div className="flex flex-col p-2 border rounded-lg">
-                    <h4>Worth of usage</h4>
-                    {data && <h4>worth: N{totalUsage()}</h4>}
+                <div className="flex flex-col md:p-5 p-2 bg-white gap-y-4 shadow border rounded-lg">
+                    <div className="flex items-center">
+                        <small className="uppercase font-bold">Worth of usage</small>
+                    </div>
+                    {data && <h4 className="text-[30px] text-slate-400 font-bold">N {totalUsage()}</h4>}
                 </div>
             </div>
             {data && <SuppliesTable supplies={data} />}

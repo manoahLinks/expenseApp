@@ -3,6 +3,7 @@ import { useAuthContext } from "../../hooks/useAuthContext";
 import { useDataContext } from "../../hooks/useDataContext";
 import UserTable from './components/UserTable'
 import AssignRole from "./AssignRole";
+import UserGrid from "./components/UserGrid";
     
 const UserList = () => {
 
@@ -48,23 +49,30 @@ const UserList = () => {
     }
 
     return ( 
-        <div className="grid grid-cols-3">
-            <div className="grid grid-cols-1 col-span-2 gap-y-4 p-3">
+        <div className="grid md:grid-cols-3 grid-cols-1 bg-slate-50">
+            <div className="grid grid-cols-1 md:col-span-2 gap-y-4 md:gap-y-8 p-3">
                 <div className="grid grid-cols-3 gap-x-2">
-                    <div className="flex flex-col gap-y-4 p-2 border rounded-lg">
-                        <h4>TOTAL STAFF</h4>
-                        {data && <h4>{data.length}</h4>}
+                    <div className="flex flex-col p-2 md:p-5 bg-white shadow md:gap-y-4 gap-y-2 border rounded-lg">
+                        <div className="flex items-center">
+                            <small className="uppercase font-semibold">TOTAL STAFF</small>
+                        </div>
+                        {data && <h4 className="text-[30px] font-semibold text-slate-400">{data.length}</h4>}
                     </div>
-                    <div className="flex flex-col gap-y-4 p-2 border rounded-lg">
-                        <h4>ACTIVE USERS</h4>
-                        {data && <h4>{activeStaff()}</h4>}
+                    <div className="flex flex-col p-2 md:p-5 bg-white shadow md:gap-y-4 gap-y-2 border rounded-lg">
+                        <div className="flex items-center">
+                            <small className="uppercase font-semibold">ACTIVE USERS</small>
+                        </div>
+                        {data && <h4 className="text-[30px] font-semibold text-green-400">{activeStaff()}</h4>}
                     </div>
-                    <div className="flex flex-col gap-y-4 p-2 border rounded-lg">
-                        <h4>INACTIVE USERS</h4>
-                        {data && <h4>{inActiveStaff()}</h4>}
+                    <div className="flex flex-col p-2 md:p-5 bg-white shadow md:gap-y-4 gap-y-2 border rounded-lg">
+                        <div className="flex items-center">
+                            <small className="uppercase font-semibold">INACTIVE USERS</small>
+                        </div>
+                        {data && <h4 className="text-[30px] font-semibold text-red-400">{inActiveStaff()}</h4>}
                     </div>
                 </div>
                 {data && <UserTable users={data}/>}
+                {data && <UserGrid users={data}/>}
             </div>
             <div className="flex flex-col">
                 <div className="grid grid-cols-2 md:p-5 p-2">

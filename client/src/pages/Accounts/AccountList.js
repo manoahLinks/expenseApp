@@ -51,7 +51,27 @@ const AccountList = () => {
     }, [dispatch, data, user])
 
     return ( 
-        <div className="grid grid-cols-1">
+        <div className="grid grid-cols-1 p-2 md:p-5 md:gap-y-8 gap-y-4">
+            <div className="grid grid-cols-3 md:gap-x-8 gap-x-4">
+                <div className="flex flex-col p-2 md:p-5 shadow bg-white md:gap-y-4 gap-y-2 border rounded-lg">
+                    <div className="flex items-center">
+                        <small className="uppercase font-semibold">total rawmaterial</small>
+                    </div>
+                    {data && <h4 className="text-[30px] font-semibold text-slate-400">{data.length}</h4>}
+                </div>
+                <div className="flex flex-col p-2 md:p-5 shadow bg-white md:gap-y-4 gap-y-2  border rounded-lg">
+                    <div className="flex items-center">
+                        <small className="uppercase font-semibold">Stock transactions</small>
+                    </div>
+                    {data && <h4 className="text-[30px] font-semibold text-slate-400"></h4>}
+                </div>
+                <div className="flex flex-col p-2 md:p-5 shadow bg-white md:gap-y-4 gap-y-2  border rounded-lg">
+                    <div className="flex items-center">
+                        <small className="uppercase font-semibold">qty available</small>
+                    </div>
+                    {data && <h4 className="text-[30px] font-semibold text-slate-400"></h4>}
+                </div>
+            </div>
             {data && <AccountTable accounts={data} modalOn={modalOn} />}
             {data && <AccountGrid accounts={data} modalOn={modalOn} />}
             {selectedData && <AccountDetails account={selectedData} modalOff={modalOff} />}

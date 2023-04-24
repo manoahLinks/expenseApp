@@ -11,6 +11,25 @@ const AccountDetails = ({account, modalOff}) => {
                     <h4 className="text-sm font-semibold col-span-2">Account Details</h4>
                 </div>
                 <h4>id: <small>{account._id}</small></h4>
+                <div className="grid grid-cols-1 gap-y-4 p-2 md:p-5 bg-opacity-50 rounded-md bg-gradient-to-r from-lime-100 to-green-200">
+                    <div className="flex flex-col gap-x-4 bg-slate-700 md:p-5 p-2  rounded-lg shadow-lg shadow-white">
+                        <div className="flex items-center justify-between text-white">
+                            <small className="font-semibold text-lime-100">{account.name}</small>
+                            <div>
+                                
+                            </div>
+                        </div>
+                        <div className="flex items-center justify-center">
+                            <small className="text-white">Balance</small>
+                            <h4 className="text-[20px] font-semibold text-white">N {account.balance}</h4>
+                        </div>
+                        
+                        <div className="flex items-center justify-between">
+                            <button className="py-1 px-2 text-xs rounded-md bg-lime-100">Fund</button>
+                            <button className="py-1 px-2 text-xs border border-lime-100 rounded-md text-lime-100">Transfer</button>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
      );

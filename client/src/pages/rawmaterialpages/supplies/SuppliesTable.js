@@ -63,7 +63,7 @@ const SuppliesTable = ({ supplies }) => {
                     onChange={(e)=>{setFilterDate(e.target.value)}} 
                 /> */}
 
-                <tr className="grid grid-cols-8 text-center">
+                <tr className="grid grid-cols-8 border p-2 text-center">
                     <th>Date</th>
                     <th>type</th>
                     <th className="col-span-2">raw material</th>
@@ -74,7 +74,7 @@ const SuppliesTable = ({ supplies }) => {
                 </tr>
                
                 {supplies && supplies.map((supply)=>(
-                    <tr key={supply._id} className="grid grid-cols-8 text-center">
+                    <tr key={supply._id} className="grid grid-cols-8 border p-2 text-center">
                         <td>{supply.createdAt}</td>
                         <td>{supply.type}</td>
                         <td className="col-span-2">{supply.material}</td>

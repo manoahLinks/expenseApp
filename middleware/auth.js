@@ -32,6 +32,7 @@ exports.checkTokenExpiration = (req, res, next) => {
     if (decodedToken.exp < Date.now() / 1000) {
       req.session.destroy();
       console.log('session destroyed')
+      localStorage.removeItem('user')
       return res.redirect('/login');
     }
     

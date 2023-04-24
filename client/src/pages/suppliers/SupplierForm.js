@@ -72,6 +72,7 @@ const SupplierForm = ({modalOff}) => {
                     </svg>
                     <h4 className='font-semibold'>Register new supplier</h4>
                 </div>
+                <hr />
                 <div className='bg-slate-200 p-3 rounded'>
                     <h4>fill in correct details to create a new supplier</h4>
                 </div>

@@ -71,6 +71,7 @@ const AccountForm = ({modalOff}) => {
                     </svg>
                     <h4 className='font-semibold'>create new account</h4>
                 </div>
+                <hr />
                 <form className="grid grid-cols-1 gap-y-2 md:p-5 p-3 rounded-lg" onSubmit={handleSubmit}>
                     <label className='text-slate-500' htmlFor="">account name</label>
                     <input 
