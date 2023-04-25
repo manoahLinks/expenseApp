@@ -4,12 +4,14 @@ import { useAuthContext } from "../../hooks/useAuthContext";
 import SupplierTable from "./components/SupplierTable";
 import SupplierDetails from "./SupplierDetails";
 import SuppliersGrid from "./components/SuppliersGrid";
+import LoadingPage from "../../components/Loading";
 
 const SupplierList = () => {
 
     const {data, dispatch} = useDataContext()
     const {user} = useAuthContext()
     const [selectedData, setSelectedData] = useState(null)
+    const [isLoading, setIsLoading] = useState(true)
 
     const modalOn = async (data) => {
 
@@ -42,6 +44,7 @@ const SupplierList = () => {
 
             if(response.ok){
                 dispatch({type: 'SET_DATA', payload: json})
+                setIsLoading(false)
             }    
         }
         if(user){
@@ -75,6 +78,7 @@ const SupplierList = () => {
             {data && <SupplierTable modalOn={modalOn} suppliers={data}/>}
             {data && <SuppliersGrid modalOn={modalOn} suppliers={data}/>}
             {selectedData && <SupplierDetails supplier={selectedData} modalOff={modalOff} />}
+            {isLoading && <LoadingPage/>}
         </div>
      );
 }

@@ -4,12 +4,14 @@ import { useAuthContext } from "../../hooks/useAuthContext";
 import ProductDetails from "./ProductDetails";
 import ProductTable from "./components/ProductTable";
 import ProductGrid from "./components/ProductGrid";
+import LoadingPage from "../../components/Loading";
 
 const ProductList = () => {
 
     const {data, dispatch} = useDataContext()
     const [selectedProduct, setSelectedProduct] = useState(null)
     const {user} = useAuthContext()
+    const [isLoading, setIsLoading] = useState(true) 
 
     const modalOn = async (data) => {
         
@@ -42,6 +44,7 @@ const ProductList = () => {
 
             if(response.ok){
                 dispatch({type: 'SET_DATA', payload: json})
+                setIsLoading(false)
             }    
         }
         if(user){
@@ -79,6 +82,7 @@ const ProductList = () => {
                 
             </div>
             {selectedProduct && <ProductDetails product={selectedProduct} modalOff={modalOff} />}
+            {isLoading && <LoadingPage/>}
         </div>
      );
 }

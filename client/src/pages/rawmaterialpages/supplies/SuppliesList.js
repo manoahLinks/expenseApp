@@ -1,12 +1,14 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useAuthContext } from "../../../hooks/useAuthContext";
 import { useDataContext } from "../../../hooks/useDataContext";
 import SuppliesTable from "./SuppliesTable";
+import LoadingPage from "../../../components/Loading";
 
 const SuppliesList = () => {
 
     const {user} = useAuthContext()
     const {data, dispatch} = useDataContext()
+    const [isLoading, setIsLoading] = useState(true)
 
     useEffect(()=>{
 
@@ -19,7 +21,14 @@ const SuppliesList = () => {
 
             const json = await response.json()
 
-            response.ok ? dispatch({type:'SET_DATA', payload: json}) : console.log('error')
+            if(!response.ok){
+
+            }
+            
+            if(response.ok){
+                dispatch({type:'SET_DATA', payload: json})
+                setIsLoading(false)
+            }
         }
 
         user ? fetchData() : console.log('no user attached to request')
@@ -85,6 +94,7 @@ const SuppliesList = () => {
                 </div>
             </div>
             {data && <SuppliesTable supplies={data} />}
+            {isLoading && <LoadingPage/>}
         </div>
      );
 }

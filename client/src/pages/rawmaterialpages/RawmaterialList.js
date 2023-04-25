@@ -4,12 +4,14 @@ import { useAuthContext } from "../../hooks/useAuthContext";
 import RawmaterialDetail from "./RawmaterialDetail";
 import RawmaterialTable from "./component/Rawmaterialtable";
 import RawmaterialBoard from "./component/RawmaterialBoard";
+import LoadingPage from "../../components/Loading";
 
 const RawmaterialList = () => {
 
     const {data, dispatch} = useDataContext()
     const [selectedMaterial, setSelectedMaterial] = useState(false)
     const {user} = useAuthContext()
+    const [isLoading, setIsLoading] = useState(true)
 
     const modalOn = async (data) => {
         
@@ -42,6 +44,7 @@ const RawmaterialList = () => {
 
             if(response.ok){
                 dispatch({type: 'SET_DATA', payload: json})
+                setIsLoading(false)
             }    
         }
         if(user){
@@ -102,6 +105,7 @@ const RawmaterialList = () => {
                 
             </div>
             {selectedMaterial && <RawmaterialDetail material={selectedMaterial} modalOff={modalOff} />}
+            {isLoading && <LoadingPage/>}
         </div>
      );
 }

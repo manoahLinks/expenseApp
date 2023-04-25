@@ -4,11 +4,13 @@ import { useDataContext } from "../../hooks/useDataContext";
 import UserTable from './components/UserTable'
 import AssignRole from "./AssignRole";
 import UserGrid from "./components/UserGrid";
+import LoadingPage from "../../components/Loading";
     
 const UserList = () => {
 
     const {user} = useAuthContext()
     const {data, dispatch} = useDataContext()
+    const [isLoading, setIsLoading] = useState(true)
 
     useEffect(()=>{
 
@@ -22,6 +24,7 @@ const UserList = () => {
 
             if(response.ok){
                 dispatch({type: 'SET_DATA', payload:json})
+                setIsLoading(false)
             }    
         }
         if(user){
@@ -87,6 +90,7 @@ const UserList = () => {
                 <hr />
                 
             </div>
+            {isLoading && <LoadingPage/>}
         </div>
     );
 }

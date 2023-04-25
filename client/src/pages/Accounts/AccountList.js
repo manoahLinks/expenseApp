@@ -4,12 +4,14 @@ import { useAuthContext } from "../../hooks/useAuthContext";
 import AccountTable from "./components/AccountTable";
 import AccountDetails from "./AccountDetails";
 import AccountGrid from "./components/AccountGrid";
+import LoadingPage from '../../components/Loading'
 
 const AccountList = () => {
 
     const {data, dispatch} = useDataContext()
     const {user} = useAuthContext()
     const [selectedData, setSelectedData] = useState(null)
+    const [isLoading, setIsLoading] = useState(true)
 
     const modalOn = async (data) => {
 
@@ -42,12 +44,14 @@ const AccountList = () => {
 
             if(response.ok){
                 dispatch({type: 'SET_DATA', payload: json})
+                setIsLoading(false)
             }    
         }
         if(user){
             fetchData()
         }
         
+
     }, [dispatch, data, user])
 
     return ( 
@@ -75,6 +79,7 @@ const AccountList = () => {
             {data && <AccountTable accounts={data} modalOn={modalOn} />}
             {data && <AccountGrid accounts={data} modalOn={modalOn} />}
             {selectedData && <AccountDetails account={selectedData} modalOff={modalOff} />}
+            {isLoading && <LoadingPage/>}
         </div>
      );
 }

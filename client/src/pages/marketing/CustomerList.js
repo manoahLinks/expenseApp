@@ -10,7 +10,7 @@ const CustomerList = () => {
     const {data, dispatch} = useDataContext()
     const {user} = useAuthContext()
     const [selectedData, setSelectedData] = useState(null)
-    const [isLoading, setIsLoading] = useState(false)
+    const [isLoading, setIsLoading] = useState(true)
 
     const modalOn = async (data) => {
 
@@ -43,8 +43,8 @@ const CustomerList = () => {
 
             if(response.ok){
                 dispatch({type: 'SET_DATA', payload: json})
+                setIsLoading(false)
             }    
-            setIsLoading(false)
         }
         if(user){
             fetchData()
@@ -108,6 +108,7 @@ const CustomerList = () => {
                 </div>
             ))}
            {selectedData && <CustomerDetails modalOff={modalOff} customer={selectedData} />} 
+           {isLoading && <LoadingPage/>}
         </div>
      );
 }
