@@ -98,9 +98,9 @@ const DailyActivityReportSheet = () => {
                                         <h4 className="w-32 border md:w-full p-2 ">{rawmaterial.name}</h4>
                                         <input className="w-32 border md:w-full p-2 border-none" type="number" />
                                         <input className="w-32 border md:w-full p-2 border-none bg-slate-100" type="number" />
-                                        <h4 className="w-32 border md:w-full p-2">6500</h4>
+                                        <h4 className="w-32 border md:w-full p-2">{}</h4>
                                         <input className="w-32 border md:w-full p-2 border-none bg-slate-100" type="number" />
-                                        <h4 className="w-32 border md:w-full p-2">5800</h4>
+                                        <h4 className="w-32 border md:w-full p-2">{}</h4>
 
                                     </tr>
                                 ))}

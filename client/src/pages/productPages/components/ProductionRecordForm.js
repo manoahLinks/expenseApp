@@ -12,12 +12,35 @@ const ProductionRecordForm = ({modalOff}) => {
                     <select>
                         <option value="">select product</option>
                     </select>
-                    <input 
-                        type="number"
-                        className="text-xs"
-                        placeholder="Bags"
-                    />
+                    
+                    <div className="grid grid-cols-2 md:gap-x-8 gap-y-4">
+                        <input 
+                            type="number"
+                            className="text-xs"
+                            placeholder="Bags prod."
+                        />
+                        <h4>cost of prod.</h4>
+                        <input 
+                            type="number"
+                            className="text-xs"
+                            placeholder="pan count"
+
+                        />
+                        <h4>expected count</h4>
+                        <input 
+                            type="number" 
+                            className="text-xs"
+                            placeholder="damage"
+                        />
+                        <textarea className="col-span-2 text-xs" placeholder="comment" name=""></textarea>
+                    </div>
+                    
                 </form>
+                <hr />
+                <div className="grid grid-cols-2">
+                    <button className="p-2 border-r">cancel</button>
+                    <button className="p-2">proceed</button>
+                </div>
             </div>
         </div>
      );
