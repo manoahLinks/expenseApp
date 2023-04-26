@@ -17,7 +17,30 @@ const ProductTable = ({data, modalOn}) => {
 
         const json = await response.json()
 
+        if(!response.ok) {
+            toast.error(json, {
+                position: "bottom-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "light",
+            });
+        }
+
         if(response.ok){
+            toast.success(`created deleted ${json._id}`, {
+                position: "bottom-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "light",
+            });
             dispatch({type: `DELETE_DATA`, payload: json})
         }
     }

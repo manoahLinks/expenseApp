@@ -4,7 +4,6 @@ const productionRecordSchema = new mongoose.Schema({
 
     product: {type: String,required: true},
     bags: {type: Number, required: true},
-    yield: {type: Number, required: true},
     panCount: {type: Number, required: true},
     damages: {type: Number},
     comment: {type: String},

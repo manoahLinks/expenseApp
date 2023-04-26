@@ -6,7 +6,6 @@ exports.createProductionRecord = async (req, res) => {
     const {
         product,
         bags,
-        yield,
         panCount,
         damage,
         comment
@@ -15,12 +14,12 @@ exports.createProductionRecord = async (req, res) => {
 
     try {
 
-        if(!product || !bags || !yield || !panCount || !damage){
+        if(!product || !bags || !panCount || !damage){
             throw Error('All fields are required !')
         }
 
         const createdBy = req.user._id
-        const newRecord = await ProductionRecord.create({product, bags, yield, panCount, damage, comment, createdBy})
+        const newRecord = await ProductionRecord.create({product, bags, panCount, damage, comment, createdBy})
         return res.status(201).json(newRecord)
 
     } catch (error) {
@@ -61,7 +60,6 @@ exports.updateRecord = async (req, res) => {
     const {
         product,
         bags,
-        yield,
         panCount,
         damage,
         comment
@@ -73,7 +71,6 @@ exports.updateRecord = async (req, res) => {
         const updatedRecord = await ProductionRecord.findByIdAndUpdate(id, {
             product,
             bags,
-            yield,
             panCount,
             damage,
             comment

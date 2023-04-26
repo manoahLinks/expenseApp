@@ -1,11 +1,34 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { useAuthContext } from "../hooks/useAuthContext";
+import useFetch from "../useFetch";
 
 const Homepage = () => {
 
     const {user} = useAuthContext()
+    const {result: productRecords} = useFetch(`http://localhost:5500/api/production-record`)
+    const {result: usage} = useFetch(`http://localhost:5500/api/rawmaterial-transaction`)
 
+    const bagsProduced = () => {
+        let totBags = 0
+        for (let item of productRecords) {
+            totBags += item.bags
+        }
+        return totBags
+    }
+
+    const totalUsage = () => {
+
+        let totValue = 0
+        let usages = usage.filter((a)=>{
+            return a.type === 'usage'
+        })
+        for (let item of usages) {
+            totValue += item.amount
+        }
+        return totValue
+    }
+ 
     return ( 
         <div className="grid grid-cols-1 gap-y-2 md:mx-5 mx-2">
             <div className="md:flex grid-cols-1 md:justify-between items-center ">
@@ -37,7 +60,7 @@ const Homepage = () => {
                         <small className="uppercase font-semibold">Total Revenue</small>
                         <small className="bg-green-100 text-green-700 rounded-lg px-1">15+</small>
                     </div>
-                    <h4 className="font text-xl font-bold">N1,250,890.00</h4>
+                    <h4 className="font text-xl font-bold">0.00</h4>
                     <small>see more</small>
                 </div>
 
@@ -51,7 +74,7 @@ const Homepage = () => {
                         <small className="uppercase font-semibold">Production</small>
                         <small className="bg-green-100 text-green-700 rounded-lg px-1">15+</small>
                     </div>
-                    <h4 className="font text-xl font-bold">50 bags</h4>
+                    <h4 className="font text-xl font-bold text-slate-400">{productRecords && bagsProduced()} bags</h4>
                     <small>see more</small>
                 </div>
                 {/* rawmaterials */}
@@ -64,7 +87,7 @@ const Homepage = () => {
                         <small className="uppercase font-semibold">Raw materials usage</small>
                         <small className="bg-green-100 text-green-700 rounded-lg px-1">15+</small>
                     </div>
-                    <h4 className="font text-xl font-bold">N2,500,000.00</h4>
+                    <h4 className="font text-xl font-bold text-slate-400">N {usage && totalUsage()}</h4>
                     <small>see more</small>
                 </div>
                 {/* Expenditure */}
@@ -76,7 +99,7 @@ const Homepage = () => {
                         <small className="uppercase font-semibold">Total expenditure</small>
                         <small className="bg-green-100 text-green-700 rounded-lg px-1">15+</small>
                     </div>
-                    <h4 className="font text-xl font-bold">N500,000.00</h4>
+                    <h4 className="font text-xl font-bold">0.00</h4>
                     <small>see more</small>
                 </div>
             </div>
