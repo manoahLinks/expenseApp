@@ -3,14 +3,20 @@ import { useAuthContext } from "../../../hooks/useAuthContext";
 import { useDataContext } from "../../../hooks/useDataContext";
 import SuppliesTable from "./SuppliesTable";
 import LoadingPage from "../../../components/Loading";
+import { useLogout } from "../../../hooks/useLogout";
 
 const SuppliesList = () => {
 
+    const {logOut} = useLogout()
     const {user} = useAuthContext()
     const {data, dispatch} = useDataContext()
     const [isLoading, setIsLoading] = useState(true)
 
     useEffect(()=>{
+
+        if(user.decodedToken.exp < Date.now() / 1000){
+            logOut()
+        }
 
         const fetchData = async () => {
             const response = await fetch(`http://localhost:5500/api/rawmaterial-transaction/`, {

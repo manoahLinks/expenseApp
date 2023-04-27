@@ -1,14 +1,21 @@
 import { useState, useEffect } from 'react'
 import { useAuthContext } from './hooks/useAuthContext'
+import { useLogout } from "./hooks/useLogout";
 
 const useFetch = (url) => {
 
+    const {logOut} = useLogout()
     const [result, setResult] = useState(null)
     const [isPending, setIsPending] = useState(false)
     const [error, setError] = useState(null)
     const {user} = useAuthContext()
 
     useEffect(()=>{
+
+        if(user.decodedToken.exp < Date.now() / 1000){
+            logOut()
+        }
+
        fetch(url, {
         headers:{
             'Authorization': `Bearer ${user.token}`

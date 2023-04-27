@@ -36,8 +36,6 @@ app.use(session({
 }))
 
 
-
-
 app.use(express.static(path.join(__dirname, "client", "build")));
 app.use(cors())
 // to help us log all request type to the console

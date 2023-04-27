@@ -4,7 +4,7 @@ const User = require('../models/user'),
 
 const createToken = (_id, role) => {
 
-    return jwt.sign({_id: _id, role: role}, process.env.SECRET_KEY, {expiresIn: '1d'})
+    return jwt.sign({_id: _id, role: role}, process.env.SECRET_KEY, {expiresIn: '1m'})
 }    
 
 exports.getAllUsers = async (req, res) => {
@@ -52,8 +52,9 @@ exports.registerUser = async (req, res) => {
 
         // create a token
         const token = createToken(user._id)
+        const decodedToken = await jwt.decode(token)
 
-        res.status(200).json({email, token}) 
+        res.status(200).json({email,  token, decodedToken}) 
 
    } catch (error) {
         res.status(400).json({error: error.message})
@@ -73,8 +74,9 @@ exports.loginUser = async (req, res)=>{
 
         // create a token
         const token = createToken(user._id, user.role)
+        const decodedToken = await jwt.decode(token)
 
-        res.status(200).json({email, token}) 
+        res.status(200).json({email, token, decodedToken}) 
 
     } catch (error) {
          res.status(400).json({error: error.message})
