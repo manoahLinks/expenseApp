@@ -3,6 +3,8 @@ import { useAuthContext } from "../../../hooks/useAuthContext"
 import { useState, useEffect } from "react"
 import {ToastContainer, toast} from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
+import { format } from "date-fns"
+import accounting from 'accounting-js'
 
 const SuppliesTable = ({ supplies }) => {
 
@@ -75,11 +77,11 @@ const SuppliesTable = ({ supplies }) => {
                
                 {supplies && supplies.map((supply)=>(
                     <tr key={supply._id} className="grid grid-cols-8 border p-2 text-center">
-                        <td>{supply.createdAt}</td>
+                        <td>{format(new Date(supply.createdAt), 'dd MMM yyyy')}</td>
                         <td>{supply.type}</td>
                         <td className="col-span-2">{supply.material}</td>
                         <td>{supply.quantity}</td>
-                        <td>{supply.amount}</td>
+                        <td>{accounting.formatNumber(supply.amount)}</td>
                         <td>{supply.supplier}</td>
                         <td className="px-4 py-2">
                             <div onClick={()=>{handleDelete(supply._id)}}  className="p-1 hover:bg-error bg-slate-200 flex justify-center rounded cursor-pointer hover:text-red-500">

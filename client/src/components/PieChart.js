@@ -63,7 +63,8 @@ const PieChart = ({ data }) => {
     <div className="flex p-2 rounded shadow">
       <Pie
         data={chartData}
-        width={100}
+        width={50}
+        height={50}
         options={chartOptions}
       />
     </div>

@@ -2,7 +2,7 @@ const mongoose = require('mongoose')
 
 const productionRecordSchema = new mongoose.Schema({
 
-    product: {type: String,required: true},
+    product: {type: mongoose.Schema.Types.ObjectId, ref: 'product',required: true},
     bags: {type: Number, required: true},
     panCount: {type: Number, required: true},
     damages: {type: Number},

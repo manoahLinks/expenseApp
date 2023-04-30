@@ -1,4 +1,5 @@
 const ProductionRecord = require('../models/productionRecords')
+const Product = require(`../models/product`)
 
 // create a prod. record
 exports.createProductionRecord = async (req, res) => {
@@ -31,8 +32,7 @@ exports.createProductionRecord = async (req, res) => {
 // get all productionRecords
 exports.getAllRecords = async (req, res) => {
     try {
-        
-        const allRecords = await ProductionRecord.find({})
+        const allRecords = await ProductionRecord.find({}).populate('product')
         return res.status(200).json(allRecords)
 
     } catch (error) {
@@ -46,7 +46,7 @@ exports.getSingleRecord = async (req, res) => {
 
     try {
         
-        const foundRecord = await ProductionRecord.findById(id)
+        const foundRecord = await ProductionRecord.findById(id).populate('product')
         return res.status(200).json(foundRecord)
  
     } catch (error) {

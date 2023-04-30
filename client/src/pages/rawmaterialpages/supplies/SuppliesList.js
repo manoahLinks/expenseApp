@@ -4,6 +4,7 @@ import { useDataContext } from "../../../hooks/useDataContext";
 import SuppliesTable from "./SuppliesTable";
 import LoadingPage from "../../../components/Loading";
 import { useLogout } from "../../../hooks/useLogout";
+import accounting from 'accounting-js'
 
 const SuppliesList = () => {
 
@@ -83,20 +84,20 @@ const SuppliesList = () => {
                     <div className="flex items-center">
                         <small className="uppercase font-bold">Total Transactions</small>
                     </div>
-                    {data && <h4 className="text-[30px] text-slate-400 font-bold">N{totalTransactions()}</h4>}
+                    {data && <h4 className="text-[25px] text-slate-400 font-bold">N{accounting.formatNumber(totalTransactions())}</h4>}
                     {data && <small>result: {data.length}</small>}
                 </div>
                 <div className="flex flex-col md:p-5 p-2 bg-white gap-y-4 shadow border rounded-lg">
                     <div className="flex items-center">
                         <small className="uppercase font-bold">Worth of Purchase</small>
                     </div>
-                    {data && <h4 className="text-[30px] text-slate-400 font-bold">N {totalSupplies()}</h4>}
+                    {data && <h4 className="text-[25px] text-slate-400 font-bold">N {accounting.formatNumber(totalSupplies())}</h4>}
                 </div>
                 <div className="flex flex-col md:p-5 p-2 bg-white gap-y-4 shadow border rounded-lg">
                     <div className="flex items-center">
                         <small className="uppercase font-bold">Worth of usage</small>
                     </div>
-                    {data && <h4 className="text-[30px] text-slate-400 font-bold">N {totalUsage()}</h4>}
+                    {data && <h4 className="text-[25px] text-slate-400 font-bold">N {accounting.formatNumber(totalUsage())}</h4>}
                 </div>
             </div>
             {data && <SuppliesTable supplies={data} />}
