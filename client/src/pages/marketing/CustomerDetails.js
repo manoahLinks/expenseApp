@@ -81,7 +81,7 @@ const CustomerDetails = ({modalOff, customer}) => {
                     </div>
                     <div className="mt-2">
                         <h4 className="font-light">Time: <small className="font-semibold text-blue-700">{customer.createdAt}</small></h4>
-                        <h4 className="font-light">created By: <small className="font-semibold">{customer.createdBy}</small></h4>
+                        <h4 className="font-light">created By: <small className="font-semibold">{`manoahluka@gmail.com`}</small></h4>
                     </div>
                     <div className="grid grid-cols-3 gap-x-4 mt-8">
                         <button onClick={modalOff} className="border rounded hover:rounded-full border-primary text-primary hover:bg-slate-200 p-1 md:p-2">cancel</button>

@@ -7,7 +7,7 @@ const customerSchema = new mongoose.Schema({
     phone:      {type: Number, required: true},
     email:      {type: String},
     address:    {type: String, required: true},
-    createdBy:  {type: String},
+    createdBy:  {type: mongoose.Schema.Types.ObjectId, ref: 'user'},
     updatedBy:  {type: String}
 }, {timestamps: true})
 

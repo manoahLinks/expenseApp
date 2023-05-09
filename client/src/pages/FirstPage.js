@@ -116,10 +116,9 @@ const Homepage = () => {
                 </div>
             </div>
 
-            <div className="flex flex-col mt-8 rounded-lg border-orange-300 border w-full h-72">
+            <div className="flex flex-col mt-8 rounded-lg overflow-y-scroll border-orange-300 border w-full h-72">
                 {currentSection === 1 && (
                     <h4>revenue list</h4>
-                    
                 )}
                 {currentSection === 2 && (
                     <ProductionRecordTable/>    

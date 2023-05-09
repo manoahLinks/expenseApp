@@ -10,7 +10,7 @@ const rawmaterialSchema = new mongoose.Schema({
     totQtyPurchased:    {type: Number, default: 0},
     reOrderLevel:       {type: Number, required: true},
     pricePerGram:       {type: Number},
-    createdBy:          {type: String},
+    createdBy:          {type: mongoose.Schema.Types.ObjectId, ref: 'user'},
     updatedBy:          {type: String}
 
 }, {timestamps: true})

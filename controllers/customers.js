@@ -1,4 +1,5 @@
 const Customer = require('../models/customers')
+const User = require('../models/user')
 
 // get all customers
 exports.getAllCustomers = async (req, res) => {
@@ -37,7 +38,7 @@ exports.getSingleCustomer = async (req, res) => {
 
     try {
         
-        const response = await Customer.findById(id)
+        const response = await Customer.findById(id).populate('createdBy')
         return res.status(200).json(response)
 
     } catch (error) {
