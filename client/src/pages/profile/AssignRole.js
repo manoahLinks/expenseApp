@@ -8,12 +8,12 @@ const AssignRole = ({modalOff}) => {
     const [userId, setUserId] = useState('')
     const [role, setRole] = useState('')
 
-    const {result} = useFetch(`http://localhost:5500/api/user`)
+    const {result} = useFetch(`https://smartwork-api.onrender.com/api/user`)
 
     const handleSubmit = async () => {
         console.log(userId, role)
 
-        const response = await fetch(`http://localhost:5500/api/user/assign-role`, {
+        const response = await fetch(`https://smartwork-api.onrender.com/api/user/assign-role`, {
             method: 'POST',
             headers:{
                 'Content-Type': 'application/json'

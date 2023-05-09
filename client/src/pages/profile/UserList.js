@@ -15,7 +15,7 @@ const UserList = () => {
     useEffect(()=>{
 
         const fetchData = async () => {
-            const response = await fetch(`http://localhost:5500/api/user`, {
+            const response = await fetch(`https://smartwork-api.onrender.com/api/user`, {
                 headers:{
                     'Authorization': `Bearer ${user.token}`   
                 }

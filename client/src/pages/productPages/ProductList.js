@@ -15,7 +15,7 @@ const ProductList = () => {
 
     const modalOn = async (data) => {
         
-        const response = await fetch(`http://localhost:5500/api/product/${data._id}`, {
+        const response = await fetch(`https://smartwork-api.onrender.com/api/product/${data._id}`, {
             headers: {
                 'Authorization': `Bearer ${user.token}`
             }
@@ -35,7 +35,7 @@ const ProductList = () => {
     useEffect(()=>{
 
         const fetchData = async () => {
-            const response = await fetch(`http://localhost:5500/api/product`, {
+            const response = await fetch(`https://smartwork-api.onrender.com/api/product`, {
                 headers:{
                     'Authorization': `Bearer ${user.token}`
                 }

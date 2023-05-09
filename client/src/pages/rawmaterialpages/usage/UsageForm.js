@@ -8,7 +8,7 @@ import 'react-toastify/dist/ReactToastify.css'
 const UsageForm = ({modalOff}) => {
     const {data, dispatch} = useDataContext()
     const {user} = useAuthContext()
-    const {data:rawmaterial} = useFetch(`http://localhost:5500/api/rawmaterial`)
+    const {data:rawmaterial} = useFetch(`https://smartwork-api.onrender.com/api/rawmaterial`)
     const [receiver, setReciever] = useState('')
     const [material, setMaterial] = useState('')
     const [quantity, setQuantity] = useState('')
@@ -18,7 +18,7 @@ const UsageForm = ({modalOff}) => {
     const handleSubmit = async (e) => {
         e.preventDefault()
 
-        const response = await fetch(`http://localhost:5500/api/rawmaterial-transaction/usage`, {
+        const response = await fetch(`https://smartwork-api.onrender.com/api/rawmaterial-transaction/usage`, {
             method: 'POST',
             headers:{
                 'Authorization' : `Bearer ${user.token}`,

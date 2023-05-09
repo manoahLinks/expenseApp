@@ -2,7 +2,7 @@ import useFetch from "../../../hooks/useFetch";
 
 const TransferForm = ({modalOff}) => {
 
-    const {data} = useFetch(`http://localhost:5500/api/account`)
+    const {data} = useFetch(`https://smartwork-api.onrender.com/api/account`)
 
     return ( 
         <div className="grid grid-cols-1 inset-0 fixed items-center justify-items-center justify-center bg-primary bg-opacity-10">

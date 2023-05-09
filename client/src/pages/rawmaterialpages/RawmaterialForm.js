@@ -19,7 +19,7 @@ const RawmaterialForm = ({modalOff}) => {
     const [success, setSuccess] = useState(false)
     const {user} = useAuthContext()
     const {dispatch} = useDataContext()
-    const {data} = useFetch(`http://localhost:5500/api/supplier`)
+    const {data} = useFetch(`https://smartwork-api.onrender.com/api/supplier`)
 
     const handleSubmit = async (e) => {
         e.preventDefault()
@@ -32,7 +32,7 @@ const RawmaterialForm = ({modalOff}) => {
 
         setIsPending(true)
 
-        const response = await fetch(`http://localhost:5500/api/rawmaterial`, {
+        const response = await fetch(`https://smartwork-api.onrender.com/api/rawmaterial`, {
             method: 'POST',
             headers: {
                 'Authorization': `Bearer ${user.token}`,

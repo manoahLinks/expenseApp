@@ -9,7 +9,7 @@ const ProductionRecordForm = ({modalOff}) => {
 
     const {user} = useAuthContext()
     const {dispatch} = useDataContext()
-    const {result: products}  = useFetch(`http://localhost:5500/api/product`)
+    const {result: products}  = useFetch(`https://smartwork-api.onrender.com/api/product`)
     const [product, setProduct] = useState('')
     const [bags, setBags] = useState('')
     const [panCount, setPanCount] = useState('')
@@ -18,7 +18,7 @@ const ProductionRecordForm = ({modalOff}) => {
 
     const handleSubmit = async (e) => {
         e.preventDefault()
-        const response = await fetch(`http://localhost:5500/api/production-record`, {
+        const response = await fetch(`https://smartwork-api.onrender.com/api/production-record`, {
             method: `POST`,
             headers: {
                 'Authorization': `Bearer ${user.token}`,

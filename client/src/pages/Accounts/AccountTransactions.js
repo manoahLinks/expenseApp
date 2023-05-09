@@ -11,7 +11,7 @@ const AccountTransactions = () => {
     useEffect(()=>{
 
         const fetchData = async () => {
-            const response = await fetch(`http://localhost:5500/api/transaction`, {
+            const response = await fetch(`https://smartwork-api.onrender.com/api/transaction`, {
                 headers:{
                     'Authorization': `Bearer ${user.token}`
                 }

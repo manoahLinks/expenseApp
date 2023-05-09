@@ -10,7 +10,7 @@ const UserTable = ({users}) => {
     const {data, dispatch} = useDataContext()
 
     const handleDelete = async (id) => {
-        const response = await fetch(`http://localhost:5500/api/user/${id}`, {
+        const response = await fetch(`https://smartwork-api.onrender.com/api/user/${id}`, {
             method: 'DELETE',
             headers: {
                 
@@ -48,7 +48,7 @@ const UserTable = ({users}) => {
 
     const handleSetUserState = async (id, state) => {
         console.log(1)
-        const response = await fetch(`http://localhost:5500/api/user/${id}/changeuserstate?state=${state}`, {
+        const response = await fetch(`https://smartwork-api.onrender.com/api/user/${id}/changeuserstate?state=${state}`, {
             method: 'POST',
             headers: {
                 'Content-Type':'application/json',

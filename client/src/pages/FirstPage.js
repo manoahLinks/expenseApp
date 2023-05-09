@@ -9,8 +9,8 @@ import PieChart from "../components/PieChart";
 const Homepage = () => {
 
     const {user} = useAuthContext()
-    const {result: productRecords} = useFetch(`http://localhost:5500/api/production-record`)
-    const {result: usage} = useFetch(`http://localhost:5500/api/rawmaterial-transaction`)
+    const {result: productRecords} = useFetch(`https://smartwork-api.onrender.com/api/production-record`)
+    const {result: usage} = useFetch(`https://smartwork-api.onrender.com/api/rawmaterial-transaction`)
     
     const [currentSection, setCurrentSection] = useState(1)
     const [activeTab, setActiveTab] = useState(1)

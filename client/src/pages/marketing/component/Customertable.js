@@ -10,7 +10,7 @@ const CustomerTable = ({customers, modalOn}) => {
     const {data, dispatch} = useDataContext()
 
     const handleDelete = async (id) => {
-        const response = await fetch(`http://localhost:5500/api/customer/${id}`, {
+        const response = await fetch(`https://smartwork-api.onrender.com/api/customer/${id}`, {
             method: 'DELETE',
             headers: {
                 'Authorization': `Bearer ${user.token}`
