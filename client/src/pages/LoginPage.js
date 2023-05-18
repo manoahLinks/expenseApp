@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import LoadingPage from "../components/Loading";
 import { useLogin } from "../hooks/useLogin";
+import AlertBox from "../components/AlertBox";
 
 const LoginPage = () => {
 
@@ -60,6 +61,7 @@ const LoginPage = () => {
                 <Link to={`/signup`}>dont have an account? signup</Link>
             </div>
             {isLoading && <LoadingPage />}
+            {error && <AlertBox message={error}/>}
         </div>
      );
 }

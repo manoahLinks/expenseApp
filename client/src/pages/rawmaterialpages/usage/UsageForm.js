@@ -62,7 +62,7 @@ const UsageForm = ({modalOff}) => {
     }
 
     return ( 
-        <div className="grid grid-cols-1 inset-0 fixed bg-primary bg-opacity-10 items-center justify-items-center">
+        <div className="grid grid-cols-1 inset-0 fixed bg-primary bg-opacity-10 justify-center items-center justify-items-center">
             <div className="flex flex-col bg-white rounded-md shadow gap-y-4 p-2 md:p-5">
                 <div className='flex flex-row-reverse justify-between'>
                     <svg onClick={modalOff}  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" strokeWidth={5} className="w-5 h-5 text-red-500 cursor-pointer">
