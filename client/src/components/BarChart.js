@@ -8,7 +8,6 @@ import {
   Title,
   Tooltip,
   Legend
-
 } from 'chart.js'
 
 import { Bar } from "react-chartjs-2";
@@ -23,9 +22,29 @@ ChartJS.register(
 )
 
 
-const BarChart = () => {
+const BarChart = ({data}) => {
 
-  
+  console.log(data)
+
+  const products = () =>{
+    const products = []
+        for (let item of data) {
+             products.push(item.product.name)
+        }
+        console.log(products)
+        return products
+  }
+
+  const productsQty = () =>{
+    const productsQty = []
+        for (let item of data) {
+             productsQty.push(item.bags)
+        }
+        console.log(productsQty)
+        return productsQty
+  }
+
+  products()
 
   const [chartData, setChartData] = useState({
     datasets: []
@@ -36,7 +55,7 @@ const BarChart = () => {
   useEffect(()=> {
 
     setChartData({
-      labels: ['1st', '2nd', '3rd', '4th'],
+      labels: products(),
       datasets: [
         {
           label: "sales report 2023",
@@ -45,7 +64,7 @@ const BarChart = () => {
           borderWidth: 0,
           hoverBackgroundColor: "#408C7D",
           hoverBorderColor: "#408C7D",
-          data: [1, 2, 50, 56],
+          data: productsQty(),
         },
       ],
       
@@ -87,9 +106,9 @@ const BarChart = () => {
     <div className="flex justify-center shadow-md rounded-md p-2">
       <Bar
         data={chartData}
+        options={chartOptions}
         width={100}
         height={100}
-        options={chartOptions}
       />
     </div>
   );
