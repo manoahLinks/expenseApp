@@ -5,7 +5,7 @@ import { useDataContext } from "../../hooks/useDataContext";
 
 const SalesForm = ({modalOff}) => {
 
-    const [product, setProduct] = useState('')
+    const [product, setProduct] = useState({})
     const [quantity, setQuantity] = useState('')
     const [unitPrice, setUnitPrice] = useState('')
 
@@ -32,9 +32,8 @@ const SalesForm = ({modalOff}) => {
 
     const handleAddTocart = (e) =>{
         e.preventDefault()
-        console.log(product, quantity)
 
-        const item = {product, quantity}
+        const item = {product, quantity, unitPrice}
 
         // Get the existing cart from localStorage
         let cart = localStorage.getItem('cart');
@@ -60,11 +59,17 @@ const SalesForm = ({modalOff}) => {
 
         cart = JSON.parse(cart)
 
-        cart.filter((item)=>{
+        console.log('here1')
+
+        const cart2 = cart.filter((item)=>{
             return item.product !== itemId
         })
 
-        localStorage.setItem('cart', JSON.stringify(cart))
+        console.log(cart)
+
+        localStorage.setItem('cart', JSON.stringify(cart2))
+
+        console.log(cart2)
     }
 
     return ( 
@@ -79,7 +84,8 @@ const SalesForm = ({modalOff}) => {
                 <hr />
                 <form className="grid grid-cols-1 gap-y-4 ">
                     <select 
-                        className="text-xs border-b"
+                        className="text-xs rounded-md border-slate-300"
+                        required
                     >
                         <option value="">select customer</option>
                         {customers && customers.map((customer)=>(
@@ -89,26 +95,28 @@ const SalesForm = ({modalOff}) => {
 
                     <div className="grid grid-cols-4 gap-x-2">
                         <select 
-                            className="col-span-2 text-xs"
+                            className="col-span-2 text-xs rounded-md border-slate-300"
                             value={product}
                             onChange={(e)=>{
-                                setProduct(e.target.value[0]) 
-                                setUnitPrice(e.target.value[1])
+                                setProduct(e.target.value.split(',')[0])
+                                setUnitPrice(e.target.value.split(',')[1])
                             }}
+                            required
                         >
                             <option value="">select product</option>
                             {products && products.map((product)=> (
-                                <option key={product._id} value={[product._id, product.marketPrice]}>{product.name}</option>
+                                <option key={product._id} value={[product.name, product.marketPrice]}>{product.name}</option>
                             ))}
                         </select>
                         <input 
                             type="number"
-                            className="text-xs"
+                            className="text-xs rounded-md border-slate-300"
                             placeholder="qty"
                             value={quantity}
                             onChange={(e)=>{setQuantity(e.target.value)}}
+                            required
                         />
-                        <button onClick={handleAddTocart} className="bg-primary bg-white">Add</button>
+                        <button onClick={handleAddTocart} className="bg-primary opacity-50 text-white">Add</button>
                     </div>
 
                     <div className="flex flex-col p-5 bg-slate-100 rounded-lg gap-y-1">
@@ -121,11 +129,11 @@ const SalesForm = ({modalOff}) => {
                         </div>
                         <hr />
                         {data && data.map((item)=> (
-                        <div className="grid grid-cols-6 hover:bg-white">
+                        <div key={item.product} className="grid grid-cols-6 hover:bg-white">
                             <h4 className="truncate col-span-2">{item.product}</h4>
                             <h4>{item.quantity}</h4>
-                            <h4>250</h4>
-                            <h4>1250</h4>
+                            <h4>{item.unitPrice}</h4>
+                            <h4>{item.quantity * item.unitPrice}</h4>
                             <div className="flex items-center">
                                 <svg onClick={()=>{removeFromCart(item.product)} } xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-4 h-4 cursor-pointer fill-red-200">
                                     <path d="M2 3a1 1 0 00-1 1v1a1 1 0 001 1h16a1 1 0 001-1V4a1 1 0 00-1-1H2z" />
@@ -138,7 +146,18 @@ const SalesForm = ({modalOff}) => {
                         </div>
                         ))}
                     </div>
-            
+                            
+                    <div className="grid grid-cols-2 p-5 bg-green-50 rounded-lg">
+                        <div className="flex relative">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1} stroke="currentColor" className="w-5 h-5">
+                                <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 00-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 00-16.536-1.84M7.5 14.25L5.106 5.272M6 20.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm12.75 0a.75.75 0 11-1.5 0 .75.75 0 011.5 0z" />
+                            </svg>
+                            <small className="text-center -mx-2 -mt-2 m-auto bg-red-500 w-4 h-4 text-white text-xs rounded-full px-0.5">{data.length}</small>
+                        </div>
+                        <div className="flex">
+
+                        </div>
+                    </div>        
                     <input 
                         type="number"
                         className="border-none text-xs"
