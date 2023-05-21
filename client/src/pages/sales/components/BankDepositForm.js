@@ -1,3 +1,5 @@
+import useFetch from "../../../useFetch";
+
 const BankDepositForm = ({modalOff}) => {
     return ( 
         <div className="grid grid-cols-1 fixed inset-0 bg-primary bg-opacity-10 items-center justify-center justify-items-center">
@@ -10,6 +12,10 @@ const BankDepositForm = ({modalOff}) => {
                 </div>
                 <hr />
                 <form className="grid grid-cols-1 gap-y-2">
+                    <select name="" id="">
+                        <option value="">select bank</option>
+                        {}
+                    </select>
                     <input 
                         type="text"
                         className="border-none bg-slate-50 text-xs placeholder-blue-400"

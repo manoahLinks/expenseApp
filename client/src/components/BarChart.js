@@ -71,6 +71,7 @@ const BarChart = ({data}) => {
     })
 
     setChartOptions({
+      mainAspectRatio: false,
       responsive: true,
       plugins: {
         legend: {
@@ -103,12 +104,11 @@ const BarChart = ({data}) => {
 
 
   return (
-    <div className="flex justify-center shadow-md rounded-md p-2">
+    <div className="flex justify-center shadow-md w-full h-72 rounded-md p-2">
       <Bar
         data={chartData}
         options={chartOptions}
-        width={100}
-        height={100}
+        className="w-auto"
       />
     </div>
   );

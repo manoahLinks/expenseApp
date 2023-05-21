@@ -4,9 +4,8 @@ const express = require('express'),
         {canViewCustomer} = require('../permissions/customers')
 
 
-router.get('/', controllers.getAllCustomers)
-
 router.route(`/`)
+    .get(controllers.getAllCustomers)
     .post(controllers.createCustomer)
 
 router.route(`/:id`)
