@@ -145,8 +145,8 @@ const ProductsForm = ({modalOff}) => {
       };
 
     return ( 
-        <div className="grid grid-cols-1 items-center overflow-y-scroll justify-items-center">
-            <form onSubmit={handleSubmit} className="flex flex-col bg-white md:p-5 my-5 p-3 gap-y-4 ">
+        <div className="grid grid-cols-1 fixed overflow-y-scroll h-full inset-0 bg-primary bg-opacity-10 items-center justify-center justify-items-center">
+            <form onSubmit={handleSubmit} className="flex flex-col md:my-20 md:p-5 p-2 bg-white shadow-lg gap-y-4 rounded-md md:w-4/12 w-full">
                 <div className="flex justify-between items-center md:mb-6 mb-4">
                     <h4 className="font-semibold text-primary uppercase text-center">Create a new recipe</h4>
                 </div>

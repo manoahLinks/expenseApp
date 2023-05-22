@@ -35,7 +35,7 @@ const ProductList = () => {
     useEffect(()=>{
 
         const fetchData = async () => {
-            const response = await fetch(`http://localhost:5500/api/product`, {
+            const response = await fetch(`http://localost:5500/api/product`, {
                 headers:{
                     'Authorization': `Bearer ${user.token}`
                 }
@@ -77,12 +77,11 @@ const ProductList = () => {
                         {data && <h4 className="text-[30px] font-semibold text-slate-400"></h4>}
                     </div>
                 </div>
-                {data && <ProductTable data={data} modalOn={modalOn} />}
-                {data && <ProductGrid data={data} modalOn={modalOn}/>}
+                {data ? <ProductTable data={data} modalOn={modalOn} /> : <h4>loading...</h4>}
+                {data ? <ProductGrid data={data} modalOn={modalOn}/> : <h4>loading</h4>}
                 
             </div>
             {selectedProduct && <ProductDetails product={selectedProduct} modalOff={modalOff} />}
-            {isLoading && <LoadingPage/>}
         </div>
      );
 }

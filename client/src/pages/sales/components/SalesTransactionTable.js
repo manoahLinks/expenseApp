@@ -1,3 +1,5 @@
+import {format} from "date-fns"
+
 const SalesTransactionTable = ({transactions}) => {
     return ( 
         <div className="grid grid-cols-1 hidden md:block">
