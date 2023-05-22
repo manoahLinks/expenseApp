@@ -31,13 +31,13 @@ function App () {
     <Router>
       <div className="flex Nunito flex-col min-h-screen relative text-xs  md:text-sm">
         {user && <NavBar />}
-        <div className={`flex flex-col md:flex-row ${ user && `mt-14`} w-full`}>
+        <div className={`flex flex-col md:flex-row ${ user && `mt-20`} w-full`}>
           {user && <Sidebar />}
           <div className={`grid grid-cols-1  ${user && `md:w-10/12 ml-auto`} w-full  h-auto scroll-smooth `}>
             <div className={`grid grid-cols-1 h-full  ${user && `` }`}>
               <Routes>
-                <Route exact path={`/`}     element={!user ? <LoginPage /> : <Navigate to={`/home`}/>} />
-                <Route path={`/forgotpassword`}     element={!user ? <Forgotpassword /> : <Navigate to={`/home`}/>} />
+                <Route exact path={`/`}     element={!user ? <LoginPage /> : <Navigate to={`/dashboard`}/>} />
+                <Route path={`/forgotpassword`}     element={!user ? <Forgotpassword /> : <Navigate to={`/dashboard`}/>} />
                 <Route path={`/dashboard`}         element={user ? <Homepage /> : <Navigate to={`/`}/>} />
                 <Route path={`/home`}         element={user ? <HomePage /> : <Navigate to={`/`}/>} />
                 <Route path={`/dbar`}        element={user ? <DailyActivityReportSheet /> : <Navigate to={`/`}/>} />

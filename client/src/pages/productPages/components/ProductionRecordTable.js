@@ -12,7 +12,7 @@ const ProductionRecordTable = () => {
     useEffect(()=>{
 
         const fetchData = async () => {
-            const response = await fetch(`https://smartwork-api.onrender.com/api/production-record`, {
+            const response = await fetch(`http://localhost:5500/api/production-record`, {
                 headers:{
                     'Authorization': `Bearer ${user.token}`
                 }
@@ -40,15 +40,15 @@ const ProductionRecordTable = () => {
                 <h4>view transaction</h4>
             </div>
             <hr />
-            {data && data.map((record)=>(
-                <div className="grid md:grid-cols-5 p-2 grid-cols-2">  
+            {data ? data.map((record)=>(
+                <div key={record._id} className="grid md:grid-cols-5 p-2 grid-cols-2">  
                         <h4>{format(new Date(record.createdAt), 'dd MMM yyyy')}</h4>
                         <h4>{record.product.name}</h4>
                         <h4>{record.bags}</h4>
                         <h4>{record.panCount}</h4>
                         <h4></h4>
                 </div>
-            ))}
+            )) : <h4>fetching...</h4>}
         </div>
      );
 }

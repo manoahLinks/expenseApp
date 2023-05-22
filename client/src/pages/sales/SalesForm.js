@@ -9,6 +9,13 @@ const SalesForm = ({modalOff}) => {
     const [quantity, setQuantity] = useState('')
     const [unitPrice, setUnitPrice] = useState('')
 
+    const [customerId, setCustomerId] = useState('')
+    const [transactionType, setTransactionType] = useState('')
+    const [cart, setCart] = useState('')
+    const [amount, setAmount] = useState('')
+    const [discount, setDiscount] = useState('')
+    const [amountPaid, setAmountPaid] = useState('')
+
     const {user} = useAuthContext()
     const {data, dispatch} = useDataContext()
 
@@ -47,6 +54,7 @@ const SalesForm = ({modalOff}) => {
         if(cart){
             console.log(cart)
             localStorage.setItem('cart', JSON.stringify(cart))
+            setCart(cart)
             setProduct('')
             setQuantity('')
         } 
@@ -69,12 +77,28 @@ const SalesForm = ({modalOff}) => {
 
         localStorage.setItem('cart', JSON.stringify(cart2))
 
+        setCart(cart2)
+
         console.log(cart2)
+    }
+
+    const totalAmount = () =>{
+        let total = 0;
+        for (let item of data) {
+          total += item.unitPrice * item.quantity
+        }
+        return total;
+    }
+
+    const handleSubmit = async (e) => {
+        e.preventDefault()
+        
+        console.log(cart, 'hello')
     }
 
     return ( 
         <div className="grid grid-cols-1 fixed overflow-y-scroll h-full inset-0 bg-primary bg-opacity-10 items-center justify-center justify-items-center">
-            <div className="flex flex-col my-16  md:p-5 p-2 bg-white shadow-lg gap-y-4 rounded-md md:w-4/12 w-full">
+            <div className="flex flex-col md:my-16 md:p-5 p-2 bg-white shadow-lg gap-y-4 rounded-md md:w-4/12 w-full">
                 <div className="flex items-center justify-start">
                     <svg onClick={modalOff} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" strokeWidth={5} className="w-5 h-5 cursor-pointer">
                         <path d="M6.28 5.22a.75.75 0 00-1.06 1.06L8.94 10l-3.72 3.72a.75.75 0 101.06 1.06L10 11.06l3.72 3.72a.75.75 0 101.06-1.06L11.06 10l3.72-3.72a.75.75 0 00-1.06-1.06L10 8.94 6.28 5.22z" />
@@ -82,10 +106,18 @@ const SalesForm = ({modalOff}) => {
                     <h4 className="self-center"></h4>
                 </div>
                 <hr />
+                <div className="flex relative">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1} stroke="currentColor" className="w-5 h-5">
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 00-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 00-16.536-1.84M7.5 14.25L5.106 5.272M6 20.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm12.75 0a.75.75 0 11-1.5 0 .75.75 0 011.5 0z" />
+                    </svg>
+                    <small className="text-center -mx-2 -mt-2 m-auto bg-red-500 w-4 h-4 text-white text-xs rounded-full px-0.5">{data.length}</small>
+                </div>
                 <form className="grid grid-cols-1 gap-y-4 ">
                     <select 
                         className="text-xs rounded-md border-slate-300"
                         required
+                        value={customerId}
+                        onChange={(e)=>{setCustomerId(e.target.value)}}
                     >
                         <option value="">select customer</option>
                         {customers && customers.map((customer)=>(
@@ -148,26 +180,39 @@ const SalesForm = ({modalOff}) => {
                     </div>
                             
                     <div className="grid grid-cols-2 p-5 bg-green-50 rounded-lg">
-                        <div className="flex relative">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1} stroke="currentColor" className="w-5 h-5">
-                                <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 00-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 00-16.536-1.84M7.5 14.25L5.106 5.272M6 20.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm12.75 0a.75.75 0 11-1.5 0 .75.75 0 011.5 0z" />
-                            </svg>
-                            <small className="text-center -mx-2 -mt-2 m-auto bg-red-500 w-4 h-4 text-white text-xs rounded-full px-0.5">{data.length}</small>
-                        </div>
-                        <div className="flex">
-
-                        </div>
+                        <h4>Total amount</h4>
+                        {data && <h4>{totalAmount()}</h4>}
+                        <h4>Discount</h4>
+                        <h4>0.00</h4>
+                        <h4>Expected</h4>
+                        <h4></h4>
+                        <h4>logistics</h4>
+                        <h4></h4>
                     </div>        
-                    <input 
-                        type="number"
-                        className="border-none text-xs"
-                        placeholder="amount"
-                    />
+                    <div className="flex flex-col p-2 gap-y-2 border rounded-md border-slate-200">
+                        <h4>select Payment method</h4>
+                        <div className="grid grid-cols-3">
+                            <div className="flex gap-x-2 items-center">
+                                <input type="radio" />
+                                <h4>Cash</h4>
+                            </div>
+
+                            <div className="flex gap-x-2 items-center">
+                                <input type="radio" />
+                                <h4>Bank/Pos</h4>
+                            </div>
+
+                            <div className="flex gap-x-2 items-center">
+                                <input type="radio" />
+                                <h4>Bitcoin</h4>
+                            </div>
+                        </div>
+                    </div>
                 </form>
                 <hr />
                 <div className="grid grid-cols-2">
                     <button onClick={modalOff} className="p-2 border-r hover:bg-slate-100">cancel</button>
-                    <button className="p-2">Proceed</button>
+                    <button onChangeCapture={handleSubmit} className="p-2">Proceed</button>
                 </div>
             </div>
         </div>

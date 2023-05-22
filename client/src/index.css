@@ -16,3 +16,7 @@
 body{
     font-family: Nunito;
 }
+
+.sidebar{
+    transition: all 5s ease-in-out 100ms;
+}

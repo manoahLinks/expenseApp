@@ -1,6 +1,19 @@
+import { useState, useEffect } from "react";
+import useFetch from "../../hooks/useFetch";
 import PieChart from "../../components/PieChart";
+import SalesList from "./SalesList";
 
 const SalesDashbord = () => {
+
+    const {data} = useFetch(`http://localhost:5500/api/sales-transaction`)
+
+    const totatSales = () => {
+        let amountArray = data.map((transaction)=>{
+           return transaction.amount
+        })
+
+        return amountArray.reduce((a, b) => a + b)
+    }
     return ( 
         <div className="grid grid-cols-1 md:grid-cols-3">
             <div className="flex flex-col md:gap-y-4 md:col-span-2 md:p-5 p-2 gap-y-4 md:gap-x-8 gap-x-4">
@@ -14,7 +27,7 @@ const SalesDashbord = () => {
                             />
                         </div>
                         <div className="flex justify-between">
-                            <h4 className="text-lg">N50,000,000.00</h4>
+                            {data && <h4 className="text-lg">{totatSales()}</h4>}
                             <button className="flex items-center gap-x-2 bg-cyan-400 p-1 rounded-full text-white">
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1} stroke="currentColor" className="w-4 h-4">
                                     <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 6.75h12M8.25 12h12m-12 5.25h12M3.75 6.75h.007v.008H3.75V6.75zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zM3.75 12h.007v.008H3.75V12zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm-.375 5.25h.007v.008H3.75v-.008zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z" />
@@ -29,17 +42,18 @@ const SalesDashbord = () => {
                         <div className="flex">
                             <small className="uppercase text-xs">sales completed</small>
                         </div>
-                        <h4 className="text-[30px] font-semibold text-slate-400">50</h4>
+                        {data && <h4 className="md:text-[30px] font-semibold text-slate-400">{data.length}</h4>}
                     </div>
 
                     <div className="flex md:p-5 p-2 bg-white flex-col gap-y-2 md:gap-y-4 shadow-md rounded-lg">
                         <div className="flex">
                             <small className="uppercase text-xs">Bank deposits</small>
                         </div>
-                        <h4 className="text-[30px] font-semibold text-slate-400">N50,000</h4>
+                        <h4 className="md:text-[30px] font-semibold text-slate-400">N50,000</h4>
                     </div>
                 </div>
 
+                <SalesList/>
                 
             </div>
 

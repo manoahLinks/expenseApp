@@ -99,7 +99,7 @@ const Homepage = () => {
                         <small className="uppercase font-semibold">Raw materials usage</small>
                         <small className="bg-green-100 text-green-700 rounded-lg px-1">15+</small>
                     </div>
-                    <h4 className="font text-xl font-bold text-slate-400">N {usage && totalUsage()}</h4>
+                    {usage ? <h4 className="font text-xl font-bold text-slate-400">{totalUsage()}</h4> : <h4>pending ...</h4>}
                     <small>see more</small>
                 </div>
                 {/* Expenditure */}
@@ -116,7 +116,7 @@ const Homepage = () => {
                 </div>
             </div>
 
-            <div className="flex flex-col mt-8 rounded-lg overflow-y-scroll border-orange-300 border w-full h-72">
+            <div className="flex flex-col mt-8 rounded-lg border-orange-300 border w-full">
                 {currentSection === 1 && (
                     <h4>revenue list</h4>
                 )}
