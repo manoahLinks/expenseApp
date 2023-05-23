@@ -46,6 +46,7 @@ const PieChart = ({ data }) => {
 
     setChartOptions({
       responsive: true,
+      maintainAspectRatio: false,
       plugins: {
         legend: {
           position: 'right'
@@ -60,7 +61,7 @@ const PieChart = ({ data }) => {
 
 
   return (
-    <div className="flex p-2 rounded shadow">
+    <div className="flex p-2 h-72 rounded shadow">
       <Pie
         data={chartData}
         width={50}

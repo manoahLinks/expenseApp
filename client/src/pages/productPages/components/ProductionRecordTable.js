@@ -2,12 +2,14 @@ import { useState, useEffect } from "react";
 import { useAuthContext } from "../../../hooks/useAuthContext";
 import { useDataContext } from "../../../hooks/useDataContext";
 import {format} from "date-fns"
+import ErrorPage from "../../../components/ErrorPage";
 
 const ProductionRecordTable = () => {
 
     const {user} = useAuthContext()
     const {data, dispatch} = useDataContext()
     const [isLoading, setIsLoading] = useState(false)
+    const [error, setError] = useState(false)
 
     useEffect(()=>{
 
@@ -18,6 +20,11 @@ const ProductionRecordTable = () => {
                 }
             })
             const json = await response.json()
+
+            if(!response.ok){
+                setIsLoading(false)
+                setError(true)
+            }
 
             if(response.ok){
                 dispatch({type: 'SET_DATA', payload: json})
@@ -49,6 +56,8 @@ const ProductionRecordTable = () => {
                         <h4></h4>
                 </div>
             )) : <h4>fetching...</h4>}
+
+            {error && <ErrorPage/>}
         </div>
      );
 }

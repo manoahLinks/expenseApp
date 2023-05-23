@@ -59,7 +59,7 @@ const BarChart = ({data}) => {
       datasets: [
         {
           label: "sales report 2023",
-          backgroundColor: "#357266",
+          backgroundColor: "teal",
           borderColor: "",
           borderWidth: 0,
           hoverBackgroundColor: "#408C7D",
@@ -71,7 +71,7 @@ const BarChart = ({data}) => {
     })
 
     setChartOptions({
-      mainAspectRatio: false,
+      maintainAspectRatio: false,
       responsive: true,
       plugins: {
         legend: {

@@ -4,13 +4,16 @@ import App from './App';
 import './index.css';
 import { AuthContextProvider } from './context/AuthContext';
 import { DataContextProvider } from './context/dataContext';
+import { ErrorBoundary } from './context/ErrorBoundary';
 
 ReactDOM.render(
-  <AuthContextProvider>
-    <DataContextProvider>
-      <App />
-    </DataContextProvider>
-  </AuthContextProvider>
+  <ErrorBoundary>
+    <AuthContextProvider>
+      <DataContextProvider>
+        <App />
+      </DataContextProvider>
+    </AuthContextProvider>
+  </ErrorBoundary>
     ,
   document.getElementById('root')
 );

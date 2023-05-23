@@ -5,6 +5,7 @@ import SupplierTable from "./components/SupplierTable";
 import SupplierDetails from "./SupplierDetails";
 import SuppliersGrid from "./components/SuppliersGrid";
 import LoadingPage from "../../components/Loading";
+import ErrorPage from "../../components/ErrorPage";
 
 const SupplierList = () => {
 
@@ -12,6 +13,7 @@ const SupplierList = () => {
     const {user} = useAuthContext()
     const [selectedData, setSelectedData] = useState(null)
     const [isLoading, setIsLoading] = useState(true)
+    const [error, setError] = useState(false)
 
     const modalOn = async (data) => {
 
@@ -41,6 +43,13 @@ const SupplierList = () => {
                 }
             })
             const json = await response.json()
+
+            console.log(response)
+
+            if(!response.ok){
+                setIsLoading(false)
+                setError(true)
+            }
 
             if(response.ok){
                 dispatch({type: 'SET_DATA', payload: json})
@@ -79,6 +88,7 @@ const SupplierList = () => {
             {data && <SuppliersGrid modalOn={modalOn} suppliers={data}/>}
             {selectedData && <SupplierDetails supplier={selectedData} modalOff={modalOff} />}
             {isLoading && <LoadingPage/>}
+            {!isLoading && error && <ErrorPage/>}
         </div>
      );
 }
