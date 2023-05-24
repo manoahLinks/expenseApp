@@ -132,7 +132,7 @@ const Homepage = () => {
                 </div>
             </div>
 
-            <div className="flex flex-col mt-8 rounded-lg border-slate-200 border w-full">
+            <div className="flex flex-col my-8 rounded-lg border-slate-200 border w-full">
                 {currentSection === 1 && (
                     <LineChart/> 
                 )}

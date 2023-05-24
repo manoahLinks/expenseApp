@@ -5,7 +5,7 @@ import SalesList from "./SalesList";
 
 const SalesDashbord = () => {
 
-    const {data} = useFetch(`http://localhost:5500/api/sales-transaction`)
+    const {data} = useFetch(`https://smartwork-api.onrender.com/api/sales-transaction`)
 
     const totalSales = () => {
         let amountArray = data.map((transaction)=>{
