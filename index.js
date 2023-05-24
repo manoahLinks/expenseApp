@@ -63,8 +63,8 @@ app.use('/api/production-record', isAuth, productionRecordsRoute)
 app.use('/api/sales-transaction', isAuth, salesTransactionsRoute)
 app.use('/api/user', userRoute)
 
-app.get('/*', function(req, res) {
-    res.sendFile(path.join(__dirname, "client", "build", "index.html"), function(err) {
+app.get('*', function(req, res) {
+    res.sendFile(path.join(__dirname, "client/build", "index.html"), function(err) {
       if (err) {
         res.status(500).send(err)
       }
@@ -73,7 +73,7 @@ app.get('/*', function(req, res) {
 
 app.get(/^\/(?!api).*/, function(_, res) {
     res.sendFile(
-        path.join(__dirname, "client", "build", "index.html"),
+        path.join(__dirname, "client/build", "index.html"),
         function (err) {
             if(err) {
                 res.status(500).send(err)
