@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import {ToastContainer, toast} from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
+import {format} from "date-fns"
 
 const AttendancePage = ({modalOff}) => {
 
@@ -62,7 +63,7 @@ const AttendancePage = ({modalOff}) => {
                 <div className="bg-purple-200 shadow p-2 rounded-full">
                     {<img src={require(`../assets/icons8-user-male-100.png`)} alt="" />}
                 </div>
-
+                <div className="font-semibold text-lg">{format(Date.now(), 'hh:mm:ss a')}</div>
                 <div className="grid grid-cols-1 gap-y-3">
                     <h4>Select Attendance status:</h4>
                     <button onClick={handlePresent} className="text-sm font-semibold bg-green-200 p-2 rounded-md">Present</button>

@@ -5,6 +5,7 @@ import { useDataContext } from "../../hooks/useDataContext";
 
 const SalesForm = ({modalOff}) => {
 
+    const [activeTab, setActiveTab] = useState(1)
     const [product, setProduct] = useState({})
     const [quantity, setQuantity] = useState('')
     const [unitPrice, setUnitPrice] = useState('')
@@ -19,8 +20,8 @@ const SalesForm = ({modalOff}) => {
     const {user} = useAuthContext()
     const {data, dispatch} = useDataContext()
 
-    const {data: customers} = useFetch(`http://localhost:5500/api/customer/`)
-    const {data: products} = useFetch(`http://localhost:5500/api/product/`)
+    const {data: customers} = useFetch(`https://smartwork-api.onrender.com/api/customer/`)
+    const {data: products} = useFetch(`https://smartwork-api.onrender.com/api/product/`)
 
     useEffect(()=>{
 
@@ -90,10 +91,32 @@ const SalesForm = ({modalOff}) => {
         return total;
     }
 
+    const handleNext = (tab) => {
+        setActiveTab(tab)
+    }
+
     const handleSubmit = async (e) => {
         e.preventDefault()
         
-        console.log(cart, 'hello')
+        const response = await fetch(`http://localhost:5500/api/sales-transaction/`, {
+            method: `POST`,
+            headers: {
+                'Authorization': `Bearer ${user.token}`,
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({customerId, transactionType, cart, amount, discount, amountPaid})
+        })
+
+        const json = await response.json()
+
+        if(!response.ok){
+            console.log('error creating')
+        }
+
+        if(response.ok){
+            console.log('created')
+            dispatch({type: 'CREATE_DATA', payload: json})
+        }
     }
 
     return ( 
@@ -211,8 +234,14 @@ const SalesForm = ({modalOff}) => {
                 </form>
                 <hr />
                 <div className="grid grid-cols-2">
-                    <button onClick={modalOff} className="p-2 border-r hover:bg-slate-100">cancel</button>
-                    <button onChangeCapture={handleSubmit} className="p-2">Proceed</button>
+                    <button className="p-2 border-r hover:bg-slate-100">cancel</button>
+                    <button className="flex items-center  rounded-md bg-blue-400 text-white">
+                        <h4>proceed</h4> 
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
+                            <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12h15m0 0l-6.75-6.75M19.5 12l-6.75 6.75" />
+                        </svg>
+                    </button>
+                    <button onChangeCapture={handleSubmit} className="p-2">Complete</button>
                 </div>
             </div>
         </div>

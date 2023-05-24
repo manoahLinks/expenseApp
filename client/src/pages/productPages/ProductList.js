@@ -35,7 +35,7 @@ const ProductList = () => {
     useEffect(()=>{
 
         const fetchData = async () => {
-            const response = await fetch(`http://localost:5500/api/product`, {
+            const response = await fetch(`https://smartwork-api.onrender.com/api/product`, {
                 headers:{
                     'Authorization': `Bearer ${user.token}`
                 }
