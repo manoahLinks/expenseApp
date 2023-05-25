@@ -11,8 +11,9 @@ import LineChart from "../components/LineChart";
 const Homepage = () => {
 
     const {user} = useAuthContext()
-    const {result: productRecords} = useFetch(`https://smartwork-api.onrender.com/api/production-record`)
-    const {result: usage} = useFetch(`https://smartwork-api.onrender.com/api/rawmaterial-transaction`)
+    const {result: productRecords} = useFetch(`http://localhost:5500/api/production-record`)
+    const {result: usage} = useFetch(`http://localhost:5500/api/rawmaterial-transaction`)
+    const {result: expenses} = useFetch(`http://localhost:5500/api/expense`)
     
     const [currentSection, setCurrentSection] = useState(1)
     const [activeTab, setActiveTab] = useState(1)
@@ -22,6 +23,7 @@ const Homepage = () => {
             setActiveTab(section)
     }
 
+    // =======Dashboard logics =====
     const bagsProduced = () => {
         let totBags = 0
         for (let item of productRecords) {
@@ -41,7 +43,59 @@ const Homepage = () => {
         }
         return totValue
     }
+
+    const totalExpenditure = () => {
+
+        let totValue = 0
+        let filteredExpenses = expenses.filter((a)=>{
+            return a.isDisbursed == true
+        })
+        for (let item of filteredExpenses) {
+            totValue += item.amount
+        }
+        return totValue
+    }
+
+    // ========= logic for filtering and sorting expenses for piechart =====
  
+    const getTotalExpensesByCategory = () => {
+
+        const production = []
+        const electricity = []
+        const maintenance = []
+
+        let filteredExpenses = expenses.filter((a)=>{
+            return a.isDisbursed === true
+        })
+
+        filteredExpenses.forEach((expense)=>{
+            if(expense.type === `production`){
+                production.push(expense)
+            }
+
+            if(expense.type === `maintenance`){
+                maintenance.push(expense)
+            }
+
+            if(expense.type === `electricity`){
+                electricity.push(expense)
+            }
+        })
+
+        const catTotals = [production, maintenance, electricity].forEach((category)=>{
+            const arr = []
+            for (let item of category) {
+                arr.push(item.amount)
+                return item 
+            }
+            return console.log(arr)
+        }) 
+
+        return console.log(catTotals)
+    }
+
+    expenses && getTotalExpensesByCategory()
+
     return ( 
         <div className="grid grid-cols-1 gap-y-2 md:mx-5 mx-2">
             <div className="md:flex grid-cols-1 md:justify-between items-center ">
@@ -115,7 +169,7 @@ const Homepage = () => {
                         <small className="uppercase font-semibold">Raw materials usage</small>
                         <small className="bg-green-100 text-green-700 rounded-lg px-1">15+</small>
                     </div>
-                    {usage ? <h4 className="font text-xl font-bold text-slate-400">{totalUsage()}</h4> : <h4>pending ...</h4>}
+                    {usage ? <h4 className="font text-xl font-bold text-slate-400">N{totalUsage()}</h4> : <h4>pending ...</h4>}
                     <small>see more</small>
                 </div>
                 {/* Expenditure */}
@@ -125,9 +179,9 @@ const Homepage = () => {
                     </svg>
                     <div className="flex gap-x-2 items-center">
                         <small className="uppercase font-semibold">Total expenditure</small>
-                        <small className="bg-green-100 text-green-700 rounded-lg px-1">15+</small>
+                        <small className="bg-green-100 text-green-700 rounded-lg px-1">**</small>
                     </div>
-                    <h4 className="font text-xl font-bold">0.00</h4>
+                    {expenses ? <h4 className="font text-xl font-bold text-slate-400">N {totalExpenditure() || 0}</h4> : <h4>loading ...</h4>}
                     <small>see more</small>
                 </div>
             </div>
@@ -143,7 +197,7 @@ const Homepage = () => {
                     <BarChart data={productRecords} />
                 )}
                 {currentSection === 4 && (
-                    <PieChart/>
+                    <PieChart data={expenses}/>
                 )}
                 
             </div>

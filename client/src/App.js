@@ -19,7 +19,7 @@ import Products from './pages/subpages/Products';
 import Forgotpassword from './pages/Forgotpassword';
 import TaskBar from './components/TaskBar';
 import Suppliers from './pages/subpages/Suppliers';
-import Orders from './pages/subpages/Orders';
+import Orders from './pages/subpages/Expenditures';
 import Supplies from './pages/subpages/Supplies';
 
 
@@ -31,7 +31,7 @@ function App () {
     <Router>
       <div className="flex Nunito flex-col min-h-screen relative text-xs  md:text-sm">
         {user && <NavBar />}
-        <div className={`flex flex-col md:flex-row ${ user && `mt-20`} w-full`}>
+        <div className={`flex flex-col md:flex-row ${ user && `md:mt-20 mt-10`} w-full`}>
           {user && <Sidebar />}
           <div className={`grid grid-cols-1  ${user && `md:w-10/12 ml-auto`} w-full  h-auto scroll-smooth `}>
             <div className={`grid grid-cols-1 h-full  ${user && `` }`}>

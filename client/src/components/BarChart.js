@@ -55,7 +55,7 @@ const BarChart = ({data}) => {
   useEffect(()=> {
 
     setChartData({
-      labels: products(),
+      labels: products() || [],
       datasets: [
         {
           label: "sales report 2023",
@@ -64,7 +64,7 @@ const BarChart = ({data}) => {
           borderWidth: 0,
           hoverBackgroundColor: "#408C7D",
           hoverBorderColor: "#408C7D",
-          data: productsQty(),
+          data: productsQty() || [],
         },
       ],
       

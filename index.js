@@ -25,7 +25,7 @@ const express = require('express'),
 
 
 const store = new mongoDBSession({
-    uri: process.env.MONGODB_URI,
+    uri: process.env.URI,
     collection: 'mySession'
 }) 
 
@@ -37,7 +37,7 @@ app.use(session({
 }))
 
 
-app.use(express.static(path.join(__dirname, "client", "build")));
+app.use(express.static(path.join(__dirname, 'client/build')));
 app.use(cors())
 // to help us log all request type to the console
 app.use((req,res,next) =>{
@@ -63,8 +63,8 @@ app.use('/api/production-record', isAuth, productionRecordsRoute)
 app.use('/api/sales-transaction', isAuth, salesTransactionsRoute)
 app.use('/api/user', userRoute)
 
-app.get('*', function(req, res) {
-    res.sendFile(path.join(__dirname, "client/build", "index.html"), function(err) {
+app.get('/*', function(req, res) {
+    res.sendFile(path.join(__dirname, 'client/build', 'index.html'), function(err) {
       if (err) {
         res.status(500).send(err)
       }

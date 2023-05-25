@@ -1,6 +1,5 @@
 const mongoose = require('mongoose')
 
-
 //setting up database schema
 const expenseSchema = new mongoose.Schema({
 

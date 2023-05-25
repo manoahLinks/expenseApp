@@ -23,7 +23,7 @@ const Sidebar = ({sidebar, toggleSidebar}) => {
     }
 
     return ( 
-        <div className={`md:w-2/12 sidebar transition-ease-in fixed bg-white md:overflow-y-hidden overflow-y-scroll inset-0 mt-10 md:mt-12 md:border-r h-screen grid grid-cols-1 ${sidebar ? `block`: `hidden`} md:block w-9/12`}>
+        <div className={`md:w-2/12 fixed bg-white md:overflow-y-hidden overflow-y-scroll inset-0 mt-10 md:mt-12 md:border-r h-screen grid font-semibold text-slate-400 grid-cols-1 ${sidebar ? `block`: `hidden`} md:block w-9/12`}>
             
             <div className="flex flex-col gap-y-2  mt-5 gap-y-8 mx-4">
                 <div className="grid grid-cols-1 gap-y-2">
@@ -106,7 +106,7 @@ const Sidebar = ({sidebar, toggleSidebar}) => {
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.0} stroke="currentColor" className="w-4 h-4 -rotate-45">
                                 <path strokeLinecap="round" strokeLinejoin="round" d="M6 12L3.269 3.126A59.768 59.768 0 0121.485 12 59.77 59.77 0 013.27 20.876L5.999 12zm0 0h7.5" />
                             </svg>
-                            <h4>orders</h4>
+                            <h4>Expenses</h4>
                         </Link>
 
                         <Link onClick={()=>{handleClick(11)}} to={`/finance`} className={`${activeTab === 11 ? `text-orange-500` : `text-normal`} flex items-center gap-x-2 hover:text-orange-600`}>
