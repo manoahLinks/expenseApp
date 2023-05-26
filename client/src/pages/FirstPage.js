@@ -11,9 +11,9 @@ import LineChart from "../components/LineChart";
 const Homepage = () => {
 
     const {user} = useAuthContext()
-    const {result: productRecords} = useFetch(`http://localhost:5500/api/production-record`)
-    const {result: usage} = useFetch(`http://localhost:5500/api/rawmaterial-transaction`)
-    const {result: expenses} = useFetch(`http://localhost:5500/api/expense`)
+    const {result: productRecords} = useFetch(`https://smartwork-api.onrender.com/api/production-record`)
+    const {result: usage} = useFetch(`https://smartwork-api.onrender.com/api/rawmaterial-transaction`)
+    const {result: expenses} = useFetch(`https://smartwork-api.onrender.com/api/expense`)
     
     const [currentSection, setCurrentSection] = useState(1)
     const [activeTab, setActiveTab] = useState(1)
@@ -156,7 +156,7 @@ const Homepage = () => {
                         <small className="uppercase font-semibold">Production</small>
                         <small className="bg-green-100 text-green-700 rounded-lg px-1">15+</small>
                     </div>
-                    <h4 className="font text-xl font-bold text-slate-400">{productRecords && bagsProduced()} bags</h4>
+                    {productRecords ? <h4 className="font text-xl font-bold text-slate-400">{ bagsProduced()} bags</h4> : <img className="w-5 h-5" src={require(`../assets/icons8-dots-loading.gif`)} alt="" /> }
                     <small>see more</small>
                 </div>
                 {/* rawmaterials */}
@@ -169,7 +169,7 @@ const Homepage = () => {
                         <small className="uppercase font-semibold">Raw materials usage</small>
                         <small className="bg-green-100 text-green-700 rounded-lg px-1">15+</small>
                     </div>
-                    {usage ? <h4 className="font text-xl font-bold text-slate-400">N{totalUsage()}</h4> : <h4>pending ...</h4>}
+                    {usage ? <h4 className="font text-xl font-bold text-slate-400">N{totalUsage()}</h4> : <img className="w-5 h-5" src={require(`../assets/icons8-dots-loading.gif`)} alt="" />}
                     <small>see more</small>
                 </div>
                 {/* Expenditure */}
@@ -181,7 +181,7 @@ const Homepage = () => {
                         <small className="uppercase font-semibold">Total expenditure</small>
                         <small className="bg-green-100 text-green-700 rounded-lg px-1">**</small>
                     </div>
-                    {expenses ? <h4 className="font text-xl font-bold text-slate-400">N {totalExpenditure() || 0}</h4> : <h4>loading ...</h4>}
+                    {expenses ? <h4 className="font text-xl font-bold text-slate-400">N {totalExpenditure() || 0}</h4> : <img className="w-5 h-5" src={require(`../assets/icons8-dots-loading.gif`)} alt="" />}
                     <small>see more</small>
                 </div>
             </div>

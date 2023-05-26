@@ -77,11 +77,12 @@ const ProductList = () => {
                         {data && <h4 className="text-[30px] font-semibold text-slate-400"></h4>}
                     </div>
                 </div>
-                {data ? <ProductTable data={data} modalOn={modalOn} /> : <h4>loading...</h4>}
-                {data ? <ProductGrid data={data} modalOn={modalOn}/> : <h4>loading</h4>}
+                {data && <ProductTable data={data} modalOn={modalOn} />}
+                {data && <ProductGrid data={data} modalOn={modalOn}/>}
                 
             </div>
             {selectedProduct && <ProductDetails product={selectedProduct} modalOff={modalOff} />}
+            {isLoading && <LoadingPage/>}
         </div>
      );
 }

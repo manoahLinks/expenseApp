@@ -61,7 +61,6 @@ const LoginPage = () => {
                 <Link to={`/signup`}>dont have an account? signup</Link>
             </div>
             {isLoading && <LoadingPage />}
-            {error && <AlertBox message={error}/>}
         </div>
      );
 }
