@@ -52,6 +52,7 @@ function App () {
                 <Route path={`/supplier`}        element={user ? <Suppliers/> : <Navigate to={`/`}/>} />
                 <Route path={`/order`}        element={user ? <Orders/> : <Navigate to={`/`}/>} />
                 <Route path={`/supplies`}        element={user ? <Supplies/> : <Navigate to={`/`}/>} />
+                <Route path={`/*`}        element={user ? <Homepage /> : <Navigate to={`/`}/>} />
               </Routes>
 
               
