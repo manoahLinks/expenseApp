@@ -5,17 +5,19 @@ import UserTable from './components/UserTable'
 import AssignRole from "./AssignRole";
 import UserGrid from "./components/UserGrid";
 import LoadingPage from "../../components/Loading";
+import UserDetails from "./components/UserDetails"
     
 const UserList = () => {
 
     const {user} = useAuthContext()
     const {data, dispatch} = useDataContext()
     const [isLoading, setIsLoading] = useState(true)
+    const [selectedUser, setSelectedUser] = useState(null)
 
     useEffect(()=>{
 
         const fetchData = async () => {
-            const response = await fetch(`https://smartwork-api.onrender.com/api/user`, {
+            const response = await fetch(`http://localhost:5500/api/user`, {
                 headers:{
                     'Authorization': `Bearer ${user.token}`   
                 }
@@ -32,6 +34,25 @@ const UserList = () => {
         }
         
     }, [dispatch, data, user])
+
+    const modalOn = async (data) => {
+        
+        const response = await fetch(`http://localhost:5500/api/product/${data._id}`, {
+            headers: {
+                'Authorization': `Bearer ${user.token}`
+            }
+        })
+
+        const json = await response.json()
+
+        if(response.ok){
+            setSelectedUser({...data ,json})
+        }
+    }
+
+    const modalOff = () => {
+        setSelectedUser(false)
+    }
 
     const inActiveStaff = () => {
         const b = data.filter((a)=>{
@@ -74,8 +95,8 @@ const UserList = () => {
                         {data && <h4 className="text-[30px] font-semibold text-red-400">{inActiveStaff()}</h4>}
                     </div>
                 </div>
-                {data && <UserTable users={data}/>}
-                {data && <UserGrid users={data}/>}
+                {data && <UserTable users={data} modalOn={modalOn} />}
+                {data && <UserGrid users={data} modalOn={modalOn} />}
             </div>
             <div className="flex flex-col">
                 <div className="grid grid-cols-2 md:p-5 p-2">
@@ -91,6 +112,7 @@ const UserList = () => {
                 
             </div>
             {isLoading && <LoadingPage/>}
+            {selectedUser && <UserDetails user={selectedUser} modalOff={modalOff}/>}
         </div>
     );
 }

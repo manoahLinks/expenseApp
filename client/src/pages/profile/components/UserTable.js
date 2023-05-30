@@ -4,7 +4,7 @@ import { useDataContext } from "../../../hooks/useDataContext";
 import {ToastContainer, toast} from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 
-const UserTable = ({users}) => {
+const UserTable = ({users, modalOn}) => {
 
     const {user} = useAuthContext()
     const {data, dispatch} = useDataContext()
