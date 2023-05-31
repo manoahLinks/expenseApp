@@ -1,6 +1,6 @@
 const ExpensesGrid = ({expenses}) => {
     return ( 
-        <div className="grid grid-cols-1 gap-y-1">
+        <div className="block md:hidden grid grid-cols-1 gap-y-1">
             {expenses && expenses.map((expense)=>(
                 <div className="flex items-center justify-between border-b p-2 bg-white">
                     <div className={`p-1 rounded-full ${expense.isDisbursed ? `bg-green-200`: `bg-amber-200`}`}>
