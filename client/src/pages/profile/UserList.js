@@ -63,6 +63,7 @@ const UserList = () => {
 
     const closeUpdateModal =() => {
         setEditForm(false)
+        setSelectedUser(false)
     }
 
     const inActiveStaff = () => {
@@ -124,7 +125,7 @@ const UserList = () => {
             </div>
             {isLoading && <LoadingPage/>}
             {selectedUser && <UserDetails user={selectedUser} modalOff={modalOff} setEditForm={updateModal} />}
-            {editForm && <UserUpdateForm modalOff={closeUpdateModal} />}
+            {editForm && <UserUpdateForm user={selectedUser} modalOff={closeUpdateModal} />}
         </div>
     );
 }

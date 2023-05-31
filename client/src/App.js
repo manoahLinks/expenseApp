@@ -38,21 +38,21 @@ function App () {
               <Routes>
                 <Route exact path={`/`}     element={!user ? <LoginPage /> : <Navigate to={`/dashboard`}/>} />
                 <Route path={`/forgotpassword`}     element={!user ? <Forgotpassword /> : <Navigate to={`/dashboard`}/>} />
-                <Route path={`/dashboard`}         element={user ? <Homepage /> : <Navigate to={`https://smartwork.onrender.com/`}/>} />
-                <Route path={`/home`}         element={user ? <HomePage /> : <Navigate to={`https://smartwork.onrender.com/`}/>} />
-                <Route path={`/dbar`}        element={user ? <DailyActivityReportSheet /> : <Navigate to={`https://smartwork.onrender.com/`}/>} />
-                <Route path={`/signup`}       element={!user ? <SignupPage /> : <Navigate to={`https://smartwork.onrender.com/`}/>} />
-                <Route path={`/analytics`}    element={user ? <AnalyticsPage /> : <Navigate to={`https://smartwork.onrender.com/`}/>} />
-                <Route path={`/myprofile`}    element={user ? <MyProfile /> : <Navigate to={`https://smartwork.onrender.com/`}/>} />
-                <Route path={`/sales`}        element={user ? <SalesPage/> : <Navigate to={`https://smartwork.onrender.com/`}/>} />
-                <Route path={`/rawmaterial`}        element={user ? <RawMaterials/> : <Navigate to={`https://smartwork.onrender.com/`}/>} />
-                <Route path={`/marketing`}        element={user ? <Marketing/> : <Navigate to={`https://smartwork.onrender.com/`}/>} />
-                <Route path={`/finance`}        element={user ? <Finance/> : <Navigate to={`https://smartwork.onrender.com/`}/>} />
-                <Route path={`/product`}        element={user ? <Products/> : <Navigate to={`https://smartwork.onrender.com/`}/>} />
-                <Route path={`/supplier`}        element={user ? <Suppliers/> : <Navigate to={`https://smartwork.onrender.com/`}/>} />
-                <Route path={`/order`}        element={user ? <Orders/> : <Navigate to={`https://smartwork.onrender.com/`}/>} />
-                <Route path={`/supplies`}        element={user ? <Supplies/> : <Navigate to={`https://smartwork.onrender.com/`}/>} />
-                <Route path={`/*`}        element={user ? <Navigate to={`https://smartwork.onrender.com/`}/> : <Navigate to={`/`}/>} />
+                <Route path={`/dashboard`}         element={user ? <Homepage /> : <Navigate to={`/`}/>} />
+                <Route path={`/home`}         element={user ? <HomePage /> : <Navigate to={`/`}/>} />
+                <Route path={`/dbar`}        element={user ? <DailyActivityReportSheet /> : <Navigate to={`/`}/>} />
+                <Route path={`/signup`}       element={!user ? <SignupPage /> : <Navigate to={`/`}/>} />
+                <Route path={`/analytics`}    element={user ? <AnalyticsPage /> : <Navigate to={`/`}/>} />
+                <Route path={`/myprofile`}    element={user ? <MyProfile /> : <Navigate to={`/`}/>} />
+                <Route path={`/sales`}        element={user ? <SalesPage/> : <Navigate to={`/`}/>} />
+                <Route path={`/rawmaterial`}        element={user ? <RawMaterials/> : <Navigate to={`/`}/>} />
+                <Route path={`/marketing`}        element={user ? <Marketing/> : <Navigate to={`/`}/>} />
+                <Route path={`/finance`}        element={user ? <Finance/> : <Navigate to={`/`}/>} />
+                <Route path={`/product`}        element={user ? <Products/> : <Navigate to={`/`}/>} />
+                <Route path={`/supplier`}        element={user ? <Suppliers/> : <Navigate to={`/`}/>} />
+                <Route path={`/order`}        element={user ? <Orders/> : <Navigate to={`/`}/>} />
+                <Route path={`/supplies`}        element={user ? <Supplies/> : <Navigate to={`/`}/>} />
+                <Route path={`/*`}        element={user ? <Navigate to={`https://smartwork.onrender.com`}/> : <Navigate to={`/`}/>} />
               </Routes>
 
               

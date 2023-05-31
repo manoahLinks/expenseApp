@@ -55,7 +55,7 @@ const UserDetails = ({user, modalOff, setEditForm}) => {
                 <div className="flex flex-col gap-y-1 md:gap-y-2">
                     <div className="flex justify-between">
                         <h4>Last updated:</h4>
-                        <h4 className="text-blue-400" >{format(new Date(user.updatedAt) , 'dd MMM yyyy') || `nill`}</h4>
+                        <h4 className="text-blue-400" >{`nill`}</h4>
                     </div>
 
                     <div className="flex justify-between">

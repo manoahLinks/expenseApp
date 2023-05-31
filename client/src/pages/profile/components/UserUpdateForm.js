@@ -6,7 +6,7 @@ import {ToastContainer, toast} from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 
 
-const UserUpdateForm = ({userId, modalOff}) => {
+const UserUpdateForm = ({user, modalOff}) => {
 
     const {dispatch} = useDataContext()
     const {user: loggedUser} = useAuthContext()
