@@ -16,7 +16,7 @@ const useFetch = (url) => {
             }
         }).then((res)=>{
             if(!res.ok){
-                throw Error(`no valid response from this resourse`)
+                throw Error(`no valid response from this resource`)
             }
             return res.json()
 

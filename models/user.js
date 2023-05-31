@@ -4,13 +4,17 @@ const validator = require('validator')
 
 let userSchema = new mongoose.Schema({
 
+    name: {type: String},
+    phone: {type: String},
     email:      {type: String, required: true, unique: true},
     department: {type: String},
-    isAdmin:    {type: Boolean, default: false},
+    houseAddress: {type: String},
     password:   {type: String},
     ipAddress:  {type: String},
-    role:       {type: String, enum: ['user', 'admin', 'storekeeper'], default: 'user'},
-    isActive:   {type: Boolean, default: true}
+    role:       {type: String, enum: ['user', 'admin', 'factory-manager','storekeeper', 'marketer', 'sales-rep'], default: 'user'},
+    isActive:   {type: Boolean, default: true},
+    isAdmin:    {type: Boolean, default: false},
+    isOnline: {type: Boolean, default: false}
 
 }, {timestamps: true})
 

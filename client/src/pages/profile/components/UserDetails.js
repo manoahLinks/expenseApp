@@ -1,8 +1,11 @@
-const UserDetails = ({user, modalOff}) => {
+import format from "date-fns/format";
+
+
+const UserDetails = ({user, modalOff, setEditForm}) => {
     
     return ( 
-        <div className="grid grid-cols-1 md:grid-cols-1 items-center justify-items-center fixed inset-0 bg-primary bg-opacity-20">
-            <div className="flex flex-col gap-y-4 p-5 mt-10 md:w-3/12 w-full shadow-lg rounded-lg bg-white">
+        <div className="grid grid-cols-1 overflow-y-scroll md:grid-cols-1 items-center justify-items-center fixed inset-0 bg-primary bg-opacity-20">
+            <div className="flex flex-col gap-y-4 p-5 my-16 md:w-3/12 w-full shadow-lg rounded-lg bg-white">
                 
                 <div className="flex justify-between">
                     <h4 className="font-semibold">Profile details</h4>
@@ -14,29 +17,48 @@ const UserDetails = ({user, modalOff}) => {
 
                 <div className="flex flex-col items-center gap-y-1 md:gap-y-2">
                     <img className="rounded-full bg-orange-300" src={require(`../../../assets/icons8-user-male-100.png`)} alt="proimg" />
+                    <svg onClick={()=>{
+                        setEditForm()
+                        modalOff()
+                        }}  xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1} stroke="currentColor" className="w-4 h-4 cursor-pointer">
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10" />
+                    </svg>
                     <h4>{user.email}</h4>
                     <small>{user.role}</small>
                     <h4>Employee Id: {user._id}</h4>
+
                 </div>
+
                 <hr />
 
                 <div className="flex flex-col gap-y-1 md:gap-y-2">
+
+                    <div className="flex justify-between">
+                        <h4>Name</h4>
+                        <h4>{user.name}</h4>
+                    </div>
+
                     <div className="flex justify-between">
                         <h4>phone:</h4>
-                        <h4>080234</h4>
+                        <h4>{user.phone}</h4>
                     </div>
 
                     <div className="flex justify-between">
                         <h4>Email:</h4>
                         <h4>{user.email}</h4>
                     </div>
+
+                    <div className="flex justify-between">
+                        <h4>Home Address:</h4>
+                        <h4>{user.homeAddress}</h4>
+                    </div>
                 </div>
                 <hr />
 
                 <div className="flex flex-col gap-y-1 md:gap-y-2">
                     <div className="flex justify-between">
-                        <h4>Start Date:</h4>
-                        <h4>{user.createdAt}</h4>
+                        <h4>Last updated:</h4>
+                        <h4 className="text-blue-400" >{format(new Date(user.updatedAt) , 'dd MMM yyyy')}</h4>
                     </div>
 
                     <div className="flex justify-between">

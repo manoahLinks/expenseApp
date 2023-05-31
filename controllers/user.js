@@ -19,7 +19,7 @@ exports.getAllUsers = async (req, res) => {
 }
 
 exports.getSingleUser = async (req, res) => {
-    let {id} = req.params.id
+    let {id} = req.params
     try {
         
         const response = await User.findById(id)
@@ -105,6 +105,24 @@ exports.assignRole = async (req, res) => {
 
 }
 
+exports.updateUser = async(req, res) => {
+
+    const {id} = req.params
+    const {name, email, phone, homeAddress} = req.body
+
+    try {
+        let updatedUser = await User.findOneAndUpdate(id, {name: name, email:email, phone:phone, homeAddress:homeAddress})
+        
+        if(!updatedUser){
+            throw Error(`could not update user info !`)
+        }
+
+        return res.status(200).json(updatedUser)
+
+    } catch (error) {
+        return res.status(400).json(error.message)
+    }
+}
 
 exports.changeUserState = async (req, res) => {
     const {id} = req.params

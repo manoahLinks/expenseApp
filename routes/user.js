@@ -20,6 +20,7 @@ router.route('/:email')
     .get(controller.getSingleUserByEmail) 
     
 router.route('/:id')
+    .patch(controller.updateUser)
     .delete(controller.deleteUser)
 
 module.exports = router
